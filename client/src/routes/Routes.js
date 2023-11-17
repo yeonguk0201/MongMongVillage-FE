@@ -1,4 +1,5 @@
-import { SignUpPage, CommunityPage, MainPage, LoginPage } from './pages';
+import { SignUpPage, CommunityPage, MainPage, LoginPage } from '../pages';
+import { MyPage } from '../pages/MyPage';
 
 export const ROUTE = {
   MAIN_PAGE: {
@@ -17,9 +18,14 @@ export const ROUTE = {
     element: <CommunityPage />,
   },
   SIGNUP_PAGE: {
-    path: '/SignUp',
-    link: '/SignUp',
+    path: '/signUp',
+    link: '/signUp',
     element: <SignUpPage />,
+  },
+  MY_PAGE: {
+    path: '/mypage',
+    link: '/mypage',
+    element: <MyPage />,
   },
 };
 

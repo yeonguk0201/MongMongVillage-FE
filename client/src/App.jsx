@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { ROUTE_ARR } from './Routes';
+import { ROUTE_ARR } from './routes/Routes';
 
 function App() {
   return (

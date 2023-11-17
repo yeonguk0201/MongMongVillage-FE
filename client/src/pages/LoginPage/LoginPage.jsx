@@ -12,6 +12,7 @@ import {
 } from './styles';
 import { FcGoogle } from 'react-icons/fc';
 import { SiNaver } from 'react-icons/si';
+import { ROUTE } from '../../routes/Routes';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -49,7 +50,9 @@ const LoginPage = () => {
         <TextButtonContainer>
           <TextButton>비밀번호 찾기</TextButton>
           <span>|</span>
-          <TextButton onClick={() => navigate('/signUp')}>회원가입</TextButton>
+          <TextButton onClick={() => navigate(ROUTE.SIGNUP_PAGE)}>
+            회원가입
+          </TextButton>
         </TextButtonContainer>
       </Container>
 
