@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { LoginPage, MainPage, CafeMapPage } from './pages';
+import { LoginPage, MainPage, CafeMapPage, CafeDetailPage } from './pages';
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cafemap" element={<CafeMapPage />} />
+        <Route path="/cafedetail" element={<CafeDetailPage />} />
       </Routes>
     </BrowserRouter>
   );
