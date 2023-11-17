@@ -16,7 +16,7 @@ export const CafeDetailContainer = styled.div`
 `;
 
 export const CafeName = styled.p`
-  margin: 26px; 0 35px 5px; 
+  margin: 36px 30px 26px 26px;
   font-size: 32px;
 `;
 
@@ -30,7 +30,7 @@ export const CafeImgContainer = styled.div`
 export const CafeImg = styled.img``;
 
 export const CafeInfoContainer = styled.article`
-  margin-top: 25px;
+  margin-top: 15px;
   margin-left: 26px;
 `;
 

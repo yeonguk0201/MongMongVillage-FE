@@ -29,56 +29,65 @@ const CafeDetailPage = () => {
   return (
     <Container>
       <Header />
+      <div
+        style={{
+          backgroundColor: 'rgba(255, 232, 148, 0.3)',
+          borderRadius: '50px',
+          marginBottom: '80px',
+          marginLeft: '80px',
+          marginRight: '80px',
+        }}
+      >
+        <CafeDetailContainer>
+          <CafeName>멍멍 애견카페</CafeName>
+          <CafeImgContainer>
+            <CafeImg></CafeImg>
+          </CafeImgContainer>
+          <CafeInfoContainer>
+            <CafeInfo>주소: 서울시 강동구</CafeInfo>
+            <CafeInfo>영업시간: 24시</CafeInfo>
+            <CafeInfo>번호: 000-000-000</CafeInfo>
+            <StarRating>
+              <p style={{ fontSize: '18px' }}>평균별점</p>
+              <span>⭐️</span>
+              <span>⭐️</span>
+              <span>⭐️</span>
+              <span>⭐️</span>
+              <span>⭐️</span>
+            </StarRating>
+          </CafeInfoContainer>
+          <WriteReviewBtn>리뷰 작성하러가기</WriteReviewBtn>
+        </CafeDetailContainer>
 
-      <CafeDetailContainer>
-        <CafeName>멍멍 애견카페</CafeName>
-        <CafeImgContainer>
-          <CafeImg></CafeImg>
-        </CafeImgContainer>
-        <CafeInfoContainer>
-          <CafeInfo>주소: 서울시 강동구</CafeInfo>
-          <CafeInfo>영업시간: 24시</CafeInfo>
-          <CafeInfo>번호: 000-000-000</CafeInfo>
-          <StarRating>
-            <p style={{ fontSize: '18px' }}>평균별점</p>
-            <span>⭐️</span>
-            <span>⭐️</span>
-            <span>⭐️</span>
-            <span>⭐️</span>
-            <span>⭐️</span>
-          </StarRating>
-        </CafeInfoContainer>
-        <WriteReviewBtn>리뷰 작성하러가기</WriteReviewBtn>
-      </CafeDetailContainer>
-
-      <ReviewListContainer>
-        <RadioButtonContainer>
-          <label>
-            <input type="radio" name="contact" value="Latest" checked />
-            <span>최신순</span>
-          </label>
-          <label>
-            <input type="radio" name="contact" value="popularity" />
-            <span>인기순</span>
-          </label>
-        </RadioButtonContainer>
-        <Review />
-        <Review />
-        <Review />
-        <Review />
-        <Review />
-      </ReviewListContainer>
-      <PageButtonContainer>
-        <button>﹤</button>
-        <span>...</span>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <span>...</span>
-        <button>﹥</button>
-      </PageButtonContainer>
+        <ReviewListContainer>
+          <RadioButtonContainer>
+            <label>
+              <input type="radio" name="contact" value="Latest" checked />
+              <span>최신순</span>
+            </label>
+            <label>
+              <input type="radio" name="contact" value="popularity" />
+              <span>인기순</span>
+            </label>
+          </RadioButtonContainer>
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+        </ReviewListContainer>
+        <PageButtonContainer>
+          <button>﹤</button>
+          <span>...</span>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <span>...</span>
+          <button>﹥</button>
+        </PageButtonContainer>
+      </div>
       <Footer />
     </Container>
   );
