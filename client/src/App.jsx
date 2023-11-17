@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   LoginPage,
@@ -18,6 +19,18 @@ function App() {
         <Route path="/community/newpost" element={<NewPostPage />} />
       </Routes>
     </BrowserRouter>
+=======
+import { Route, Routes } from 'react-router-dom';
+import { ROUTE_ARR } from './routes/Routes';
+
+function App() {
+  return (
+    <Routes>
+      {ROUTE_ARR.map((el) => (
+        <Route path={el.path} key={el.path} element={el.element} />
+      ))}
+    </Routes>
+>>>>>>> dev
   );
 }
 
