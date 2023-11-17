@@ -1,12 +1,21 @@
-import { Header, Footer, Banner } from '../../components';
-import { Container, Title } from './styels';
+import {
+  Header,
+  Footer,
+  Banner,
+  PopularContents,
+  SearchBar,
+  BestContents,
+} from '../../components';
+import { Container } from './styels';
 
 const MainPage = () => {
   return (
     <Container>
       <Header />
       <Banner />
-      <Title>메인페이지</Title>
+      <SearchBar />
+      <PopularContents />
+      <BestContents />
       <Footer />
     </Container>
   );

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactComponent as LogoSVG } from './Logo.svg';
 
 import styled from 'styled-components';

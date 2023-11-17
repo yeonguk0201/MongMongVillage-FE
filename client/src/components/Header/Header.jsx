@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Container,
@@ -27,7 +26,7 @@ const Header = () => {
         <Navitem id="review" onClick={() => navigate('/review')}>
           리뷰
         </Navitem>
-        <Navitem id="information" onClick={() => navigate('/information')}>
+        <Navitem id="information" onClick={() => navigate('/cafemap')}>
           카페정보
         </Navitem>
       </Navbar>

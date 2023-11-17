@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  z-index: 10;
+  padding-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: white;
 `;
 
 export const BannerBox = styled.div`
