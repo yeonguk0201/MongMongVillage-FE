@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 
-const connect = require('./schemas');
+const connect = require('./db');
 
 const app = express();
 
