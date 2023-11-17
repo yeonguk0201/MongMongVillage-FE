@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Footer, Header, Pagination } from '../../components';
+import { useNavigate } from 'react-router-dom';
+import { Footer, Header } from '../../components';
 import {
   Container,
   CommunityNav,
@@ -8,9 +9,14 @@ import {
   SearchInput,
   SearchButton,
   SelectSort,
-} from './styles';
+  PostBTN,
+  SearchAndPost,
+  SearchInputBox,
+} from './CommunityPage.styles';
 
 const CommunityPage = () => {
+  // navigate 객체 생성
+  const navigate = useNavigate();
   // 목 데이터
   const [list, setList] = useState([
     {
@@ -19,7 +25,21 @@ const CommunityPage = () => {
       title: '강아지 훈련',
       content: '강아지 훈련을 위해 훈련소를 방문했어요',
       user: '이은혜',
-      comment: 5,
+      userImg: '👮‍♀️',
+      comment: [
+        {
+          id: 1,
+          writer: '김은혜',
+          text: '여기 정말 좋네요.',
+          time: '2023-11-11 12:20:30',
+        },
+        {
+          id: 2,
+          writer: '김은혜',
+          text: '여기 최고네요.',
+          time: '2023-11-11 12:20:30',
+        },
+      ],
       like: 10,
       time: '2023-11-11 16:23:30',
       mainImg: './imges/img2.png',
@@ -30,7 +50,21 @@ const CommunityPage = () => {
       title: '애견카페 방문',
       content: '예쁜 애견카페를 방문했어요',
       user: '이은혜',
-      comment: 5,
+      userImg: '👮‍♀️',
+      comment: [
+        {
+          id: 1,
+          writer: '김은혜',
+          text: '여기 정말 좋네요.',
+          time: '2023-11-11 12:20:30',
+        },
+        {
+          id: 2,
+          writer: '김은혜',
+          text: '여기 최고네요.',
+          time: '2023-11-11 12:20:30',
+        },
+      ],
       like: 6,
       time: '2023-11-12 16:23:30',
       mainImg: './imges/img1.png',
@@ -41,7 +75,21 @@ const CommunityPage = () => {
       title: '강아지 미용실 추천해주실 수 있나요?',
       content: '미용 잘 하는 곳 추천해주세요.',
       user: '이은혜',
-      comment: 5,
+      userImg: '👮‍♀️',
+      comment: [
+        {
+          id: 1,
+          writer: '김은혜',
+          text: '여기 정말 좋네요.',
+          time: '2023-11-11 12:20:30',
+        },
+        {
+          id: 2,
+          writer: '김은혜',
+          text: '여기 최고네요.',
+          time: '2023-11-11 12:20:30',
+        },
+      ],
       like: 12,
       time: '2023-11-13 16:23:30',
       mainImg: './imges/img2.png',
@@ -53,7 +101,21 @@ const CommunityPage = () => {
       content:
         '서울 양천구 근처에 좋은 강아지 놀이터가 있나요? 서울 양천구 근처에 좋은 강아지 놀이터가 있나요? 서울 양천구 근처에 좋은 강아지 놀이터가 있나요? 서울 양천구 근처에 좋은 강아지 놀이터가 있나요?',
       user: '이은혜',
-      comment: 5,
+      userImg: '👮‍♀️',
+      comment: [
+        {
+          id: 1,
+          writer: '김은혜',
+          text: '여기 정말 좋네요.',
+          time: '2023-11-11 12:20:30',
+        },
+        {
+          id: 2,
+          writer: '김은혜',
+          text: '여기 최고네요.',
+          time: '2023-11-11 12:20:30',
+        },
+      ],
       like: 15,
       time: '2023-11-14 16:23:30',
       mainImg: './imges/img1.png',
@@ -65,8 +127,24 @@ const CommunityPage = () => {
       content:
         '목동 안양천에 넓고 예쁜 강아지 놀이터가 있어요 모두 가보세요. 목동 안양천에 넓고 예쁜 강아지 놀이터가 있어요 모두 가보세요. 목동 안양천에 넓고 예쁜 강아지 놀이터가 있어요 모두 가보세요. 목동 안양천에 넓고 예쁜 강아지 놀이터가 있어요 모두 가보세요. 목동 안양천에 넓고 예쁜 강아지 놀이터가 있어요 모두 가보세요. 목동 안양천에 넓고 예쁜 강아지 놀이터가 있어요 모두 가보세요. 목동 안양천에 넓고 예쁜 강아지 놀이터가 있어요 모두 가보세요.',
       user: '이은혜',
-      comment: 5,
-      like: 1,
+      userImg: '👮‍♀️',
+      comment: [
+        {
+          id: 1,
+          writer: '김은혜',
+          userImg: '👮‍♀️',
+          text: '여기 정말 좋네요.',
+          time: '2023-11-11 12:20:30',
+        },
+        {
+          id: 2,
+          writer: '박은혜',
+          userImg: '👮‍♀️',
+          text: '여기 아주 마음에 드는 강아지 놀이터네요.',
+          time: '2023-11-11 12:20:30',
+        },
+      ],
+      like: 0,
       time: '2023-11-15 16:23:30',
       mainImg: './imges/img2.png',
     },
@@ -133,10 +211,20 @@ const CommunityPage = () => {
     }
   };
 
-  // 컴포넌트가 마운트될 때와 sortOption, filteredCategory 변경될 때마다 정렬 수행
+  // 컴포넌트가 마운트될 때와 sortOption, filteredCategory, searchTerm 변경될 때마다 정렬 수행
   useEffect(() => {
     sortedList();
   }, [sortOption, filteredCategory, searchTerm]);
+
+  // id 값을 params로 넘겨줄 함수 - detail 페이지로 정보 넘겨주기
+  const handlePostClick = (postId) => {
+    navigate(`/community/${postId}`);
+  };
+
+  const handleNewPostClick = () => {
+    navigate('/community/newpost');
+    window.scrollTo(0, 0);
+  };
 
   // 게시글 리스트 render
   const renderList = () => {
@@ -153,7 +241,14 @@ const CommunityPage = () => {
     // filteredList 로 뿌려줌
     return filteredListBySearch.map((item) => (
       <div className="ListItem" key={item.id}>
-        <div className="ContentAndImg">
+        <div
+          className="ContentAndImg"
+          key={item.id}
+          onClick={() => {
+            handlePostClick(item.id);
+          }}
+          style={{ cursor: 'pointer' }}
+        >
           <div>
             <h3>[ {item.category} ]</h3>
             <h4>{item.title}</h4>
@@ -166,8 +261,8 @@ const CommunityPage = () => {
           />
         </div>
         <p>
-          👮‍♀️ {item.user} | 댓글 : {item.comment} | 좋아요 : {item.like} |
-          작성시간 : {item.time}
+          {item.userImg} {item.user} / 댓글 : {item.comment.length} / 좋아요 :{' '}
+          {item.like} / 작성시간 : {item.time}
         </p>
       </div>
     ));
@@ -177,11 +272,19 @@ const CommunityPage = () => {
     <Container>
       <Header />
 
-      <CommunityNav>
-        <div onClick={() => handleNavClick('all')}>전체</div>
-        <div onClick={() => handleNavClick('free')}>자유글</div>
-        <div onClick={() => handleNavClick('info')}>정보글</div>
-        <div onClick={() => handleNavClick('question')}>질문글</div>
+      <CommunityNav filteredCategory={filteredCategory}>
+        <div className="all" onClick={() => handleNavClick('all')}>
+          전체
+        </div>
+        <div className="free" onClick={() => handleNavClick('free')}>
+          자유글
+        </div>
+        <div className="info" onClick={() => handleNavClick('info')}>
+          정보글
+        </div>
+        <div className="question" onClick={() => handleNavClick('question')}>
+          질문글
+        </div>
       </CommunityNav>
 
       <SelectSort>
@@ -211,14 +314,19 @@ const CommunityPage = () => {
 
       <ListContainer>{renderList()}</ListContainer>
 
-      <SearchContainer>
-        <SearchButton>🔍</SearchButton>
-        <SearchInput
-          type="text"
-          placeholder="커뮤니티 게시글 검색"
-          onChange={handleSearchInputChange}
-        />
-      </SearchContainer>
+      <SearchAndPost>
+        <SearchContainer>
+          <SearchInputBox>
+            <SearchButton>🔍</SearchButton>
+            <SearchInput
+              type="text"
+              placeholder="커뮤니티 게시글 검색"
+              onChange={handleSearchInputChange}
+            />
+          </SearchInputBox>
+        </SearchContainer>
+        <PostBTN onClick={handleNewPostClick}>글작성</PostBTN>
+      </SearchAndPost>
 
       <div style={{ marginBottom: '60px' }}>[ 페이지네이션 들어갈 공간 ]</div>
 
