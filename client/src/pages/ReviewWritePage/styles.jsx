@@ -36,7 +36,7 @@ export const ReviewTitleInput = styled.input`
   border: 1px solid #e4e4e6;
   font-size: 16px;
   border-radius: 10px;
-  box-sizing  : border-box;
+  box-sizing: border-box;
 `;
 
 export const Text = styled.p`
@@ -44,7 +44,7 @@ export const Text = styled.p`
   font-weight: 600;
 
   &.cafeName {
-    color:#635f51;
+    color: #635f51;
   }
 `;
 
@@ -57,28 +57,27 @@ export const InputImg = styled.div`
 `;
 
 export const ReviewText = styled.textarea`
-width: 100%;
-height: 300px;
-padding: 20px 10px;
-box-sizing  : border-box;
-border: 1px solid #e4e4e6;
+  width: 100%;
+  height: 300px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  border: 1px solid #e4e4e6;
   font-size: 16px;
   border-radius: 10px;
   font-weight: 500;
   resize: none;
 `;
 
-export const InputImgButton= styled.button`
+export const InputImgButton = styled.button`
   width: 108px;
   height: 36px;
   background-color: #f6f6f9;
   border-radius: 30px;
   border: none;
   font-size: 15px;
-  cursor: pointer;
 `;
 
-export const SubmitButton= styled.button`
+export const SubmitButton = styled.button`
   width: 300px;
   height: 60px;
   background-color: #e4e4e6;
@@ -86,6 +85,5 @@ export const SubmitButton= styled.button`
   border: none;
   font-size: 20px;
   font-weight: 700;
-  cursor: pointer;
   margin: 0 auto;
 `;

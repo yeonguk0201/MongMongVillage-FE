@@ -8,7 +8,6 @@ export const Container = styled.div`
   button {
     border-radius: 5px;
     border: none;
-    cursor: pointer;
   }
 `;
 

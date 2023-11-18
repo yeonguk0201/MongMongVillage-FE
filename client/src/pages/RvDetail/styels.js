@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 130px;
   align-items: center;
 `;
 
@@ -31,28 +31,29 @@ export const ReviewMainSection = styled.div`
 export const TitleStarRaiting = styled.div`
   display: flex;
   flex-direction: column;
-
+  margin: 10px 0;
 `;
 
 export const StarRaiting = styled.div`
-gap: 3px;
-align-items: center;
-    display: flex;
-  font-size: 22px;
-  p {
-    font-size: 16px;
+  align-items: center;
+  display: flex;
+
+  span {
+    margin: 0 5px;
+    color: var(--main-yellow-color);
   }
 `;
 
 export const ReviewTitle = styled.p`
   font-size: 22px;
   font-weight: 700;
+  margin: 10px 0;
 `;
 
 export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-bottom: 55px;
+  align-self: center;
 `;
 
 export const ProfileImg = styled.img`
@@ -81,5 +82,5 @@ export const MainText = styled.p`
   font-size: 18px;
   padding-top: 50px;
   line-height: 170%;
-  word-spacing : 2px;
+  word-spacing: 2px;
 `;

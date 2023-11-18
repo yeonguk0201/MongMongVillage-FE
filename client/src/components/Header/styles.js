@@ -11,6 +11,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 3px 3px 10px 0px lightgray;
 `;
 
 export const Navbar = styled.div`

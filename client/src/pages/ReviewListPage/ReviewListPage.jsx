@@ -22,17 +22,17 @@ const ReviewListPage = () => {
   return (
     <Container>
       <Header />
-      
+
       <ReviewListContainer>
         <RadioButtonContainer>
-      <label>
-        <input type="radio" name="contact" value="Latest" checked />
-        <span>최신순</span>
-      </label>
-      <label>
-        <input type="radio" name="contact" value="popularity"  />
-        <span>인기순</span>
-      </label>
+          <label>
+            <input type="radio" name="contact" value="Latest" checked />
+            <span>최신순</span>
+          </label>
+          <label>
+            <input type="radio" name="contact" value="popularity" />
+            <span>인기순</span>
+          </label>
         </RadioButtonContainer>
         <Review />
         <Review />
@@ -46,8 +46,8 @@ const ReviewListPage = () => {
         <Review />
       </ReviewListContainer>
       <PageButtonContainer>
-      <button>﹤</button>
-      <span>...</span>
+        <button>﹤</button>
+        <span>...</span>
         <button>1</button>
         <button>2</button>
         <button>3</button>
@@ -57,13 +57,13 @@ const ReviewListPage = () => {
         <button>﹥</button>
       </PageButtonContainer>
       <Footer />
-
     </Container>
   );
 };
 
-
 const Review = () => {
+  const rating = 4;
+
   return (
     <ReviewContainer>
       <ReviewMain>
@@ -85,14 +85,10 @@ const Review = () => {
           <ProfileImg src="https://bff-images.bemypet.kr/media/medias/profile_image/760-profileImage.png"></ProfileImg>
           <Username>username</Username>
         </ProfileContainer>
-        <ReviewDate>2023/11/13</ReviewDate>
+        <ReviewDate>{new Date().toLocaleString()}</ReviewDate>
         <StarRating>
-          <p>(5)</p>
-          <span>⭐️</span>
-          <span>⭐️</span>
-          <span>⭐️</span>
-          <span>⭐️</span>
-          <span>⭐️</span>
+          {`(${rating})`}
+          <span>{'★'.repeat(rating) + '☆'.repeat(5 - rating)}</span>
         </StarRating>
       </ReviewSub>
     </ReviewContainer>

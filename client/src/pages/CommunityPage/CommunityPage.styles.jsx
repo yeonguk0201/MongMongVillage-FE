@@ -23,45 +23,18 @@ export const CommunityNav = styled.div`
   width: 100%; /* 추가 */
 
   div {
-    margin-right: 370px;
+    width: 25%;
+    text-align: center;
     cursor: pointer;
   }
 
-  .all {
-    ${(props) =>
-      props.filteredCategory === 'all' &&
-      `
-      background-color: var(--main-yellow-color);
-      border-radius: 4px;
-
-      `};
-  }
-
-  .free {
-    ${(props) =>
-      props.filteredCategory === 'free' &&
-      `
-      background-color: var(--main-yellow-color);
-      border-radius: 4px;
-      `};
-  }
-
-  .info {
-    ${(props) =>
-      props.filteredCategory === 'info' &&
-      `
-      background-color: var(--main-yellow-color);
-      border-radius: 4px;
-      `};
-  }
-
-  .question {
-    ${(props) =>
-      props.filteredCategory === 'question' &&
-      `
-      background-color: var(--main-yellow-color);
-      border-radius: 4px;
-      `};
+  .selected span {
+    font-weight: bold;
+    background: linear-gradient(
+      to top,
+      var(--main-yellow-color) 50%,
+      transparent 50%
+    );
   }
 
   div:last-child {
@@ -147,7 +120,6 @@ export const SearchInputBox = styled.div`
 `;
 export const PostBTN = styled.button`
   height: 44px;
-  cursor: pointer;
   flex: 1;
   border: 1px solid lightgrey;
   background-color: var(--main-yellow-color);
@@ -156,8 +128,6 @@ export const PostBTN = styled.button`
 
 export const SearchButton = styled.button`
   margin-left: 20px;
-  cursor: pointer;
-  border: none;
   background: none;
 `;
 

@@ -16,6 +16,8 @@ import {
 } from './styels';
 
 const ReviewDetail = () => {
+  const rating = 4;
+
   return (
     <Container>
       <Header />
@@ -24,13 +26,9 @@ const ReviewDetail = () => {
           <TitleStarRaiting>
             <ReviewTitle>0000 애견카페 너무 좋아요~!!</ReviewTitle>
             <StarRaiting>
-              <p>(5)</p>
-              <span>⭐️</span>
-              <span>⭐️</span>
-              <span>⭐️</span>
-              <span>⭐️</span>
-              <span>⭐️</span>
-              <ReviewDate>2023/11/13</ReviewDate>
+              {`(${rating})`}
+              <span>{'★'.repeat(rating) + '☆'.repeat(5 - rating)}</span>
+              <ReviewDate>{new Date().toLocaleString()}</ReviewDate>
             </StarRaiting>
           </TitleStarRaiting>
           <ProfileContainer>

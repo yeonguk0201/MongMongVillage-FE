@@ -10,7 +10,7 @@ import {
   ReviewText,
   InputImgButton,
   SubmitButton,
-} from './styels';
+} from './styles';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -20,7 +20,7 @@ const ReviewWritePage = () => {
       <Header />
       <ReviewWriteContainer>
         <div>
-          <Text className='cafeName'>몽몽 애견 카페</Text>
+          <Text className="cafeName">몽몽 애견 카페</Text>
           <StarRaiting>
             <span>⭐️</span>
             <span>⭐️</span>

@@ -44,10 +44,10 @@ const Header = () => {
         <Login id="login" onClick={() => navigate(ROUTE.LOGIN_PAGE.link)}>
           로그인
         </Login>
-        <Signup id="signup" onClick={() => navigate(ROUTE.MAIN_PAGE.link)}>
+        <Signup id="signup" onClick={() => navigate(ROUTE.SIGNUP_PAGE.link)}>
           회원가입
         </Signup>
-        <Mypage id="mypage" onClick={() => navigate(ROUTE.MAIN_PAGE.link)}>
+        <Mypage id="mypage" onClick={() => navigate(ROUTE.MY_PAGE.link)}>
           마이페이지
         </Mypage>
       </LoginSignupMypage>

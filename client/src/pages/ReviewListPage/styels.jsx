@@ -11,13 +11,12 @@ export const ReviewListContainer = styled.div`
   display: flex;
   margin: 0 auto;
   flex-direction: column;
-  background-color: ;
   padding-top: 20px;
   border-top: solid 3px var(--main-yellow-color);
 `;
 
 export const ReviewContainer = styled.div`
-    width: 1280px;
+  width: 1280px;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
@@ -82,53 +81,55 @@ export const ReviewDate = styled.p`
 `;
 
 export const StarRating = styled.div`
-gap: 3px;
-align-items: center;
-    display: flex;
+  gap: 3px;
+  align-items: center;
+  display: flex;
   font-size: 13px;
+  span {
+    color: var(--main-yellow-color);
+  }
 `;
 
 export const RadioButtonContainer = styled.div`
-    display: flex;
-    padding: 20px 0 40px 0;
-    gap: 50px;
-    font-size: 16px;
+  display: flex;
+  padding: 20px 0 40px 0;
+  gap: 50px;
+  font-size: 16px;
 
-    [type="radio"] {
-        margin-right: 5px;
-        vertical-align: middle;
-        appearance: none;
-        border: 2px solid var(--main-yellow-color);
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-    }
+  [type='radio'] {
+    margin-right: 5px;
+    vertical-align: middle;
+    appearance: none;
+    border: 2px solid var(--main-yellow-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+  }
 
-    [type="radio"]:checked {
-        border: 0.4em solid var(--main-yellow-color);
-    }
+  [type='radio']:checked {
+    border: 0.4em solid var(--main-yellow-color);
+  }
 `;
 
 export const PageButtonContainer = styled.div`
-    gap: 8px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    padding: 50px 0 50px 0;
-    
-    button {
-        width: 30px;
-        height: 30px;
-        font-size: 20px;
-        -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-weight: 400;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border: none;
-  background-color: transparent;
-  cursor:pointer;
-    }
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 50px 0 50px 0;
+
+  button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+  }
 `;

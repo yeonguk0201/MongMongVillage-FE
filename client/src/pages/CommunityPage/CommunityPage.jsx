@@ -273,17 +273,29 @@ const CommunityPage = () => {
       <Header />
 
       <CommunityNav filteredCategory={filteredCategory}>
-        <div className="all" onClick={() => handleNavClick('all')}>
-          전체
+        <div
+          className={filteredCategory === 'all' ? 'selected' : ''}
+          onClick={() => handleNavClick('all')}
+        >
+          <span>전체</span>
         </div>
-        <div className="free" onClick={() => handleNavClick('free')}>
-          자유글
+        <div
+          className={filteredCategory === 'free' ? 'selected' : ''}
+          onClick={() => handleNavClick('free')}
+        >
+          <span>자유글</span>
         </div>
-        <div className="info" onClick={() => handleNavClick('info')}>
-          정보글
+        <div
+          className={filteredCategory === 'info' ? 'selected' : ''}
+          onClick={() => handleNavClick('info')}
+        >
+          <span>정보글</span>
         </div>
-        <div className="question" onClick={() => handleNavClick('question')}>
-          질문글
+        <div
+          className={filteredCategory === 'question' ? 'selected' : ''}
+          onClick={() => handleNavClick('question')}
+        >
+          <span>질문글</span>
         </div>
       </CommunityNav>
 
