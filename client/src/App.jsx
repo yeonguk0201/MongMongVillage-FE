@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ROUTE_ARR } from './routes/Routes';
 
 function App() {

@@ -5,11 +5,5 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
-`;
-
-export const Title = styled.h1`
-  color: white;
-  background-color: var(--main-yellow-color);
-  font-size: 26px;
-  text-align: center;
+  background-color: #fff6d6;
 `;
