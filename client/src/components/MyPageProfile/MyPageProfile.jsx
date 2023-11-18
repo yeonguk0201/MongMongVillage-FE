@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import {
   ProfileContainer,
-  ProfileImgItem,
-  ProfileImgContainer,
   MyInfoContainer,
   MyName,
   MyDescription,
@@ -14,13 +12,10 @@ import {
   WithdrawalButton,
   WithdrawText,
 } from './styles';
+import { MyProfileImg } from '../MyProfileImg';
 import { FaPencil } from 'react-icons/fa6';
 
 const MyPageProfile = ({ edit }) => {
-  const [profileImg, setProfileImg] = useState(
-    'https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg',
-  );
-
   const [myInfo, setMyInfo] = useState({
     name: '엘리스',
     description: '강아지 두마리 견주입니다.\n잘 부탁 드려요.',
@@ -29,9 +24,7 @@ const MyPageProfile = ({ edit }) => {
 
   return (
     <ProfileContainer>
-      <ProfileImgContainer>
-        <ProfileImgItem src={profileImg} />
-      </ProfileImgContainer>
+      <MyProfileImg />
       {edit && (
         <ImgEditButton>
           사진 수정
