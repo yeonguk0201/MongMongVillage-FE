@@ -11,6 +11,7 @@ import {
   ImageUploadText,
   NewPostContainer,
   PostBTN,
+  Title,
 } from './NewPostPage.styles';
 
 const NewPostPage = () => {
@@ -240,7 +241,7 @@ const NewPostPage = () => {
     <Container>
       <Header />
       <NewPostContainer>
-        <h4>카테고리 선택</h4>
+        <Title>카테고리 선택</Title>
         <CategorySelector
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -252,7 +253,7 @@ const NewPostPage = () => {
           <option value="question">질문글</option>
         </CategorySelector>
 
-        <h3>게시글 작성</h3>
+        <Title>게시글 작성</Title>
         <Input
           type="text"
           placeholder="제목을 입력해주세요..."
@@ -268,7 +269,7 @@ const NewPostPage = () => {
           ref={contentInputRef} // ref 설정
         />
 
-        <h4>사진 업로드</h4>
+        <Title>사진 업로드</Title>
         <ImageUploadContainer {...getRootProps()}>
           <input {...getInputProps()} />
           <ImageUploadText>사진을 첨부하세요.</ImageUploadText>

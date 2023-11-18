@@ -3,13 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin: 100px auto;
   font-family: 'GmarketSansMedium', sans-serif;
 
   max-width: 1280px; /* 추가 */
   width: 100%; /* 추가 */
-  margin-left: auto; /* 추가 */
-  margin-right: auto; /* 추가 */
+`;
+
+export const Title = styled.h3`
+  margin: 10px 0;
 `;
 
 export const NewPostContainer = styled.div`

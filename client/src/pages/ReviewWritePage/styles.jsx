@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 150px;
 `;
 
 export const ReviewWriteContainer = styled.div`
@@ -18,20 +18,27 @@ export const ReviewWriteContainer = styled.div`
   }
 `;
 
-export const StarRaiting = styled.div`
-  gap: 3px;
+export const StarRatingContainer = styled.div`
   align-items: center;
   display: flex;
-  font-size: 22px;
+`;
+
+export const StarRating = styled.div`
+  span {
+    margin: 0 5px;
+    color: var(--main-yellow-color);
+  }
 `;
 
 export const TitleInputContainer = styled.div`
   padding-bottom: 30px;
+  display: flex;
+  align-items: center;
 `;
 
 export const ReviewTitleInput = styled.input`
   padding: 0 10px;
-  width: 100%;
+  width: 90%;
   height: 55px;
   border: 1px solid #e4e4e6;
   font-size: 16px;
@@ -40,9 +47,9 @@ export const ReviewTitleInput = styled.input`
 `;
 
 export const Text = styled.p`
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
-
+  padding: 10px;
   &.cafeName {
     color: #635f51;
   }
@@ -50,7 +57,8 @@ export const Text = styled.p`
 
 export const InputImg = styled.div`
   width: 100%;
-  height: 112px;
+  margin: 10px 0;
+  height: 110px;
   background-color: #fff5ce;
   border-radius: 30px;
   border: 1px dashed #868688;
@@ -73,8 +81,10 @@ export const InputImgButton = styled.button`
   height: 36px;
   background-color: #f6f6f9;
   border-radius: 30px;
-  border: none;
   font-size: 15px;
+  svg {
+    margin: 0 5px;
+  }
 `;
 
 export const SubmitButton = styled.button`
