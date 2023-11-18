@@ -1,21 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { 
-  LoginPage, 
-  MainPage, 
-  ReviewListPage,
-  ReviewDetail,
-  ReviewWritePage,
-} from './pages';
+import { ROUTE_ARR } from './routes/Routes';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/review" element={<ReviewListPage />} />
-        <Route path='/review/detail' element={<ReviewDetail />} />
-        <Route path='/review/write' element={<ReviewWritePage />} />
+        {ROUTE_ARR.map((el) => (
+          <Route path={el.path} key={el.path} element={el.element} />
+        ))}
       </Routes>
     </BrowserRouter>
   );
