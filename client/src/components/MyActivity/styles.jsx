@@ -6,7 +6,11 @@ export const Container = styled.div`
   margin-top: 20px;
 `;
 
-export const Title = styled.p`
+export const Title = styled.button`
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 18px;
+  margin: 10px;
   font-weight: bold;
 `;
 

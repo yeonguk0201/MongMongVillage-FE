@@ -1,17 +1,25 @@
 import { useState } from 'react';
 import { Container, CountContainer, CountItem, Line, Title } from './styles';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE } from '../../routes/Routes';
 
 const MyActivity = () => {
-  const [myactivityCount, setMyActivityCount] = useState({
+  const navigate = useNavigate();
+
+  const [myactivityCount] = useState({
     post: 10,
     comment: 20,
     like: 30,
     review: 15,
   });
 
+  const gotoActivityPage = () => {
+    navigate(ROUTE.MY_ACTIVITY_PAGE.link);
+  };
+
   return (
     <Container>
-      <Title>내 활동</Title>
+      <Title onClick={gotoActivityPage}>내 활동 {'>'}</Title>
       <Line />
       <CountContainer>
         <CountItem>
