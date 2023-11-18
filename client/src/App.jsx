@@ -3,7 +3,8 @@ import {
   LoginPage, 
   MainPage, 
   ReviewListPage,
-   ReviewDetail,
+  ReviewDetail,
+  ReviewWritePage,
 } from './pages';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/review" element={<ReviewListPage />} />
         <Route path='/review/detail' element={<ReviewDetail />} />
+        <Route path='/review/write' element={<ReviewWritePage />} />
       </Routes>
     </BrowserRouter>
   );
