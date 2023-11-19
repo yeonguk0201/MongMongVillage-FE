@@ -22,14 +22,13 @@ export const Title = styled.p`
 
 export const Content = styled.p`
   color: gray;
-  height: 20px;
   width: 500px;
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-word;
 
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 
   white-space: break-spaces;
