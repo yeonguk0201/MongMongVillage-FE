@@ -1,33 +1,33 @@
 import { Container, Line, MenuButton, MenuContainer } from './styles';
-import { menus } from '../../libs';
+import { myActivityMenus } from '../../libs';
 
 const MyMenuBar = ({ setMenu, menu }) => {
   return (
     <Container>
       <MenuContainer>
         <MenuButton
-          onClick={() => setMenu(menus.작성글)}
-          className={menu === menus.작성글 ? 'selected' : ''}
+          onClick={() => setMenu(myActivityMenus.post)}
+          selected={menu === myActivityMenus.post ? true : false}
         >
-          <span>{menus.작성글}</span>
+          <span>{myActivityMenus.post}</span>
         </MenuButton>
         <MenuButton
-          onClick={() => setMenu(menus.작성댓글)}
-          className={menu === menus.작성댓글 ? 'selected' : ''}
+          onClick={() => setMenu(myActivityMenus.comment)}
+          selected={menu === myActivityMenus.comment ? true : false}
         >
-          <span>{menus.작성댓글}</span>
+          <span>{myActivityMenus.comment}</span>
         </MenuButton>
         <MenuButton
-          onClick={() => setMenu(menus.좋아요)}
-          className={menu === menus.좋아요 ? 'selected' : ''}
+          onClick={() => setMenu(myActivityMenus.like)}
+          selected={menu === myActivityMenus.like ? true : false}
         >
-          <span>{menus.좋아요}</span>
+          <span>{myActivityMenus.like}</span>
         </MenuButton>
         <MenuButton
-          onClick={() => setMenu(menus.작성리뷰)}
-          className={menu === menus.작성리뷰 ? 'selected' : ''}
+          onClick={() => setMenu(myActivityMenus.review)}
+          selected={menu === myActivityMenus.review ? true : false}
         >
-          <span>{menus.작성리뷰}</span>
+          <span>{myActivityMenus.review}</span>
         </MenuButton>
       </MenuContainer>
       <Line />

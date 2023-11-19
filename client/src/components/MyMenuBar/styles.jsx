@@ -19,12 +19,11 @@ export const MenuButton = styled.nav`
   cursor: pointer;
   text-align: center;
   padding: 5px;
-  &.selected > span {
-    font-weight: bold;
-    background: linear-gradient(
-      to top,
-      var(--main-yellow-color) 30%,
-      transparent 30%
-    );
+  & > span {
+    font-weight: ${(props) => (props.selected ? 'bold' : 'normal')};
+    background: ${(props) =>
+      props.selected
+        ? 'linear-gradient(to top, var(--main-yellow-color) 30%, transparent 30%)'
+        : 'none'};
   }
 `;
