@@ -7,6 +7,7 @@ const MyPage = () => {
   const navigate = useNavigate();
 
   const gotoEditPage = () => {
+    console.log('이이이');
     navigate(ROUTE.MY_INFO_EDIT_PAGE.link);
   };
 
