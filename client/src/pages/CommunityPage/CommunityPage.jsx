@@ -25,7 +25,7 @@ const CommunityPage = () => {
   // navigate 객체 생성
   const navigate = useNavigate();
   // 목 데이터
-  const [list, setList] = useState([
+  const [list] = useState([
     {
       id: 1,
       category: 'free',
