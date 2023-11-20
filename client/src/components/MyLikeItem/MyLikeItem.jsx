@@ -35,7 +35,7 @@ const MyLikeItem = ({ post }) => {
         <div>
           <Writer>
             {post.writerProfileImg ? (
-              <img src={post.writerProfileImg} />
+              <img src={post.writerProfileImg} alt="propfile" />
             ) : (
               <FaCircleUser size={'25px'} color="gray" />
             )}
