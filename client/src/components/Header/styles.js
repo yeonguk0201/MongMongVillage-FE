@@ -6,18 +6,18 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 95px;
+  height: 100px;
   z-index: 10;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   box-shadow: 3px 3px 10px 0px lightgray;
 `;
 
 export const Navbar = styled.div`
+  width: 90%;
   display: flex;
-  flex: 1;
-  justify-content: Left;
+  align-items: center;
+  margin: 0 auto;
 `;
 
 export const Navitem = styled.nav`
@@ -25,10 +25,10 @@ export const Navitem = styled.nav`
   align-items: center;
   cursor: pointer;
   text-align: center;
-  margin: 0 1%;
+  margin: 0 10px;
   border-radius: 10px;
-  padding: 10px 20px 8px 20px;
-
+  padding: 10px 15px;
+  width: auto;
   &:hover {
     background-color: #ffe794;
     transition: 0.5s;
@@ -39,69 +39,13 @@ export const Navitem = styled.nav`
     `
       margin: 0 1% 0 5%;
   `};
+
+  ${(props) =>
+    props.id === 'signup' &&
+    `
+  background-color: var(--main-yellow-color);`}
 `;
 
-export const LoginSignupMypage = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20% 0 0;
-`;
-
-export const Login = styled.button`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  text-align: center;
-  background: none;
-  border: none;
-  font-family: 'GmarketSansMedium';
-  font-size: 16px;
-  margin-right: 20px;
-  border-radius: 10px;
-  padding: 10px 10px 8px 10px;
-
-  &:hover {
-    background-color: #ffe794;
-    transition: 0.5s;
-  }
-`;
-
-export const Signup = styled.button`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  text-align: center;
-  background: none;
-  border: none;
-  border-radius: 10px;
-  font-family: 'GmarketSansMedium';
-  font-size: 16px;
-  background-color: var(--main-yellow-color);
-  padding: 10px 10px 8px 10px;
-
-  &:hover {
-    background-color: #ffe794;
-    transition: 0.5s;
-  }
-`;
-
-export const Mypage = styled.button`
-  vertical-align: middle;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  text-align: center;
-  background: none;
-  border: none;
-  border-radius: 10px;
-  font-family: 'GmarketSansMedium';
-  font-size: 16px;
-  padding: 10px 10px 8px 10px;
-
-  &:hover {
-    background-color: #ffe794;
-    transition: 0.5s;
-  }
-  display: none;
+export const Space = styled.div`
+  width: 15%;
 `;

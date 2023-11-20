@@ -1,13 +1,5 @@
-import { Route, useNavigate } from 'react-router-dom';
-import {
-  Container,
-  Navbar,
-  Navitem,
-  LoginSignupMypage,
-  Login,
-  Signup,
-  Mypage,
-} from './styles';
+import { useNavigate } from 'react-router-dom';
+import { Container, Navbar, Navitem, Space } from './styles';
 import Logo from '../Logo/Logo';
 import { ROUTE } from '../../routes/Routes';
 
@@ -16,8 +8,8 @@ const Header = () => {
 
   return (
     <Container>
-      <Logo onClick={() => navigate(ROUTE.MAIN_PAGE.link)} />
       <Navbar>
+        <Logo onClick={() => navigate(ROUTE.MAIN_PAGE.link)} />
         <Navitem id="home" onClick={() => navigate(ROUTE.MAIN_PAGE.link)}>
           홈
         </Navitem>
@@ -39,18 +31,17 @@ const Header = () => {
         >
           카페정보
         </Navitem>
-      </Navbar>
-      <LoginSignupMypage>
-        <Login id="login" onClick={() => navigate(ROUTE.LOGIN_PAGE.link)}>
+        <Space />
+        <Navitem id="login" onClick={() => navigate(ROUTE.LOGIN_PAGE.link)}>
           로그인
-        </Login>
-        <Signup id="signup" onClick={() => navigate(ROUTE.SIGNUP_PAGE.link)}>
+        </Navitem>
+        <Navitem id="signup" onClick={() => navigate(ROUTE.SIGNUP_PAGE.link)}>
           회원가입
-        </Signup>
-        <Mypage id="mypage" onClick={() => navigate(ROUTE.MY_PAGE.link)}>
+        </Navitem>
+        <Navitem id="mypage" onClick={() => navigate(ROUTE.MY_PAGE.link)}>
           마이페이지
-        </Mypage>
-      </LoginSignupMypage>
+        </Navitem>
+      </Navbar>
     </Container>
   );
 };

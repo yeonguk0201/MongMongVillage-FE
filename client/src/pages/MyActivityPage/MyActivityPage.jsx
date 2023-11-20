@@ -9,12 +9,13 @@ import {
   MyComment,
 } from '../../components';
 import { Container, NameContainer } from './styles';
-import { menus } from '../../libs';
+import { MyActivityMenus } from '../../libs';
 import { MyReview } from '../../components/MyReview';
 
 const MyActivityPage = () => {
-  const [selectedMenu, setSelectedMenu] = useState(menus.작성글);
-  const [name] = useState('엘리스');
+  const [selectedMenu, setSelectedMenu] = useState(MyActivityMenus.post);
+  const name = '엘리스';
+
   return (
     <>
       <Header />
@@ -24,13 +25,13 @@ const MyActivityPage = () => {
           <span>{name}</span>님의 활동
         </NameContainer>
         <MyMenuBar setMenu={setSelectedMenu} menu={selectedMenu} />
-        {selectedMenu === menus.작성글 ? (
+        {selectedMenu === MyActivityMenus.post ? (
           <MyPost />
-        ) : selectedMenu === menus.작성댓글 ? (
+        ) : selectedMenu === MyActivityMenus.comment ? (
           <MyComment />
-        ) : selectedMenu === menus.좋아요 ? (
+        ) : selectedMenu === MyActivityMenus.like ? (
           <MyLike />
-        ) : selectedMenu === menus.작성리뷰 ? (
+        ) : selectedMenu === MyActivityMenus.review ? (
           <MyReview />
         ) : (
           <></>

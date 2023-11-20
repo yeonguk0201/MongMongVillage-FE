@@ -18,7 +18,6 @@ const MyPost = () => {
       content:
         '포메라니안 키우는데 털이 엄청 빠지네요\n다들 털빠짐 문제 다들 어떻게 해결하시나요',
       commentCount: 10,
-      commentCount: 1,
       likeCount: 2,
       isMine: true,
       date: new Date().toLocaleString(),

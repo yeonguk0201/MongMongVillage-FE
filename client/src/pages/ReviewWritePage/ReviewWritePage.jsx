@@ -12,8 +12,7 @@ import {
   SubmitButton,
   StarRatingContainer,
 } from './styles';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaCamera } from 'react-icons/fa';
 
 const ReviewWritePage = () => {
   const rating = 4;
@@ -47,11 +46,7 @@ const ReviewWritePage = () => {
         <div className="inputImgButtonCnt">
           <InputImgButton>
             <span>사진첨부</span>
-            <FontAwesomeIcon
-              icon={faCamera}
-              style={{ color: '#1e1e25' }}
-              size="lg"
-            />
+            <FaCamera color="#1e1e25" size={'20px'} />
           </InputImgButton>
         </div>
         <SubmitButton>리뷰 등록</SubmitButton>
