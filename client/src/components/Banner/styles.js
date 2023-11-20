@@ -28,7 +28,7 @@ export const BannerName = styled.p`
   font-size: 90px;
   text-align: center;
   position: absolute;
-  bottom: 220px;
+  bottom: 314px;
   left: 33px;
   cursor: default;
 `;
@@ -39,7 +39,7 @@ export const BannerSub = styled.p`
   font-size: 32px;
   text-align: center;
   position: absolute;
-  bottom: 223px;
+  bottom: 259px;
   left: 209px;
   cursor: default;
 `;
@@ -49,7 +49,7 @@ export const BannerInfo = styled.p`
   font-size: 20px;
   text-align: left;
   position: absolute;
-  bottom: 148px;
+  bottom: 176px;
   left: 149px;
   cursor: default;
 `;
@@ -58,7 +58,7 @@ export const BannerPhoneNumber = styled.h3`
   color: #00573b;
   font-size: 20px;
   position: absolute;
-  bottom: 94px;
+  bottom: 117px;
   left: 200px;
   cursor: default;
 `;
