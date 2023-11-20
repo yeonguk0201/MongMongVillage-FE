@@ -2,30 +2,23 @@ import styled from 'styled-components';
 
 export const SelectSortContainer = styled.div`
   display: flex;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-size: 15px;
-  margin-right: 90%;
+  margin: 30px 20px;
+  font-size: 16px;
 
   label {
     display: flex;
-    margin-right: 10px;
+    margin-right: 15px;
     text-align: center;
     align-items: center;
-    font-size: 12px;
-    width: 50px;
   }
 
   input[type='radio'] {
-    margin-top: 0px;
-    margin-left: 0px;
+    margin: 0 5px;
     appearance: none;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border: 2px solid var(--main-yellow-color);
     border-radius: 50%;
-    margin-right: 5px;
-    outline: none;
     cursor: pointer;
   }
   input[type='radio']:checked {

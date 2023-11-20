@@ -8,36 +8,19 @@ export const CommunityNavContainer = styled.div`
 
   max-width: 1280px;
   width: 100%;
+`;
 
-  div {
-    width: 25%;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .all {
-    color: ${(props) =>
-      props.filteredCategory === 'all' ? 'var(--main-yellow-color)' : 'black'};
-  }
-
-  .free {
-    color: ${(props) =>
-      props.filteredCategory === 'free' ? 'var(--main-yellow-color)' : 'black'};
-  }
-
-  .info {
-    color: ${(props) =>
-      props.filteredCategory === 'info' ? 'var(--main-yellow-color)' : 'black'};
-  }
-
-  .question {
-    color: ${(props) =>
-      props.filteredCategory === 'question'
-        ? 'var(--main-yellow-color)'
-        : 'black'};
-  }
-
-  div:last-child {
-    margin-right: 0;
+export const CommunityNavItem = styled.span`
+  width: 25%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  & > span {
+    color: ${(props) => (props.selected ? 'black' : 'gray')};
+    font-weight: ${(props) => (props.selected ? '900' : 'normal')};
+    background: ${(props) =>
+      props.selected
+        ? 'linear-gradient(to top, var(--main-yellow-color) 40%, transparent 50%)'
+        : 'none'};
   }
 `;

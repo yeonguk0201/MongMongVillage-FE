@@ -27,3 +27,4 @@ export * from './CommunityPost';
 export * from './CommunityPostLike';
 export * from './CommunityUnderContent';
 export * from './CommunityComments';
+export * from './CommunityListItem';

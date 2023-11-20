@@ -1,34 +1,54 @@
-import { useState } from 'react';
-import { CommunityNavContainer } from './CommunityNav.styles';
-import { useNavigate } from 'react-router-dom';
-import { ROUTE } from '../../routes/Routes';
+import { CommunityNavContainer, CommunityNavItem } from './CommunityNav.styles';
 
-const CATEGORY_DIC = {
-  all: 'all',
-  free: 'free',
-  info: 'info',
-  question: 'question',
-};
+import { CommunityCategory } from '../../libs';
+import { useState } from 'react';
 
 const CommunityNav = ({ handleNavClick, filteredCategory }) => {
+  const [selectedCategory, setSelectedCategory] = useState(
+    CommunityCategory.all,
+  );
   return (
     <>
       <CommunityNavContainer filteredCategory={filteredCategory}>
-        <div className="all" onClick={() => handleNavClick(CATEGORY_DIC.all)}>
-          전체
-        </div>
-        <div className="free" onClick={() => handleNavClick(CATEGORY_DIC.free)}>
-          자유글
-        </div>
-        <div className="info" onClick={() => handleNavClick(CATEGORY_DIC.info)}>
-          정보글
-        </div>
-        <div
-          className="question"
-          onClick={() => handleNavClick(CATEGORY_DIC.question)}
+        <CommunityNavItem
+          onClick={() => {
+            setSelectedCategory(CommunityCategory.all);
+            handleNavClick(CommunityCategory.all);
+          }}
+          selected={selectedCategory === CommunityCategory.all ? true : false}
         >
-          질문글
-        </div>
+          <span>{CommunityCategory.all}</span>
+        </CommunityNavItem>
+
+        <CommunityNavItem
+          selected={selectedCategory === CommunityCategory.free ? true : false}
+          onClick={() => {
+            handleNavClick(CommunityCategory.free);
+            setSelectedCategory(CommunityCategory.free);
+          }}
+        >
+          <span>{CommunityCategory.free}</span>
+        </CommunityNavItem>
+        <CommunityNavItem
+          selected={selectedCategory === CommunityCategory.info ? true : false}
+          onClick={() => {
+            handleNavClick(CommunityCategory.info);
+            setSelectedCategory(CommunityCategory.info);
+          }}
+        >
+          <span> {CommunityCategory.info}</span>
+        </CommunityNavItem>
+        <CommunityNavItem
+          selected={
+            selectedCategory === CommunityCategory.question ? true : false
+          }
+          onClick={() => {
+            handleNavClick(CommunityCategory.question);
+            setSelectedCategory(CommunityCategory.question);
+          }}
+        >
+          <span> {CommunityCategory.question}</span>
+        </CommunityNavItem>
       </CommunityNavContainer>
     </>
   );

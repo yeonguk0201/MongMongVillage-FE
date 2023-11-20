@@ -8,6 +8,7 @@ import {
 } from './CommunityPost.styles';
 
 const CommunityPost = ({ selectedPost }) => {
+  console.log(selectedPost);
   return (
     <PostContainer>
       <Category>{selectedPost.category}</Category>
