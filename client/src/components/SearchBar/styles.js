@@ -18,6 +18,8 @@ export const StyledForm = styled.form`
   border-radius: 50px;
   overflow: hidden;
   max-width: 964px;
+  display: flex;
+  justify-content: space-between;
 
   &:focus-within {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

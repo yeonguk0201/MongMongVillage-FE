@@ -3,7 +3,7 @@ export * from './Footer';
 export * from './Header';
 export * from './Banner';
 export * from './SearchBar';
-export * from './PopularContents';
+export * from './PopularCafes';
 export * from './BestContents';
 export * from './SignUpCheckbox';
 export * from './MyActivity';

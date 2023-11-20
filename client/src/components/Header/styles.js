@@ -6,11 +6,12 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 95px;
   z-index: 10;
   display: flex;
   align-items: center;
   box-shadow: 3px 3px 10px 0px lightgray;
+  font-size: 18px;
 `;
 
 export const Navbar = styled.div`

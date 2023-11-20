@@ -2,7 +2,7 @@ import {
   Header,
   Footer,
   Banner,
-  PopularContents,
+  PopularCafes,
   SearchBar,
   BestContents,
 } from '../../components';
@@ -14,7 +14,7 @@ const MainPage = () => {
       <Header />
       <Banner />
       <SearchBar />
-      <PopularContents />
+      <PopularCafes />
       <BestContents />
       <Footer />
     </Container>
