@@ -1,1 +1,1 @@
-export * from './myActivityMenus';
+export * from './MyActivityMenuBar';

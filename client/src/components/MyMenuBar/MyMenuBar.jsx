@@ -1,33 +1,33 @@
 import { Container, Line, MenuButton, MenuContainer } from './styles';
-import { myActivityMenus } from '../../libs';
+import { MyActivityMenus } from '../../libs';
 
 const MyMenuBar = ({ setMenu, menu }) => {
   return (
     <Container>
       <MenuContainer>
         <MenuButton
-          onClick={() => setMenu(myActivityMenus.post)}
-          selected={menu === myActivityMenus.post ? true : false}
+          onClick={() => setMenu(MyActivityMenus.post)}
+          selected={menu === MyActivityMenus.post ? true : false}
         >
-          <span>{myActivityMenus.post}</span>
+          <span>{MyActivityMenus.post}</span>
         </MenuButton>
         <MenuButton
-          onClick={() => setMenu(myActivityMenus.comment)}
-          selected={menu === myActivityMenus.comment ? true : false}
+          onClick={() => setMenu(MyActivityMenus.comment)}
+          selected={menu === MyActivityMenus.comment ? true : false}
         >
-          <span>{myActivityMenus.comment}</span>
+          <span>{MyActivityMenus.comment}</span>
         </MenuButton>
         <MenuButton
-          onClick={() => setMenu(myActivityMenus.like)}
-          selected={menu === myActivityMenus.like ? true : false}
+          onClick={() => setMenu(MyActivityMenus.like)}
+          selected={menu === MyActivityMenus.like ? true : false}
         >
-          <span>{myActivityMenus.like}</span>
+          <span>{MyActivityMenus.like}</span>
         </MenuButton>
         <MenuButton
-          onClick={() => setMenu(myActivityMenus.review)}
-          selected={menu === myActivityMenus.review ? true : false}
+          onClick={() => setMenu(MyActivityMenus.review)}
+          selected={menu === MyActivityMenus.review ? true : false}
         >
-          <span>{myActivityMenus.review}</span>
+          <span>{MyActivityMenus.review}</span>
         </MenuButton>
       </MenuContainer>
       <Line />

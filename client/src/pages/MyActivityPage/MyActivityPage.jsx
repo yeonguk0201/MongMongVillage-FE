@@ -9,12 +9,13 @@ import {
   MyComment,
 } from '../../components';
 import { Container, NameContainer } from './styles';
-import { myActivityMenus } from '../../libs';
+import { MyActivityMenus } from '../../libs';
 import { MyReview } from '../../components/MyReview';
 
 const MyActivityPage = () => {
-  const [selectedMenu, setSelectedMenu] = useState(myActivityMenus.post);
-  const [name] = useState('엘리스');
+  const [selectedMenu, setSelectedMenu] = useState(MyActivityMenus.post);
+  const name = '엘리스';
+
   return (
     <>
       <Header />
@@ -24,13 +25,13 @@ const MyActivityPage = () => {
           <span>{name}</span>님의 활동
         </NameContainer>
         <MyMenuBar setMenu={setSelectedMenu} menu={selectedMenu} />
-        {selectedMenu === myActivityMenus.post ? (
+        {selectedMenu === MyActivityMenus.post ? (
           <MyPost />
-        ) : selectedMenu === myActivityMenus.comment ? (
+        ) : selectedMenu === MyActivityMenus.comment ? (
           <MyComment />
-        ) : selectedMenu === myActivityMenus.like ? (
+        ) : selectedMenu === MyActivityMenus.like ? (
           <MyLike />
-        ) : selectedMenu === myActivityMenus.review ? (
+        ) : selectedMenu === MyActivityMenus.review ? (
           <MyReview />
         ) : (
           <></>

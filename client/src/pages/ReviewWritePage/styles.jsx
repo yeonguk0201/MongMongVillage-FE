@@ -77,11 +77,13 @@ export const ReviewText = styled.textarea`
 `;
 
 export const InputImgButton = styled.button`
-  width: 108px;
-  height: 36px;
   background-color: #f6f6f9;
   border-radius: 30px;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   svg {
     margin: 0 5px;
   }
