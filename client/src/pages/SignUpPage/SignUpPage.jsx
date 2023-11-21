@@ -40,23 +40,28 @@ const SignUpPage = () => {
     InputStatus.DEFAULT,
   );
 
+  const [checkboxInputStatus, setCheckboxInputStatus] = useState(
+    InputStatus.DEFAULT,
+  );
+
+  const [hidePassword, setHidePassword] = useState(true);
+  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
+
   const submitSignUp = () => {
-    // if (emailInputStatus !== InputStatus.SUCCESS) {
-    //   alert('이메일 형식을 다시 확인해주세요.');
-    // } else if (passwordInputStatus !== InputStatus.SUCCESS) {
-    //   alert('비밀번호 형식을 다시 확인해주세요.');
-    // } else if (confirmPasswordInputStatus !== InputStatus.SUCCESS) {
-    //   alert('비밀번호가 일치하지 않습니다. ');
-    // } else if (nicknameInputStatus !== InputStatus.SUCCESS) {
-    //   alert('닉네임 형식을 다시 확인해주세요.');
-    // } else if (emailDuplicate !== InputStatus.SUCCESS) {
-    //   alert('이메일 중복 확인을 해주세요.');
-    // } else if (nicknameDuplicate !== InputStatus.SUCCESS) {
-    //   alert('닉네임 중복 확인을 해주세요.');
-    // } else {
-    //   // 회원가입 api 호출
-    //   alert('회원가입 성공! 환영합니다.');
-    // }
+    if (emailInputStatus !== InputStatus.SUCCESS) {
+      alert('이메일을 다시 확인해주세요.');
+    } else if (passwordInputStatus !== InputStatus.SUCCESS) {
+      alert('비밀번호 형식을 다시 확인해주세요.');
+    } else if (confirmPasswordInputStatus !== InputStatus.SUCCESS) {
+      alert('비밀번호가 일치하지 않습니다. ');
+    } else if (nicknameInputStatus !== InputStatus.SUCCESS) {
+      alert('닉네임을 다시 확인해주세요.');
+    } else if (checkboxInputStatus !== InputStatus.SUCCESS) {
+      alert('약관에 동의해주세요.');
+    } else {
+      // 회원가입 api 호출
+      alert('회원가입 성공! 환영합니다.');
+    }
   };
 
   return (
@@ -117,14 +122,18 @@ const SignUpPage = () => {
           <AuthInputContainer>
             <AuthInput
               placeholder="비밀번호"
-              type="password"
+              type={hidePassword ? 'password' : 'text'}
               value={password}
               onChange={(e) =>
                 PasswordValidCheck(e, setPassword, setPasswordInputStatus)
               }
               border="none"
             ></AuthInput>
-            <PiEyeBold color="gray" size={'20px'} />
+            {hidePassword ? (
+              <PiEyeBold onClick={() => setHidePassword(false)} />
+            ) : (
+              <PiEyeClosedBold onClick={() => setHidePassword(true)} />
+            )}
           </AuthInputContainer>
           <Text
             success={
@@ -147,8 +156,12 @@ const SignUpPage = () => {
                 )
               }
               border="none"
-            ></AuthInput>
-            <PiEyeBold color="gray" size={'20px'} />
+            ></AuthInput>{' '}
+            {hideConfirmPassword ? (
+              <PiEyeBold onClick={() => setHideConfirmPassword(false)} />
+            ) : (
+              <PiEyeClosedBold onClick={() => setHideConfirmPassword(true)} />
+            )}
           </AuthInputContainer>
           <Text
             success={
@@ -160,7 +173,8 @@ const SignUpPage = () => {
             {SetMessage('confirmPassword', confirmPasswordInputStatus)}
           </Text>
         </InputContainer>
-        <SignUpCheckbox />
+        <span>{checkboxInputStatus}</span>
+        <SignUpCheckbox setCheckboxInputStatus={setCheckboxInputStatus} />
         <SubmitButton onClick={submitSignUp}>회원가입</SubmitButton>
       </Container>
       <Footer />

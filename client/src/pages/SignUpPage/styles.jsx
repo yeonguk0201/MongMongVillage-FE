@@ -12,7 +12,13 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-size: 26px;
   text-align: center;
-  margin: 20px 0;
+  margin: 30px 0;
+  padding: 5px;
+  background-image: linear-gradient(
+    to top,
+    var(--main-yellow-color) 40%,
+    transparent 30%
+  );
 `;
 
 export const CheckButton = styled.button`
@@ -51,6 +57,8 @@ export const AuthInputContainer = styled.div`
   svg {
     margin: 0 10px;
     cursor: pointer;
+    scale: 1.3;
+    color: gray;
   }
 `;
 
