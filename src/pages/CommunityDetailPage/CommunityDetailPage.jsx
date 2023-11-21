@@ -8,7 +8,7 @@ import {
   CommunityUnderContent,
   CommunityComments,
   CommunityPagination,
-} from '../../components';
+} from '../../components/index.js';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Container } from './CommunityDetailPage.styles.js';
 import { ROUTE } from '../../routes/Routes.js';

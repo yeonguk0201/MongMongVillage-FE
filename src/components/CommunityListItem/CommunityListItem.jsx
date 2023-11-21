@@ -1,4 +1,4 @@
-import { CommunityCategory } from '../../libs';
+import { CommunityCategory } from '../../libs/index.js';
 import { FaCircleUser } from 'react-icons/fa6';
 import { FaHeart } from 'react-icons/fa';
 import {
