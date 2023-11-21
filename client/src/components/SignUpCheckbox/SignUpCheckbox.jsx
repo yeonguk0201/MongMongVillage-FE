@@ -25,7 +25,7 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
     }
   };
 
-  const handleIndividualCheckboxChange = (setterFunction) => {
+  const handleBottomCheckboxChange = (setterFunction) => {
     setterFunction((prevState) => !prevState);
   };
 
@@ -41,7 +41,7 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
   }, [allChecked, setCheckboxInputStatus]);
 
   useEffect(() => {
-    // 개별 체크박스 상태가 변경될 때만 실행
+    // 하단 체크박스 상태가 변경될 때만 실행
     if (locationChecked && ageChecked) {
       setAllChecked(true);
     } else {
@@ -64,7 +64,7 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
         <Checkbox
           type="checkbox"
           checked={locationChecked}
-          onChange={() => handleIndividualCheckboxChange(setLocationChecked)}
+          onChange={() => handleBottomCheckboxChange(setLocationChecked)}
         />
         <CheckboxText>위치기반 서비스 이용 동의</CheckboxText>
       </CheckboxContainer>
@@ -73,7 +73,7 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
         <Checkbox
           type="checkbox"
           checked={ageChecked}
-          onChange={() => handleIndividualCheckboxChange(setAgeChecked)}
+          onChange={() => handleBottomCheckboxChange(setAgeChecked)}
         />
         <CheckboxText>만 14세 이상입니다.</CheckboxText>
       </CheckboxContainer>

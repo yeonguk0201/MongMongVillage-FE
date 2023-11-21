@@ -8,6 +8,7 @@ export const Container = styled.div`
 export const CheckboxContainer = styled.div`
   display: flex;
 `;
+
 export const Checkbox = styled.input``;
 
 export const CheckboxText = styled.p`

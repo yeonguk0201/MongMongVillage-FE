@@ -20,6 +20,8 @@ import {
   PasswordValidCheck,
   ConfirmPasswordValidCheck,
 } from '../../libs';
+import { usePostSignUp } from '../../hooks';
+
 import { PiEyeBold } from 'react-icons/pi';
 import { PiEyeClosedBold } from 'react-icons/pi';
 
@@ -47,6 +49,12 @@ const SignUpPage = () => {
   const [hidePassword, setHidePassword] = useState(true);
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
+  const { mutate } = usePostSignUp();
+
+  const handleSignUp = () => {
+    mutate();
+  };
+
   const submitSignUp = () => {
     if (emailInputStatus !== InputStatus.SUCCESS) {
       alert('이메일을 다시 확인해주세요.');
@@ -59,8 +67,7 @@ const SignUpPage = () => {
     } else if (checkboxInputStatus !== InputStatus.SUCCESS) {
       alert('약관에 동의해주세요.');
     } else {
-      // 회원가입 api 호출
-      alert('회원가입 성공! 환영합니다.');
+      mutate(email, password, nickName);
     }
   };
 
@@ -173,7 +180,6 @@ const SignUpPage = () => {
             {SetMessage('confirmPassword', confirmPasswordInputStatus)}
           </Text>
         </InputContainer>
-        <span>{checkboxInputStatus}</span>
         <SignUpCheckbox setCheckboxInputStatus={setCheckboxInputStatus} />
         <SubmitButton onClick={submitSignUp}>회원가입</SubmitButton>
       </Container>
