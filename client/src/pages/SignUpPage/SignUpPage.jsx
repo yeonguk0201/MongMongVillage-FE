@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Footer, Header, SignUpCheckbox } from '../../components';
 import {
   AuthInput,
@@ -9,31 +10,178 @@ import {
   Title,
   Text,
 } from './styles';
+import {
+  InputStatus,
+  EmailValidCheck,
+  SetMessage,
+  EmailDuplicateCheck,
+  NickNameValidCheck,
+  NickNameDuplicateCheck,
+  PasswordValidCheck,
+  ConfirmPasswordValidCheck,
+} from '../../libs';
+import { usePostSignUp } from '../../hooks';
+
+import { PiEyeBold } from 'react-icons/pi';
+import { PiEyeClosedBold } from 'react-icons/pi';
 
 const SignUpPage = () => {
+  const [email, setEmail] = useState('');
+  const [nickName, setNickName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [emailInputStatus, setEmailInputStatus] = useState(InputStatus.DEFAULT);
+  const [passwordInputStatus, setPasswordInputStatus] = useState(
+    InputStatus.DEFAULT,
+  );
+  const [nicknameInputStatus, setNicknameInputStatus] = useState(
+    InputStatus.DEFAULT,
+  );
+  const [confirmPasswordInputStatus, setConfirmPasswordInputStatus] = useState(
+    InputStatus.DEFAULT,
+  );
+
+  const [checkboxInputStatus, setCheckboxInputStatus] = useState(
+    InputStatus.DEFAULT,
+  );
+
+  const [hidePassword, setHidePassword] = useState(true);
+  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
+
+  const { mutate } = usePostSignUp();
+
+  const handleSignUp = () => {
+    mutate();
+  };
+
+  const submitSignUp = () => {
+    if (emailInputStatus !== InputStatus.SUCCESS) {
+      alert('이메일을 다시 확인해주세요.');
+    } else if (passwordInputStatus !== InputStatus.SUCCESS) {
+      alert('비밀번호 형식을 다시 확인해주세요.');
+    } else if (confirmPasswordInputStatus !== InputStatus.SUCCESS) {
+      alert('비밀번호가 일치하지 않습니다. ');
+    } else if (nicknameInputStatus !== InputStatus.SUCCESS) {
+      alert('닉네임을 다시 확인해주세요.');
+    } else if (checkboxInputStatus !== InputStatus.SUCCESS) {
+      alert('약관에 동의해주세요.');
+    } else {
+      mutate(email, password, nickName);
+    }
+  };
+
   return (
     <>
       <Header />
       <Container>
         <Title>회원가입</Title>
         <InputContainer>
-          <AuthInputContainer>
-            <AuthInput placeholder="아이디(이메일)"></AuthInput>
-            <CheckButton>중복체크</CheckButton>
+          <AuthInputContainer border="none">
+            <AuthInput
+              placeholder="아이디(이메일)"
+              value={email}
+              onChange={(e) =>
+                EmailValidCheck(e, email, setEmail, setEmailInputStatus)
+              }
+            ></AuthInput>
+            <CheckButton
+              onClick={(e) => EmailDuplicateCheck(setEmailInputStatus)}
+              disabled={emailInputStatus !== InputStatus.CHECK_REQUIRED}
+            >
+              중복체크
+            </CheckButton>
           </AuthInputContainer>
-          <Text>사용 가능한 아이디 입니다.</Text>
-          <AuthInputContainer>
-            <AuthInput placeholder="닉네임"></AuthInput>
-            <CheckButton>중복체크</CheckButton>
+          <Text
+            success={
+              emailInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+            }
+          >
+            {SetMessage('email', emailInputStatus)}
+          </Text>
+          <AuthInputContainer border="none">
+            <AuthInput
+              placeholder="닉네임"
+              value={nickName}
+              onChange={(e) =>
+                NickNameValidCheck(
+                  e,
+                  nickName,
+                  setNickName,
+                  setNicknameInputStatus,
+                )
+              }
+            ></AuthInput>
+            <CheckButton
+              onClick={(e) => NickNameDuplicateCheck(setNicknameInputStatus)}
+              disabled={nicknameInputStatus !== InputStatus.CHECK_REQUIRED}
+            >
+              중복체크
+            </CheckButton>
           </AuthInputContainer>
-          <Text className="warning">중복된 닉네임입니다.</Text>
-          <AuthInput placeholder="비밀번호"></AuthInput>
-          <Text className="warning">비밀번호는 8글자 이상이어야 합니다.</Text>
-          <AuthInput placeholder="비밀번호 확인"></AuthInput>
-          <Text className="warning">비밀번호가 일치하지 않습니다.</Text>
+          <Text
+            success={
+              nicknameInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+            }
+          >
+            {SetMessage('nickName', nicknameInputStatus)}
+          </Text>
+          <AuthInputContainer>
+            <AuthInput
+              placeholder="비밀번호"
+              type={hidePassword ? 'password' : 'text'}
+              value={password}
+              onChange={(e) =>
+                PasswordValidCheck(e, setPassword, setPasswordInputStatus)
+              }
+              border="none"
+            ></AuthInput>
+            {hidePassword ? (
+              <PiEyeBold onClick={() => setHidePassword(false)} />
+            ) : (
+              <PiEyeClosedBold onClick={() => setHidePassword(true)} />
+            )}
+          </AuthInputContainer>
+          <Text
+            success={
+              passwordInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+            }
+          >
+            {SetMessage('password', passwordInputStatus)}
+          </Text>
+          <AuthInputContainer>
+            <AuthInput
+              placeholder="비밀번호 확인"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) =>
+                ConfirmPasswordValidCheck(
+                  e,
+                  setConfirmPassword,
+                  password,
+                  setConfirmPasswordInputStatus,
+                )
+              }
+              border="none"
+            ></AuthInput>{' '}
+            {hideConfirmPassword ? (
+              <PiEyeBold onClick={() => setHideConfirmPassword(false)} />
+            ) : (
+              <PiEyeClosedBold onClick={() => setHideConfirmPassword(true)} />
+            )}
+          </AuthInputContainer>
+          <Text
+            success={
+              confirmPasswordInputStatus === InputStatus.SUCCESS
+                ? 'true'
+                : 'false'
+            }
+          >
+            {SetMessage('confirmPassword', confirmPasswordInputStatus)}
+          </Text>
         </InputContainer>
-        <SignUpCheckbox />
-        <SubmitButton>회원가입</SubmitButton>
+        <SignUpCheckbox setCheckboxInputStatus={setCheckboxInputStatus} />
+        <SubmitButton onClick={submitSignUp}>회원가입</SubmitButton>
       </Container>
       <Footer />
     </>
