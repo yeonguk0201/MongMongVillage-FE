@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Footer,
-  Header,
   CommunityList,
   CommunityPost,
   CommunityPostLike,
@@ -933,7 +931,6 @@ const CommunityDetailPage = () => {
 
   return (
     <Container>
-      <Header />
       {selectedPost && (
         <>
           <CommunityPost selectedPost={selectedPost} />
@@ -963,7 +960,6 @@ const CommunityDetailPage = () => {
         endIndex={endIndex}
         goToPage={goToPage}
       ></CommunityPagination>
-      <Footer />
     </Container>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Footer, Header, SignUpCheckbox } from '../../components';
+import { SignUpCheckbox } from '../../components';
 import {
   AuthInput,
   AuthInputContainer,
@@ -51,10 +51,6 @@ const SignUpPage = () => {
 
   const { mutate } = usePostSignUp();
 
-  const handleSignUp = () => {
-    mutate();
-  };
-
   const submitSignUp = () => {
     if (emailInputStatus !== InputStatus.SUCCESS) {
       alert('이메일을 다시 확인해주세요.');
@@ -72,119 +68,113 @@ const SignUpPage = () => {
   };
 
   return (
-    <>
-      <Header />
-      <Container>
-        <Title>회원가입</Title>
-        <InputContainer>
-          <AuthInputContainer border="none">
-            <AuthInput
-              placeholder="아이디(이메일)"
-              value={email}
-              onChange={(e) =>
-                EmailValidCheck(e, email, setEmail, setEmailInputStatus)
-              }
-            ></AuthInput>
-            <CheckButton
-              onClick={(e) => EmailDuplicateCheck(setEmailInputStatus)}
-              disabled={emailInputStatus !== InputStatus.CHECK_REQUIRED}
-            >
-              중복체크
-            </CheckButton>
-          </AuthInputContainer>
-          <Text
-            success={
-              emailInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+    <Container>
+      <Title>회원가입</Title>
+      <InputContainer>
+        <AuthInputContainer border="none">
+          <AuthInput
+            placeholder="아이디(이메일)"
+            value={email}
+            onChange={(e) =>
+              EmailValidCheck(e, email, setEmail, setEmailInputStatus)
             }
+          ></AuthInput>
+          <CheckButton
+            onClick={(e) => EmailDuplicateCheck(setEmailInputStatus)}
+            disabled={emailInputStatus !== InputStatus.CHECK_REQUIRED}
           >
-            {SetMessage('email', emailInputStatus)}
-          </Text>
-          <AuthInputContainer border="none">
-            <AuthInput
-              placeholder="닉네임"
-              value={nickName}
-              onChange={(e) =>
-                NickNameValidCheck(
-                  e,
-                  nickName,
-                  setNickName,
-                  setNicknameInputStatus,
-                )
-              }
-            ></AuthInput>
-            <CheckButton
-              onClick={(e) => NickNameDuplicateCheck(setNicknameInputStatus)}
-              disabled={nicknameInputStatus !== InputStatus.CHECK_REQUIRED}
-            >
-              중복체크
-            </CheckButton>
-          </AuthInputContainer>
-          <Text
-            success={
-              nicknameInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+            중복체크
+          </CheckButton>
+        </AuthInputContainer>
+        <Text
+          success={emailInputStatus === InputStatus.SUCCESS ? 'true' : 'false'}
+        >
+          {SetMessage('email', emailInputStatus)}
+        </Text>
+        <AuthInputContainer border="none">
+          <AuthInput
+            placeholder="닉네임"
+            value={nickName}
+            onChange={(e) =>
+              NickNameValidCheck(
+                e,
+                nickName,
+                setNickName,
+                setNicknameInputStatus,
+              )
             }
+          ></AuthInput>
+          <CheckButton
+            onClick={(e) => NickNameDuplicateCheck(setNicknameInputStatus)}
+            disabled={nicknameInputStatus !== InputStatus.CHECK_REQUIRED}
           >
-            {SetMessage('nickName', nicknameInputStatus)}
-          </Text>
-          <AuthInputContainer>
-            <AuthInput
-              placeholder="비밀번호"
-              type={hidePassword ? 'password' : 'text'}
-              value={password}
-              onChange={(e) =>
-                PasswordValidCheck(e, setPassword, setPasswordInputStatus)
-              }
-              border="none"
-            ></AuthInput>
-            {hidePassword ? (
-              <PiEyeBold onClick={() => setHidePassword(false)} />
-            ) : (
-              <PiEyeClosedBold onClick={() => setHidePassword(true)} />
-            )}
-          </AuthInputContainer>
-          <Text
-            success={
-              passwordInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+            중복체크
+          </CheckButton>
+        </AuthInputContainer>
+        <Text
+          success={
+            nicknameInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+          }
+        >
+          {SetMessage('nickName', nicknameInputStatus)}
+        </Text>
+        <AuthInputContainer>
+          <AuthInput
+            placeholder="비밀번호"
+            type={hidePassword ? 'password' : 'text'}
+            value={password}
+            onChange={(e) =>
+              PasswordValidCheck(e, setPassword, setPasswordInputStatus)
             }
-          >
-            {SetMessage('password', passwordInputStatus)}
-          </Text>
-          <AuthInputContainer>
-            <AuthInput
-              placeholder="비밀번호 확인"
-              type="password"
-              value={confirmPassword}
-              onChange={(e) =>
-                ConfirmPasswordValidCheck(
-                  e,
-                  setConfirmPassword,
-                  password,
-                  setConfirmPasswordInputStatus,
-                )
-              }
-              border="none"
-            ></AuthInput>{' '}
-            {hideConfirmPassword ? (
-              <PiEyeBold onClick={() => setHideConfirmPassword(false)} />
-            ) : (
-              <PiEyeClosedBold onClick={() => setHideConfirmPassword(true)} />
-            )}
-          </AuthInputContainer>
-          <Text
-            success={
-              confirmPasswordInputStatus === InputStatus.SUCCESS
-                ? 'true'
-                : 'false'
+            border="none"
+          ></AuthInput>
+          {hidePassword ? (
+            <PiEyeBold onClick={() => setHidePassword(false)} />
+          ) : (
+            <PiEyeClosedBold onClick={() => setHidePassword(true)} />
+          )}
+        </AuthInputContainer>
+        <Text
+          success={
+            passwordInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+          }
+        >
+          {SetMessage('password', passwordInputStatus)}
+        </Text>
+        <AuthInputContainer>
+          <AuthInput
+            placeholder="비밀번호 확인"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) =>
+              ConfirmPasswordValidCheck(
+                e,
+                setConfirmPassword,
+                password,
+                setConfirmPasswordInputStatus,
+              )
             }
-          >
-            {SetMessage('confirmPassword', confirmPasswordInputStatus)}
-          </Text>
-        </InputContainer>
-        <SignUpCheckbox setCheckboxInputStatus={setCheckboxInputStatus} />
-        <SubmitButton onClick={submitSignUp}>회원가입</SubmitButton>
-      </Container>
-      <Footer />
-    </>
+            border="none"
+          ></AuthInput>{' '}
+          {hideConfirmPassword ? (
+            <PiEyeBold onClick={() => setHideConfirmPassword(false)} />
+          ) : (
+            <PiEyeClosedBold onClick={() => setHideConfirmPassword(true)} />
+          )}
+        </AuthInputContainer>
+        <Text
+          success={
+            confirmPasswordInputStatus === InputStatus.SUCCESS
+              ? 'true'
+              : 'false'
+          }
+        >
+          {SetMessage('confirmPassword', confirmPasswordInputStatus)}
+        </Text>
+      </InputContainer>
+      <SignUpCheckbox setCheckboxInputStatus={setCheckboxInputStatus} />
+      <SubmitButton onClick={submitSignUp}>회원가입</SubmitButton>
+    </Container>
   );
 };
 

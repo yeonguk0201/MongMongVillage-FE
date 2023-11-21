@@ -1,6 +1,4 @@
 import {
-  Header,
-  Footer,
   Banner,
   PopularCafes,
   SearchBar,
@@ -11,12 +9,10 @@ import { Container } from './styels';
 const MainPage = () => {
   return (
     <Container>
-      <Header />
       <Banner />
       <SearchBar />
       <PopularCafes />
       <BestContents />
-      <Footer />
     </Container>
   );
 };

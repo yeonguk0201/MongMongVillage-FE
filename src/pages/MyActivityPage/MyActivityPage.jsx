@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import {
-  Footer,
-  Header,
   MyMenuBar,
   MyPost,
   MyProfileImg,
@@ -17,28 +15,24 @@ const MyActivityPage = () => {
   const name = '엘리스';
 
   return (
-    <>
-      <Header />
-      <Container>
-        <MyProfileImg />
-        <NameContainer>
-          <span>{name}</span>님의 활동
-        </NameContainer>
-        <MyMenuBar setMenu={setSelectedMenu} menu={selectedMenu} />
-        {selectedMenu === MyActivityMenus.post ? (
-          <MyPost />
-        ) : selectedMenu === MyActivityMenus.comment ? (
-          <MyComment />
-        ) : selectedMenu === MyActivityMenus.like ? (
-          <MyLike />
-        ) : selectedMenu === MyActivityMenus.review ? (
-          <MyReview />
-        ) : (
-          <></>
-        )}
-      </Container>
-      <Footer />
-    </>
+    <Container>
+      <MyProfileImg />
+      <NameContainer>
+        <span>{name}</span>님의 활동
+      </NameContainer>
+      <MyMenuBar setMenu={setSelectedMenu} menu={selectedMenu} />
+      {selectedMenu === MyActivityMenus.post ? (
+        <MyPost />
+      ) : selectedMenu === MyActivityMenus.comment ? (
+        <MyComment />
+      ) : selectedMenu === MyActivityMenus.like ? (
+        <MyLike />
+      ) : selectedMenu === MyActivityMenus.review ? (
+        <MyReview />
+      ) : (
+        <></>
+      )}
+    </Container>
   );
 };
 

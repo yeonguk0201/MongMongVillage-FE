@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Footer,
-  Header,
   CommunityNav,
   CommunitySelectSort,
   CommunitySearchAndPost,
@@ -1001,8 +999,6 @@ const CommunityPage = () => {
 
   return (
     <Container>
-      <Header />
-
       <CommunityNav
         category={filteredCategory}
         handleNavClick={handleNavClick}
@@ -1034,8 +1030,6 @@ const CommunityPage = () => {
         endIndex={endIndex}
         goToPage={goToPage}
       ></CommunityPagination>
-
-      <Footer />
     </Container>
   );
 };

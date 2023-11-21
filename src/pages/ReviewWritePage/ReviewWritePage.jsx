@@ -1,4 +1,3 @@
-import { Header, Footer } from '../../components';
 import {
   Container,
   ReviewWriteContainer,
@@ -19,7 +18,6 @@ const ReviewWritePage = () => {
 
   return (
     <Container>
-      <Header />
       <ReviewWriteContainer>
         <Text className="cafeName">몽몽 애견 카페</Text>
         <StarRatingContainer>
@@ -51,7 +49,6 @@ const ReviewWritePage = () => {
         </div>
         <SubmitButton>리뷰 등록</SubmitButton>
       </ReviewWriteContainer>
-      <Footer />
     </Container>
   );
 };

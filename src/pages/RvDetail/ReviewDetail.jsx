@@ -1,4 +1,3 @@
-import { Header, Footer } from '../../components';
 import {
   Container,
   ReviewDetailContainer,
@@ -20,7 +19,6 @@ const ReviewDetail = () => {
 
   return (
     <Container>
-      <Header />
       <ReviewDetailContainer>
         <ReviewTitleContainer>
           <TitleStarRaiting>
@@ -54,7 +52,6 @@ const ReviewDetail = () => {
           </MainText>
         </ReviewMainSection>
       </ReviewDetailContainer>
-      <Footer />
     </Container>
   );
 };

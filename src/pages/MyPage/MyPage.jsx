@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Footer, Header, MyActivity, MyPageProfile } from '../../components';
+import { MyActivity, MyPageProfile } from '../../components';
 import { Container, InfoUpdateButton, LogoutButton } from './styles';
 import { ROUTE } from '../../routes/Routes';
 
@@ -16,18 +16,12 @@ const MyPage = () => {
   };
 
   return (
-    <>
-      <Header />
-      <Container>
-        <MyPageProfile />
-        <MyActivity />
-        <InfoUpdateButton onClick={gotoEditPage}>
-          회원 정보 수정
-        </InfoUpdateButton>
-        <LogoutButton onClick={logout}>로그아웃</LogoutButton>
-      </Container>
-      <Footer />
-    </>
+    <Container>
+      <MyPageProfile />
+      <MyActivity />
+      <InfoUpdateButton onClick={gotoEditPage}>회원 정보 수정</InfoUpdateButton>
+      <LogoutButton onClick={logout}>로그아웃</LogoutButton>
+    </Container>
   );
 };
 

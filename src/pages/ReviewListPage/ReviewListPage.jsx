@@ -1,4 +1,3 @@
-import { Header, Footer } from '../../components';
 import React, { useState, useEffect } from 'react';
 import {
   Container,
@@ -22,7 +21,6 @@ import {
 } from './styels';
 
 const ReviewListPage = () => {
-
   const [list, setList] = useState([
     {
       id: 1,
@@ -42,7 +40,7 @@ const ReviewListPage = () => {
         id: 1,
         profileImg:
           'https://bff-images.bemypet.kr/media/medias/profile_image/760-profileImage.png',
-        name: 'username'
+        name: 'username',
       },
     },
     {
@@ -62,7 +60,7 @@ const ReviewListPage = () => {
         id: 1,
         profileImg:
           'https://bff-images.bemypet.kr/media/medias/profile_image/760-profileImage.png',
-        name: 'username'
+        name: 'username',
       },
     },
     {
@@ -83,7 +81,7 @@ const ReviewListPage = () => {
         id: 1,
         profileImg:
           'https://bff-images.bemypet.kr/media/medias/profile_image/760-profileImage.png',
-        name: 'username'
+        name: 'username',
       },
     },
     {
@@ -104,7 +102,7 @@ const ReviewListPage = () => {
         id: 1,
         profileImg:
           'https://bff-images.bemypet.kr/media/medias/profile_image/760-profileImage.png',
-        name: 'username'
+        name: 'username',
       },
     },
     {
@@ -125,7 +123,7 @@ const ReviewListPage = () => {
         id: 1,
         profileImg:
           'https://bff-images.bemypet.kr/media/medias/profile_image/760-profileImage.png',
-        name: 'username'
+        name: 'username',
       },
     },
     {
@@ -146,43 +144,41 @@ const ReviewListPage = () => {
         id: 1,
         profileImg:
           'https://bff-images.bemypet.kr/media/medias/profile_image/760-profileImage.png',
-        name: 'username'
+        name: 'username',
       },
     },
   ]);
 
   const [page, setPage] = useState(1);
-  
+
   const PageNation = ({ page, setPage }) => {
     const pageNumbs = 5;
 
     return (
       <>
-      <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
-        &lt;
-      </Button>
-      {Array(pageNumbs)
-        .fill()
-        .map((_, i) => (
-          <Button
-            key={i + 1}
-            onClick={() => setPage(i + 1)}
-            aria-current={page === i + 1 ? "page" : undefined}
-          >
-            {i + 1}
-          </Button>
-        ))}
-      <Button onClick={() => setPage(page + 1)} disabled={page === pageNumbs}>
-        &gt;
-      </Button>
+        <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
+          &lt;
+        </Button>
+        {Array(pageNumbs)
+          .fill()
+          .map((_, i) => (
+            <Button
+              key={i + 1}
+              onClick={() => setPage(i + 1)}
+              aria-current={page === i + 1 ? 'page' : undefined}
+            >
+              {i + 1}
+            </Button>
+          ))}
+        <Button onClick={() => setPage(page + 1)} disabled={page === pageNumbs}>
+          &gt;
+        </Button>
       </>
     );
   };
 
   return (
     <Container>
-      <Header />
-
       <ReviewListContainer>
         <RadioButtonContainer>
           <label>
@@ -194,10 +190,10 @@ const ReviewListPage = () => {
             <span>인기순</span>
           </label>
         </RadioButtonContainer>
-        {list.map((item)=>{
+        {list.map((item) => {
           console.log(item);
-          return(
-            <Review 
+          return (
+            <Review
               id={item.id}
               title={item.title}
               review={item.review}
@@ -208,31 +204,34 @@ const ReviewListPage = () => {
               user={item.user}
               key={item.id}
             />
-          )
+          );
         })}
       </ReviewListContainer>
       <PageButtonContainer>
-      <PageNation
-          page={page}
-          setPage={setPage}
-        />
+        <PageNation page={page} setPage={setPage} />
       </PageButtonContainer>
-      <Footer />
     </Container>
   );
 };
 
-const Review = ({id, title, review, date, previewImg, rating, cafeName, user, key}) => {
-
+const Review = ({
+  id,
+  title,
+  review,
+  date,
+  previewImg,
+  rating,
+  cafeName,
+  user,
+  key,
+}) => {
   return (
     <ReviewContainer>
       <ReviewMain>
         <TitlePreviewContainer>
           <CafeName>[{cafeName}]</CafeName>
           <ReviewTitle>{title}</ReviewTitle>
-          <Preview>
-            {review}
-          </Preview>
+          <Preview>{review}</Preview>
         </TitlePreviewContainer>
         <PreviewImg src={previewImg}></PreviewImg>
       </ReviewMain>
@@ -250,7 +249,5 @@ const Review = ({id, title, review, date, previewImg, rating, cafeName, user, ke
     </ReviewContainer>
   );
 };
-
-
 
 export default ReviewListPage;

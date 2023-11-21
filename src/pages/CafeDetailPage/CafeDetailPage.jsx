@@ -1,4 +1,3 @@
-import { Header, Footer } from '../../components';
 import {
   Container,
   ReviewListContainer,
@@ -28,7 +27,6 @@ import {
 const CafeDetailPage = () => {
   return (
     <Container>
-      <Header />
       <div
         style={{
           backgroundColor: 'rgba(255, 232, 148, 0.3)',
@@ -88,7 +86,6 @@ const CafeDetailPage = () => {
           <button>﹥</button>
         </PageButtonContainer>
       </div>
-      <Footer />
     </Container>
   );
 };
