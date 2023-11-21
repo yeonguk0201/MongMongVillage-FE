@@ -21,8 +21,11 @@ export const CheckButton = styled.button`
   border-radius: 20px;
   margin-left: 10px;
   width: 25%;
-  height: min-content;
   padding: 10px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -35,7 +38,7 @@ export const SubmitButton = styled.button`
   margin: 30px 0;
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.form`
   width: 100%;
 `;
 
@@ -43,22 +46,26 @@ export const AuthInputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: ${(props) =>
+    props.border === 'none' ? 'none' : '1px solid gray'};
+  svg {
+    margin: 0 10px;
+    cursor: pointer;
+  }
 `;
 
 export const AuthInput = styled.input`
   width: 100%;
   padding: 10px 0 10px 10px;
-  margin: 10px 0;
+  margin-top: 10px;
   font-size: 1rem;
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: ${(props) =>
+    props.border === 'none' ? 'none' : '1px solid gray'};
 `;
 
 export const Text = styled.p`
   font-size: 12px;
-  margin: 0 20px;
-  color: green;
-  &.warning {
-    color: red;
-  }
+  margin: 10px;
+  color: ${(props) => (props.success === 'true' ? 'green' : 'red')};
 `;
