@@ -26,11 +26,20 @@ export const ReviewContainer = styled.div`
 
 export const TitlePreviewContainer = styled.div`
   padding-right: 30px;
+  line-height: 18px;
 `;
 
 export const ReviewTitle = styled.p`
   font-weight: 700;
   font-size: 16px;
+  padding-bottom: 10px;
+`;
+
+export const CafeName = styled.p`
+  font-weight: 700;
+  font-size: 16px;
+  padding-bottom: 10px;
+  color: #868688;
 `;
 
 export const Preview = styled.p`
@@ -117,19 +126,33 @@ export const PageButtonContainer = styled.div`
   justify-content: center;
   display: flex;
   padding: 50px 0 50px 0;
+`;
 
-  button {
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    font-weight: 400;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border: none;
-    background-color: transparent;
+export const Button = styled.button`
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+
+  &[disabled] {
+    cursor: revert;
+    transform: revert;
+  }
+
+  &[aria-current] {
+    border: solid 3px var(--main-yellow-color);
+    border-radius: 50%;
+    cursor: revert;
+    transform: revert;
   }
 `;
+
+
