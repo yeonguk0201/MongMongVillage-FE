@@ -11,10 +11,12 @@ const CommunityPost = ({ selectedPost }) => {
   console.log(selectedPost);
   return (
     <PostContainer>
-      <Category>{selectedPost.category}</Category>
-      <Title>{selectedPost.title}</Title>
+      <Title>
+        <Category>{selectedPost.category}</Category>
+        {selectedPost.title}
+      </Title>
       <MainImg>
-        <img src={selectedPost.mainImg} />
+        <img src={selectedPost.mainImg} alt="post_image" />
       </MainImg>
       <Content>{selectedPost.content}</Content>
     </PostContainer>

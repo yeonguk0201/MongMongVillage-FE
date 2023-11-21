@@ -7,10 +7,9 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.button`
-  cursor: pointer;
   background-color: transparent;
   font-size: 18px;
-  margin: 10px;
+  margin: 10px auto;
   font-weight: bold;
 `;
 

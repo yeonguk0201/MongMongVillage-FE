@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ROUTE_ARR } from './routes/Routes';
-import { Header, Footer } from './components';
+
+import Layout from './Layout';
 
 function App() {
   return (
@@ -9,13 +10,7 @@ function App() {
         <Route
           path={el.path}
           key={el.path}
-          element={
-            <>
-              <Header />
-              {el.element}
-              <Footer />
-            </>
-          }
+          element={<Layout>{el.element}</Layout>}
         />
       ))}
     </Routes>

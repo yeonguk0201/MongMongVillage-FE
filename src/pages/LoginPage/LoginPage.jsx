@@ -35,15 +35,16 @@ const LoginPage = () => {
         <span>네이버로 로그인</span>
         <span></span>
       </SNSButton>
-      <SNSButton className="email-login-button" onClick={toggle}>
-        이메일로 로그인
-      </SNSButton>
       {toggleEmailLogin && (
         <>
           <AuthInput placeholder="아이디(이메일)" />
           <AuthInput placeholder="비말번호" />
         </>
       )}
+      <SNSButton className="email-login-button" onClick={toggle}>
+        이메일로 로그인
+      </SNSButton>
+
       <TextButtonContainer>
         <TextButton>비밀번호 찾기</TextButton>
         <span>|</span>

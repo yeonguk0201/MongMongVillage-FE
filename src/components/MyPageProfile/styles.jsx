@@ -40,6 +40,7 @@ export const ImgEditButton = styled.button`
 export const MyInfoContainer = styled.div`
   width: 100%;
   text-align: center;
+  margin: 10px;
   p {
     margin: 10px;
   }

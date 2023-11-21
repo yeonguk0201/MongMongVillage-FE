@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: 50px;
 `;
 
 export const CafeDetailContainer = styled.div`
@@ -50,7 +50,6 @@ export const ReviewListContainer = styled.div`
   display: flex;
   margin: 0 auto;
   flex-direction: column;
-  background-color: ;
   padding-top: 20px;
   border-top: solid 3px var(--main-yellow-color);
 `;

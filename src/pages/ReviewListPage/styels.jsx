@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: 50px;
 `;
 
 export const ReviewListContainer = styled.div`
@@ -154,5 +154,3 @@ export const Button = styled.button`
     transform: revert;
   }
 `;
-
-

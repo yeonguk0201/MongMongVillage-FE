@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
-  margin: 150px auto;
+  margin: 50px auto;
 `;
 
 export const Title = styled.h1`
@@ -52,6 +52,7 @@ export const AuthInputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 10px 0;
   border-bottom: ${(props) =>
     props.border === 'none' ? 'none' : '1px solid gray'};
   svg {

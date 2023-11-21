@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+`;
+
 export const Button = styled.button`
-  border: none;
-  cursor: pointer;
   margin: 5px;
   border-radius: 5px;
   width: 50px;
