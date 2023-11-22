@@ -8,8 +8,7 @@ const postLogin = async (email, password) => {
     password,
   });
 
-  console.log(response.data);
-  return response;
+  return response.data;
 };
 
 export function usePostLogin(email, password) {
@@ -23,7 +22,7 @@ export function usePostLogin(email, password) {
       navigate('/');
     },
     onError: (error) => {
-      alert(error + '로그인 실패');
+      alert(error.response.data.message);
     },
   });
 }

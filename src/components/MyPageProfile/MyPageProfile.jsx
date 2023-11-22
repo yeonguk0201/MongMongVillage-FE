@@ -12,7 +12,7 @@ import {
   WithdrawalButton,
   WithdrawText,
 } from './styles';
-import { useGetUserInfo } from '../../hooks';
+import { useDeleteUser, useGetUserInfo } from '../../hooks';
 import { MyProfileImg } from '../MyProfileImg';
 import { FaPencil } from 'react-icons/fa6';
 
@@ -23,24 +23,30 @@ const MyPageProfile = ({ edit }) => {
     email: ' ',
   });
 
-  const { mutate, data } = useGetUserInfo();
+  const { mutate: getUser, data: userData } = useGetUserInfo();
 
   useEffect(() => {
-    mutate();
-    if (data) {
-      console.log(data.email);
-    }
+    getUser();
   }, []);
 
   useEffect(() => {
-    if (data) {
-      // setMyInfo({
-      //   name: data.nickname,
-      //   email: data.email,
-      //   description: '임시 설명 ',
-      // });
+    if (userData) {
+      setMyInfo({
+        name: userData.nickname,
+        email: userData.email,
+        description: '임시 설명 ',
+      });
     }
-  }, [data]);
+  }, [userData]);
+
+  const { mutate: deleteUser } = useDeleteUser();
+
+  const handleDeleteUser = () => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm('정말 탈퇴하시겠습니까?')) {
+      deleteUser();
+    }
+  };
 
   return (
     <ProfileContainer>
@@ -97,7 +103,9 @@ const MyPageProfile = ({ edit }) => {
             </MyInfoEditItemContainer>
           </MyInfoEditContainer>
           <SubmitButton>수정 완료</SubmitButton>
-          <WithdrawalButton>회원 탈퇴</WithdrawalButton>
+          <WithdrawalButton onClick={handleDeleteUser}>
+            회원 탈퇴
+          </WithdrawalButton>
           <WithdrawText>
             회원 탈퇴 시 계정 관련 데이터를 복구할 수 없습니다.
           </WithdrawText>

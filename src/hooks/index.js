@@ -8,3 +8,4 @@ export * from './postSignUp';
 export * from './getBestContents';
 export * from './postLogin';
 export * from './getUserInfo';
+export * from './deleteUser';
