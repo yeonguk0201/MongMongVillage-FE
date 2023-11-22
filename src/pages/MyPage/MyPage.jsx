@@ -12,6 +12,8 @@ const MyPage = () => {
 
   const logout = () => {
     alert('로그아웃 되었습니다.');
+
+    sessionStorage.removeItem('token');
     navigate(ROUTE.MAIN_PAGE.link);
   };
 
