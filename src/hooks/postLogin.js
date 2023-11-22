@@ -15,7 +15,7 @@ export function usePostLogin(email, password) {
   const navigate = useNavigate();
   return useMutation(() => postLogin(email, password), {
     onSuccess: (response) => {
-      const token = response.data.data;
+      const token = response.data;
       sessionStorage.setItem('token', token);
 
       alert('로그인 성공');

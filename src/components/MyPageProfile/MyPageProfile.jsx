@@ -11,14 +11,15 @@ import {
   SubmitButton,
   WithdrawalButton,
   WithdrawText,
+  CheckButton,
 } from './styles';
-import { useDeleteUser, useGetUserInfo } from '../../hooks';
+import { useDeleteUser, useGetUserInfo, usePutUserInfo } from '../../hooks';
 import { MyProfileImg } from '../MyProfileImg';
 import { FaPencil } from 'react-icons/fa6';
 
 const MyPageProfile = ({ edit }) => {
   const [myInfo, setMyInfo] = useState({
-    name: '',
+    nickname: '',
     description: ' ',
     email: ' ',
   });
@@ -32,7 +33,7 @@ const MyPageProfile = ({ edit }) => {
   useEffect(() => {
     if (userData) {
       setMyInfo({
-        name: userData.nickname,
+        nickname: userData.nickname,
         email: userData.email,
         description: '임시 설명 ',
       });
@@ -48,14 +49,53 @@ const MyPageProfile = ({ edit }) => {
     }
   };
 
+  const { mutate: putUser } = usePutUserInfo(myInfo.nickname);
+
+  const handlePutUser = () => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm('회원정보를 수정하시겠습니까?')) {
+      putUser();
+    }
+  };
+
+  const [photoEdit, setPhotoEdit] = useState(false);
+
+  const [preview, setPreview] = useState(
+    `${process.env.PUBLIC_URL}/imges/user.png`,
+  );
+
+  const handleImgFile = (e) => {
+    const file = document.querySelector('input[type="file"]').files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+      const imageUrl = URL.createObjectURL(file);
+      console.log(imageUrl);
+      for (let [key, value] of formData.entries()) {
+        console.log(key, value);
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <ProfileContainer>
-      <MyProfileImg />
+      <MyProfileImg imgSrc={preview} />
       {edit && (
-        <ImgEditButton>
-          사진 수정
-          <FaPencil />
-        </ImgEditButton>
+        <>
+          <ImgEditButton onClick={() => setPhotoEdit(!photoEdit)}>
+            사진 수정
+            <FaPencil />
+          </ImgEditButton>
+
+          {photoEdit && (
+            <input type="file" onChange={handleImgFile} name="profile_img" />
+          )}
+        </>
       )}
 
       {edit ? (
@@ -64,15 +104,16 @@ const MyPageProfile = ({ edit }) => {
             <MyInfoEditItemContainer>
               <label>닉네임</label>
               <input
-                value={myInfo.name}
+                value={myInfo.nickname}
                 onChange={(e) =>
                   setMyInfo({
                     email: myInfo.email,
                     description: myInfo.description,
-                    name: e.target.value,
+                    nickname: e.target.value,
                   })
                 }
               />
+              <CheckButton>중복체크</CheckButton>
             </MyInfoEditItemContainer>
             <MyInfoEditItemContainer>
               <label>소개</label>
@@ -81,28 +122,14 @@ const MyPageProfile = ({ edit }) => {
                 onChange={(e) =>
                   setMyInfo({
                     email: myInfo.email,
-                    name: myInfo.name,
+                    nickname: myInfo.name,
                     description: e.target.value,
                   })
                 }
               />
             </MyInfoEditItemContainer>
-
-            <MyInfoEditItemContainer>
-              <label>이메일</label>
-              <input
-                value={myInfo.email}
-                onChange={(e) =>
-                  setMyInfo({
-                    name: myInfo.name,
-                    description: myInfo.description,
-                    email: e.target.value,
-                  })
-                }
-              />
-            </MyInfoEditItemContainer>
           </MyInfoEditContainer>
-          <SubmitButton>수정 완료</SubmitButton>
+          <SubmitButton onClick={handlePutUser}>수정 완료</SubmitButton>
           <WithdrawalButton onClick={handleDeleteUser}>
             회원 탈퇴
           </WithdrawalButton>
@@ -112,7 +139,7 @@ const MyPageProfile = ({ edit }) => {
         </>
       ) : (
         <MyInfoContainer>
-          <MyName>{myInfo.name}</MyName>
+          <MyName>{myInfo.nickname}</MyName>
           <MyDescription>{myInfo.description}</MyDescription>
           <MyEmail>{myInfo.email}</MyEmail>
         </MyInfoContainer>

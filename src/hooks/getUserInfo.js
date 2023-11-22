@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import { instance } from '.';
 import { useMutation } from 'react-query';
+import { ROUTE } from '../routes/Routes';
 
 const getUserInfo = async () => {
   const token = sessionStorage.getItem('token');
@@ -13,10 +15,13 @@ const getUserInfo = async () => {
 };
 
 export function useGetUserInfo() {
+  const navigate = useNavigate();
+
   return useMutation(() => getUserInfo(), {
     onSuccess: (response) => {},
     onError: (error) => {
-      alert(error + '회원조회 실패');
+      alert(error.response.data.error + '회원조회를 할 수 없습니다.');
+      navigate(ROUTE.MAIN_PAGE.link);
     },
   });
 }
