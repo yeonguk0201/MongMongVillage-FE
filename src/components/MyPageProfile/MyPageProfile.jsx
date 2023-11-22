@@ -18,9 +18,9 @@ import { FaPencil } from 'react-icons/fa6';
 
 const MyPageProfile = ({ edit }) => {
   const [myInfo, setMyInfo] = useState({
-    name: '엘리스',
-    description: '강아지 두마리 견주입니다.\n잘 부탁 드려요.',
-    email: 'elice@google.com',
+    name: '',
+    description: ' ',
+    email: ' ',
   });
 
   const { mutate, data } = useGetUserInfo();
@@ -28,14 +28,19 @@ const MyPageProfile = ({ edit }) => {
   useEffect(() => {
     mutate();
     if (data) {
-      console.log(data);
-      setMyInfo({
-        name: data.data.nickname,
-        email: data.data.email,
-        description: '임시 설명 ',
-      });
+      console.log(data.email);
     }
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      // setMyInfo({
+      //   name: data.nickname,
+      //   email: data.email,
+      //   description: '임시 설명 ',
+      // });
+    }
+  }, [data]);
 
   return (
     <ProfileContainer>
