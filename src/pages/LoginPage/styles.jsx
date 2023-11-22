@@ -58,3 +58,13 @@ export const TextButtonContainer = styled.div`
 export const TextButton = styled.button`
   background: none;
 `;
+
+export const SubmitButton = styled.button`
+  background-color: var(--main-yellow-color);
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  padding: 10px;
+  width: 100%;
+  margin: 30px 0;
+`;
