@@ -40,11 +40,6 @@ export const Navitem = styled.nav`
     `
       margin: 0 1% 0 5%;
   `};
-
-  ${(props) =>
-    props.id === 'signup' &&
-    `
-  background-color: var(--main-yellow-color);`}
 `;
 
 export const Space = styled.div``;
