@@ -6,7 +6,6 @@ import {
   DogCafeListItemImg,
   DogCafeListItemTitle,
   DogCafeListItemWriter,
-  DogCafeListItemDate,
   DogCafeItemInfo,
   LoadingContainer,
   ErrorContainer,
@@ -41,7 +40,7 @@ const BestContents = () => {
   }
 
   if (error) {
-    return <ErrorContainer></ErrorContainer>;
+    return <ErrorContainer>{error}</ErrorContainer>;
   }
 
   return (
@@ -65,7 +64,6 @@ const BestContents = () => {
                 <DogCafeListItemWriter onClick={linkToUser}>
                   {content.user_id.nickname}
                 </DogCafeListItemWriter>
-                <DogCafeListItemDate>{content.date}</DogCafeListItemDate>
               </DogCafeItemInfo>
             </DogCafeListItem>
           ))}

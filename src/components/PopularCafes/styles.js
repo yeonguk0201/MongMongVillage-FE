@@ -35,6 +35,12 @@ export const DogCafeListItemImg = styled.img`
   }
 `;
 
+export const DogCafeInfoContainer = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const DogCafeListItemTitle = styled.p`
   padding: 20px 0 8px 8px;
   font-size: 23px;
@@ -42,6 +48,7 @@ export const DogCafeListItemTitle = styled.p`
 `;
 
 export const DogCafeListItemRating = styled.p`
-  padding: 3px 0 0 8px;
+  padding: 3px 25px 0 8px;
   font-size: 18px;
+  color: var(--main-yellow-color);
 `;
