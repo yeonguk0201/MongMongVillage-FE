@@ -38,11 +38,11 @@ export const NickNameValidCheck = (e, status, setValue, setStatus) => {
 export const PasswordValidCheck = (e, setValue, setStatus) => {
   setValue(e.target.value);
 
-  if (e.target.value.length < 6) {
-    // 6글자 미만이면 -> erorr
+  if (e.target.value.length < 8) {
+    // 8글자 미만이면 -> erorr
     setStatus(InputStatus.ERROR);
   } else {
-    // 6글자 이상이면 -> success
+    // 8글자 이상이면 -> success
     setStatus(InputStatus.SUCCESS);
   }
 };
