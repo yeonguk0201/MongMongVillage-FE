@@ -5,3 +5,4 @@ export const instance = axios.create({
 });
 
 export * from './postSignUp';
+export * from './postLogin';
