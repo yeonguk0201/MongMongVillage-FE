@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-  CommunityNav,
-  CommunitySelectSort,
-  CommunitySearchAndPost,
-  CommunityList,
-  CommunityPagination,
-} from '../../components';
+import React, { useRef, useState, useEffect } from 'react';
 import { ROUTE } from '../../routes/Routes';
-import { Container } from './CommunityPage.styles';
-import { CommunityCategory } from '../../libs';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDropzone } from 'react-dropzone';
+import {
+  Container,
+  CategorySelector,
+  Input,
+  TextArea,
+  ImageUploadContainer,
+  ImageUploadText,
+  Title,
+  PostBTN,
+} from './EditCommunityPost.styles';
 
-// 카테고리 객체
-const CATEGORY_DIC = CommunityCategory;
-// 페이지네이션 페이지 당 아이템 수
-const ITEMS_PER_PAGE = 4;
-
-const CommunityPage = () => {
-  // navigate 객체 생성
-  const navigate = useNavigate();
-  // 목 데이터
+const EditCommunityPost = () => {
   const [list, setList] = useState([
     {
       id: 1,
@@ -587,171 +581,87 @@ const CommunityPage = () => {
     },
   ]);
 
-  // 정렬을 위해 list 복사한 state
-  // !!! 초기값으로 서버로부터 받아온 리스트 넣어줘야함
-  const [filteredList, setFilteredList] = useState(list);
+  // 해당 게시글의 id
+  const { id } = useParams();
 
-  // 최신순, 인기순 정렬 옵션 state
-  const [sortOption, setSortOption] = useState('latest');
+  const [selectedPost, setSelectedPost] = useState(
+    list.find((post) => post.id === parseInt(id, 10)),
+  );
 
-  // 카테고리 filtered state
-  const [filteredCategory, setFilteredCategory] = useState(CATEGORY_DIC.all);
+  const navigate = useNavigate();
+  const titleInputRef = useRef();
+  const contentInputRef = useRef();
+  const categorySelectRef = useRef();
 
-  // 검색 기능을 위한 state
-  const [searchTerm, setSearchTerm] = useState('');
+  // selectedPost로 editPost 초기 state 저장
+  const [editPost, setEditPost] = useState(selectedPost);
 
-  // 페이지네이션 관련 기능 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-
-  // 현재 페이지 상태
-  const [currentPage, setCurrentPage] = useState(1);
-  // 시작 인덱스와 끝 인덱스 계산
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
-
-  // 정렬 함수
-  const sortedList = () => {
-    // window.scrollTo(0, 0);
-    // 받아온 글 목록 list 복제
-    let filteredListCopy = [...list];
-
-    // 카테고리 먼저 정렬
-    if (filteredCategory === CATEGORY_DIC.all) {
-      filteredListCopy = list;
-    } else if (filteredCategory === CATEGORY_DIC.free) {
-      filteredListCopy = filteredListCopy.filter(
-        (item) => item.category === filteredCategory,
-      );
-    } else if (filteredCategory === CATEGORY_DIC.info) {
-      filteredListCopy = filteredListCopy.filter(
-        (item) => item.category === filteredCategory,
-      );
-    } else if (filteredCategory === CATEGORY_DIC.question) {
-      filteredListCopy = filteredListCopy.filter(
-        (item) => item.category === filteredCategory,
-      );
-    }
-
-    // 인기순, 최신순 정렬
-    if (sortOption === 'popular') {
-      setFilteredList([...filteredListCopy].sort((a, b) => b.like - a.like));
+  // 글 수정 함수
+  const handleEditPost = () => {
+    if (categorySelectRef.current.value === '') {
+      alert('카테고리를 선택해주세요.');
+      categorySelectRef.current.focus();
+    } else if (titleInputRef.current.value === '') {
+      alert('글 제목을 입력해주세요');
+      titleInputRef.current.focus();
+    } else if (contentInputRef.current.value === '') {
+      alert('글 내용을 입력해주세요.');
+      contentInputRef.current.focus();
     } else {
-      setFilteredList(
-        [...filteredListCopy].sort(
-          (a, b) => new Date(b.time) - new Date(a.time),
-        ),
-      );
+      setEditPost({
+        id: selectedPost.id,
+        // 카테고리, 타이을, 콘텐츠만 바꿔줌ㅡㅡㅡ
+        category: categorySelectRef.current.value,
+        title: titleInputRef.current.value,
+        content: contentInputRef.current.value,
+        // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        user: selectedPost.user,
+        userImg: selectedPost.userImg,
+        comment: selectedPost.comment,
+        like: selectedPost.like,
+        time: selectedPost.formattedTime,
+        mainImg: selectedPost.uploadedImage,
+      });
+
+      // 서버 요청을 통해 게시글 아이디에 맞는 게시글 update 필요 !!!
+      alert('수정이 완료되었습니다.');
+      navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${id}`);
     }
-
-    // 검색어에 따라 set
-    if (searchTerm) {
-      const searchTermLowerCase = searchTerm.toLowerCase();
-      setFilteredList((prevList) =>
-        prevList.filter((item) =>
-          item.title.toLowerCase().includes(searchTermLowerCase),
-        ),
-      );
-    }
   };
-
-  // 컴포넌트가 마운트될 때와 sortOption, filteredCategory, searchTerm 변경될 때마다 정렬 수행
-  useEffect(() => {
-    sortedList();
-  }, [sortOption, filteredCategory, searchTerm]);
-
-  // 검색창 input을 입력받는 onChange 핸들러
-  const handleSearchInputChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  // 카테고리 선택 onChange 핸들러
-  const handleNavClick = (category) => {
-    setFilteredCategory(category);
-    // 카테고리 변경 시 1페이지로 전환해줌
-    setCurrentPage(1);
-  };
-
-  // 정렬 onChange 핸들러
-  const handleSortChange = (e) => {
-    setSortOption(e.target.value);
-    sortedList();
-  };
-
-  // id 값을 params로 넘겨줄 함수 - detail 페이지로 정보 넘겨주기
-  // 글작성 클릭시 실행 함수
-  const handleNewPostClick = () => {
-    navigate(ROUTE.NEW_POST_PAGE.link);
-    // navigate('/community/newpost');
-    window.scrollTo(0, 0);
-  };
-
-  // 현재 페이지에 표시될 아이템들
-  const currentPageItems = filteredList.slice(startIndex, endIndex);
-  // 전체 페이지 수 계산
-  const totalPages = Math.ceil(filteredList.length / ITEMS_PER_PAGE);
-
-  // 이전 페이지로 이동하는 함수
-  const goToPrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-  };
-  // 다음 페이지로 이동하는 함수
-  const goToNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-  };
-  // 해당 페이지로 설정 함수
-  const goToPage = (page) => {
-    setCurrentPage(page);
-    sortedList();
-    // !!! 서버로부터 현재 CurrentPage 와 일치하는 페이지 요청해서 받아오도록 해야함
-  };
-
-  // 각 게시글 클릭시 실행 함수
-  const handlePostClick = (postId) => {
-    navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${postId}`, {
-      state: { filteredList: filteredList },
-    });
-    window.scrollTo(0, 0);
-  };
-
-  // 리스트의 작성자 사진을 누르면 해당 유저의 페이지로 이동
-  // const handleUserClick = (userId) => {
-  //   navigate(`${ROUTE.ㅡㅡㅡㅡ.link}/${userId}`);
-  // }
 
   return (
     <Container>
-      <CommunityNav
-        category={filteredCategory}
-        handleNavClick={handleNavClick}
-      ></CommunityNav>
+      <Title>카테고리 선택</Title>
+      <CategorySelector
+        ref={categorySelectRef}
+        value={editPost.category}
+        onChange={(e) => setEditPost({ ...editPost, category: e.target.value })}
+      >
+        <option value="">카테고리 선택</option>
+        <option value="info">정보글</option>
+        <option value="free">자유글</option>
+        <option value="question">질문글</option>
+      </CategorySelector>
 
-      <CommunitySelectSort
-        sortOption={sortOption}
-        handleSortChange={handleSortChange}
-      ></CommunitySelectSort>
+      <Title>게시글 작성</Title>
+      <Input
+        type="text"
+        placeholder="제목을 입력해주세요..."
+        defaultValue={selectedPost.title}
+        onChange={(e) => setEditPost({ ...editPost, title: e.target.value })}
+        ref={titleInputRef}
+      />
 
-      <CommunityList
-        currentPageItems={currentPageItems}
-        handlePostClick={handlePostClick}
-        // handleUserClick={handleUserClick}
-      ></CommunityList>
+      <TextArea
+        placeholder="내용을 입력해주세요..."
+        defaultValue={selectedPost.content}
+        onChange={(e) => setEditPost({ ...editPost, content: e.target.value })}
+        ref={contentInputRef}
+      />
 
-      <CommunitySearchAndPost
-        handleSearchInputChange={handleSearchInputChange}
-        handleNewPostClick={handleNewPostClick}
-      ></CommunitySearchAndPost>
-
-      <CommunityPagination
-        currentPage={currentPage}
-        goToPrevPage={goToPrevPage}
-        goToNextPage={goToNextPage}
-        currentPageItems={currentPageItems}
-        totalPages={totalPages}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        goToPage={goToPage}
-      ></CommunityPagination>
+      <PostBTN onClick={handleEditPost}>수정하기</PostBTN>
     </Container>
   );
 };
 
-export default CommunityPage;
+export default EditCommunityPost;

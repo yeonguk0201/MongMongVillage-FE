@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 
 const postSignUp = async (email, password, nickname) => {
-  const response = await instance.post(`/users/join`, {
+  const response = await instance.post(`/users/signup`, {
+    nickname,
     email,
     password,
-    nickname,
   });
 
   return response;
@@ -14,7 +14,6 @@ const postSignUp = async (email, password, nickname) => {
 
 export function usePostSignUp(email, password, nickname) {
   const navigate = useNavigate();
-
   return useMutation(() => postSignUp(email, password, nickname), {
     onSuccess: () => {
       alert('회원가입 성공');

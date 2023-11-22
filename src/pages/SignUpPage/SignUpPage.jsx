@@ -49,7 +49,7 @@ const SignUpPage = () => {
   const [hidePassword, setHidePassword] = useState(true);
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
-  const { mutate } = usePostSignUp();
+  const { mutate } = usePostSignUp(email, password, nickName);
 
   const submitSignUp = () => {
     if (emailInputStatus !== InputStatus.SUCCESS) {
@@ -63,7 +63,7 @@ const SignUpPage = () => {
     } else if (checkboxInputStatus !== InputStatus.SUCCESS) {
       alert('약관에 동의해주세요.');
     } else {
-      mutate(email, password, nickName);
+      mutate();
     }
   };
 

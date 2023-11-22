@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const SearchAndPostContainer = styled.div`
+  margin-top: 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,6 +17,7 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchInputBox = styled.div`
+  display: flex;
   height: 40px;
   border: 2px solid var(--main-yellow-color);
   border-radius: 40px;
@@ -32,14 +34,18 @@ export const PostBTN = styled.button`
 `;
 
 export const SearchButton = styled.button`
+  margin-top: 4px;
   margin-left: 20px;
   background: none;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SearchInput = styled.input`
   padding: 8px;
+  margin-top: 0px !important;
   border: none;
-  margin-right: 20px;
+  margin-left: 4px;
   height: 24px;
   width: 500px;
 `;

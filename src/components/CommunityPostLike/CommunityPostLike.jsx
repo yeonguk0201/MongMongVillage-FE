@@ -1,9 +1,9 @@
 import React from 'react';
 import { LikeContainer } from './CommunityPostLike.styles';
 
-const CommunityPostLike = ({ like, onClick }) => {
+const CommunityPostLike = ({ like, onClick, likeclick }) => {
   return (
-    <LikeContainer like={like} onClick={onClick}>
+    <LikeContainer likeclick={String(likeclick)} onClick={onClick}>
       <div>👍</div>
       <p>{like}</p>
     </LikeContainer>

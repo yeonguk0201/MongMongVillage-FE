@@ -14,7 +14,7 @@ export const EmailMessage = {
 
 export const PasswordMessage = {
   DEFAULT: '',
-  ERROR: '비밀번호는 6자 이상이어야 합니다.',
+  ERROR: '비밀번호는 8자 이상이어야 합니다.',
   SUCCESS: '사용가능한 비밀번호입니다.',
 };
 
