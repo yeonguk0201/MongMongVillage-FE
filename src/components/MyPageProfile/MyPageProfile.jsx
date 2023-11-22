@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ProfileContainer,
   MyInfoContainer,
@@ -12,6 +12,7 @@ import {
   WithdrawalButton,
   WithdrawText,
 } from './styles';
+import { useGetUserInfo } from '../../hooks';
 import { MyProfileImg } from '../MyProfileImg';
 import { FaPencil } from 'react-icons/fa6';
 
@@ -21,6 +22,20 @@ const MyPageProfile = ({ edit }) => {
     description: '강아지 두마리 견주입니다.\n잘 부탁 드려요.',
     email: 'elice@google.com',
   });
+
+  const { mutate, data } = useGetUserInfo();
+
+  useEffect(() => {
+    mutate();
+    if (data) {
+      console.log(data);
+      setMyInfo({
+        name: data.data.nickname,
+        email: data.data.email,
+        description: '임시 설명 ',
+      });
+    }
+  }, []);
 
   return (
     <ProfileContainer>
