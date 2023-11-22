@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 
 const postSignUp = async (email, password, nickname) => {
-  const response = await instance.post(`/api/users/join`, {
+  const response = await instance.post(`/users/join`, {
     email,
     password,
     nickname,
