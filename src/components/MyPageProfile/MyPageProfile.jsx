@@ -3,7 +3,7 @@ import {
   ProfileContainer,
   MyInfoContainer,
   MyName,
-  MyDescription,
+  MyIntroduction,
   MyEmail,
   ImgEditButton,
   MyInfoEditContainer,
@@ -13,14 +13,15 @@ import {
   WithdrawText,
   CheckButton,
 } from './styles';
-import { useDeleteUser, useGetUserInfo, usePutUserInfo } from '../../hooks';
+import { useDeleteUser, useGetUserInfo, usePatchUserInfo } from '../../hooks';
+
 import { MyProfileImg } from '../MyProfileImg';
 import { FaPencil } from 'react-icons/fa6';
 
 const MyPageProfile = ({ edit }) => {
   const [myInfo, setMyInfo] = useState({
     nickname: '',
-    description: ' ',
+    introduction: ' ',
     email: ' ',
   });
 
@@ -35,7 +36,7 @@ const MyPageProfile = ({ edit }) => {
       setMyInfo({
         nickname: userData.nickname,
         email: userData.email,
-        description: '임시 설명 ',
+        introduction: userData.introduction,
       });
     }
   }, [userData]);
@@ -49,7 +50,10 @@ const MyPageProfile = ({ edit }) => {
     }
   };
 
-  const { mutate: putUser } = usePutUserInfo(myInfo.nickname);
+  const { mutate: putUser } = usePatchUserInfo(
+    myInfo.nickname,
+    myInfo.introduction,
+  );
 
   const handlePutUser = () => {
     // eslint-disable-next-line no-restricted-globals
@@ -91,7 +95,7 @@ const MyPageProfile = ({ edit }) => {
       <MyProfileImg imgSrc={preview} />
       {edit && (
         <>
-          <ImgEditButton className="input-file-button" for="input-file">
+          <ImgEditButton className="input-file-button" htmlFor="input-file">
             사진 수정
             <FaPencil />
           </ImgEditButton>
@@ -112,11 +116,7 @@ const MyPageProfile = ({ edit }) => {
               <input
                 value={myInfo.nickname}
                 onChange={(e) =>
-                  setMyInfo({
-                    email: myInfo.email,
-                    description: myInfo.description,
-                    nickname: e.target.value,
-                  })
+                  setMyInfo({ ...myInfo, nickname: e.target.value })
                 }
               />
               <CheckButton onClick={checkDuplicateNickname}>
@@ -126,13 +126,9 @@ const MyPageProfile = ({ edit }) => {
             <MyInfoEditItemContainer>
               <label>소개</label>
               <textarea
-                value={myInfo.description}
+                value={myInfo.introduction || ''}
                 onChange={(e) =>
-                  setMyInfo({
-                    email: myInfo.email,
-                    nickname: myInfo.name,
-                    description: e.target.value,
-                  })
+                  setMyInfo({ ...myInfo, introduction: e.target.value })
                 }
               />
             </MyInfoEditItemContainer>
@@ -148,7 +144,7 @@ const MyPageProfile = ({ edit }) => {
       ) : (
         <MyInfoContainer>
           <MyName>{myInfo.nickname}</MyName>
-          <MyDescription>{myInfo.description}</MyDescription>
+          <MyIntroduction>{myInfo.introduction}</MyIntroduction>
           <MyEmail>{myInfo.email}</MyEmail>
         </MyInfoContainer>
       )}

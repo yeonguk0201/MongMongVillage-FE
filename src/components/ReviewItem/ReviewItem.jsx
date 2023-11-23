@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   RightContainer,
@@ -12,14 +13,18 @@ import {
   BottomContainer,
   MainContainer,
 } from './styles';
+import { ROUTE } from '../../routes/Routes';
 
 const ReviewItem = ({ item }) => {
+  const navigate = useNavigate();
   return (
     <Container>
       <CafeName onClick={() => alert('cafe name')}>
         [{'여기에 카페이름'}]
       </CafeName>
-      <MainContainer onClick={() => alert('review detail')}>
+      <MainContainer
+        onClick={() => navigate(ROUTE.REVIEW_DETAIL_PAGE.link + `/${item._id}`)}
+      >
         <RightContainer>
           <ReviewTitle>{item.title}</ReviewTitle>
           <Content>{item.content}</Content>
@@ -47,7 +52,12 @@ const ReviewItem = ({ item }) => {
           </BottomContainer>
         </RightContainer>
         <PreviewImgContainer>
-          {item.images.length > 0 && <PreviewImg src={item.images[0]} />}
+          {item.images.length > 0 &&
+            item.images
+              .slice(0, 3)
+              .map((img, idx) => (
+                <PreviewImg src={img} key={item._id + 'img' + idx} />
+              ))}
         </PreviewImgContainer>
       </MainContainer>
     </Container>

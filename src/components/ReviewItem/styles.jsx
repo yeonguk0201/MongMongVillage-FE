@@ -59,17 +59,17 @@ export const Content = styled.p`
 `;
 
 export const PreviewImgContainer = styled.div`
-  width: 130px;
   height: 130px;
+  display: flex;
 `;
 
 export const PreviewImg = styled.img`
-  width: 100%;
+  width: 130px;
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
   border-radius: 15px;
-  margin: 0;
+  margin: 0 5px;
 `;
 
 export const BottomContainer = styled.div`
@@ -111,6 +111,7 @@ export const StarRating = styled.div`
     color: var(--main-yellow-color);
   }
   .ratingValue {
-    color: lightgray;
+    color: gray;
+    font-size: 14px;
   }
 `;
