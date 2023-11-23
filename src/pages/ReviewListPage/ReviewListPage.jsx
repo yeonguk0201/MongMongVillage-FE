@@ -12,7 +12,7 @@ const ReviewListPage = () => {
 
   useEffect(() => {
     getReviews();
-  }, []);
+  }, [getReviews]);
 
   useEffect(() => {
     if (data) {
@@ -44,7 +44,7 @@ const ReviewListPage = () => {
         {isLoading ? (
           <p>로딩중</p>
         ) : (
-          list.map((item, idx) => <ReviewItem item={item} key={idx} />)
+          list.map((item) => <ReviewItem item={item} key={item._id} />)
         )}
       </ReviewListContainer>
       <ReviewPagintaion page={page} setPage={setPage} />

@@ -3,24 +3,28 @@ import { instance } from '.';
 import { useMutation } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
-const putUserInfo = async (nickname) => {
+const patchUserInfo = async (nickname, introduction) => {
   const token = sessionStorage.getItem('token');
-  const response = await instance.put(`/users/:userId`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    body: {
+  const response = await instance.patch(
+    `/users/:userId`,
+    {
       nickname: nickname,
+      introduction: introduction,
     },
-  });
-  console.log(response);
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
   return response;
 };
 
-export function usePutUserInfo(nickname) {
+export function usePatchUserInfo(nickname, introduction) {
   const navigate = useNavigate();
 
-  return useMutation(() => putUserInfo(nickname), {
+  return useMutation(() => patchUserInfo(nickname, introduction), {
     onSuccess: (response) => {
       navigate(ROUTE.MY_PAGE.link);
     },

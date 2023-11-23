@@ -15,12 +15,19 @@ import {
 import { FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
 import { ReviewWriteRating } from '../../components';
+import { usePostReview } from '../../hooks';
 
 const ReviewWritePage = () => {
   const [rating, setRating] = useState();
   const [title, setTitle] = useState('');
   const [content, setContet] = useState('');
   const [photos, setPhotos] = useState([]);
+
+  const { mutate: postReview } = usePostReview(title, content, rating, photos);
+
+  const createNewPost = () => {
+    postReview();
+  };
 
   const addPhoto = (e) => {
     const file = e.target.files[0];
@@ -90,7 +97,7 @@ const ReviewWritePage = () => {
             style={{ display: 'none' }}
           />
         </div>
-        <SubmitButton>리뷰 등록</SubmitButton>
+        <SubmitButton onClick={createNewPost}>리뷰 등록</SubmitButton>
       </ReviewWriteContainer>
     </Container>
   );

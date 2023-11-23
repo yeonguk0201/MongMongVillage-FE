@@ -59,7 +59,7 @@ export const MyName = styled.p`
   font-size: 20px;
 `;
 
-export const MyDescription = styled.p`
+export const MyIntroduction = styled.p`
   font-size: 16px;
 `;
 
