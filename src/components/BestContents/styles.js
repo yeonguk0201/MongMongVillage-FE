@@ -40,22 +40,36 @@ export const DogCafeItemInfo = styled.article`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const DogCafeListItemTitle = styled.p`
   padding: 20px 0 8px 8px;
   font-size: 23px;
-  width: 100%;
   cursor: pointer;
 `;
 
 export const DogCafeListItemWriter = styled.p`
-  padding: 3px 0 0 8px;
-  font-size: 18px;
+  padding-top: 8px;
+  font-size: 20px;
   cursor: pointer;
+  padding-right: 20px;
 `;
-export const DogCafeListItemDate = styled.p`
-  padding: 3px 0 0 0px;
-  font-size: 15px;
-  color: #585858;
+
+export const LoadingContainer = styled.div`
+  width: 90%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+`;
+
+export const ErrorContainer = styled.div`
+  width: 90%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
 `;

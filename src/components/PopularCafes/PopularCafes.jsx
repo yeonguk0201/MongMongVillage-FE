@@ -6,6 +6,7 @@ import {
   DogCafeListItemImg,
   DogCafeListItemTitle,
   DogCafeListItemRating,
+  DogCafeInfoContainer,
 } from './styles';
 
 import { useNavigate } from 'react-router-dom';
@@ -56,13 +57,16 @@ const PopularCafes = () => {
               alt={`카페사진 ${index}`}
               onClick={linkToCafe}
             />
-            <DogCafeListItemTitle onClick={linkToCafe}>
-              {cafe.cafe}
-            </DogCafeListItemTitle>
-            <DogCafeListItemRating>
-              {' '}
-              평균 별점: {cafe.rating}점
-            </DogCafeListItemRating>
+            <DogCafeInfoContainer>
+              <DogCafeListItemTitle onClick={linkToCafe}>
+                {cafe.cafe}
+              </DogCafeListItemTitle>
+              <DogCafeListItemRating>
+                {' '}
+                <p style={{ color: 'black', display: 'inline' }}>평균 별점: </p>
+                {'★'.repeat(cafe.rating) + '☆'.repeat(5 - cafe.rating)}
+              </DogCafeListItemRating>
+            </DogCafeInfoContainer>
           </DogCafeListItem>
         ))}
       </DogCafeList>
