@@ -23,13 +23,6 @@ export const StarRatingContainer = styled.div`
   display: flex;
 `;
 
-export const StarRating = styled.div`
-  span {
-    margin: 0 5px;
-    color: var(--main-yellow-color);
-  }
-`;
-
 export const TitleInputContainer = styled.div`
   padding-bottom: 30px;
   display: flex;

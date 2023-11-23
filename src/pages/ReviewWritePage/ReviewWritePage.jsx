@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Container,
   ReviewWriteContainer,
@@ -12,9 +13,10 @@ import {
   StarRatingContainer,
 } from './styles';
 import { FaCamera } from 'react-icons/fa';
+import { ReviewWriteRating } from '../../components';
 
 const ReviewWritePage = () => {
-  const rating = 4;
+  const [rating, setRating] = useState(5);
 
   return (
     <Container>
@@ -22,10 +24,7 @@ const ReviewWritePage = () => {
         <Text className="cafeName">몽몽 애견 카페</Text>
         <StarRatingContainer>
           <Text>별점</Text>
-          <StarRating>
-            <span>{'★'.repeat(rating) + '☆'.repeat(5 - rating)}</span>
-            {`(${rating})`}
-          </StarRating>
+          <ReviewWriteRating rating={rating} setRating={setRating} />
         </StarRatingContainer>
         <TitleInputContainer>
           <Text>제목</Text>
