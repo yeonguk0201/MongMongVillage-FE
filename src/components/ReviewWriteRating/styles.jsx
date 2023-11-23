@@ -38,5 +38,10 @@ export const StarContainer = styled.fieldset`
 
 export const StarValue = styled.span`
   margin: 0 10px;
-  font-size: 20px;
+  font-size: 18px;
+`;
+
+export const Info = styled.span`
+  color: gray;
+  margin: 0 10px;
 `;

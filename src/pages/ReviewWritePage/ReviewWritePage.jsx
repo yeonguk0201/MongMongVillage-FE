@@ -2,49 +2,93 @@ import { useState } from 'react';
 import {
   Container,
   ReviewWriteContainer,
-  StarRating,
   Text,
   InputImg,
   ReviewTitleInput,
-  TitleInputContainer,
+  InputContainer,
   ReviewText,
   InputImgButton,
   SubmitButton,
-  StarRatingContainer,
+  CafeName,
 } from './styles';
-import { FaCamera } from 'react-icons/fa';
+
+import { FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaXmark } from 'react-icons/fa6';
 import { ReviewWriteRating } from '../../components';
 
 const ReviewWritePage = () => {
-  const [rating, setRating] = useState(5);
+  const [rating, setRating] = useState();
+  const [title, setTitle] = useState('');
+  const [content, setContet] = useState('');
+  const [photos, setPhotos] = useState([]);
+
+  const addPhoto = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+      const newPhotoUrl = URL.createObjectURL(file);
+
+      setPhotos((prevPhotos) => [...prevPhotos, newPhotoUrl]);
+    }
+  };
+
+  const deletePhoto = (indexToRemove) => {
+    setPhotos((prevPhotos) =>
+      prevPhotos.filter((_, index) => index !== indexToRemove),
+    );
+  };
 
   return (
     <Container>
       <ReviewWriteContainer>
-        <Text className="cafeName">몽몽 애견 카페</Text>
-        <StarRatingContainer>
+        <CafeName>
+          <FaMapMarkerAlt size={'20px'} />
+          몽몽 애견 카페
+        </CafeName>
+        <InputContainer>
           <Text>별점</Text>
           <ReviewWriteRating rating={rating} setRating={setRating} />
-        </StarRatingContainer>
-        <TitleInputContainer>
+        </InputContainer>
+        <InputContainer>
           <Text>제목</Text>
-          <ReviewTitleInput type="text" placeholder="제목을 입력해주세요" />
-        </TitleInputContainer>
-        <div>
-          <ReviewText
-            name="writeReview"
-            cols="30"
-            rows="10"
-            placeholder="5자 이상의 글 내용을 입력해주세요"
+          <ReviewTitleInput
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="제목을 입력해주세요"
           />
-        </div>
+        </InputContainer>
+        <ReviewText
+          value={content}
+          onChange={(e) => setContet(e.target.value)}
+          placeholder="5자 이상의 글 내용을 입력해주세요"
+        />
         <Text>사진</Text>
-        <InputImg></InputImg>
-        <div className="inputImgButtonCnt">
-          <InputImgButton>
+        <InputImg>
+          {photos.map((photoUrl, index) => (
+            <>
+              <img key={index} src={photoUrl} alt={` ${index}`} />
+              <FaXmark
+                size={'20px'}
+                color="red"
+                onClick={() => deletePhoto(index)}
+              />
+            </>
+          ))}
+        </InputImg>
+        <div>
+          <InputImgButton className="input-file-button" htmlFor="input-file">
             <span>사진첨부</span>
-            <FaCamera color="#1e1e25" size={'20px'} />
+            <FaCamera size={'20px'} />
           </InputImgButton>
+          <input
+            type="file"
+            id="input-file"
+            onChange={addPhoto}
+            style={{ display: 'none' }}
+          />
         </div>
         <SubmitButton>리뷰 등록</SubmitButton>
       </ReviewWriteContainer>

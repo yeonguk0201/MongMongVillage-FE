@@ -1,4 +1,4 @@
-import { Container, StarContainer, StarValue } from './styles';
+import { Container, Info, StarContainer, StarValue } from './styles';
 
 const ReviewWriteRating = ({ rating, setRating }) => {
   const handleChange = (e) => {
@@ -9,7 +9,7 @@ const ReviewWriteRating = ({ rating, setRating }) => {
     <Container>
       <StarContainer>
         {[...Array(5)].map((_, i) => (
-          <>
+          <span key={i}>
             <input
               type="radio"
               name="rating"
@@ -24,10 +24,14 @@ const ReviewWriteRating = ({ rating, setRating }) => {
             >
               ⭐️
             </label>
-          </>
+          </span>
         ))}
       </StarContainer>
-      <StarValue>{`(${rating})`}</StarValue>
+      {rating ? (
+        <StarValue>{`(${rating})`}</StarValue>
+      ) : (
+        <Info>별점을 선택해주세요.</Info>
+      )}
     </Container>
   );
 };
