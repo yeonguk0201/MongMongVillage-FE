@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const FooterContainer = styled.div`
-  width: 70%;
+  width: 90%;
   margin: auto;
 `;
 
@@ -93,7 +93,6 @@ export const SnsContainer = styled.section`
   grid-gap: 23px;
   justify-content: center;
   align-content: center;
-}
 `;
 
 export const SnsIcon = styled.article`

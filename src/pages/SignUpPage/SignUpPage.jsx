@@ -7,9 +7,9 @@ import {
   Container,
   InputContainer,
   SubmitButton,
-  Title,
   Text,
 } from './styles';
+import { Title } from '../../commonStyles';
 import {
   InputStatus,
   EmailValidCheck,

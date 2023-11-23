@@ -11,6 +11,7 @@ import {
 import { ROUTE } from '../../routes/Routes';
 import { Container } from './CommunityPage.styles';
 import { CommunityCategory } from '../../libs';
+import { Title } from '../../commonStyles';
 
 // 카테고리 객체
 const CATEGORY_DIC = CommunityCategory;
@@ -139,6 +140,7 @@ const CommunityPage = () => {
 
   return (
     <Container>
+      <Title>커뮤니티</Title>
       <CommunityNav
         category={filteredCategory}
         handleNavClick={handleNavClick}

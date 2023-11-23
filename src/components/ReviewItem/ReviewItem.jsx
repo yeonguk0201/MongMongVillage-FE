@@ -17,14 +17,21 @@ import { ROUTE } from '../../routes/Routes';
 
 const ReviewItem = ({ item }) => {
   const navigate = useNavigate();
+
+  const linkToDetailPage = () => {
+    navigate(ROUTE.REVIEW_DETAIL_PAGE.link + `/${item._id}`);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <Container>
       <CafeName onClick={() => alert('cafe name')}>
         [{'여기에 카페이름'}]
       </CafeName>
-      <MainContainer
-        onClick={() => navigate(ROUTE.REVIEW_DETAIL_PAGE.link + `/${item._id}`)}
-      >
+      <MainContainer onClick={linkToDetailPage}>
         <RightContainer>
           <ReviewTitle>{item.title}</ReviewTitle>
           <Content>{item.content}</Content>

@@ -9,18 +9,6 @@ export const Container = styled.div`
   margin: 50px auto;
 `;
 
-export const Title = styled.h1`
-  font-size: 26px;
-  text-align: center;
-  margin: 30px 0;
-  padding: 5px;
-  background-image: linear-gradient(
-    to top,
-    var(--main-yellow-color) 40%,
-    transparent 30%
-  );
-`;
-
 export const CheckButton = styled.button`
   border: none;
   background-color: lightgray;

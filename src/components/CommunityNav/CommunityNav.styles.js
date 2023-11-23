@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CommunityNavContainer = styled.div`
   display: flex;
-  margin-top: 100px;
+  margin-top: 30px;
   border-bottom: 2px solid black;
   padding-bottom: 24px;
 
