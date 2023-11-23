@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, ReviewListContainer } from './styels';
+import { Container, ReviewListContainer, Title } from './styels';
 import { ReviewItem, ReviewListSort, ReviewPagintaion } from '../../components';
 import { useGetReviews } from '../../hooks';
 
@@ -38,6 +38,7 @@ const ReviewListPage = () => {
 
   return (
     <Container>
+      <Title>리뷰 모아보기</Title>
       <ReviewListContainer>
         <ReviewListSort handleSorting={handleSorting} />
         {isLoading ? (
