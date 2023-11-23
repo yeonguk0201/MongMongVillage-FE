@@ -13,3 +13,4 @@ export * from './postLogin';
 export * from './getUserInfo';
 export * from './deleteUser';
 export * from './putUserInfo';
+export * from './getReviews';
