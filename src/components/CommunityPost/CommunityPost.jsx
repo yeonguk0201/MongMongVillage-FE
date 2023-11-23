@@ -7,15 +7,21 @@ import {
   Content,
 } from './CommunityPost.styles';
 
-const CommunityPost = ({ selectedPost }) => {
+const CommunityPost = ({ selectedPost, post }) => {
+  console.log('selectedPost : ', selectedPost);
+  // console.log('post : ', post);
   return (
     <PostContainer>
       <Title>
         <Category>{selectedPost.category}</Category>
-        {selectedPost.title}
+        <p>{selectedPost.title}</p>
       </Title>
       <MainImg>
-        <img src={selectedPost.mainImg} alt="post_image" />
+        {selectedPost?.images.length > 0 ? (
+          <img src={selectedPost?.images[0]} alt="ContentImg" />
+        ) : (
+          <></>
+        )}
       </MainImg>
       <Content>{selectedPost.content}</Content>
     </PostContainer>

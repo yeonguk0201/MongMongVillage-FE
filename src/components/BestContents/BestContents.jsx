@@ -72,7 +72,7 @@ const BestContents = () => {
                   {content.title}
                 </DogCafeListItemTitle>
                 <DogCafeListItemWriter onClick={linkToUser}>
-                  {content.user_id.nickname}
+                  {/* {content.user_id.nickname} */}
                 </DogCafeListItemWriter>
               </DogCafeItemInfo>
             </DogCafeListItem>
