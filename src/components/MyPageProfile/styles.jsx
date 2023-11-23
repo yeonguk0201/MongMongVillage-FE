@@ -7,12 +7,17 @@ export const ProfileContainer = styled.div`
   align-content: center;
   align-items: center;
   button {
-    border: none;
-    cursor: pointer;
     padding: 10px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
+  }
+  .photo {
+    #file-upload-button {
+      border: none;
+      background-color: aqua;
+    }
+    border: none;
   }
 `;
 
@@ -29,9 +34,12 @@ export const ProfileImgItem = styled.img`
   object-fit: cover;
 `;
 
-export const ImgEditButton = styled.button`
+export const ImgEditButton = styled.label`
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
   background-color: var(--main-yellow-color);
-  margin: 10px;
+  margin: 20px 0;
   svg {
     margin: 0 3px;
   }
@@ -68,20 +76,25 @@ export const MyInfoEditContainer = styled.div`
 
 export const MyInfoEditItemContainer = styled.div`
   display: flex;
-  margin: 10px;
+  margin: 10px 0;
   align-items: center;
   label {
     margin-right: 10px;
-    width: 70px;
+    width: 80px;
+    text-align: center;
+  }
+  input {
+    width: 50%;
   }
   input,
   textarea {
     border: none;
     border-bottom: 1px lightgray solid;
-    padding: 10px;
+    padding: 15px;
   }
   textarea {
-    height: 70px;
+    height: 150px;
+    width: 75%;
   }
 `;
 
@@ -100,4 +113,16 @@ export const WithdrawText = styled.p`
   color: gray;
   font-size: 12px;
   margin: 5px;
+`;
+
+export const CheckButton = styled.button`
+  background-color: lightgray;
+  border-radius: 20px;
+  margin-left: 10px;
+  width: 20%;
+  padding: 10px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;

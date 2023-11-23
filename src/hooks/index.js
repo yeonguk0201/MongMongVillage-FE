@@ -10,3 +10,7 @@ export * from './getDetailBoard';
 export * from './getCommunitySearch';
 export * from './getBestContents';
 export * from './postLogin';
+export * from './getUserInfo';
+export * from './deleteUser';
+export * from './putUserInfo';
+export * from './getReviews';

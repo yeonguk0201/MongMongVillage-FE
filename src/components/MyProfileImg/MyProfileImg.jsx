@@ -1,15 +1,10 @@
 import { ProfileImgContainer, ProfileImgItem } from './styles';
-import { useState } from 'react';
 
-const MyProfileImg = () => {
-  const [profileImg] = useState(
-    'https://image.utoimage.com/preview/cp872722/2022/12/202212008462_500.jpg',
-  );
-
+const MyProfileImg = ({ imgSrc }) => {
   return (
     <>
       <ProfileImgContainer>
-        <ProfileImgItem src={profileImg} />
+        <ProfileImgItem src={imgSrc} />
       </ProfileImgContainer>
     </>
   );
