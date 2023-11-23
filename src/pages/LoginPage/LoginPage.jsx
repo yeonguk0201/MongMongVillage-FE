@@ -8,12 +8,14 @@ import {
   TextButtonContainer,
   SubmitButton,
   SNSButtonContainer,
+  AuthInputContainer,
 } from './styles';
 import { Title } from '../../commonStyles';
 import { FcGoogle } from 'react-icons/fc';
 import { SiNaver } from 'react-icons/si';
 import { ROUTE } from '../../routes/Routes';
 import { usePostLogin } from '../../hooks';
+import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -40,23 +42,32 @@ const LoginPage = () => {
       <Img src={`${process.env.PUBLIC_URL}/logo.png`} />
       <Title>로그인</Title>
 
-      <AuthInput
-        placeholder="아이디(이메일)"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <AuthInput
-        placeholder="비밀번호"
-        value={password}
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <AuthInputContainer>
+        <AuthInput
+          placeholder="아이디(이메일)"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </AuthInputContainer>
+
+      <AuthInputContainer>
+        <AuthInput
+          placeholder="비밀번호"
+          value={password}
+          type={hidePassword ? 'password' : 'text'}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {hidePassword ? (
+          <PiEyeBold onClick={() => setHidePassword(false)} />
+        ) : (
+          <PiEyeClosedBold onClick={() => setHidePassword(true)} />
+        )}
+      </AuthInputContainer>
 
       <SubmitButton onClick={submitLogin}>로그인</SubmitButton>
 
       <TextButtonContainer>
         <button>비밀번호 찾기</button>
-        <span>|</span>
         <button onClick={linkToSignup}>회원가입</button>
       </TextButtonContainer>
       <SNSButtonContainer>

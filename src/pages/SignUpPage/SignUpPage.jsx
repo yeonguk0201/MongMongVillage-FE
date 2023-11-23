@@ -22,8 +22,7 @@ import {
 } from '../../libs';
 import { usePostSignUp } from '../../hooks';
 
-import { PiEyeBold } from 'react-icons/pi';
-import { PiEyeClosedBold } from 'react-icons/pi';
+import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
 
 const SignUpPage = () => {
   const [email, setEmail] = useState('');
