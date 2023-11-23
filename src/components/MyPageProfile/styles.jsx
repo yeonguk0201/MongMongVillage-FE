@@ -7,12 +7,17 @@ export const ProfileContainer = styled.div`
   align-content: center;
   align-items: center;
   button {
-    border: none;
-    cursor: pointer;
     padding: 10px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
+  }
+  .photo {
+    #file-upload-button {
+      border: none;
+      background-color: aqua;
+    }
+    border: none;
   }
 `;
 
@@ -29,7 +34,10 @@ export const ProfileImgItem = styled.img`
   object-fit: cover;
 `;
 
-export const ImgEditButton = styled.button`
+export const ImgEditButton = styled.label`
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
   background-color: var(--main-yellow-color);
   margin: 20px 0;
   svg {

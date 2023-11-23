@@ -58,14 +58,14 @@ const MyPageProfile = ({ edit }) => {
     }
   };
 
-  const [photoEdit, setPhotoEdit] = useState(false);
+  /* 사용자 정보에서 사진 불러오기 추가할것 -> 없으면 기본 이미지(user.png)로 */
 
   const [preview, setPreview] = useState(
     `${process.env.PUBLIC_URL}/imges/user.png`,
   );
 
   const handleImgFile = (e) => {
-    const file = document.querySelector('input[type="file"]').files[0];
+    const file = e.target.files[0];
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
@@ -82,19 +82,25 @@ const MyPageProfile = ({ edit }) => {
     }
   };
 
+  const checkDuplicateNickname = () => {
+    // 중복체크 함수 추가할 것
+  };
+
   return (
     <ProfileContainer>
       <MyProfileImg imgSrc={preview} />
       {edit && (
         <>
-          <ImgEditButton onClick={() => setPhotoEdit(!photoEdit)}>
+          <ImgEditButton className="input-file-button" for="input-file">
             사진 수정
             <FaPencil />
           </ImgEditButton>
-
-          {photoEdit && (
-            <input type="file" onChange={handleImgFile} name="profile_img" />
-          )}
+          <input
+            type="file"
+            id="input-file"
+            style={{ display: 'none' }}
+            onChange={handleImgFile}
+          />
         </>
       )}
 
@@ -113,7 +119,9 @@ const MyPageProfile = ({ edit }) => {
                   })
                 }
               />
-              <CheckButton>중복체크</CheckButton>
+              <CheckButton onClick={checkDuplicateNickname}>
+                중복체크
+              </CheckButton>
             </MyInfoEditItemContainer>
             <MyInfoEditItemContainer>
               <label>소개</label>

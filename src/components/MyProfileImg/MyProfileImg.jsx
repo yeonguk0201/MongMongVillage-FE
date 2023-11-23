@@ -1,5 +1,4 @@
 import { ProfileImgContainer, ProfileImgItem } from './styles';
-import { useState } from 'react';
 
 const MyProfileImg = ({ imgSrc }) => {
   return (
