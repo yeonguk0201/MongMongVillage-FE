@@ -75,9 +75,10 @@ export const ReviewDate = styled.p`
 
 export const CafeName = styled.p`
   display: flex;
+  padding: 10px;
   align-items: center;
   font-size: 26px;
-  padding: 10px;
+  font-weight: bold;
   svg {
     margin: 0 5px;
   }
@@ -125,8 +126,8 @@ export const Button = styled.button`
 
 export const AnotherReviewsContainer = styled.div`
   display: flex;
-
   width: 1280px;
   flex-direction: column;
   margin: 0 auto;
+  padding-top: 20px;
 `;

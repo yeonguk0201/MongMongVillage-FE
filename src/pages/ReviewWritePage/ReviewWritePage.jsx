@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   Container,
   ReviewWriteContainer,
@@ -15,20 +16,47 @@ import {
 import { FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
 import { ReviewWriteRating } from '../../components';
-import { usePostReview } from '../../hooks';
+import { usePostReview, usePutReview } from '../../hooks';
 
 const ReviewWritePage = () => {
+  const [prevReview, setPrevReview] = useState();
+  const [cafeName, setCafeName] = useState('엘리스 애견카페');
   const [rating, setRating] = useState();
   const [title, setTitle] = useState('');
   const [content, setContet] = useState('');
   const [photos, setPhotos] = useState([]);
-
   const [images, setImages] = useState([]);
 
+  const location = useLocation();
+  const { state } = location;
+
+  useEffect(() => {
+    if (state) {
+      const { prevReview } = state;
+      setPrevReview(prevReview);
+      setTitle(prevReview.title);
+      setContet(prevReview.content);
+      setPhotos(prevReview.images);
+      setImages(prevReview.images);
+      setRating(prevReview.rating);
+    }
+  }, [state]);
+
   const { mutate: postReview } = usePostReview(title, content, rating, images);
+  const { mutate: putReview } = usePutReview(
+    state ? state.prevReview._id : '',
+    title,
+    content,
+    rating,
+    images,
+  );
 
   const createNewPost = () => {
     postReview();
+  };
+
+  const updatePost = () => {
+    putReview();
   };
 
   const addPhoto = (e) => {
@@ -38,7 +66,7 @@ const ReviewWritePage = () => {
       const newPhotoUrl = URL.createObjectURL(file);
 
       setImages((prevImages) => [...prevImages, file]); // 실제 파일도 상태에 저장
-      setPhotos((prevPhotos) => [...prevPhotos, newPhotoUrl]);
+      setPhotos((prevPhotos) => [...prevPhotos, newPhotoUrl]); // 사용자에게 보여줄 사진
     }
   };
 
@@ -53,7 +81,7 @@ const ReviewWritePage = () => {
       <ReviewWriteContainer>
         <CafeName>
           <FaMapMarkerAlt size={'20px'} />
-          몽몽 애견 카페
+          {cafeName}
         </CafeName>
         <InputContainer>
           <Text>별점</Text>
@@ -98,7 +126,11 @@ const ReviewWritePage = () => {
             style={{ display: 'none' }}
           />
         </div>
-        <SubmitButton onClick={createNewPost}>리뷰 등록</SubmitButton>
+        {prevReview ? (
+          <SubmitButton onClick={updatePost}>리뷰 수정</SubmitButton>
+        ) : (
+          <SubmitButton onClick={createNewPost}>리뷰 등록</SubmitButton>
+        )}
       </ReviewWriteContainer>
     </Container>
   );

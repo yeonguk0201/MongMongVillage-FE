@@ -20,18 +20,22 @@ import {
   AnotherReviewsContainer,
 } from './styels';
 import { useGetReview } from '../../hooks';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Kakao, ReviewItem } from '../../components';
 
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Title } from '../../commonStyles';
+import { ROUTE } from '../../routes/Routes';
 
 const ReviewDetailPage = () => {
+  const navigate = useNavigate();
+
   const [review, setReview] = useState({
     title: '',
     content: '',
     createdAt: new Date(),
     rating: 0,
+    cafeName: '',
     images: [],
   });
 
@@ -44,9 +48,9 @@ const ReviewDetailPage = () => {
   }, [getReview, id]);
 
   useEffect(() => {
-    console.log(reviewData);
     if (reviewData) {
       setReview({
+        cafeName: '앨리스 애견카페',
         title: reviewData.title,
         content: reviewData.content,
         createdAt: reviewData.createdAt,
@@ -54,9 +58,14 @@ const ReviewDetailPage = () => {
         images: reviewData.images,
       });
     }
-  }, [reviewData]);
+  }, [review.cafeName, reviewData]);
 
-  console.log(review);
+  const linkToReviewEditPage = () => {
+    navigate(ROUTE.REVIEW_WRITE_PAGE.link, {
+      state: { prevReview: reviewData },
+    });
+  };
+
   return (
     !isLoading &&
     review && (
@@ -87,7 +96,7 @@ const ReviewDetailPage = () => {
             조절, 검색어창 제거 예정
             <CafeName>
               <FaMapMarkerAlt size={'24px'} />
-              몽몽 애견카페
+              {review.cafeName}
             </CafeName>
             <Kakao />
           </MapContainer>
@@ -101,16 +110,16 @@ const ReviewDetailPage = () => {
             <MainText>{review.content}</MainText>
           </ReviewMainSection>
           <ButtonContainer>
-            <Button>수정</Button>
+            <Button onClick={linkToReviewEditPage}>수정</Button>
             <Button>삭제</Button>
           </ButtonContainer>
         </ReviewDetailContainer>
         <AnotherReviewsContainer>
-          <Title>{'엘리스 애견카페'}의 리뷰 리스트</Title>
-          <ReviewItem item={review} />
-          <ReviewItem item={review} />
-          <ReviewItem item={review} />
-          <ReviewItem item={review} />
+          <Title>"{review.cafeName}"의 리뷰 리스트</Title>
+          <ReviewItem item={reviewData} />
+          <ReviewItem item={reviewData} />
+          <ReviewItem item={reviewData} />
+          <ReviewItem item={reviewData} />
         </AnotherReviewsContainer>
       </>
     )
