@@ -23,14 +23,9 @@ const ReviewWritePage = () => {
   const [content, setContet] = useState('');
   const [photos, setPhotos] = useState([]);
 
-  const [imageFiles, setImageFiles] = useState();
+  const [images, setImages] = useState([]);
 
-  const { mutate: postReview } = usePostReview(
-    title,
-    content,
-    rating,
-    imageFiles,
-  );
+  const { mutate: postReview } = usePostReview(title, content, rating, images);
 
   const createNewPost = () => {
     postReview();
@@ -42,7 +37,7 @@ const ReviewWritePage = () => {
     if (file) {
       const newPhotoUrl = URL.createObjectURL(file);
 
-      setImageFiles(file); // 실제 파일도 상태에 저장
+      setImages((prevImages) => [...prevImages, file]); // 실제 파일도 상태에 저장
       setPhotos((prevPhotos) => [...prevPhotos, newPhotoUrl]);
     }
   };

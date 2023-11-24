@@ -14,6 +14,7 @@ import {
   MainContainer,
 } from './styles';
 import { ROUTE } from '../../routes/Routes';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const ReviewItem = ({ item }) => {
   const navigate = useNavigate();
@@ -29,7 +30,8 @@ const ReviewItem = ({ item }) => {
   return (
     <Container>
       <CafeName onClick={() => alert('cafe name')}>
-        [{'여기에 카페이름'}]
+        <FaMapMarkerAlt size={'18px'} />
+        {'엘리스 애견카페'}
       </CafeName>
       <MainContainer onClick={linkToDetailPage}>
         <RightContainer>

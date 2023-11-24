@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 const getReviews = async () => {
   const response = await instance.get(`/reviews`);
 
-  return response.data;
+  return response.data.data;
 };
 
 export function useGetReviews() {
