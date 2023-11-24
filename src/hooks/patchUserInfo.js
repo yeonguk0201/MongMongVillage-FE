@@ -8,8 +8,8 @@ const patchUserInfo = async (nickname, introduction) => {
   const response = await instance.patch(
     `/users/:userId`,
     {
-      nickname: nickname,
-      introduction: introduction,
+      nickname,
+      introduction,
     },
     {
       headers: {

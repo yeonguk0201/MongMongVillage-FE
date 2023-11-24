@@ -23,7 +23,14 @@ const ReviewWritePage = () => {
   const [content, setContet] = useState('');
   const [photos, setPhotos] = useState([]);
 
-  const { mutate: postReview } = usePostReview(title, content, rating, photos);
+  const [imageFiles, setImageFiles] = useState();
+
+  const { mutate: postReview } = usePostReview(
+    title,
+    content,
+    rating,
+    imageFiles,
+  );
 
   const createNewPost = () => {
     postReview();
@@ -33,10 +40,9 @@ const ReviewWritePage = () => {
     const file = e.target.files[0];
 
     if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
       const newPhotoUrl = URL.createObjectURL(file);
 
+      setImageFiles(file); // 실제 파일도 상태에 저장
       setPhotos((prevPhotos) => [...prevPhotos, newPhotoUrl]);
     }
   };
@@ -76,7 +82,7 @@ const ReviewWritePage = () => {
         <InputImg>
           {photos.map((photoUrl, index) => (
             <>
-              <img key={index} src={photoUrl} alt={` ${index}`} />
+              <img key={`review${index}`} src={photoUrl} alt={`${index}`} />
               <FaXmark
                 size={'20px'}
                 color="red"
