@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const deleteUser = async () => {
-  const token = sessionStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const response = await instance.delete(`/users/:userId`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -19,8 +19,7 @@ export function useDeleteUser() {
 
   return useMutation(() => deleteUser(), {
     onSuccess: (response) => {
-      console.log(response);
-      sessionStorage.removeItem('token');
+      localStorage.removeItem('token');
       alert('회원 탈퇴 되었습니다.');
       navigate(ROUTE.MAIN_PAGE.link);
     },

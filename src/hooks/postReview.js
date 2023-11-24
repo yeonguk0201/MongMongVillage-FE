@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const postReview = async (title, content, rating, imageFile) => {
-  const token = sessionStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   const formData = new FormData();
   formData.append('image', imageFile);
