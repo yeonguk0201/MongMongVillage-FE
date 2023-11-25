@@ -7,9 +7,12 @@ export const Container = styled.div`
 
 export const CheckboxContainer = styled.div`
   display: flex;
+  cursor: pointer;
 `;
 
-export const Checkbox = styled.input``;
+export const Checkbox = styled.input`
+  cursor: pointer;
+`;
 
 export const CheckboxText = styled.p`
   margin: 10px;

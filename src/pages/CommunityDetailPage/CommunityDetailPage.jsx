@@ -44,6 +44,7 @@ const CommunityDetailPage = () => {
 
   useEffect(() => {
     if (postData) {
+      console.log('post', postData);
       setPost(postData);
       setFilteredCategory(postData.board.category);
       setSelectedPost(postData);

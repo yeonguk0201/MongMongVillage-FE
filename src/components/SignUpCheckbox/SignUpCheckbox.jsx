@@ -51,7 +51,7 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
 
   return (
     <Container>
-      <CheckboxContainer>
+      <CheckboxContainer onClick={handleAllCheckedChange}>
         <Checkbox
           type="checkbox"
           checked={allChecked}
@@ -59,7 +59,9 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
         />
         <CheckboxText>모두 동의</CheckboxText>
       </CheckboxContainer>
-      <CheckboxContainer>
+      <CheckboxContainer
+        onClick={() => handleBottomCheckboxChange(setLocationChecked)}
+      >
         <Space />
         <Checkbox
           type="checkbox"
@@ -68,7 +70,9 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
         />
         <CheckboxText>위치기반 서비스 이용 동의</CheckboxText>
       </CheckboxContainer>
-      <CheckboxContainer>
+      <CheckboxContainer
+        onClick={() => handleBottomCheckboxChange(setAgeChecked)}
+      >
         <Space />
         <Checkbox
           type="checkbox"
