@@ -2,11 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  width: 50%;
+  width: 25%;
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
   margin: 50px auto;
+  box-shadow: 0px 0px 27px -5px gray;
+  margin-bottom: 88px;
+  margin-top: 88px;
+  padding: 34px 67px;
+  border: 2px solid #ffd100;
+  border-radius: 28px;
 `;
 
 export const CheckButton = styled.button`
@@ -65,4 +71,9 @@ export const Text = styled.p`
   font-size: 12px;
   margin: 10px;
   color: ${(props) => (props.success === 'true' ? 'green' : 'red')};
+`;
+
+export const Img = styled.img`
+  width: 200px;
+  margin: 0;
 `;

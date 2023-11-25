@@ -8,6 +8,7 @@ import {
   InputContainer,
   SubmitButton,
   Text,
+  Img,
 } from './styles';
 import { Title } from '../../commonStyles';
 import {
@@ -68,6 +69,7 @@ const SignUpPage = () => {
 
   return (
     <Container>
+      <Img src={`${process.env.PUBLIC_URL}/logo.png`} />
       <Title>회원가입</Title>
       <InputContainer>
         <AuthInputContainer border="none">

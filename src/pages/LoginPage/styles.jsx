@@ -6,6 +6,12 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: auto;
+  box-shadow: 0px 0px 27px -5px gray;
+  margin-bottom: 88px;
+  margin-top: 88px;
+  padding: 34px 67px;
+  border: 2px solid #ffd100;
+  border-radius: 28px;
 `;
 
 export const Img = styled.img`
