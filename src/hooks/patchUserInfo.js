@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const patchUserInfo = async (nickname, introduction) => {
-  const token = sessionStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const response = await instance.patch(
     `/users/:userId`,
     {

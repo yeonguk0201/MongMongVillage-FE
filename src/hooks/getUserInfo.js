@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const getUserInfo = async () => {
-  const token = sessionStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const response = await instance.get(`/users/:userId`, {
     headers: {
       Authorization: `Bearer ${token}`,

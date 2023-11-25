@@ -32,11 +32,16 @@ export const ReviewTitle = styled.p`
 export const CafeName = styled.p`
   font-weight: bold;
   font-size: 16px;
-  padding: 10px 0;
   color: gray;
   cursor: pointer;
+  display: flex;
+  padding: 5px 0;
+  align-items: center;
   &:hover {
     opacity: 0.5;
+  }
+  svg {
+    margin-right: 5px;
   }
 `;
 

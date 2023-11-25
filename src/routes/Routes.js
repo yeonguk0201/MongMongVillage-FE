@@ -10,7 +10,7 @@ import {
   CafeDetailPage,
   CafeMapPage,
   ReviewListPage,
-  ReviewDetail,
+  ReviewDetailPage,
   CommunityDetailPage,
   ReviewWritePage,
   EditPostPage,
@@ -86,7 +86,7 @@ export const ROUTE = {
   REVIEW_DETAIL_PAGE: {
     path: '/review/detail/:id',
     link: '/review/detail',
-    element: <ReviewDetail />,
+    element: <ReviewDetailPage />,
   },
 
   MY_INFO_EDIT_PAGE: {

@@ -26,6 +26,7 @@ export function useGetDetailBoard(id) {
       return data;
     },
     onError: (error) => {
+      console.log('dho', error);
       console.error('Failed to fetch Detail Board:', error.message);
     },
   });
