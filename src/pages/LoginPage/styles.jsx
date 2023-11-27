@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 350px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
+  margin: 100px auto;
   box-shadow: 0px 0px 27px -5px gray;
-  margin-bottom: 88px;
-  margin-top: 88px;
-  padding: 34px 67px;
-  border: 2px solid #ffd100;
-  border-radius: 28px;
+  padding: 50px;
+  border: 2px solid var(--main-yellow-color);
+  border-radius: 30px;
 `;
 
 export const Img = styled.img`

@@ -2,17 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  width: 25%;
-  margin: 0 auto;
+  width: 400px;
+  margin: 100px auto;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto;
   box-shadow: 0px 0px 27px -5px gray;
-  margin-bottom: 88px;
-  margin-top: 88px;
-  padding: 34px 67px;
-  border: 2px solid #ffd100;
-  border-radius: 28px;
+  padding: 50px;
+  border: 2px solid var(--main-yellow-color);
+  border-radius: 30px;
 `;
 
 export const CheckButton = styled.button`

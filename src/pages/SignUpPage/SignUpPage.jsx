@@ -26,41 +26,42 @@ import { usePostSignUp } from '../../hooks';
 import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
 
 const SignUpPage = () => {
-  const [email, setEmail] = useState('');
-  const [nickName, setNickName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [signUpInfo, setSignUpInfo] = useState({
+    email: '',
+    nickName: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-  const [emailInputStatus, setEmailInputStatus] = useState(InputStatus.DEFAULT);
-  const [passwordInputStatus, setPasswordInputStatus] = useState(
-    InputStatus.DEFAULT,
-  );
-  const [nicknameInputStatus, setNicknameInputStatus] = useState(
-    InputStatus.DEFAULT,
-  );
-  const [confirmPasswordInputStatus, setConfirmPasswordInputStatus] = useState(
-    InputStatus.DEFAULT,
-  );
-
-  const [checkboxInputStatus, setCheckboxInputStatus] = useState(
-    InputStatus.DEFAULT,
-  );
+  const [signUpStatus, setSignUpStatus] = useState({
+    emailInputStatus: InputStatus.DEFAULT,
+    nicknameInputStatus: InputStatus.DEFAULT,
+    passwordInputStatus: InputStatus.DEFAULT,
+    confirmPasswordInputStatus: InputStatus.DEFAULT,
+    checkboxInputStatus: InputStatus.DEFAULT,
+  });
 
   const [hidePassword, setHidePassword] = useState(true);
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
-  const { mutate } = usePostSignUp(email, password, nickName);
+  const { mutate } = usePostSignUp(
+    signUpInfo.email,
+    signUpInfo.password,
+    signUpInfo.nickName,
+  );
 
   const submitSignUp = () => {
-    if (emailInputStatus !== InputStatus.SUCCESS) {
+    if (signUpStatus.emailInputStatus !== InputStatus.SUCCESS) {
       alert('이메일을 다시 확인해주세요.');
-    } else if (passwordInputStatus !== InputStatus.SUCCESS) {
-      alert('비밀번호 형식을 다시 확인해주세요.');
-    } else if (confirmPasswordInputStatus !== InputStatus.SUCCESS) {
+    } else if (signUpStatus.passwordInputStatus !== InputStatus.SUCCESS) {
+      alert('비밀번호를 다시 확인해주세요.');
+    } else if (
+      signUpStatus.confirmPasswordInputStatus !== InputStatus.SUCCESS
+    ) {
       alert('비밀번호가 일치하지 않습니다. ');
-    } else if (nicknameInputStatus !== InputStatus.SUCCESS) {
+    } else if (signUpStatus.nicknameInputStatus !== InputStatus.SUCCESS) {
       alert('닉네임을 다시 확인해주세요.');
-    } else if (checkboxInputStatus !== InputStatus.SUCCESS) {
+    } else if (signUpStatus.checkboxInputStatus !== InputStatus.SUCCESS) {
       alert('약관에 동의해주세요.');
     } else {
       mutate();
@@ -68,24 +69,45 @@ const SignUpPage = () => {
   };
 
   useEffect(() => {
-    setEmailInputStatus(EmailValidCheck(email, emailInputStatus));
+    setSignUpStatus({
+      ...signUpStatus,
+      emailInputStatus: EmailValidCheck(
+        signUpInfo.email,
+        signUpStatus.emailInputStatus,
+      ),
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email]);
+  }, [signUpInfo.email]);
 
   useEffect(() => {
-    setNicknameInputStatus(NickNameValidCheck(nickName, nicknameInputStatus));
+    setSignUpStatus({
+      ...signUpStatus,
+      nicknameInputStatus: NickNameValidCheck(
+        signUpInfo.nickName,
+        signUpStatus.nicknameInputStatus,
+      ),
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nickName]);
+  }, [signUpInfo.nickName]);
 
   useEffect(() => {
-    setPasswordInputStatus(PasswordValidCheck(password));
-  }, [password]);
+    setSignUpStatus({
+      ...signUpStatus,
+      passwordInputStatus: PasswordValidCheck(signUpInfo.password),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signUpInfo.password]);
 
   useEffect(() => {
-    setConfirmPasswordInputStatus(
-      ConfirmPasswordValidCheck(confirmPassword, password),
-    );
-  }, [confirmPassword, password]);
+    setSignUpStatus({
+      ...signUpStatus,
+      confirmPasswordInputStatus: ConfirmPasswordValidCheck(
+        signUpInfo.confirmPassword,
+        signUpInfo.password,
+      ),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signUpInfo.confirmPassword]);
 
   return (
     <Container>
@@ -95,54 +117,80 @@ const SignUpPage = () => {
         <AuthInputContainer border="none">
           <AuthInput
             placeholder="아이디(이메일)"
-            value={email}
+            value={signUpInfo.email}
             onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          ></AuthInput>
-          <CheckButton
-            onClick={(e) => setEmailInputStatus(EmailDuplicateCheck(email))}
-            disabled={emailInputStatus !== InputStatus.CHECK_REQUIRED}
-          >
-            중복체크
-          </CheckButton>
-        </AuthInputContainer>
-        <Text
-          success={emailInputStatus === InputStatus.SUCCESS ? 'true' : 'false'}
-        >
-          {SetMessage('email', emailInputStatus)}
-        </Text>
-        <AuthInputContainer border="none">
-          <AuthInput
-            placeholder="닉네임"
-            value={nickName}
-            onChange={(e) => {
-              setNickName(e.target.value);
+              setSignUpInfo({
+                ...signUpInfo,
+                email: e.target.value,
+              });
             }}
           ></AuthInput>
           <CheckButton
             onClick={(e) =>
-              setNicknameInputStatus(NickNameDuplicateCheck(nickName))
+              setSignUpStatus({
+                ...signUpStatus,
+                emailInputStatus: EmailDuplicateCheck(signUpInfo.email),
+              })
             }
-            disabled={nicknameInputStatus !== InputStatus.CHECK_REQUIRED}
+            disabled={
+              signUpStatus.emailInputStatus !== InputStatus.CHECK_REQUIRED
+            }
           >
             중복체크
           </CheckButton>
         </AuthInputContainer>
         <Text
           success={
-            nicknameInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+            signUpStatus.emailInputStatus === InputStatus.SUCCESS
+              ? 'true'
+              : 'false'
           }
         >
-          {SetMessage('nickName', nicknameInputStatus)}
+          {SetMessage('email', signUpStatus.emailInputStatus)}
+        </Text>
+        <AuthInputContainer border="none">
+          <AuthInput
+            placeholder="닉네임"
+            value={signUpInfo.nickName}
+            onChange={(e) => {
+              setSignUpInfo({ ...signUpInfo, nickName: e.target.value });
+            }}
+          ></AuthInput>
+          <CheckButton
+            onClick={(e) =>
+              setSignUpStatus({
+                ...signUpStatus,
+                nicknameInputStatus: NickNameDuplicateCheck(
+                  signUpInfo.nickName,
+                ),
+              })
+            }
+            disabled={
+              signUpStatus.nicknameInputStatus !== InputStatus.CHECK_REQUIRED
+            }
+          >
+            중복체크
+          </CheckButton>
+        </AuthInputContainer>
+        <Text
+          success={
+            signUpStatus.nicknameInputStatus === InputStatus.SUCCESS
+              ? 'true'
+              : 'false'
+          }
+        >
+          {SetMessage('nickName', signUpStatus.nicknameInputStatus)}
         </Text>
         <AuthInputContainer>
           <AuthInput
             placeholder="비밀번호"
             type={hidePassword ? 'password' : 'text'}
-            value={password}
+            value={signUpInfo.password}
             onChange={(e) => {
-              setPassword(e.target.value);
+              setSignUpInfo({
+                ...signUpInfo,
+                password: e.target.value,
+              });
             }}
             border="none"
           ></AuthInput>
@@ -154,18 +202,23 @@ const SignUpPage = () => {
         </AuthInputContainer>
         <Text
           success={
-            passwordInputStatus === InputStatus.SUCCESS ? 'true' : 'false'
+            signUpStatus.passwordInputStatus === InputStatus.SUCCESS
+              ? 'true'
+              : 'false'
           }
         >
-          {SetMessage('password', passwordInputStatus)}
+          {SetMessage('password', signUpStatus.passwordInputStatus)}
         </Text>
         <AuthInputContainer>
           <AuthInput
             placeholder="비밀번호 확인"
             type="password"
-            value={confirmPassword}
+            value={signUpInfo.confirmPassword}
             onChange={(e) => {
-              setConfirmPassword(e.target.value);
+              setSignUpInfo({
+                ...signUpInfo,
+                confirmPassword: e.target.value,
+              });
             }}
             border="none"
           ></AuthInput>
@@ -177,15 +230,22 @@ const SignUpPage = () => {
         </AuthInputContainer>
         <Text
           success={
-            confirmPasswordInputStatus === InputStatus.SUCCESS
+            signUpStatus.confirmPasswordInputStatus === InputStatus.SUCCESS
               ? 'true'
               : 'false'
           }
         >
-          {SetMessage('confirmPassword', confirmPasswordInputStatus)}
+          {SetMessage(
+            'confirmPassword',
+            signUpStatus.confirmPasswordInputStatus,
+          )}
         </Text>
       </InputContainer>
-      <SignUpCheckbox setCheckboxInputStatus={setCheckboxInputStatus} />
+      <SignUpCheckbox
+        setCheckboxInputStatus={(status) => {
+          setSignUpStatus({ ...signUpStatus, checkboxInputStatus: status });
+        }}
+      />
       <SubmitButton onClick={submitSignUp}>회원가입</SubmitButton>
     </Container>
   );

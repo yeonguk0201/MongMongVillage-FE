@@ -36,6 +36,7 @@ export const NickNameValidCheck = (value, status) => {
 };
 
 export const PasswordValidCheck = (value) => {
+  console.log('valid', value);
   if (value.length === 0) {
     return InputStatus.DEFAULT;
   } else if (value.length < 8) {
