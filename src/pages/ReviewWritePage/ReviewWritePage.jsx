@@ -19,13 +19,15 @@ import { ReviewWriteRating } from '../../components';
 import { usePostReview, usePutReview } from '../../hooks';
 
 const ReviewWritePage = () => {
+  const [currentReview, setCurrentReview] = useState({
+    title: '',
+    content: '',
+    images: [],
+    rating: 0,
+    cafeName: '엘리스 애견카페',
+  });
   const [prevReview, setPrevReview] = useState();
-  const [cafeName, setCafeName] = useState('엘리스 애견카페');
-  const [rating, setRating] = useState();
-  const [title, setTitle] = useState('');
-  const [content, setContet] = useState('');
   const [photos, setPhotos] = useState([]);
-  const [images, setImages] = useState([]);
 
   const location = useLocation();
   const { state } = location;
@@ -34,21 +36,30 @@ const ReviewWritePage = () => {
     if (state) {
       const { prevReview } = state;
       setPrevReview(prevReview);
-      setTitle(prevReview.title);
-      setContet(prevReview.content);
+      setCurrentReview({
+        cafeName: '엘리스 애견카페',
+        title: prevReview.title,
+        content: prevReview.content,
+        images: prevReview.images,
+        rating: prevReview.rating,
+      });
       setPhotos(prevReview.images);
-      setImages(prevReview.images);
-      setRating(prevReview.rating);
     }
   }, [state]);
 
-  const { mutate: postReview } = usePostReview(title, content, rating, images);
+  const { mutate: postReview } = usePostReview(
+    currentReview.title,
+    currentReview.content,
+    currentReview.rating,
+    currentReview.images,
+  );
+
   const { mutate: putReview } = usePutReview(
     state ? state.prevReview._id : '',
-    title,
-    content,
-    rating,
-    images,
+    currentReview.title,
+    currentReview.content,
+    currentReview.rating,
+    currentReview.images,
   );
 
   const createNewPost = () => {
@@ -64,8 +75,10 @@ const ReviewWritePage = () => {
 
     if (file) {
       const newPhotoUrl = URL.createObjectURL(file);
-
-      setImages((prevImages) => [...prevImages, file]); // 실제 파일도 상태에 저장
+      setCurrentReview({
+        ...currentReview,
+        images: [...currentReview.images, file],
+      });
       setPhotos((prevPhotos) => [...prevPhotos, newPhotoUrl]); // 사용자에게 보여줄 사진
     }
   };
@@ -81,37 +94,49 @@ const ReviewWritePage = () => {
       <ReviewWriteContainer>
         <CafeName>
           <FaMapMarkerAlt size={'20px'} />
-          {cafeName}
+          {currentReview.cafeName}
         </CafeName>
         <InputContainer>
           <Text>별점</Text>
-          <ReviewWriteRating rating={rating} setRating={setRating} />
+          <ReviewWriteRating
+            rating={currentReview.rating}
+            setRating={(rating) =>
+              setCurrentReview({
+                ...currentReview,
+                rating: rating,
+              })
+            }
+          />
         </InputContainer>
         <InputContainer>
           <Text>제목</Text>
           <ReviewTitleInput
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={currentReview.title}
+            onChange={(e) =>
+              setCurrentReview({ ...currentReview, title: e.target.value })
+            }
             placeholder="제목을 입력해주세요"
           />
         </InputContainer>
         <ReviewText
-          value={content}
-          onChange={(e) => setContet(e.target.value)}
+          value={currentReview.content}
+          onChange={(e) =>
+            setCurrentReview({ ...currentReview, content: e.target.value })
+          }
           placeholder="5자 이상의 글 내용을 입력해주세요"
         />
         <Text>사진</Text>
         <InputImg>
           {photos.map((photoUrl, index) => (
-            <>
-              <img key={`review${index}`} src={photoUrl} alt={`${index}`} />
+            <div key={`review${index}`}>
+              <img src={photoUrl} alt={`${index}`} />
               <FaXmark
                 size={'20px'}
                 color="red"
                 onClick={() => deletePhoto(index)}
               />
-            </>
+            </div>
           ))}
         </InputImg>
         <div>

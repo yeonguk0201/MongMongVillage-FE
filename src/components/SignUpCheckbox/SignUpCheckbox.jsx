@@ -30,23 +30,16 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
   };
 
   useEffect(() => {
-    // 모두 동의 체크박스 상태가 변경될 때만 실행
-    if (allChecked) {
-      setLocationChecked(true);
-      setAgeChecked(true);
-      setCheckboxInputStatus(InputStatus.SUCCESS);
-    } else {
-      setCheckboxInputStatus(false);
+    // 모든 하단 체크박스가 체크되었는지 확인
+    const areAllBottomChecked = locationChecked && ageChecked;
+    if (areAllBottomChecked !== allChecked) {
+      setAllChecked(areAllBottomChecked);
     }
-  }, [allChecked, setCheckboxInputStatus]);
 
-  useEffect(() => {
-    // 하단 체크박스 상태가 변경될 때만 실행
-    if (locationChecked && ageChecked) {
-      setAllChecked(true);
-    } else {
-      setAllChecked(false);
-    }
+    setCheckboxInputStatus(
+      areAllBottomChecked ? InputStatus.SUCCESS : InputStatus.ERROR,
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationChecked, ageChecked]);
 
   return (
