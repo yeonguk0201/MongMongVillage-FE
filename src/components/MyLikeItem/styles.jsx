@@ -9,12 +9,12 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   font-weight: bold;
-  svg {
-    width: 10px;
-  }
+  padding: 10px 0;
 `;
 
 export const Content = styled.p`
+  color: gray;
+
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-word;

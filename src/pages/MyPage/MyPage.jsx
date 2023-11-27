@@ -13,7 +13,9 @@ const MyPage = () => {
   const logout = () => {
     alert('로그아웃 되었습니다.');
 
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+
     navigate(ROUTE.MAIN_PAGE.link);
   };
 

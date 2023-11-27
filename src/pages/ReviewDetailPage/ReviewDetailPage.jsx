@@ -19,7 +19,7 @@ import {
   ButtonContainer,
   AnotherReviewsContainer,
 } from './styels';
-import { useGetReview } from '../../hooks';
+import { useGetReview } from '../../hooks/getReview';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Kakao, ReviewItem } from '../../components';
 

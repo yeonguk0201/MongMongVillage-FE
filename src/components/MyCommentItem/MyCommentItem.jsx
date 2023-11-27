@@ -10,6 +10,7 @@ import {
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const MyCommentItem = ({ comment }) => {
+  console.log(comment);
   return (
     <Container>
       <TopContainer>

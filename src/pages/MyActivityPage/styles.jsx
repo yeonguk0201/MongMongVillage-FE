@@ -14,8 +14,9 @@ export const NameContainer = styled.div`
   text-align: center;
   background-color: lightgray;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
   span {
     font-weight: bold;
+    margin-right: 5px;
   }
 `;

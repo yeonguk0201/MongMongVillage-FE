@@ -1,25 +1,28 @@
-import { useState } from 'react';
-import { Container } from './styles';
+import { useEffect, useState } from 'react';
+import { Container, NoDataText } from './styles';
 import { MyCommentItem } from '../MyCommentItem';
+import { useGetMyComments } from '../../hooks/getMyComments';
 
 const MyComment = () => {
-  const [comments] = useState([
-    {
-      content: '정말 귀엽네요',
-      original: '원본 글 제목 ',
-      date: new Date().toLocaleString(),
-    },
-    {
-      content: '저희 집 강아지도 그래요\n돌돌이 필수',
-      original: '포메 털빠짐 문제 ',
-      date: new Date().toLocaleString(),
-    },
-  ]);
-  return (
+  const [comments, setComments] = useState([]);
+
+  const { data: myComments } = useGetMyComments();
+
+  useEffect(() => {
+    if (myComments) {
+      setComments(myComments);
+    }
+  }, [myComments]);
+
+  return comments.length > 0 ? (
     <Container>
       {comments.map((item, idx) => {
         return <MyCommentItem comment={item} key={idx} />;
       })}
+    </Container>
+  ) : (
+    <Container>
+      <NoDataText>작성한 댓글이 없습니다.</NoDataText>
     </Container>
   );
 };

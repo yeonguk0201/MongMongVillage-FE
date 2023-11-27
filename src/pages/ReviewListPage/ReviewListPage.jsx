@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, ReviewListContainer } from './styels';
 import { Title } from '../../commonStyles';
 import { ReviewItem, ReviewListSort, ReviewPagintaion } from '../../components';
-import { useGetReviews } from '../../hooks';
+import { useGetReviews } from '../../hooks/getReviews';
 
 const ReviewListPage = () => {
   const [list, setList] = useState([]);

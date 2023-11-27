@@ -14,7 +14,7 @@ import { Title } from '../../commonStyles';
 import { FcGoogle } from 'react-icons/fc';
 import { SiNaver } from 'react-icons/si';
 import { ROUTE } from '../../routes/Routes';
-import { usePostLogin } from '../../hooks';
+import { usePostLogin } from '../../hooks/postLogin';
 import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
 
 const LoginPage = () => {

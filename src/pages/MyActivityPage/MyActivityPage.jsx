@@ -7,18 +7,21 @@ import {
   MyComment,
 } from '../../components';
 import { Container, NameContainer } from './styles';
-import { MyActivityMenus } from '../../libs';
+import { MyActivityMenus } from '../../libs/MyActivityMenuBar';
 import { MyReview } from '../../components/MyReview';
+import { useGetUserInfo } from '../../hooks/getUserInfo';
 
 const MyActivityPage = () => {
   const [selectedMenu, setSelectedMenu] = useState(MyActivityMenus.post);
-  const name = '엘리스';
+  const { isLoading, data: userInfo } = useGetUserInfo();
 
-  return (
+  return isLoading ? (
+    <div>로딩중 . . .</div>
+  ) : (
     <Container>
       <MyProfileImg />
       <NameContainer>
-        <span>{name}</span>님의 활동
+        <span>{userInfo.nickname}</span>님의 활동
       </NameContainer>
       <MyMenuBar setMenu={setSelectedMenu} menu={selectedMenu} />
       {selectedMenu === MyActivityMenus.post ? (

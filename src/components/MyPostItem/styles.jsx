@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   font-weight: bold;
-  font-size: 18px;
+  padding: 10px 0;
 `;
 
 export const Content = styled.p`

@@ -10,7 +10,7 @@ import {
 } from './styles';
 
 const MyPostItem = ({ post }) => {
-  return (
+  return post ? (
     <Container>
       <TopContainer>
         <div>
@@ -21,12 +21,16 @@ const MyPostItem = ({ post }) => {
       </TopContainer>
       <BottomContainer>
         <div>
-          <Count>댓글 : {post.commentCount}</Count>
-          <Count>좋아요 : {post.likeCount}</Count>
+          <Count>댓글 : {post.comment_id.length}</Count>
+          <Count>좋아요 : {post.like_count}</Count>
         </div>
-        <DateText>{post.date}</DateText>
+        <DateText>
+          {new Date(post.createdAt).toLocaleString() + ' 작성'}
+        </DateText>
       </BottomContainer>
     </Container>
+  ) : (
+    <Container>로딩중 . . .</Container>
   );
 };
 

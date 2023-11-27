@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const Title = styled.button`
   background-color: transparent;
   font-size: 18px;
-  margin: 10px auto;
+  margin: 20px auto;
   font-weight: bold;
 `;
 

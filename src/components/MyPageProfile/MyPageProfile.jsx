@@ -13,7 +13,9 @@ import {
   WithdrawText,
   CheckButton,
 } from './styles';
-import { useDeleteUser, useGetUserInfo, usePatchUserInfo } from '../../hooks';
+import { useGetUserInfo } from '../../hooks/getUserInfo';
+import { useDeleteUser } from '../../hooks/deleteUser';
+import { usePatchUserInfo } from '../../hooks/patchUserInfo';
 
 import { MyProfileImg } from '../MyProfileImg';
 import { FaPencil } from 'react-icons/fa6';
@@ -23,22 +25,27 @@ const MyPageProfile = ({ edit }) => {
     nickname: '',
     introduction: ' ',
     email: ' ',
+    profilePicture: '',
   });
 
-  const { mutate: getUser, data: userData } = useGetUserInfo();
+  /* 사용자 정보에서 사진 불러오기 추가할것 -> 없으면 기본 이미지(user.png)로 */
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  const [preview, setPreview] = useState(
+    `${process.env.PUBLIC_URL}/imges/user.png`,
+  );
+
+  const { isLoading, data: userData } = useGetUserInfo();
 
   useEffect(() => {
     if (userData) {
       setMyInfo({
+        ...myInfo,
         nickname: userData.nickname,
         email: userData.email,
         introduction: userData.introduction,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
 
   const { mutate: deleteUser } = useDeleteUser();
@@ -53,6 +60,7 @@ const MyPageProfile = ({ edit }) => {
   const { mutate: putUser } = usePatchUserInfo(
     myInfo.nickname,
     myInfo.introduction,
+    myInfo.profilePicture,
   );
 
   const handlePutUser = () => {
@@ -62,27 +70,16 @@ const MyPageProfile = ({ edit }) => {
     }
   };
 
-  /* 사용자 정보에서 사진 불러오기 추가할것 -> 없으면 기본 이미지(user.png)로 */
-
-  const [preview, setPreview] = useState(
-    `${process.env.PUBLIC_URL}/imges/user.png`,
-  );
-
   const handleImgFile = (e) => {
     const file = e.target.files[0];
+
     if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-      const imageUrl = URL.createObjectURL(file);
-      console.log(imageUrl);
-      for (let [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+      const newPhotoUrl = URL.createObjectURL(file);
+      setMyInfo({
+        ...myInfo,
+        profilePicture: file,
+      });
+      setPreview(newPhotoUrl); // 사용자에게 보여줄 사진
     }
   };
 
@@ -90,7 +87,9 @@ const MyPageProfile = ({ edit }) => {
     // 중복체크 함수 추가할 것
   };
 
-  return (
+  return isLoading ? (
+    <div>로딩중 . . .</div>
+  ) : (
     <ProfileContainer>
       <MyProfileImg imgSrc={preview} />
       {edit && (

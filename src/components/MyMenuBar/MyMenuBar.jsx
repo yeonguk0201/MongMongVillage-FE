@@ -1,5 +1,5 @@
 import { Container, Line, MenuButton, MenuContainer } from './styles';
-import { MyActivityMenus } from '../../libs';
+import { MyActivityMenus } from '../../libs/MyActivityMenuBar';
 
 const MyMenuBar = ({ setMenu, menu }) => {
   return (

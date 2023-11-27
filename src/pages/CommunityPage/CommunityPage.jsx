@@ -1,5 +1,5 @@
 import { useGetBoards, useGetCommunitySearch } from '../../hooks';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   CommunityNav,
@@ -10,7 +10,7 @@ import {
 } from '../../components';
 import { ROUTE } from '../../routes/Routes';
 import { Container } from './CommunityPage.styles';
-import { CommunityCategory } from '../../libs';
+import { CommunityCategory } from '../../libs/CommunityCategory';
 import { Title } from '../../commonStyles';
 
 // 카테고리 객체

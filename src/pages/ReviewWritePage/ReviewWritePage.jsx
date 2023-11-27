@@ -16,7 +16,8 @@ import {
 import { FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
 import { ReviewWriteRating } from '../../components';
-import { usePostReview, usePutReview } from '../../hooks';
+import { usePostReview } from '../../hooks/postReview';
+import { usePutReview } from '../../hooks/putReview';
 
 const ReviewWritePage = () => {
   const [currentReview, setCurrentReview] = useState({

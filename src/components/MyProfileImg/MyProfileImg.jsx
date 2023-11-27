@@ -4,7 +4,9 @@ const MyProfileImg = ({ imgSrc }) => {
   return (
     <>
       <ProfileImgContainer>
-        <ProfileImgItem src={imgSrc} />
+        <ProfileImgItem
+          src={imgSrc ?? `${process.env.PUBLIC_URL}/imges/user.png`}
+        />
       </ProfileImgContainer>
     </>
   );
