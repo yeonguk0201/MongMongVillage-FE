@@ -1,15 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { instance } from '.';
-import { useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const getUserInfo = async () => {
-  const token = localStorage.getItem('token');
-  const response = await instance.get(`/users/:userId`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await instance.get(`/users/:userId`);
 
   return response.data.data;
 };
@@ -17,8 +12,7 @@ const getUserInfo = async () => {
 export function useGetUserInfo() {
   const navigate = useNavigate();
 
-  return useMutation(() => getUserInfo(), {
-    onSuccess: (response) => {},
+  return useQuery(['userInfo'], () => getUserInfo(), {
     onError: (error) => {
       alert(error.response.data.error + '회원조회를 할 수 없습니다.');
       navigate(ROUTE.MAIN_PAGE.link);
