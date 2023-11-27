@@ -8,7 +8,14 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60,
+      cacheTime: 1000 * 60 * 5,
+    },
+  },
+});
 
 root.render(
   <React.StrictMode>
