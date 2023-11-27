@@ -6,7 +6,7 @@ import {
   Checkbox,
   Space,
 } from './styles';
-import { InputStatus } from '../../libs';
+import { InputStatus } from '../../libs/AuthMessage';
 
 const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
   const [allChecked, setAllChecked] = useState(false);

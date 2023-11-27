@@ -1,6 +1,6 @@
 import { CommunityNavContainer, CommunityNavItem } from './CommunityNav.styles';
 
-import { CommunityCategory } from '../../libs';
+import { CommunityCategory } from '../../libs/CommunityCategory';
 import { useState } from 'react';
 
 const CommunityNav = ({ handleNavClick, category }) => {

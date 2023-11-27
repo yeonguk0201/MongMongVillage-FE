@@ -12,16 +12,16 @@ import {
 } from './styles';
 import { Title } from '../../commonStyles';
 import {
-  InputStatus,
   EmailValidCheck,
-  SetMessage,
-  EmailDuplicateCheck,
   NickNameValidCheck,
-  NickNameDuplicateCheck,
   PasswordValidCheck,
   ConfirmPasswordValidCheck,
-} from '../../libs';
-import { usePostSignUp } from '../../hooks';
+  EmailDuplicateCheck,
+  NickNameDuplicateCheck,
+} from '../../libs/AuthValidCheck';
+
+import { InputStatus, SetMessage } from '../../libs/AuthMessage';
+import { usePostSignUp } from '../../hooks/postSignUp';
 
 import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
 
