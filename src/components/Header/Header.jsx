@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    setActiveHeader(location.pathname);
+    setActiveHeader(`/${location.pathname.split('/')[1]}`);
   }, [location.pathname]);
 
   return (
