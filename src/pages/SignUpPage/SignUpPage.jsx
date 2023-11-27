@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SignUpCheckbox } from '../../components';
 import {
   AuthInput,
@@ -67,6 +67,26 @@ const SignUpPage = () => {
     }
   };
 
+  useEffect(() => {
+    setEmailInputStatus(EmailValidCheck(email, emailInputStatus));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [email]);
+
+  useEffect(() => {
+    setNicknameInputStatus(NickNameValidCheck(nickName, nicknameInputStatus));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nickName]);
+
+  useEffect(() => {
+    setPasswordInputStatus(PasswordValidCheck(password));
+  }, [password]);
+
+  useEffect(() => {
+    setConfirmPasswordInputStatus(
+      ConfirmPasswordValidCheck(confirmPassword, password),
+    );
+  }, [confirmPassword, password]);
+
   return (
     <Container>
       <Img src={`${process.env.PUBLIC_URL}/logo.png`} />
@@ -76,12 +96,12 @@ const SignUpPage = () => {
           <AuthInput
             placeholder="아이디(이메일)"
             value={email}
-            onChange={(e) =>
-              EmailValidCheck(e, email, setEmail, setEmailInputStatus)
-            }
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           ></AuthInput>
           <CheckButton
-            onClick={(e) => EmailDuplicateCheck(setEmailInputStatus)}
+            onClick={(e) => setEmailInputStatus(EmailDuplicateCheck(email))}
             disabled={emailInputStatus !== InputStatus.CHECK_REQUIRED}
           >
             중복체크
@@ -96,17 +116,14 @@ const SignUpPage = () => {
           <AuthInput
             placeholder="닉네임"
             value={nickName}
-            onChange={(e) =>
-              NickNameValidCheck(
-                e,
-                nickName,
-                setNickName,
-                setNicknameInputStatus,
-              )
-            }
+            onChange={(e) => {
+              setNickName(e.target.value);
+            }}
           ></AuthInput>
           <CheckButton
-            onClick={(e) => NickNameDuplicateCheck(setNicknameInputStatus)}
+            onClick={(e) =>
+              setNicknameInputStatus(NickNameDuplicateCheck(nickName))
+            }
             disabled={nicknameInputStatus !== InputStatus.CHECK_REQUIRED}
           >
             중복체크
@@ -124,9 +141,9 @@ const SignUpPage = () => {
             placeholder="비밀번호"
             type={hidePassword ? 'password' : 'text'}
             value={password}
-            onChange={(e) =>
-              PasswordValidCheck(e, setPassword, setPasswordInputStatus)
-            }
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             border="none"
           ></AuthInput>
           {hidePassword ? (
@@ -147,16 +164,11 @@ const SignUpPage = () => {
             placeholder="비밀번호 확인"
             type="password"
             value={confirmPassword}
-            onChange={(e) =>
-              ConfirmPasswordValidCheck(
-                e,
-                setConfirmPassword,
-                password,
-                setConfirmPasswordInputStatus,
-              )
-            }
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
             border="none"
-          ></AuthInput>{' '}
+          ></AuthInput>
           {hideConfirmPassword ? (
             <PiEyeBold onClick={() => setHideConfirmPassword(false)} />
           ) : (
