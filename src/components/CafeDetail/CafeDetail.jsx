@@ -1,9 +1,7 @@
 import {
   Container,
-  StarRatingBox,
   StarRating,
   CafeDetailContainer,
-  CafeName,
   CafeImgContainer,
   CafeImg,
   CafeInfoContainer,
@@ -12,20 +10,17 @@ import {
   CafeMiniTitle,
   InfoMiniContainer,
   ReviewStarRatingContainer,
+  TopContainer,
 } from './styles';
 import { BsPencilSquare } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ReviewItem } from '../../components';
 import { ROUTE } from '../../routes/Routes';
+import { Title } from '../../commonStyles';
 
 const CafeDetail = () => {
   const navigate = useNavigate();
-
-  const handleClick = (route) => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    navigate(route);
-  };
 
   const { id } = useParams();
 
@@ -34,6 +29,11 @@ const CafeDetail = () => {
     totalReviews: 0,
     reviews: null,
   });
+
+  const linkToWriteReview = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    navigate(`${ROUTE.REVIEW_WRITE_PAGE.link}/${id}`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,139 +59,90 @@ const CafeDetail = () => {
     fetchData();
   }, [id]);
 
-  if (cafeDetailInfo.info === null) {
-    return <div>Loading...</div>;
-  }
-  if (cafeDetailInfo.reviews === null) {
-    return <div>Loading...</div>;
-  }
-
-  return (
+  return cafeDetailInfo.info && cafeDetailInfo.reviews ? (
     <Container>
-      <div
-        style={{
-          backgroundColor: 'rgba(255, 232, 148, 0.3)',
-          borderRadius: '50px',
-          marginLeft: '80px',
-          marginRight: '80px',
-        }}
-      >
-        <CafeDetailContainer>
-          <CafeName>{cafeDetailInfo.info.name}</CafeName>
+      <CafeDetailContainer>
+        <Title fontSize="40px">{cafeDetailInfo.info.name}</Title>
 
-          {cafeDetailInfo.info.image.length > 0 ? (
-            <CafeImgContainer>
-              <CafeImg
-                style={{
-                  backgroundImage: `url('${cafeDetailInfo.info.image}')`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                }}
-              ></CafeImg>
-            </CafeImgContainer>
-          ) : (
-            <></>
-          )}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              justifySelf: 'center',
-              width: '90%',
-              paddingTop: '25px',
-            }}
-          >
-            <CafeInfo style={{ fontWeight: 'bold', fontSize: '33px' }}>
-              상세정보
-            </CafeInfo>
-            <CafeInfo
-              style={{ paddingTop: '25px', color: 'gray' }}
-            >{`업데이트: ${
-              cafeDetailInfo.info.updatedAt.split('T')[0]
-            }`}</CafeInfo>
-          </div>
-          <CafeInfoContainer>
-            <InfoMiniContainer>
-              <CafeMiniTitle
-                style={{ paddingTop: '0px' }}
-              >{`주소`}</CafeMiniTitle>
-              {cafeDetailInfo.info.road_addr ? (
-                <CafeInfo>{cafeDetailInfo.info.road_addr}</CafeInfo>
-              ) : (
-                <CafeInfo>장소 정보가 없습니다.</CafeInfo>
-              )}
-              <CafeMiniTitle
-                style={{ paddingTop: '35px' }}
-              >{`영업시간`}</CafeMiniTitle>
-              {cafeDetailInfo.info.operating_time ? (
-                cafeDetailInfo.info.operating_time
-                  .split('\n')
-                  .map((item, index) => <CafeInfo key={index}>{item}</CafeInfo>)
-              ) : (
-                <CafeInfo>영업시간 정보가 없습니다.</CafeInfo>
-              )}
-            </InfoMiniContainer>
-            <InfoMiniContainer>
-              <CafeMiniTitle>{`메뉴`}</CafeMiniTitle>
-              {cafeDetailInfo.info.menu ? (
-                cafeDetailInfo.info.menu
-                  .split('/')
-                  .map((item, index) => (
-                    <CafeInfo key={index}>- {item}</CafeInfo>
-                  ))
-              ) : (
-                <CafeInfo>메뉴 정보가 없습니다.</CafeInfo>
-              )}
-            </InfoMiniContainer>
-            <InfoMiniContainer>
-              <CafeMiniTitle>{`가게 소개`}</CafeMiniTitle>
-              {cafeDetailInfo.info.intro ? (
-                <CafeInfo>{cafeDetailInfo.info.intro}</CafeInfo>
-              ) : (
-                <CafeInfo>가게 소개 정보가 없습니다.</CafeInfo>
-              )}
-            </InfoMiniContainer>
+        {cafeDetailInfo.info.image.length > 0 ? (
+          <CafeImgContainer>
+            <CafeImg
+              style={{
+                backgroundImage: `url('${cafeDetailInfo.info.image}')`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+              }}
+            ></CafeImg>
+          </CafeImgContainer>
+        ) : (
+          <></>
+        )}
+        <TopContainer>
+          <span className="title">상세정보</span>
+          <span className="update">{`최근 업데이트 | ${
+            cafeDetailInfo.info.updatedAt.split('T')[0]
+          }`}</span>
+        </TopContainer>
+        <CafeInfoContainer>
+          <InfoMiniContainer>
+            <CafeMiniTitle>주소</CafeMiniTitle>
+            {cafeDetailInfo.info.road_addr ? (
+              <CafeInfo>{cafeDetailInfo.info.road_addr}</CafeInfo>
+            ) : (
+              <CafeInfo>장소 정보가 없습니다.</CafeInfo>
+            )}
+            <CafeMiniTitle className="bottomTitle">영업시간</CafeMiniTitle>
+            {cafeDetailInfo.info.operating_time ? (
+              cafeDetailInfo.info.operating_time
+                .split('\n')
+                .map((item, index) => <CafeInfo key={index}>{item}</CafeInfo>)
+            ) : (
+              <CafeInfo>영업시간 정보가 없습니다.</CafeInfo>
+            )}
+          </InfoMiniContainer>
+          <InfoMiniContainer>
+            <CafeMiniTitle>메뉴</CafeMiniTitle>
+            {cafeDetailInfo.info.menu ? (
+              cafeDetailInfo.info.menu
+                .split('/')
+                .map((item, index) => <CafeInfo key={index}>- {item}</CafeInfo>)
+            ) : (
+              <CafeInfo>메뉴 정보가 없습니다.</CafeInfo>
+            )}
+          </InfoMiniContainer>
+          <InfoMiniContainer>
+            <CafeMiniTitle>소개</CafeMiniTitle>
+            {cafeDetailInfo.info.intro ? (
+              <CafeInfo>{cafeDetailInfo.info.intro}</CafeInfo>
+            ) : (
+              <CafeInfo>소개 정보가 없습니다.</CafeInfo>
+            )}
+          </InfoMiniContainer>
 
-            <InfoMiniContainer style={{ marginBottom: '103px' }}>
-              <CafeMiniTitle>
-                전체 리뷰 ( {cafeDetailInfo.totalReviews} )
-              </CafeMiniTitle>
-              <ReviewStarRatingContainer>
-                <StarRatingBox>
-                  <StarRating>평균 별점: </StarRating>
-                  {cafeDetailInfo.info.rating}점
-                </StarRatingBox>
-                <WriteReviewBtn
-                  onClick={() => {
-                    handleClick(ROUTE.REVIEW_WRITE_PAGE.link);
-                  }}
-                >
-                  <p style={{ paddingRight: '5px' }}> 리뷰 작성하러가기 </p>
-                  <BsPencilSquare size={'18px'} />
-                </WriteReviewBtn>
-              </ReviewStarRatingContainer>
-              <div style={{ marginRight: '20px' }}>
-                {cafeDetailInfo.reviews.map((review) => (
-                  <ReviewItem key={review._id} item={review} />
-                ))}
-              </div>
-            </InfoMiniContainer>
-          </CafeInfoContainer>
-        </CafeDetailContainer>
-
-        {cafeDetailInfo.reviews.map((review) => (
-          <ReviewItem key={review._id} id={review._id} />
-        ))}
-        <div
-          style={{
-            width: '1000px',
-            height: '1000px',
-            border: '1px solid black',
-            margin: '100px auto',
-          }}
-        ></div>
-      </div>
+          <InfoMiniContainer>
+            <CafeMiniTitle>
+              전체 리뷰 ( {cafeDetailInfo.totalReviews} )
+            </CafeMiniTitle>
+            <ReviewStarRatingContainer>
+              <StarRating>
+                평균 별점 | {cafeDetailInfo.info.rating}점
+              </StarRating>
+              <WriteReviewBtn onClick={linkToWriteReview}>
+                리뷰 작성하러가기
+                <BsPencilSquare size={'18px'} />
+              </WriteReviewBtn>
+            </ReviewStarRatingContainer>
+            <div className="reviewContainer">
+              {cafeDetailInfo.reviews.map((review) => (
+                <ReviewItem key={review._id} id={review._id} />
+              ))}
+            </div>
+          </InfoMiniContainer>
+        </CafeInfoContainer>
+      </CafeDetailContainer>
     </Container>
+  ) : (
+    <Container>Loading ...</Container>
   );
 };
 
