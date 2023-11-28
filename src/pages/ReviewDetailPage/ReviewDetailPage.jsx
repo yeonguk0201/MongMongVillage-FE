@@ -41,11 +41,7 @@ const ReviewDetailPage = () => {
 
   const { id } = useParams();
 
-  const { isLoading, mutate: getReview, data: reviewData } = useGetReview(id);
-
-  useEffect(() => {
-    if (id) getReview();
-  }, [getReview, id]);
+  const { isLoading, data: reviewData } = useGetReview(id);
 
   useEffect(() => {
     if (reviewData) {
@@ -58,7 +54,7 @@ const ReviewDetailPage = () => {
         images: reviewData.images,
       });
     }
-  }, [review.cafeName, reviewData]);
+  }, [reviewData]);
 
   const linkToReviewEditPage = () => {
     navigate(ROUTE.REVIEW_WRITE_PAGE.link, {
@@ -66,6 +62,7 @@ const ReviewDetailPage = () => {
     });
   };
 
+  console.log('리뷰데이터', reviewData);
   return !isLoading && review ? (
     <>
       <ReviewDetailContainer>
