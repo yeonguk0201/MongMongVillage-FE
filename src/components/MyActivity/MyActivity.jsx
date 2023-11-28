@@ -13,7 +13,7 @@ const MyActivity = () => {
     post: 10,
     comment: 20,
     like: 30,
-    review: 15,
+    review: 0,
   });
 
   const gotoActivityPage = () => {

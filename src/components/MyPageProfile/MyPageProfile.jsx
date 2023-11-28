@@ -13,14 +13,20 @@ import {
   WithdrawText,
   CheckButton,
 } from './styles';
+
 import { useGetUserInfo } from '../../hooks/getUserInfo';
 import { useDeleteUser } from '../../hooks/deleteUser';
 import { usePatchUserInfo } from '../../hooks/patchUserInfo';
+import { useGetCheckNickname } from '../../hooks/getCheckNickname';
 
 import { MyProfileImg } from '../MyProfileImg';
 import { FaPencil } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE } from '../../routes/Routes';
 
 const MyPageProfile = ({ edit }) => {
+  const navigate = useNavigate();
+
   const [myInfo, setMyInfo] = useState({
     nickname: '',
     introduction: ' ',
@@ -28,22 +34,28 @@ const MyPageProfile = ({ edit }) => {
     profilePicture: '',
   });
 
-  /* 사용자 정보에서 사진 불러오기 추가할것 -> 없으면 기본 이미지(user.png)로 */
+  const userId = localStorage.getItem('userId');
+  const { isLoading, data: userData } = useGetUserInfo(userId);
+  const [preview, setPreview] = useState(myInfo.profilePicture);
 
-  const [preview, setPreview] = useState(
-    `${process.env.PUBLIC_URL}/imges/user.png`,
-  );
-
-  const { isLoading, data: userData } = useGetUserInfo();
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('로그인이 필요합니다.');
+      navigate(ROUTE.LOGIN_PAGE.link);
+    }
+  }, []);
 
   useEffect(() => {
     if (userData) {
       setMyInfo({
         ...myInfo,
+        profilePicture: userData.profilePicture,
         nickname: userData.nickname,
         email: userData.email,
         introduction: userData.introduction,
       });
+      setPreview(userData.profilePicture);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
@@ -83,8 +95,17 @@ const MyPageProfile = ({ edit }) => {
     }
   };
 
-  const checkDuplicateNickname = () => {
-    // 중복체크 함수 추가할 것
+  // 닉네임 중복체크 api
+  const NickNameDuplicateCheck = async (e) => {
+    e.preventDefault();
+
+    const isDuplicate = await useGetCheckNickname(myInfo.nickname);
+
+    if (!isDuplicate) {
+      alert('사용 가능한 닉네임입니다.');
+    } else {
+      alert('이미 존재하는 닉네임입니다.');
+    }
   };
 
   return isLoading ? (
@@ -118,8 +139,8 @@ const MyPageProfile = ({ edit }) => {
                   setMyInfo({ ...myInfo, nickname: e.target.value })
                 }
               />
-              <CheckButton onClick={checkDuplicateNickname}>
-                중복체크
+              <CheckButton onClick={(e) => NickNameDuplicateCheck(e)}>
+                중복확인
               </CheckButton>
             </MyInfoEditItemContainer>
             <MyInfoEditItemContainer>
@@ -143,8 +164,14 @@ const MyPageProfile = ({ edit }) => {
       ) : (
         <MyInfoContainer>
           <MyName>{myInfo.nickname}</MyName>
-          <MyIntroduction>{myInfo.introduction}</MyIntroduction>
           <MyEmail>{myInfo.email}</MyEmail>
+          {myInfo.introduction.length > 0 ? (
+            <MyIntroduction>{myInfo.introduction}</MyIntroduction>
+          ) : (
+            <MyIntroduction className="no-introduction">
+              회원 정보 수정 버튼을 눌러 소개 글을 추가해보세요!
+            </MyIntroduction>
+          )}
         </MyInfoContainer>
       )}
     </ProfileContainer>

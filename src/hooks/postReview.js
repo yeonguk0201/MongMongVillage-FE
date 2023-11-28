@@ -4,8 +4,6 @@ import { useMutation } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const postReview = async (title, content, rating, images) => {
-  const token = localStorage.getItem('token');
-
   const formData = new FormData();
   images.forEach((image) => {
     formData.append('images', image);
@@ -14,12 +12,7 @@ const postReview = async (title, content, rating, images) => {
   formData.append('content', content);
   formData.append('rating', rating);
 
-  const response = await instance.post(`/reviews/`, formData, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data', // FormData를 사용하는 경우
-    },
-  });
+  const response = await instance.post(`/reviews/`, formData);
 
   return response;
 };
@@ -27,7 +20,7 @@ const postReview = async (title, content, rating, images) => {
 export function usePostReview(title, content, rating, images) {
   const navigate = useNavigate();
   return useMutation(() => postReview(title, content, rating, images), {
-    onSuccess: (response) => {
+    onSuccess: () => {
       alert('리뷰가 정상적으로 등록되었습니다.');
       navigate(ROUTE.REVIEW_LIST_PAGE.link);
     },

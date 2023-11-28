@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container } from './styles';
+import { Container, NoDataText } from './styles';
 import { MyPostItem } from '../MyPostItem';
 import { useGetMyBoards } from '../../hooks/getMyBoards';
 
@@ -12,14 +12,16 @@ const MyPost = () => {
     setPosts(myposts);
   }, [myposts]);
 
-  return myposts ? (
+  return myposts.length > 0 ? (
     <Container>
       {posts.map((item, idx) => {
         return <MyPostItem post={item} key={idx} />;
       })}
     </Container>
   ) : (
-    <Container>로딩중 ...</Container>
+    <Container>
+      <NoDataText>작성한 댓글이 없습니다.</NoDataText>
+    </Container>
   );
 };
 

@@ -2,6 +2,7 @@ export const InputStatus = {
   DEFAULT: 'default',
   ERROR: 'error',
   CHECK_REQUIRED: 'duplicate-check-required',
+  DUPLICATE: 'duplicate',
   SUCCESS: 'success',
 };
 
@@ -9,6 +10,7 @@ export const EmailMessage = {
   DEFAULT: '',
   ERROR: '올바른 이메일 형식이 아닙니다.',
   CHECK_REQUIRED: '이메일 중복 확인이 필요합니다.',
+  DUPLICATE: '이미 존재하는 이메일입니다.',
   SUCCESS: '사용가능한 이메일입니다.',
 };
 
@@ -28,6 +30,7 @@ export const NickNameMessage = {
   DEFAULT: '',
   ERROR: '닉네임은 2글자 이상이어야 합니다.',
   CHECK_REQUIRED: '닉네임 중복 확인이 필요합니다.',
+  DUPLICATE: '이미 존재하는 닉네임입니다.',
   SUCCESS: '사용가능한 닉네임입니다.',
 };
 
@@ -44,6 +47,8 @@ export const SetMessage = (type, status) => {
     return message.ERROR;
   } else if (status === InputStatus.CHECK_REQUIRED) {
     return message.CHECK_REQUIRED;
+  } else if (status === InputStatus.DUPLICATE) {
+    return message.DUPLICATE;
   } else if (status === InputStatus.SUCCESS) {
     return message.SUCCESS;
   }

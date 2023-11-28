@@ -1,4 +1,6 @@
 import { InputStatus } from './AuthMessage';
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 export const EmailValidCheck = (value, status) => {
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; // 이메일 정규표현식
@@ -15,11 +17,6 @@ export const EmailValidCheck = (value, status) => {
 
 export const EmailDuplicateCheck = (email) => {
   // 이메일 중복체크 api 호출
-  return InputStatus.SUCCESS; // 중복이 아닌 상태로 수정
-};
-
-export const NickNameDuplicateCheck = (nickname) => {
-  // 닉네임 중복체크 api 호출
   return InputStatus.SUCCESS; // 중복이 아닌 상태로 수정
 };
 

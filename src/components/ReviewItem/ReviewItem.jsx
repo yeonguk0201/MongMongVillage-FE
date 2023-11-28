@@ -15,6 +15,7 @@ import {
 } from './styles';
 import { ROUTE } from '../../routes/Routes';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { useGetUserInfo } from '../../hooks/getUserInfo';
 
 const ReviewItem = ({ item }) => {
   const navigate = useNavigate();
@@ -26,6 +27,8 @@ const ReviewItem = ({ item }) => {
       behavior: 'smooth',
     });
   };
+
+  const { data: userInfo } = useGetUserInfo(item.user_id);
 
   return (
     item && (
@@ -40,15 +43,16 @@ const ReviewItem = ({ item }) => {
             <Content>{item.content}</Content>
             <BottomContainer>
               <Writer>
-                {item.userImg ? (
-                  <img alt="유저프로필이미지" src={item.userImg} />
-                ) : (
-                  <img
-                    src={`${`${process.env.PUBLIC_URL}/imges/user.png`}`}
-                    alt="user_img"
-                  />
-                )}
-                <span>username</span>
+                <img
+                  src={
+                    userInfo?.profilePicture?.length > 0
+                      ? userInfo.profilePicture
+                      : `${`${process.env.PUBLIC_URL}/imges/user.png`}`
+                  }
+                  alt="user_img"
+                />
+
+                <span>{userInfo?.nickname ?? ''}</span>
               </Writer>
               <ReviewDate>
                 {new Date(item.createdAt).toLocaleString() + ' 작성'}

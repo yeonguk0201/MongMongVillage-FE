@@ -43,7 +43,7 @@ const ReviewListPage = () => {
       <ReviewListContainer>
         <ReviewListSort handleSorting={handleSorting} />
         {isLoading ? (
-          <p>로딩중</p>
+          <div>로딩중</div>
         ) : (
           list.map((item) => <ReviewItem item={item} key={item._id} />)
         )}
