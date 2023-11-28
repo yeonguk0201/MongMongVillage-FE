@@ -53,6 +53,8 @@ export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   align-self: center;
+  padding: 20px;
+  margin: 0 20px;
 `;
 
 export const ProfileImg = styled.img`
@@ -64,8 +66,8 @@ export const ProfileImg = styled.img`
 
 export const Username = styled.p`
   padding-left: 5px;
-  font-weight: 400;
-  font-size: 16px;
+  font-weight: bold;
+  font-size: 18px;
 `;
 
 export const ReviewDate = styled.p`

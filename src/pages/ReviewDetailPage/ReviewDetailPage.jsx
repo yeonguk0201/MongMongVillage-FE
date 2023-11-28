@@ -27,9 +27,11 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Title } from '../../commonStyles';
 import { ROUTE } from '../../routes/Routes';
 import { useGetUserInfo } from '../../hooks/getUserInfo';
+import { useDeleteReview } from '../../hooks/deleteReview';
 
 const ReviewDetailPage = () => {
   const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
 
   const [review, setReview] = useState({
     title: '',
@@ -45,11 +47,8 @@ const ReviewDetailPage = () => {
   const { id } = useParams();
 
   const { isLoading: reviewLoading, data: reviewData } = useGetReview(id);
-  const { isLoading: userLoading, data: userData } = useGetUserInfo(
-    reviewData?.user_id ?? '',
-  );
-  console.log(reviewData);
-  console.log('유저', userData);
+  const { data: userData } = useGetUserInfo(reviewData?.user_id ?? '');
+
   useEffect(() => {
     if (reviewData) {
       setReview({
@@ -69,7 +68,12 @@ const ReviewDetailPage = () => {
     });
   };
 
-  console.log('리뷰데이터', reviewData);
+  const { mutate } = useDeleteReview(reviewData?._id);
+
+  const deleteReview = () => {
+    mutate();
+  };
+
   return !reviewLoading && review ? (
     <>
       <ReviewDetailContainer>
@@ -113,10 +117,12 @@ const ReviewDetailPage = () => {
           </ReviewImgContainer>
           <MainText>{review.content}</MainText>
         </ReviewMainSection>
-        <ButtonContainer>
-          <Button onClick={linkToReviewEditPage}>수정</Button>
-          <Button>삭제</Button>
-        </ButtonContainer>
+        {reviewData?.user_id === userId && (
+          <ButtonContainer>
+            <Button onClick={linkToReviewEditPage}>수정</Button>
+            <Button onClick={deleteReview}>삭제</Button>
+          </ButtonContainer>
+        )}
       </ReviewDetailContainer>
       <AnotherReviewsContainer>
         <Title>"{review.cafeName}"의 리뷰 리스트</Title>
@@ -127,7 +133,7 @@ const ReviewDetailPage = () => {
       </AnotherReviewsContainer>
     </>
   ) : (
-    <div>로딩중</div>
+    <ReviewDetailContainer>로딩 중 ...</ReviewDetailContainer>
   );
 };
 
