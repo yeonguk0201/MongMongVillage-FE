@@ -1,11 +1,9 @@
 import { instance } from '.';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
-const postReview = async (title, content, rating, images) => {
-  const token = localStorage.getItem('token');
-
+const postReview = async (title, content, rating, images, cafe_id) => {
   const formData = new FormData();
   images.forEach((image) => {
     formData.append('images', image);
@@ -13,28 +11,33 @@ const postReview = async (title, content, rating, images) => {
   formData.append('title', title);
   formData.append('content', content);
   formData.append('rating', rating);
+  formData.append('cafe_id', cafe_id);
 
-  const response = await instance.post(`/reviews/`, formData, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data', // FormData를 사용하는 경우
-    },
-  });
+  const response = await instance.post(`/reviews/`, formData);
 
   return response;
 };
 
-export function usePostReview(title, content, rating, images) {
+export function usePostReview(title, content, rating, images, cafe_id) {
   const navigate = useNavigate();
-  return useMutation(() => postReview(title, content, rating, images), {
-    onSuccess: (response) => {
-      alert('리뷰가 정상적으로 등록되었습니다.');
-      navigate(ROUTE.REVIEW_LIST_PAGE.link);
-    },
+  const queryClient = useQueryClient();
 
-    onError: (error) => {
-      console.log(error);
-      alert(error.response.data.message);
+  return useMutation(
+    () => postReview(title, content, rating, images, cafe_id),
+    {
+      onSuccess: () => {
+        alert('리뷰가 정상적으로 등록되었습니다.');
+        navigate(ROUTE.REVIEW_LIST_PAGE.link);
+      },
+
+      onError: (error) => {
+        console.error(error);
+        alert(error.response.data.message);
+      },
+
+      onSettled: () => {
+        queryClient.invalidateQueries(['getReviews']);
+      },
     },
-  });
+  );
 }

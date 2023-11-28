@@ -12,16 +12,17 @@ import { MyReview } from '../../components/MyReview';
 import { useGetUserInfo } from '../../hooks/getUserInfo';
 
 const MyActivityPage = () => {
+  const userId = localStorage.getItem('userId');
   const [selectedMenu, setSelectedMenu] = useState(MyActivityMenus.post);
-  const { isLoading, data: userInfo } = useGetUserInfo();
+  const { isLoading, data: userInfo } = useGetUserInfo(userId);
 
   return isLoading ? (
     <div>로딩중 . . .</div>
   ) : (
     <Container>
-      <MyProfileImg />
+      <MyProfileImg imgSrc={userInfo?.profilePicture} />
       <NameContainer>
-        <span>{userInfo.nickname}</span>님의 활동
+        <span>{userInfo?.nickname ?? ''}</span>님의 활동
       </NameContainer>
       <MyMenuBar setMenu={setSelectedMenu} menu={selectedMenu} />
       {selectedMenu === MyActivityMenus.post ? (

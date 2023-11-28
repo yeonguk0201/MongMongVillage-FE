@@ -7,13 +7,6 @@ export const Container = styled.div`
   cursor: pointer;
 `;
 
-export const Title = styled.p`
-  font-weight: bold;
-  svg {
-    width: 10px;
-  }
-`;
-
 export const Content = styled.p`
   text-overflow: ellipsis;
   overflow: hidden;
@@ -24,21 +17,18 @@ export const Content = styled.p`
   -webkit-box-orient: vertical;
 
   white-space: break-spaces;
+
+  svg {
+    width: 10px;
+    margin-right: 5px;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 `;
 
-export const TopContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const BottomContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  font-size: 14px;
-`;
-
-export const DateText = styled.span`
+export const DateText = styled.p`
+  margin: 10px 0;
   font-size: 12px;
+  color: gray;
 `;

@@ -78,7 +78,7 @@ export const ROUTE = {
   },
 
   REVIEW_WRITE_PAGE: {
-    path: '/review/write',
+    path: '/review/write/:cafe_id',
     link: '/review/write',
     element: <ReviewWritePage />,
   },

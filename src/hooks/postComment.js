@@ -1,33 +1,29 @@
 import { instance } from '.';
-// import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
-// import { ROUTE } from '../routes/Routes';
+import { useMutation, useQueryClient } from 'react-query';
 
 const postComment = async (content, boardId) => {
-  const token = localStorage.getItem('token');
-
-  const response = await instance.post(
-    `/comments/boards/${boardId}`,
-    { content },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
-  );
+  const response = await instance.post(`/comments/boards/${boardId}`, {
+    content,
+  });
 
   return response;
 };
 
 export function usePostComment(content, boardId) {
+  const queryClient = useQueryClient();
+
   return useMutation(() => postComment(content, boardId), {
-    onSuccess: (response) => {
-      alert('댓글 작성 완료');
+    onSuccess: () => {
+      alert('댓글이 등록되었습니다.');
     },
 
     onError: (error) => {
-      console.log(error);
+      console.error(error);
       alert('로그인 후 댓글을 작성해주세요.');
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries(['myLike']);
     },
   });
 }

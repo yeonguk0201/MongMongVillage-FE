@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ProfileContainer = styled.div`
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -13,10 +12,6 @@ export const ProfileContainer = styled.div`
     justify-content: center;
   }
   .photo {
-    #file-upload-button {
-      border: none;
-      background-color: aqua;
-    }
     border: none;
   }
 `;
@@ -61,10 +56,14 @@ export const MyName = styled.p`
 
 export const MyIntroduction = styled.p`
   font-size: 16px;
+  &.no-introduction {
+    color: lightgray;
+  }
 `;
 
 export const MyEmail = styled.p`
   color: gray;
+  padding: 10px 0;
 `;
 
 export const MyInfoEditContainer = styled.div`

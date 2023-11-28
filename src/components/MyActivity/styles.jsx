@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   text-align: center;
-  margin: 40px auto;
+  margin: 20px auto;
 `;
 
 export const Title = styled.button`
@@ -29,5 +29,7 @@ export const CountItem = styled.div`
   width: 25%;
   & > p:first-child {
     color: gray;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
 `;

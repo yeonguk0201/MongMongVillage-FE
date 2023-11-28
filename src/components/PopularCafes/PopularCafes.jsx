@@ -63,9 +63,8 @@ const PopularCafes = () => {
   return (
     <Container>
       <Content>
-        {' '}
         <GiPartyPopper size={'43px'} color="rgba(255, 77, 77, 0.94)" />
-        인기 애견까페
+        인기 애견카페
         <GiPartyPopper
           size={'43px'}
           color="rgba(255, 77, 77, 0.94)"

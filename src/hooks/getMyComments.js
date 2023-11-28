@@ -12,7 +12,5 @@ const getMyComments = async () => {
 };
 
 export function useGetMyComments() {
-  return useQuery(['myComments'], () => getMyComments(), {
-    onError: (error) => {},
-  });
+  return useQuery(['myComments'], () => getMyComments(), {});
 }

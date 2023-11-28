@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   ReviewDetailContainer,
   ReviewTitleContainer,
@@ -26,47 +25,29 @@ import { Kakao, ReviewItem } from '../../components';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Title } from '../../commonStyles';
 import { ROUTE } from '../../routes/Routes';
+import { useDeleteReview } from '../../hooks/deleteReview';
 
 const ReviewDetailPage = () => {
   const navigate = useNavigate();
-
-  const [review, setReview] = useState({
-    title: '',
-    content: '',
-    createdAt: new Date(),
-    rating: 0,
-    cafeName: '',
-    images: [],
-  });
+  const userId = localStorage.getItem('userId');
 
   const { id } = useParams();
 
-  const { isLoading, mutate: getReview, data: reviewData } = useGetReview(id);
-
-  useEffect(() => {
-    if (id) getReview();
-  }, [getReview, id]);
-
-  useEffect(() => {
-    if (reviewData) {
-      setReview({
-        cafeName: '앨리스 애견카페',
-        title: reviewData.title,
-        content: reviewData.content,
-        createdAt: reviewData.createdAt,
-        rating: reviewData.rating,
-        images: reviewData.images,
-      });
-    }
-  }, [review.cafeName, reviewData]);
+  const { isLoading: reviewLoading, data: review } = useGetReview(id);
 
   const linkToReviewEditPage = () => {
     navigate(ROUTE.REVIEW_WRITE_PAGE.link, {
-      state: { prevReview: reviewData },
+      state: { prevReview: review },
     });
   };
 
-  return !isLoading && review ? (
+  const { mutate } = useDeleteReview(id); // 리뷰 삭제
+
+  const deleteReview = () => {
+    mutate();
+  };
+
+  return !reviewLoading && review ? (
     <>
       <ReviewDetailContainer>
         <ReviewTitleContainer>
@@ -84,18 +65,20 @@ const ReviewDetailPage = () => {
           </TitleStarRaiting>
           <ProfileContainer>
             <ProfileImg
-              src={`${process.env.PUBLIC_URL}/imges/user.png`}
+              src={
+                review?.user_id?.profilePicture ??
+                `${`${process.env.PUBLIC_URL}/imges/user.png`}`
+              }
             ></ProfileImg>
-            <Username>username</Username>
+            <Username>{review?.user_id?.nickname ?? ''}</Username>
           </ProfileContainer>
         </ReviewTitleContainer>
         <MapContainer>
-          아래 지도는 임의로 불러온 것이며, 추후 실제 장소로 변경, 사이즈 조절,
-          검색어창 제거 예정
           <CafeName>
             <FaMapMarkerAlt size={'24px'} />
-            {review.cafeName}
+            {review?.cafe_id?.name}
           </CafeName>
+          지도 불러올 자리
         </MapContainer>
         <ReviewMainSection>
           <ReviewImgContainer>
@@ -106,21 +89,23 @@ const ReviewDetailPage = () => {
           </ReviewImgContainer>
           <MainText>{review.content}</MainText>
         </ReviewMainSection>
-        <ButtonContainer>
-          <Button onClick={linkToReviewEditPage}>수정</Button>
-          <Button>삭제</Button>
-        </ButtonContainer>
+        {review?.user_id?._id === userId && (
+          <ButtonContainer>
+            <Button onClick={linkToReviewEditPage}>수정</Button>
+            <Button onClick={deleteReview}>삭제</Button>
+          </ButtonContainer>
+        )}
       </ReviewDetailContainer>
       <AnotherReviewsContainer>
-        <Title>"{review.cafeName}"의 리뷰 리스트</Title>
-        <ReviewItem item={reviewData} />
-        <ReviewItem item={reviewData} />
-        <ReviewItem item={reviewData} />
-        <ReviewItem item={reviewData} />
+        <Title>"{review?.cafe_id?.name}"의 리뷰 리스트</Title>
+        {/* <ReviewItem />
+        <ReviewItem />
+        <ReviewItem />
+        <ReviewItem /> */}
       </AnotherReviewsContainer>
     </>
   ) : (
-    <div>로딩중</div>
+    <ReviewDetailContainer>로딩 중 ...</ReviewDetailContainer>
   );
 };
 
