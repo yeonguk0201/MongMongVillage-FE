@@ -13,7 +13,6 @@ instance.interceptors.request.use(function (config) {
 export * from './getBoards';
 export * from './getDetailBoard';
 export * from './getCommunitySearch';
-export * from './getBestContents';
 export * from './patchBoard';
 export * from './deleteBoard';
 export * from './postComment';
