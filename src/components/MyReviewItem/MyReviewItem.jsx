@@ -1,4 +1,3 @@
-import { MyEditAndRemoveButtons } from '../MyEditAndRemoveButtons';
 import {
   Container,
   Title,
@@ -19,7 +18,6 @@ const MyPostItem = ({ review }) => {
         {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
       </Rating>
       <DateText>{review.date}</DateText>
-      <MyEditAndRemoveButtons />
     </Container>
   );
 };
