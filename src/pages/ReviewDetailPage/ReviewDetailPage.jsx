@@ -36,7 +36,7 @@ const ReviewDetailPage = () => {
   const { isLoading: reviewLoading, data: review } = useGetReview(id);
 
   const linkToReviewEditPage = () => {
-    navigate(ROUTE.REVIEW_WRITE_PAGE.link, {
+    navigate(`${ROUTE.REVIEW_WRITE_PAGE.link}/${review?.cafe_id?._id}`, {
       state: { prevReview: review },
     });
   };

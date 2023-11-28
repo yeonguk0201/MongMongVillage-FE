@@ -17,7 +17,7 @@ import { FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
 import { ReviewWriteRating } from '../../components';
 import { usePostReview } from '../../hooks/postReview';
-import { usePutReview } from '../../hooks/putReview';
+import { usePatchReview } from '../../hooks/patchReview';
 import { useGetCafe } from '../../hooks/getCafe';
 
 const ReviewWritePage = () => {
@@ -45,7 +45,7 @@ const ReviewWritePage = () => {
         cafeName: '엘리스 애견카페',
         title: prevReview.title,
         content: prevReview.content,
-        images: prevReview.images,
+        images: prevReview.images.map(),
         rating: prevReview.rating,
       });
       setPhotos(prevReview.images);
@@ -66,7 +66,7 @@ const ReviewWritePage = () => {
   };
 
   /* 리뷰 수정 */
-  const { mutate: putReview } = usePutReview(
+  const { mutate: patchReview } = usePatchReview(
     state ? state.prevReview._id : '',
     currentReview.title,
     currentReview.content,
@@ -75,7 +75,8 @@ const ReviewWritePage = () => {
   );
 
   const updatePost = () => {
-    putReview();
+    console.log(currentReview.images);
+    patchReview();
   };
 
   /* 사진 업로드 */
