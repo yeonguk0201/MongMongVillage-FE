@@ -1,34 +1,26 @@
 import { instance } from '.';
-import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
-// import { ROUTE } from '../routes/Routes';
+import { useMutation, useQueryClient } from 'react-query';
 
 const putBoardLike = async (boardId) => {
-  const token = localStorage.getItem('token');
-  const response = await instance.put(
-    `/boards/${boardId}/liked`,
-    { boardId },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
-  );
+  const response = await instance.put(`/boards/${boardId}/liked`, { boardId });
 
   return response;
 };
 
 export function usePutBoardLike(boardId) {
-  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   return useMutation(() => putBoardLike(boardId), {
-    onSuccess: (response) => {
+    onSuccess: () => {
       console.log('좋아요 변경 완료 - ', boardId);
     },
 
-    onError: (error) => {
-      // alert(error.response.data.message);
+    onError: () => {
       alert('로그인 후 좋아요 기능을 이용해주세요.');
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries(['myLike']);
     },
   });
 }
