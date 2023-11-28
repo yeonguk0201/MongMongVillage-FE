@@ -188,7 +188,7 @@ const CafeDetail = () => {
               </StarRating>
               <WriteReviewBtn
                 onClick={() => {
-                  handleClick(ROUTE.REVIEW_WRITE_PAGE.link);
+                  handleClick(`${ROUTE.REVIEW_WRITE_PAGE.link}/${id}`);
                 }}
               >
                 <p style={{ paddingRight: '5px' }}> 리뷰 작성하러가기 </p>
@@ -199,7 +199,7 @@ const CafeDetail = () => {
         </CafeDetailContainer>
 
         {cafeDetailInfo.reviews.map((review) => (
-          <ReviewItem key={review._id} item={review} />
+          <ReviewItem key={review._id} item={review} id={review._id} />
         ))}
         <div
           style={{
