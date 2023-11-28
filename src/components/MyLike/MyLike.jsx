@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container } from './styles';
+import { Container, NoDataText } from './styles';
 import { MyLikeItem } from '../index';
 import { useGetMyLike } from '../../hooks/getMyLike';
 const MyLike = () => {
@@ -13,14 +13,16 @@ const MyLike = () => {
     }
   }, []);
 
-  return myLike ? (
+  return myLike?.length > 0 ? (
     <Container>
       {posts.map((item, idx) => {
         return <MyLikeItem post={item} key={idx} />;
       })}
     </Container>
   ) : (
-    <Container>좋아요 한 글이 없습니다.</Container>
+    <Container>
+      <NoDataText>좋아요 한 글이 없습니다.</NoDataText>
+    </Container>
   );
 };
 

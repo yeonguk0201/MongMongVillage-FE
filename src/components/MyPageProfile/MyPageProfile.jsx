@@ -28,22 +28,21 @@ const MyPageProfile = ({ edit }) => {
     profilePicture: '',
   });
 
-  /* 사용자 정보에서 사진 불러오기 추가할것 -> 없으면 기본 이미지(user.png)로 */
-
-  const [preview, setPreview] = useState(
-    `${process.env.PUBLIC_URL}/imges/user.png`,
-  );
   const userId = localStorage.getItem('userId');
   const { isLoading, data: userData } = useGetUserInfo(userId);
+  const [preview, setPreview] = useState(myInfo.profilePicture);
 
   useEffect(() => {
     if (userData) {
+      console.log(userData);
       setMyInfo({
         ...myInfo,
+        profilePicture: userData.profilePicture,
         nickname: userData.nickname,
         email: userData.email,
         introduction: userData.introduction,
       });
+      setPreview(userData.profilePicture);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
@@ -143,8 +142,14 @@ const MyPageProfile = ({ edit }) => {
       ) : (
         <MyInfoContainer>
           <MyName>{myInfo.nickname}</MyName>
-          <MyIntroduction>{myInfo.introduction}</MyIntroduction>
           <MyEmail>{myInfo.email}</MyEmail>
+          {myInfo.introduction.length > 0 ? (
+            <MyIntroduction>{myInfo.introduction}</MyIntroduction>
+          ) : (
+            <MyIntroduction className="no-introduction">
+              회원 정보 수정 버튼을 눌러 소개 글을 추가해보세요!
+            </MyIntroduction>
+          )}
         </MyInfoContainer>
       )}
     </ProfileContainer>
