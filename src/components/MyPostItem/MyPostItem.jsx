@@ -1,4 +1,4 @@
-import { MyEditAndRemoveButtons } from '../MyEditAndRemoveButtons';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Title,
@@ -8,16 +8,22 @@ import {
   DateText,
   TopContainer,
 } from './styles';
+import { ROUTE } from '../../routes/Routes';
 
 const MyPostItem = ({ post }) => {
+  const navigate = useNavigate();
+
   return post ? (
-    <Container>
+    <Container
+      onClick={() =>
+        navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${post._id}`)
+      }
+    >
       <TopContainer>
         <div>
           <Title>{post.title}</Title>
           <Content>{post.content}</Content>
         </div>
-        <MyEditAndRemoveButtons />
       </TopContainer>
       <BottomContainer>
         <div>
@@ -25,7 +31,7 @@ const MyPostItem = ({ post }) => {
           <Count>좋아요 : {post.like_count}</Count>
         </div>
         <DateText>
-          {new Date(post.createdAt).toLocaleString() + ' 작성'}
+          {new Date(post.updatedAt).toLocaleString() + ' 작성'}
         </DateText>
       </BottomContainer>
     </Container>

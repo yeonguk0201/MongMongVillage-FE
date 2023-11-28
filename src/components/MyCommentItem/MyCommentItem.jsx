@@ -1,31 +1,22 @@
-import { MyEditAndRemoveButtons } from '../MyEditAndRemoveButtons';
-import {
-  Container,
-  TopContainer,
-  BottomContainer,
-  Content,
-  Title,
-  DateText,
-} from './styles';
+import { useNavigate } from 'react-router-dom';
+import { Container, Content, DateText } from './styles';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { ROUTE } from '../../routes/Routes';
 
 const MyCommentItem = ({ comment }) => {
-  console.log(comment);
+  const navigate = useNavigate();
+
   return (
-    <Container>
-      <TopContainer>
-        <div>
-          <Content>{comment.content}</Content>
-          <Title>
-            {comment.original}
-            <FaExternalLinkAlt />
-          </Title>
-        </div>
-        <MyEditAndRemoveButtons />
-      </TopContainer>
-      <BottomContainer>
-        <DateText>{comment.date}</DateText>
-      </BottomContainer>
+    <Container
+      onClick={() =>
+        navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${comment.board_id}`)
+      }
+    >
+      <Content>
+        <FaExternalLinkAlt />
+        {comment.content}
+      </Content>
+      <DateText>{new Date(comment.updatedAt).toLocaleString()} 작성</DateText>
     </Container>
   );
 };

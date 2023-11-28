@@ -1,21 +1,13 @@
-import { useEffect, useState } from 'react';
 import { Container, NoDataText } from './styles';
 import { MyLikeItem } from '../index';
 import { useGetMyLike } from '../../hooks/getMyLike';
+
 const MyLike = () => {
-  const [posts, setPosts] = useState([]);
+  const { data: myLikePosts } = useGetMyLike();
 
-  const { isLoading, data: myLike } = useGetMyLike();
-
-  useEffect(() => {
-    if (!isLoading) {
-      setPosts(myLike);
-    }
-  }, []);
-
-  return myLike?.length > 0 ? (
+  return myLikePosts ? (
     <Container>
-      {posts.map((item, idx) => {
+      {myLikePosts.map((item, idx) => {
         return <MyLikeItem post={item} key={idx} />;
       })}
     </Container>
