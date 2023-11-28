@@ -26,6 +26,7 @@ import { Kakao, ReviewItem } from '../../components';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { Title } from '../../commonStyles';
 import { ROUTE } from '../../routes/Routes';
+import { useGetUserInfo } from '../../hooks/getUserInfo';
 
 const ReviewDetailPage = () => {
   const navigate = useNavigate();
@@ -37,12 +38,18 @@ const ReviewDetailPage = () => {
     rating: 0,
     cafeName: '',
     images: [],
+    userName: '',
+    profilePicture: '',
   });
 
   const { id } = useParams();
 
-  const { isLoading, data: reviewData } = useGetReview(id);
-
+  const { isLoading: reviewLoading, data: reviewData } = useGetReview(id);
+  const { isLoading: userLoading, data: userData } = useGetUserInfo(
+    reviewData?.user_id ?? '',
+  );
+  console.log(reviewData);
+  console.log('유저', userData);
   useEffect(() => {
     if (reviewData) {
       setReview({
@@ -63,7 +70,7 @@ const ReviewDetailPage = () => {
   };
 
   console.log('리뷰데이터', reviewData);
-  return !isLoading && review ? (
+  return !reviewLoading && review ? (
     <>
       <ReviewDetailContainer>
         <ReviewTitleContainer>
@@ -81,9 +88,12 @@ const ReviewDetailPage = () => {
           </TitleStarRaiting>
           <ProfileContainer>
             <ProfileImg
-              src={`${process.env.PUBLIC_URL}/imges/user.png`}
+              src={
+                userData?.profilePicture ??
+                `${process.env.PUBLIC_URL}/imges/user.png`
+              }
             ></ProfileImg>
-            <Username>username</Username>
+            <Username>{userData?.nickname ?? ''}</Username>
           </ProfileContainer>
         </ReviewTitleContainer>
         <MapContainer>

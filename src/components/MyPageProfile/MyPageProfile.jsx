@@ -33,8 +33,8 @@ const MyPageProfile = ({ edit }) => {
   const [preview, setPreview] = useState(
     `${process.env.PUBLIC_URL}/imges/user.png`,
   );
-
-  const { isLoading, data: userData } = useGetUserInfo();
+  const userId = localStorage.getItem('userId');
+  const { isLoading, data: userData } = useGetUserInfo(userId);
 
   useEffect(() => {
     if (userData) {

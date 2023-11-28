@@ -4,17 +4,9 @@ import { useQuery } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const getUserInfo = async (user_id) => {
-  const token = localStorage.getItem('token');
   if (user_id) {
-    const response = await instance.get(`/users/${user_id}`, {
-      headers: {
-        Authorization: ``,
-      },
-    });
+    const response = await instance.get(`/users/${user_id}`);
 
-    if (response?.data?.data) return response.data.data;
-  } else {
-    const response = await instance.get('/users/:userId');
     if (response?.data?.data) return response.data.data;
   }
 };

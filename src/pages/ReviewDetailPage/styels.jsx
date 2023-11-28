@@ -57,7 +57,9 @@ export const ProfileContainer = styled.div`
 
 export const ProfileImg = styled.img`
   width: 36px;
+  height: 36px;
   border-radius: 50%;
+  overflow: hidden;
 `;
 
 export const Username = styled.p`

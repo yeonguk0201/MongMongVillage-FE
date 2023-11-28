@@ -29,7 +29,7 @@ const ReviewItem = ({ item }) => {
   };
 
   const { data: userInfo } = useGetUserInfo(item.user_id);
-  // console.log(item.user_id, userInfo?.email);
+
   return (
     item && (
       <Container>
@@ -45,7 +45,7 @@ const ReviewItem = ({ item }) => {
               <Writer>
                 <img
                   src={
-                    userInfo?.profilePicture
+                    userInfo?.profilePicture?.length > 0
                       ? userInfo.profilePicture
                       : `${`${process.env.PUBLIC_URL}/imges/user.png`}`
                   }
