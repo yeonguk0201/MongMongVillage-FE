@@ -17,13 +17,13 @@ import {
   PasswordValidCheck,
   ConfirmPasswordValidCheck,
   EmailDuplicateCheck,
-  NickNameDuplicateCheck,
 } from '../../libs/AuthValidCheck';
 
 import { InputStatus, SetMessage } from '../../libs/AuthMessage';
 import { usePostSignUp } from '../../hooks/postSignUp';
 
 import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
+import { useGetCheckNickname } from '../../hooks/getCheckNickname';
 
 const SignUpPage = () => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -65,6 +65,24 @@ const SignUpPage = () => {
       alert('약관에 동의해주세요.');
     } else {
       mutate();
+    }
+  };
+
+  // 닉네임 중복체크 api
+  const NickNameDuplicateCheck = async (e) => {
+    e.preventDefault();
+    const isDuplicate = await useGetCheckNickname(signUpInfo.nickName);
+
+    if (!isDuplicate) {
+      setSignUpStatus({
+        ...signUpStatus,
+        nicknameInputStatus: InputStatus.SUCCESS,
+      });
+    } else {
+      setSignUpStatus({
+        ...signUpStatus,
+        nicknameInputStatus: InputStatus.DUPLICATE,
+      });
     }
   };
 
@@ -157,14 +175,7 @@ const SignUpPage = () => {
             }}
           ></AuthInput>
           <CheckButton
-            onClick={(e) =>
-              setSignUpStatus({
-                ...signUpStatus,
-                nicknameInputStatus: NickNameDuplicateCheck(
-                  signUpInfo.nickName,
-                ),
-              })
-            }
+            onClick={(e) => NickNameDuplicateCheck(e)}
             disabled={
               signUpStatus.nicknameInputStatus !== InputStatus.CHECK_REQUIRED
             }
