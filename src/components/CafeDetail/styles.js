@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  border-radius: 50px;
-  margin: 50px auto;
-  background-color: rgba(255, 232, 148, 0.3);
   width: 80%;
+  margin: 50px auto;
+  border-radius: 50px;
+  background-color: rgba(255, 232, 148, 0.3);
+  padding: 20px 0 50px 0;
 `;
 
 export const CafeDetailContainer = styled.div`
