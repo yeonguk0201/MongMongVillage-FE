@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
-import { usePostBoard } from '../../hooks';
+import { usePostBoard } from '../../hooks/postBoard';
 import {
   Container,
   CategorySelector,
@@ -70,7 +70,7 @@ const NewPost = () => {
     } else {
       setCategory(categorySelectRef.current.value);
       setTitle(titleInputRef.current.value);
-      setContent(contentInputRef.current.value);
+      setContent(contentInputRef.current.value.replace(/\n/g, '<br>'));
     }
   };
 

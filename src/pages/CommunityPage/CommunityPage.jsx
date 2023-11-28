@@ -1,4 +1,6 @@
-import { useGetBoards, useGetCommunitySearch } from '../../hooks';
+// import { useGetBoards, useGetCommunitySearch } from '../../hooks';
+import { useGetBoards } from '../../hooks/getBoards';
+import { useGetCommunitySearch } from '../../hooks/getCommunitySearch';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -16,9 +18,10 @@ import { Title } from '../../commonStyles';
 // 카테고리 객체
 const CATEGORY_DIC = CommunityCategory;
 // 페이지네이션 페이지 당 아이템 수
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 10;
 
 const CommunityPage = () => {
+  const [user, setUser] = useState(null);
   // navigate 객체 생성
   const navigate = useNavigate();
 
@@ -35,6 +38,12 @@ const CommunityPage = () => {
 
   // 검색 기능을 위한 state
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('userId');
+    setUser(storedUserId);
+    console.log(storedUserId);
+  }, []);
 
   // 페이지네이션 관련 기능 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   // 현재 페이지 상태
@@ -172,6 +181,7 @@ const CommunityPage = () => {
       <CommunitySearchAndPost
         handleSearchInputChange={handleSearchInputChange}
         handleNewPostClick={handleNewPostClick}
+        user={user}
       ></CommunitySearchAndPost>
 
       <CommunityPagination

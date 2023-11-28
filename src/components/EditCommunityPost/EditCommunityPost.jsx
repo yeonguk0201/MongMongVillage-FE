@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { usePatchBoard } from '../../hooks';
+// import { usePatchBoard } from '../../hooks';
+import { usePatchBoard } from '../../hooks/patchBoard';
 import { ROUTE } from '../../routes/Routes';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { FaCamera } from 'react-icons/fa';
@@ -103,7 +104,7 @@ const EditCommunityPost = () => {
       contentInputRef.current.focus();
     } else {
       setCategory(categorySelectRef.current.value);
-      setContent(contentInputRef.current.value);
+      setContent(contentInputRef.current.value.replace(/\n/g, '<br>'));
       setTitle(titleInputRef.current.value);
       setBoardId(selectedPost._id);
       setEditStatus(true);
