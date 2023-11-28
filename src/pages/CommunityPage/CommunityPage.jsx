@@ -182,7 +182,8 @@ const CommunityPage = () => {
 
       {searchWord && searchTotal !== undefined && (
         <p className="SearchResult">
-          '{searchWord}' 검색 결과 {searchTotal}개의 게시글이 있습니다.
+          '<span>{searchWord}</span>' 검색 결과 <span>{searchTotal}</span>개의
+          게시글이 있습니다.
         </p>
       )}
 
