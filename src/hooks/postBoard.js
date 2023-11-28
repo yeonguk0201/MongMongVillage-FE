@@ -1,33 +1,26 @@
 import { instance } from '.';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const postBoard = async (category, title, content, images) => {
-  const token = localStorage.getItem('token');
-
-  let formData = new FormData();
-  formData.append('category', category);
+  const formData = new FormData();
   images.forEach((image) => {
     formData.append('images', image);
   });
+  formData.append('category', category);
   formData.append('title', title);
   formData.append('content', content);
 
-  const response = await instance.post(`/boards/`, formData, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data', // FormData를 사용하는 경우
-    },
-  });
+  const response = await instance.post(`/boards/`, formData, {});
 
   return response;
 };
 
 export function usePostBoard(category, title, content, images) {
-  // 여기까진 잘 나옴
-  // console.log(category, title, content, images);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
   return useMutation(() => postBoard(category, title, content, images), {
     onSuccess: (response) => {
       navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${response.data.board_id}`);
@@ -36,9 +29,12 @@ export function usePostBoard(category, title, content, images) {
     },
 
     onError: (error) => {
-      console.log(error);
-      alert('로그인 후 작성해주세요.');
-      alert(error.response.data.message);
+      console.error(error);
+      alert(error.response.data.message, '로그인이 필요합니다.');
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries(['myBoards']);
     },
   });
 }
