@@ -4,13 +4,12 @@ export const LikeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center; /* 중앙 정렬을 추가합니다. */
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   justify-content: center !important;
   border: 2px solid lightgray;
   border-radius: 40px;
   background-color: ${(props) =>
-    props.islikeClick ? 'var(--main-yellow-color)' : 'white'};
+    props.islikeclick ? 'var(--main-yellow-color)' : 'white'};
   width: 80px;
   height: 80px;
   cursor: pointer;

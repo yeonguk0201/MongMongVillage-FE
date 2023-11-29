@@ -1,5 +1,3 @@
-import { CommunityCategory } from '../../libs/CommunityCategory.js';
-import { FaCircleUser } from 'react-icons/fa6';
 import { useState, useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import {
@@ -35,8 +33,6 @@ const CommunityListItem = ({
       setCategoryKor('질문글');
     }
   }, [item.category]);
-
-  console.log(item);
 
   return (
     <Container

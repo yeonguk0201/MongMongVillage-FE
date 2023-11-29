@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { FaCircleUser } from 'react-icons/fa6';
 import {
   UnderContentContainer,
   ContentInfo,
@@ -25,8 +24,6 @@ const CommunityUnderContent = ({ selectedPost, onEdit, onDelete, post }) => {
     onDelete(post._id);
   };
 
-  console.log(post?.board);
-
   return (
     <UnderContentContainer>
       <ContentInfo>
@@ -48,12 +45,6 @@ const CommunityUnderContent = ({ selectedPost, onEdit, onDelete, post }) => {
         </div>
       </ContentInfo>
       <ContentButton>
-        {/* <BTN onClick={handleEditClick}>
-          <p>수정</p>
-        </BTN>
-        <BTN onClick={handleDeleteClick}>
-          <p>삭제</p>
-        </BTN> */}
         {user === post?.board?.user_id?._id && (
           <>
             <BTN onClick={handleEditClick}>

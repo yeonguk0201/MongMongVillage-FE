@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LikeContainer } from './CommunityPostLike.styles';
 import { usePutBoardLike } from '../../hooks/putBoardLike';
+import { FaHeart } from 'react-icons/fa';
 
 const CommunityPostLike = ({ like, selectedPost }) => {
   const [islikeClick, setIsLikeClick] = useState(false);
@@ -27,15 +28,13 @@ const CommunityPostLike = ({ like, selectedPost }) => {
         islikeClick ? prevLikeCount + 1 : prevLikeCount - 1,
       );
     }
-  }, [islikeClick]);
+  }, [boardId, islikeClick, putBoardLike]);
 
   return (
-    <LikeContainer
-      selectedPost={selectedPost}
-      onClick={handleLikeClick}
-      islikeClick={islikeClick}
-    >
-      <div style={{ marginBottom: '14px' }}>❤️</div>
+    <LikeContainer onClick={handleLikeClick} islikeclick={islikeClick}>
+      <div style={{ marginBottom: '14px' }}>
+        <FaHeart color="red" />
+      </div>
       {userId !== null ? <p>{islikeClick ? like + 1 : like}</p> : <>{like}</>}
     </LikeContainer>
   );

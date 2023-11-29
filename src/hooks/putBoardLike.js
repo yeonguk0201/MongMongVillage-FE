@@ -11,10 +11,6 @@ export function usePutBoardLike(boardId) {
   const queryClient = useQueryClient();
 
   return useMutation(() => putBoardLike(boardId), {
-    onSuccess: () => {
-      console.log('좋아요 변경 완료 - ', boardId);
-    },
-
     onError: () => {
       alert('로그인 후 좋아요 기능을 이용해주세요.');
     },
