@@ -13,6 +13,7 @@ const postLogin = async (email, password) => {
 
 export function usePostLogin(email, password) {
   const navigate = useNavigate();
+
   return useMutation(() => postLogin(email, password), {
     onSuccess: (response) => {
       const token = response.data.token;
@@ -21,7 +22,7 @@ export function usePostLogin(email, password) {
       localStorage.setItem('token', token);
       localStorage.setItem('userId', userId);
 
-      alert('로그인 성공');
+      alert('로그인에 성공했습니다.');
       navigate('/');
     },
     onError: (error) => {
