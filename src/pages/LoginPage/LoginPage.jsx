@@ -64,10 +64,10 @@ const LoginPage = () => {
       <SubmitButton onClick={submitLogin}>로그인</SubmitButton>
 
       <TextButtonContainer>
-        <button>비밀번호 찾기</button>
+        {/* <button>비밀번호 찾기</button> */}
         <button onClick={linkToSignup}>회원가입</button>
       </TextButtonContainer>
-      <SNSButtonContainer>
+      {/* <SNSButtonContainer>
         <SNSButton className="google-login-button">
           <FcGoogle />
           <span>구글로 로그인</span>
@@ -78,7 +78,7 @@ const LoginPage = () => {
           <span>네이버로 로그인</span>
           <span></span>
         </SNSButton>
-      </SNSButtonContainer>
+      </SNSButtonContainer> */}
     </Container>
   );
 };
