@@ -5,7 +5,7 @@ import { ROUTE } from '../routes/Routes';
 
 const getReview = async (id) => {
   const response = await instance.get(`/reviews/${id}`);
-  if (response?.data?.data) return response.data.data;
+  if (response?.data?.data?.review) return response.data.data.review;
 };
 
 export function useGetReview(id) {
@@ -15,7 +15,7 @@ export function useGetReview(id) {
     //  성공 처리 필요하면 onSuccess 추가
 
     onError: (error) => {
-      console.console.error(error);
+      console.error(error);
       alert('해당 리뷰 데이터가 존재하지 않습니다.');
       navigate(ROUTE.REVIEW_LIST_PAGE.link);
     },

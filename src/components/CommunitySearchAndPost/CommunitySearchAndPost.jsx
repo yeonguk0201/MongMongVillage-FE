@@ -7,7 +7,7 @@ import {
   SearchButton,
   SearchInput,
 } from './CommunitySearchAndPost.styles';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaPencilAlt } from 'react-icons/fa';
 
 const CommunitySearchAndPost = ({
   handleSearchInputChange,
@@ -43,7 +43,14 @@ const CommunitySearchAndPost = ({
             />
           </SearchInputBox>
         </SearchContainer>
-        {user ? <PostBTN onClick={handleNewPostClick}>글작성</PostBTN> : null}
+        {user ? (
+          <PostBTN onClick={handleNewPostClick}>
+            글작성
+            <FaPencilAlt />
+          </PostBTN>
+        ) : (
+          <></>
+        )}
       </SearchAndPostContainer>
     </>
   );

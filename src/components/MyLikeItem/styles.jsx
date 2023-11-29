@@ -46,19 +46,3 @@ export const BottomContainer = styled.div`
 export const DateText = styled.span`
   font-size: 10px;
 `;
-
-export const Writer = styled.div`
-  display: flex;
-  align-items: center;
-  span {
-    font-weight: bold;
-    margin: 0 5px;
-  }
-
-  img {
-    border-radius: 70%;
-    overflow: hidden;
-    width: 25px;
-    height: 25px;
-  }
-`;

@@ -8,47 +8,45 @@ const CommunityNav = ({ handleNavClick, category }) => {
     CommunityCategory.all,
   );
   return (
-    <>
-      <CommunityNavContainer category={category}>
-        <CommunityNavItem
-          onClick={() => {
-            setSelectedCategory(CommunityCategory.all);
-            handleNavClick(CommunityCategory.all);
-          }}
-          selected={selectedCategory === CommunityCategory.all}
-        >
-          <span>전체글</span>
-        </CommunityNavItem>
+    <CommunityNavContainer category={category}>
+      <CommunityNavItem
+        onClick={() => {
+          setSelectedCategory(CommunityCategory.all);
+          handleNavClick(CommunityCategory.all);
+        }}
+        selected={selectedCategory === CommunityCategory.all}
+      >
+        <span>전체글</span>
+      </CommunityNavItem>
 
-        <CommunityNavItem
-          selected={selectedCategory === CommunityCategory.general}
-          onClick={() => {
-            handleNavClick(CommunityCategory.general);
-            setSelectedCategory(CommunityCategory.general);
-          }}
-        >
-          <span>자유글</span>
-        </CommunityNavItem>
-        <CommunityNavItem
-          selected={selectedCategory === CommunityCategory.info}
-          onClick={() => {
-            handleNavClick(CommunityCategory.info);
-            setSelectedCategory(CommunityCategory.info);
-          }}
-        >
-          <span> 정보글</span>
-        </CommunityNavItem>
-        <CommunityNavItem
-          selected={selectedCategory === CommunityCategory.question}
-          onClick={() => {
-            handleNavClick(CommunityCategory.question);
-            setSelectedCategory(CommunityCategory.question);
-          }}
-        >
-          <span>질문글</span>
-        </CommunityNavItem>
-      </CommunityNavContainer>
-    </>
+      <CommunityNavItem
+        selected={selectedCategory === CommunityCategory.general}
+        onClick={() => {
+          handleNavClick(CommunityCategory.general);
+          setSelectedCategory(CommunityCategory.general);
+        }}
+      >
+        <span>자유글</span>
+      </CommunityNavItem>
+      <CommunityNavItem
+        selected={selectedCategory === CommunityCategory.info}
+        onClick={() => {
+          handleNavClick(CommunityCategory.info);
+          setSelectedCategory(CommunityCategory.info);
+        }}
+      >
+        <span>정보글</span>
+      </CommunityNavItem>
+      <CommunityNavItem
+        selected={selectedCategory === CommunityCategory.question}
+        onClick={() => {
+          handleNavClick(CommunityCategory.question);
+          setSelectedCategory(CommunityCategory.question);
+        }}
+      >
+        <span>질문글</span>
+      </CommunityNavItem>
+    </CommunityNavContainer>
   );
 };
 

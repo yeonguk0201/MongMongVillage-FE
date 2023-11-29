@@ -9,17 +9,11 @@ const ReviewListPage = () => {
   const [page, setPage] = useState(1);
   const [sortType, setSortType] = useState('latest');
 
-  const { mutate: getReviews, data, isLoading } = useGetReviews();
+  const { data: reviews, isLoading } = useGetReviews();
 
   useEffect(() => {
-    getReviews();
-  }, [getReviews]);
-
-  useEffect(() => {
-    if (data) {
-      setList(data.data);
-    }
-  }, [data]);
+    if (reviews) setList(reviews);
+  }, [reviews]);
 
   useEffect(() => {
     // 정렬기준에 따른 데이터 불러오기
@@ -45,7 +39,7 @@ const ReviewListPage = () => {
         {isLoading ? (
           <div>로딩중</div>
         ) : (
-          list.map((item) => <ReviewItem item={item} key={item._id} />)
+          list.map((item) => <ReviewItem key={item._id} id={item._id} />)
         )}
       </ReviewListContainer>
       <ReviewPagintaion page={page} setPage={setPage} />

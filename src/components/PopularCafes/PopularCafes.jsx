@@ -33,17 +33,17 @@ const PopularCafes = () => {
       const response = await instance.get(`/cafes/rating`);
       return response.data;
     } catch (error) {
-      throw new Error(`Failed to fetch best contents: ${error.message}`);
+      throw new Error(`Failed to fetch popular cafes: ${error.message}`);
     }
   };
 
   function useGetPolularCafes() {
     return useQuery('popularCafes', getPopularCafes, {
       onSuccess: (data) => {
-        console.log('Best contents fetched successfully:', data);
+        console.log('Popular cafes fetched successfully:', data);
       },
       onError: (error) => {
-        console.error('Failed to fetch best contents:', error.message);
+        console.error('Failed to fetch popular cafes:', error.message);
       },
     });
   }
@@ -63,9 +63,8 @@ const PopularCafes = () => {
   return (
     <Container>
       <Content>
-        {' '}
         <GiPartyPopper size={'43px'} color="rgba(255, 77, 77, 0.94)" />
-        인기 애견까페
+        인기 애견카페
         <GiPartyPopper
           size={'43px'}
           color="rgba(255, 77, 77, 0.94)"
@@ -79,10 +78,9 @@ const PopularCafes = () => {
               <DogCafeListItemImg
                 style={{
                   backgroundImage: `url('${
-                    // content.images.length > 0
-                    //   ? content.images[0]
-                    //   :
-                    '/imges/default.png'
+                    content.image.length > 0
+                      ? content.image
+                      : '/imges/default.png'
                   }')`,
                 }}
                 alt={`카페사진 ${index}`}

@@ -15,7 +15,6 @@ export * from './MyComment';
 export * from './MyCommentItem';
 export * from './MyLike';
 export * from './MyReview';
-export * from './MyEditAndRemoveButtons';
 export * from './MyLikeItem';
 export * from './MyReviewItem';
 export * from './NewPost';

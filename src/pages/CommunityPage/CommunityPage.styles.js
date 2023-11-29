@@ -5,11 +5,13 @@ export const Container = styled.div`
   flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
-
   .SearchResult {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 16px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 18px;
+    span {
+      font-weight: 900;
+    }
   }
 `;
 

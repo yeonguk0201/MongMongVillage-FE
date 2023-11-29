@@ -26,6 +26,7 @@ export const SelectSortContainer = styled.div`
     border-radius: 50%;
     cursor: pointer;
   }
+
   input[type='radio']:checked {
     background-color: var(--main-yellow-color);
   }

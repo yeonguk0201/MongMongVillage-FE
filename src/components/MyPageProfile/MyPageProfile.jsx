@@ -60,6 +60,7 @@ const MyPageProfile = ({ edit }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
 
+  /* 회원 탈퇴 */
   const { mutate: deleteUser } = useDeleteUser();
 
   const handleDeleteUser = () => {
@@ -69,6 +70,7 @@ const MyPageProfile = ({ edit }) => {
     }
   };
 
+  /* 회원 정보 수정 */
   const { mutate: putUser } = usePatchUserInfo(
     myInfo.nickname,
     myInfo.introduction,
@@ -82,6 +84,7 @@ const MyPageProfile = ({ edit }) => {
     }
   };
 
+  /* 프로필 사진 업로드 */
   const handleImgFile = (e) => {
     const file = e.target.files[0];
 
@@ -109,7 +112,7 @@ const MyPageProfile = ({ edit }) => {
   };
 
   return isLoading ? (
-    <div>로딩중 . . .</div>
+    <ProfileContainer>로딩중 . . .</ProfileContainer>
   ) : (
     <ProfileContainer>
       <MyProfileImg imgSrc={preview} />

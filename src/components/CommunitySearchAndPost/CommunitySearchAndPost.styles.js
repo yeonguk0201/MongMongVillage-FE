@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
 export const SearchAndPostContainer = styled.div`
-  margin-top: 40px;
+  margin: 40px 0;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  margin-bottom: 50px;
 `;
 
 export const SearchContainer = styled.div`
@@ -18,37 +16,40 @@ export const SearchContainer = styled.div`
 
 export const SearchInputBox = styled.div`
   display: flex;
-  height: 40px;
+  height: 45px;
   border: 3px solid var(--main-yellow-color);
   border-radius: 40px;
   align-items: center;
   width: 600px;
   margin-left: 60px;
 `;
+
 export const PostBTN = styled.button`
-  height: 44px;
-  flex: 1;
+  display: flex;
   border: 1px solid lightgrey;
   background-color: var(--main-yellow-color);
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  svg {
+    margin-left: 5px;
+  }
 `;
 
 export const SearchButton = styled.button`
-  margin-top: 4px;
-  margin-left: 20px;
-  background-color: white;
+  background-color: transparent;
   align-items: center;
   justify-content: center;
-  padding-top: 4px;
+  svg {
+    margin: 0 auto;
+    padding: 10px;
+  }
 `;
 
 export const SearchInput = styled.input`
-  padding: 8px;
-  margin-top: 0px !important;
+  padding: 10px;
   border: none;
-  margin-left: 4px;
   height: 24px;
   width: 500px;
   border-left: 3px solid var(--main-yellow-color);
-  padding-left: 16px;
 `;

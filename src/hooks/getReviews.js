@@ -1,14 +1,13 @@
 import { instance } from '.';
-import { useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 
 const getReviews = async () => {
   const response = await instance.get(`/reviews`);
-  if (response?.data) return response.data;
+  if (response?.data?.data) return response.data.data;
 };
 
 export function useGetReviews() {
-  return useMutation(() => getReviews(), {
-    onSuccess: (response) => {},
+  return useQuery(['getReviews'], () => getReviews(), {
     onError: (error) => {
       alert(error);
     },
