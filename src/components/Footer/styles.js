@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   height: 224px;
   display: flex;
+  padding-top: 20px;
 `;
 
 export const FooterContainer = styled.div`
