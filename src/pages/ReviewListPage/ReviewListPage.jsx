@@ -3,32 +3,34 @@ import { Container, ReviewListContainer } from './styels';
 import { Title } from '../../commonStyles';
 import { ReviewItem, ReviewListSort, ReviewPagintaion } from '../../components';
 import { useGetReviews } from '../../hooks/getReviews';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ROUTE } from '../../routes/Routes';
 
 const ReviewListPage = () => {
-  const [list, setList] = useState([]);
-  const [page, setPage] = useState(1);
-  const [sortType, setSortType] = useState('latest');
+  const navigate = useNavigate();
 
-  const { data: reviews, isLoading } = useGetReviews();
+  const [list, setList] = useState([]);
+
+  const location = useLocation();
+  const sort = new URLSearchParams(location.search).get('sort') || 'latest';
+  const page = new URLSearchParams(location.search).get('page') || 1;
+
+  const { data: reviews, isLoading } = useGetReviews(sort, page);
 
   useEffect(() => {
     if (reviews) setList(reviews);
   }, [reviews]);
 
-  useEffect(() => {
-    // 정렬기준에 따른 데이터 불러오기
-  }, [sortType]);
+  const handlePage = (newPage) => {
+    navigate(ROUTE.REVIEW_LIST_PAGE.link + `?sort=${sort}&page=${newPage}`);
 
-  useEffect(() => {
-    // 페이지 값에 따른 데이터 불러오기
-  }, [page]);
+    window.scroll({ top: 0, behavior: 'smooth' });
+  };
 
   const handleSorting = (sortType) => {
-    if (sortType === 'latest') {
-      setSortType('latest');
-    } else if (sortType === 'popular') {
-      setSortType('popular');
-    }
+    navigate(ROUTE.REVIEW_LIST_PAGE.link + `?sort=${sortType}&page=${page}`);
+
+    window.scroll({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -42,7 +44,7 @@ const ReviewListPage = () => {
           list.map((item) => <ReviewItem key={item._id} id={item._id} />)
         )}
       </ReviewListContainer>
-      <ReviewPagintaion page={page} setPage={setPage} />
+      <ReviewPagintaion page={page} navigatePage={handlePage} />
     </Container>
   );
 };

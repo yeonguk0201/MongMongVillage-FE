@@ -1,6 +1,6 @@
 import { Container } from './styles';
 
-const ReviewListSort = ({ sortType, handleSorting }) => {
+const ReviewListSort = ({ handleSorting }) => {
   return (
     <Container>
       <label>
