@@ -12,10 +12,7 @@ const MyPage = () => {
 
   const logout = () => {
     alert('로그아웃 되었습니다.');
-
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-
+    localStorage.clear();
     navigate(ROUTE.MAIN_PAGE.link);
   };
 
