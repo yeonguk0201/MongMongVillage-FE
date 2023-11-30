@@ -22,5 +22,9 @@ export const Container = styled.div`
     font-size: 18px;
     border-radius: 20px;
     background-color: var(--main-yellow-color);
+    transition: 0.5s;
+    &:hover {
+      opacity: 0.5;
+    }
   }
 `;
