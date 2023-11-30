@@ -3,18 +3,17 @@ import styled from 'styled-components';
 export const LikeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; /* 중앙 정렬을 추가합니다. */
+  justify-content: space-around;
+  align-items: center;
   margin: 0 auto;
-  justify-content: center !important;
   border: 2px solid lightgray;
   border-radius: 40px;
   background-color: ${(props) =>
-    props.islikeclick ? 'var(--main-yellow-color)' : 'white'};
+    props.islikeclick === 'true' ? 'var(--main-yellow-color)' : 'white'};
   width: 80px;
   height: 80px;
   cursor: pointer;
-
-  div {
-    padding-top: 10px;
+  svg {
+    margin-top: 10px;
   }
 `;

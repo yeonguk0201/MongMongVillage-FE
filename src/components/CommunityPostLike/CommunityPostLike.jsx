@@ -1,49 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { LikeContainer } from './CommunityPostLike.styles';
 import { usePutBoardLike } from '../../hooks/putBoardLike';
 import { FaHeart } from 'react-icons/fa';
+import { useGetMyLike } from '../../hooks/getMyLike';
+import { redirect } from 'react-router-dom';
 
-const CommunityPostLike = ({ like, selectedPost }) => {
+const CommunityPostLike = ({ likeCount, setLikeCount, boardId }) => {
+  const userId = localStorage.getItem('userId');
   const [islikeClick, setIsLikeClick] = useState(false);
-  const boardId = selectedPost?.board?._id;
-  const [likeCount, setLikeCount] = useState(like);
-  const [userId, setUserId] = useState(null);
-  const [showLoginAlert, setShowLoginAlert] = useState(false);
+  const { data: myLikes } = useGetMyLike();
 
-  const handleLikeClick = () => {
-    if (userId) {
-      setIsLikeClick(!islikeClick);
-    } else {
-      setShowLoginAlert(true);
-    }
-  };
+  /* 내가 좋아요 한 리스트 불러와서 해당 글을 좋아요 한 글인지 비교 */
+  useEffect(() => {
+    myLikes?.forEach((item) => {
+      if (item?.board_id?._id === boardId) {
+        setIsLikeClick(true);
+      }
+    });
+  }, [myLikes, boardId]);
 
   const { mutate: putBoardLike } = usePutBoardLike(boardId);
 
-  useEffect(() => {
-    setUserId(localStorage.getItem('userId'));
-
-    if (boardId && showLoginAlert) {
-      alert('로그인 후 좋아요 기능을 이용해주세요.');
-      setShowLoginAlert(false);
-    }
-
-    if (boardId && islikeClick) {
-      putBoardLike(boardId);
-      setLikeCount((prevLikeCount) => prevLikeCount + 1);
-    }
-
-    if (boardId && !islikeClick) {
-      setLikeCount((prevLikeCount) => prevLikeCount - 1);
-    }
-  }, [boardId, islikeClick, putBoardLike, showLoginAlert]);
+  const handleLikeClick = () => {
+    putBoardLike();
+    setLikeCount(islikeClick ? likeCount - 1 : likeCount + 1);
+    setIsLikeClick(!islikeClick);
+  };
 
   return (
-    <LikeContainer onClick={handleLikeClick} islikeclick={islikeClick}>
-      <div style={{ marginBottom: '14px' }}>
-        <FaHeart color="red" />
-      </div>
-      {userId !== null ? <p>{islikeClick ? like + 1 : like}</p> : <>{like}</>}
+    <LikeContainer
+      onClick={handleLikeClick}
+      islikeclick={islikeClick ? 'true' : 'false'}
+    >
+      <FaHeart color="red" />
+      {likeCount}
     </LikeContainer>
   );
 };

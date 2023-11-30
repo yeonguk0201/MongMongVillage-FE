@@ -25,7 +25,7 @@ const CommunityDetailPage = () => {
   const [post, setPost] = useState();
   const [totalBoards, setTotalBoards] = useState(0);
   const [selectedPost, setSelectedPost] = useState({});
-  const [like, setLike] = useState(0);
+  const [likeCount, setLikeCount] = useState(0);
 
   const [filteredCategory, setFilteredCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,7 +47,7 @@ const CommunityDetailPage = () => {
       setPost(postData);
       setFilteredCategory(postData.board.category);
       setSelectedPost(postData);
-      setLike(postData.board.like_count);
+      setLikeCount(postData.board.like_count);
       setNewCommentState(false);
     }
   }, [postData, id, newCommentState]);
@@ -125,8 +125,9 @@ const CommunityDetailPage = () => {
         <>
           <CommunityPost post={post} selectedPost={selectedPost} />
           <CommunityPostLike
-            like={like}
-            selectedPost={selectedPost}
+            likeCount={likeCount}
+            setLikeCount={setLikeCount}
+            boardId={selectedPost?.board?._id}
           ></CommunityPostLike>
           <CommunityUnderContent
             post={post}
