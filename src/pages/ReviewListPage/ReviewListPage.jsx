@@ -50,7 +50,11 @@ const ReviewListPage = () => {
           list.map((item) => <ReviewItem key={item._id} id={item._id} />)
         )}
       </ReviewListContainer>
-      <ReviewPagintaion page={page} navigatePage={handlePage} />
+      <ReviewPagintaion
+        page={page}
+        navigatePage={handlePage}
+        totalNum={reviews?.totalReviews}
+      />
     </Container>
   );
 };

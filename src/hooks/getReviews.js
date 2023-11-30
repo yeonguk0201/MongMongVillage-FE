@@ -5,6 +5,7 @@ const getReviews = async (sortType = 'latest', page = 1) => {
   const response = await instance.get(
     `/reviews?sortBy=${sortType}&page=${page}`,
   );
+
   if (response?.data?.data) {
     return response.data.data;
   }

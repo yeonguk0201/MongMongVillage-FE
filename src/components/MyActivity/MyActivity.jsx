@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Container, CountContainer, CountItem, Line, Title } from './styles';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE } from '../../routes/Routes';

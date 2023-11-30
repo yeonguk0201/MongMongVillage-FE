@@ -1,6 +1,7 @@
 import { Button, Container } from './styles';
-const ReviewPagintaion = ({ page, navigatePage }) => {
-  const pageNumbs = 5;
+const ReviewPagintaion = ({ page, navigatePage, totalNum = 40 }) => {
+  const reviewsPerPage = 10;
+  const pageNum = parseInt(totalNum / reviewsPerPage) + 1;
   const currentPage = parseInt(page);
 
   return (
@@ -8,7 +9,7 @@ const ReviewPagintaion = ({ page, navigatePage }) => {
       {currentPage > 1 && (
         <Button onClick={() => navigatePage(currentPage - 1)}>&lt;</Button>
       )}
-      {Array(pageNumbs)
+      {Array(pageNum)
         .fill()
         .map((_, i) => (
           <Button
@@ -19,12 +20,9 @@ const ReviewPagintaion = ({ page, navigatePage }) => {
             {i + 1}
           </Button>
         ))}
-      <Button
-        onClick={() => navigatePage(currentPage + 1)}
-        disabled={currentPage === pageNumbs}
-      >
-        &gt;
-      </Button>
+      {currentPage !== pageNum && (
+        <Button onClick={() => navigatePage(currentPage + 1)}>&gt;</Button>
+      )}
     </Container>
   );
 };
