@@ -78,6 +78,7 @@ export const ReviewDate = styled.p`
 `;
 
 export const CafeName = styled.p`
+  cursor: pointer;
   display: flex;
   padding: 10px;
   align-items: center;
@@ -85,6 +86,9 @@ export const CafeName = styled.p`
   font-weight: bold;
   svg {
     margin: 0 5px;
+  }
+  &:hover {
+    opacity: 0.5;
   }
 `;
 

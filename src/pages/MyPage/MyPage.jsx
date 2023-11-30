@@ -8,6 +8,7 @@ const MyPage = () => {
 
   const gotoEditPage = () => {
     navigate(ROUTE.MY_INFO_EDIT_PAGE.link);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const logout = () => {

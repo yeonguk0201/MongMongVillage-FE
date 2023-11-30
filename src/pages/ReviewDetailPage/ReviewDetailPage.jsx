@@ -50,6 +50,10 @@ const ReviewDetailPage = () => {
     });
   };
 
+  const linkToCafeDetailPage = () => {
+    navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${review?.cafe_id?._id}`);
+  };
+
   return reviewLoading ? (
     <Loading />
   ) : (
@@ -80,7 +84,7 @@ const ReviewDetailPage = () => {
             </ProfileContainer>
           </ReviewTitleContainer>
           <MapContainer>
-            <CafeName>
+            <CafeName onClick={linkToCafeDetailPage}>
               <FaMapMarkerAlt size={'24px'} />
               {review?.cafe_id?.name}
             </CafeName>
