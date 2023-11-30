@@ -67,10 +67,10 @@ const CommunityPage = () => {
 
   useEffect(() => {
     if (searchTerm) {
-      mutateSearch(currentPage);
+      mutateSearch();
     } else {
       // 검색어가 없을 경우 전체 게시글 가져오도록 수정
-      mutate(currentPage, filteredCategory, sortBy);
+      mutate();
     }
   }, [currentPage, filteredCategory, mutate, searchTerm, mutateSearch, sortBy]);
 
@@ -80,6 +80,7 @@ const CommunityPage = () => {
       setTotalBoards(data.total_number_of_boards);
     }
   }, [data, currentPage, filteredCategory, sortBy]);
+
   useEffect(() => {
     if (searchData && searchData.boards) {
       setList(searchData.boards);
@@ -147,10 +148,10 @@ const CommunityPage = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     setCurrentPage(page);
     if (searchTerm) {
-      mutateSearch(page);
+      mutateSearch();
     } else {
       // 검색어가 없을 경우 전체 게시글 가져오도록 수정
-      mutate(page);
+      mutate();
     }
     // !!! 서버로부터 현재 CurrentPage 와 일치하는 페이지 요청해서 받아오도록 해야함
   };
@@ -164,7 +165,9 @@ const CommunityPage = () => {
   // 현재 페이지에 표시될 아이템들
   const currentPageItems = list;
 
-  return (
+  return boardLoading ? (
+    <Loading />
+  ) : (
     <Container>
       <Title>커뮤니티</Title>
       <CommunityNav
