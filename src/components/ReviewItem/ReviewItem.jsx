@@ -16,6 +16,7 @@ import {
 import { ROUTE } from '../../routes/Routes';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { useGetReview } from '../../hooks/getReview';
+import { getRelativeTime } from '../../libs/getRelativeTime';
 
 const ReviewItem = ({ id }) => {
   const navigate = useNavigate();
@@ -59,9 +60,7 @@ const ReviewItem = ({ id }) => {
 
                 <span>{review?.user_id?.nickname ?? ''}</span>
               </Writer>
-              <ReviewDate>
-                {new Date(review.createdAt).toLocaleString() + ' 작성'}
-              </ReviewDate>
+              <ReviewDate>{getRelativeTime(review?.createdAt)}</ReviewDate>
               <StarRating>
                 <span className="ratingStar">
                   {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
