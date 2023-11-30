@@ -5,6 +5,7 @@ export * from './Banner';
 export * from './SearchBar';
 export * from './PopularCafes';
 export * from './BestContents';
+export * from './BestContentItem';
 export * from './SignUpCheckbox';
 export * from './MyActivity';
 export * from './MyMenuBar';
