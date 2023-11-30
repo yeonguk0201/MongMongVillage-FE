@@ -25,7 +25,7 @@ const CommunityDetailPage = () => {
   const [post, setPost] = useState();
   const [totalBoards, setTotalBoards] = useState(0);
   const [selectedPost, setSelectedPost] = useState({});
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState();
 
   const [filteredCategory, setFilteredCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);

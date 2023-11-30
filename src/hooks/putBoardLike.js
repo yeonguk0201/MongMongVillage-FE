@@ -13,12 +13,11 @@ export function usePutBoardLike(boardId) {
   const queryClient = useQueryClient();
 
   return useMutation(() => putBoardLike(boardId), {
-    onError: () => {
-      alert('로그인 후 좋아요 기능을 이용해주세요.');
+    onError: (error) => {
+      console.error(error);
     },
 
     onSuccess: (response) => {
-      console.log(response);
       queryClient.invalidateQueries(['myLike']);
     },
   });
