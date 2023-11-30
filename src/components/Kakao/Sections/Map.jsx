@@ -46,6 +46,24 @@ export default function Map(props) {
     // setLat(resultCafe[0].latitude);
     // 정상 출력
     let container = document.getElementById('map');
+    if (resultCafe.length === 0) {
+      let options = {
+        center: new kakao.maps.LatLng(37.516826, 126.9786567),
+        level: 7,
+      };
+
+      //map
+      const map = new kakao.maps.Map(container, options);
+
+      resultCafe.forEach((el) => {
+        // 마커를 생성합니다
+        const marker = new kakao.maps.Marker({
+          map: map,
+          position: new kakao.maps.LatLng(el.longitude, el.latitude),
+          title: el.name,
+        });
+      });
+    }
     if (resultCafe.length > 0) {
       let options = {
         center: new kakao.maps.LatLng(
