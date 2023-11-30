@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const MapContainer = styled.div`
+  height: 600px;
   h2 {
     margin-top: 10px;
     padding-bottom: 10px;
@@ -9,6 +10,7 @@ export const MapContainer = styled.div`
 `;
 
 export const CafeList = styled.div`
+  height: 600px;
   ul {
     list-style: none;
     padding: 0;
