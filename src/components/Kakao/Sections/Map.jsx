@@ -97,7 +97,24 @@ const Map = (props) => {
         console.log('filter데이터: ', filteredCafes);
         console.log('검색 키워드: ', keyword);
 
-        displayPlaces(filteredCafes, filteredDBcafes);
+        // filteredDBcafes를 filteredCafes의 이름에 따라 정렬
+        const sortedFilteredDBcafes = filteredDBcafes.sort((a, b) => {
+          const nameA = a.name.toLowerCase();
+          const nameB = b.name.toLowerCase();
+          return (
+            filteredCafes.findIndex((place) =>
+              place.place_name.toLowerCase().includes(nameA),
+            ) -
+            filteredCafes.findIndex((place) =>
+              place.place_name.toLowerCase().includes(nameB),
+            )
+          );
+        });
+
+        // sortedFilteredDBcafes 출력
+        console.log('sortedFilteredDBcafes:', sortedFilteredDBcafes);
+
+        displayPlaces(filteredCafes, sortedFilteredDBcafes);
 
         // 페이지 번호를 표출
         displayPagination(pagination);
