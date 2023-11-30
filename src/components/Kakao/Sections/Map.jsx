@@ -18,7 +18,6 @@ export default function Map(props) {
   useEffect(() => {
     if (keyword) {
       mutateAllCafes();
-      console.log(allCafesData);
     } else {
       alert('검색어를 입력해주세요.');
     }
@@ -54,15 +53,6 @@ export default function Map(props) {
 
       //map
       const map = new kakao.maps.Map(container, options);
-
-      resultCafe.forEach((el) => {
-        // 마커를 생성합니다
-        const marker = new kakao.maps.Marker({
-          map: map,
-          position: new kakao.maps.LatLng(el.longitude, el.latitude),
-          title: el.name,
-        });
-      });
     }
     if (resultCafe.length > 0) {
       let options = {
