@@ -29,8 +29,9 @@ export function usePatchReview(id, title, content, rating, images) {
         ['getReview' + id],
         ['myReviews'],
       );
-      navigate(ROUTE.REVIEW_LIST_PAGE.link);
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+      navigate(ROUTE.REVIEW_DETAIL_PAGE.link + `/${id}`);
+      window.scrollTo({ top: 0, left: 0 });
     },
 
     onError: (error) => {

@@ -5,10 +5,6 @@ import { useGetMyLike } from '../../hooks/getMyLike';
 const MyLike = () => {
   const { data: myLikePosts, isLoading } = useGetMyLike();
 
-  myLikePosts?.forEach((item) => {
-    console.log(item);
-  });
-
   return myLikePosts?.length > 0 && !isLoading ? (
     <Container>
       {myLikePosts.map((item, idx) => {

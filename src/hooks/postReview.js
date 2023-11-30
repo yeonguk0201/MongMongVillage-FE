@@ -29,7 +29,10 @@ export function usePostReview(title, content, rating, images, cafe_id) {
     {
       onSuccess: (response) => {
         alert('리뷰가 정상적으로 등록되었습니다.');
-        queryClient.invalidateQueries(['getReviews'], ['myReviews']);
+        queryClient.invalidateQueries(
+          ['getReviews', 'latest', 1],
+          ['myReviews'],
+        );
         navigate(ROUTE.REVIEW_DETAIL_PAGE.link + `/${response?._id}`);
         window.scrollTo({ top: 0, left: 0 });
       },

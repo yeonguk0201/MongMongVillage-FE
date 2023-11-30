@@ -81,7 +81,6 @@ const ReviewDetailPage = () => {
             <FaMapMarkerAlt size={'24px'} />
             {review?.cafe_id?.name}
           </CafeName>
-          지도 불러올 자리
         </MapContainer>
         <ReviewMainSection>
           <ReviewImgContainer>
@@ -90,7 +89,7 @@ const ReviewDetailPage = () => {
                 <ReviewImg src={item} alt="" key={item} />
               ))}
           </ReviewImgContainer>
-          <MainText>{review.content}</MainText>
+          <MainText>{review.content.replace(/<br>/g, '\n')}</MainText>
         </ReviewMainSection>
         {
           <ButtonContainer>

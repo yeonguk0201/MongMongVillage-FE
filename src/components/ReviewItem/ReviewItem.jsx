@@ -46,7 +46,7 @@ const ReviewItem = ({ id }) => {
         <MainContainer onClick={linkToDetailPage}>
           <RightContainer>
             <ReviewTitle>{review.title}</ReviewTitle>
-            <Content>{review.content}</Content>
+            <Content>{review.content.replace(/<br>/g, '\n')}</Content>
             <BottomContainer>
               <Writer>
                 <img

@@ -18,7 +18,7 @@ const MyReviewItem = ({ review }) => {
         <FaMapMarkerAlt />
         {cafeData.cafe.name}
       </Title>
-      <Content>{review.content}</Content>
+      <Content>{review.content.replace(/<br>/g, '\n')}</Content>
       <Rating>
         {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
       </Rating>

@@ -64,7 +64,7 @@ const ReviewWritePage = () => {
   /* 리뷰 작성 */
   const { mutate: postReview } = usePostReview(
     currentReview.title,
-    currentReview.content,
+    currentReview.content.replace(/\n/g, '<br>'),
     currentReview.rating,
     currentReview.images,
     cafe_id,
@@ -78,7 +78,7 @@ const ReviewWritePage = () => {
   const { mutate: patchReview } = usePatchReview(
     state ? state.prevReview._id : '',
     currentReview.title,
-    currentReview.content,
+    currentReview.content.replace(/\n/g, '<br>'),
     currentReview.rating,
     currentReview.images,
   );
