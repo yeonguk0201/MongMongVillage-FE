@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import {
   UnderContentContainer,
   ContentInfo,
@@ -6,13 +5,9 @@ import {
   BTN,
 } from './CommunityUnderContent.styles';
 
-const CommunityUnderContent = ({ selectedPost, onEdit, onDelete, post }) => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUserId = localStorage.getItem('userId');
-    setUser(storedUserId);
-  }, []);
+const CommunityUnderContent = ({ onEdit, onDelete, post }) => {
+  const userId = localStorage.getItem('userId');
+  const role = localStorage.getItem('role');
 
   const handleEditClick = () => {
     // 수정 모달을 띄우거나 수정폼을 보여줄 수 있는 작업
@@ -45,15 +40,13 @@ const CommunityUnderContent = ({ selectedPost, onEdit, onDelete, post }) => {
         </div>
       </ContentInfo>
       <ContentButton>
-        {user === post?.board?.user_id?._id && (
-          <>
-            <BTN onClick={handleEditClick}>
-              <p>수정</p>
-            </BTN>
-            <BTN onClick={handleDeleteClick}>
-              <p>삭제</p>
-            </BTN>
-          </>
+        {userId === post?.board?.user_id?._id && (
+          <BTN onClick={handleEditClick}>수정</BTN>
+        )}
+        {userId === post?.board?.user_id?._id || role === 'ADMIN' ? (
+          <BTN onClick={handleDeleteClick}>삭제</BTN>
+        ) : (
+          <></>
         )}
       </ContentButton>
     </UnderContentContainer>

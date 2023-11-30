@@ -20,7 +20,7 @@ const ReviewListSort = ({ handleSorting }) => {
           value="popular"
           onChange={() => handleSorting('popular')}
         />
-        <span>인기순</span>
+        <span>별점높은순</span>
       </label>
     </Container>
   );

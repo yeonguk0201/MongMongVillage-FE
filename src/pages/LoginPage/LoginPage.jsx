@@ -23,12 +23,14 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
 
-  const { mutate } = usePostLogin(email, password);
+  /* 로그인 hook 호출 */
+  const { mutate: mutateLogin } = usePostLogin(email, password);
 
   const submitLogin = () => {
-    mutate();
+    mutateLogin();
   };
 
+  /* 회원가입 버튼 클릭 시 회원가입 페이지로 이동 */
   const linkToSignup = () => {
     navigate(ROUTE.SIGNUP_PAGE.link);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -64,8 +66,8 @@ const LoginPage = () => {
       <SubmitButton onClick={submitLogin}>로그인</SubmitButton>
 
       <TextButtonContainer>
-        {/* <button>비밀번호 찾기</button> */}
-        <button onClick={linkToSignup}>회원가입</button>
+        <span>아직 회원이 아니신가요?</span>
+        <button onClick={linkToSignup}>회원가입하기</button>
       </TextButtonContainer>
       {/* <SNSButtonContainer>
         <SNSButton className="google-login-button">

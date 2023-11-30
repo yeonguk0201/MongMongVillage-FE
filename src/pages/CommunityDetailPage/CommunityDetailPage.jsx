@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useGetBoards, useGetDetailBoard, useDeleteBoard } from '../../hooks';
 import { useGetBoards } from '../../hooks/getBoards';
 import { useGetDetailBoard } from '../../hooks/getDetailBoard';
 import { useDeleteBoard } from '../../hooks/deleteBoard';
@@ -10,7 +9,7 @@ import {
   CommunityUnderContent,
   CommunityComments,
   CommunityPagination,
-} from '../../components/index.js';
+} from '../../components';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container } from './CommunityDetailPage.styles.js';
 import { ROUTE } from '../../routes/Routes.js';
@@ -130,7 +129,6 @@ const CommunityDetailPage = () => {
             selectedPost={selectedPost}
           ></CommunityPostLike>
           <CommunityUnderContent
-            selectedPost={selectedPost}
             post={post}
             onEdit={handleEdit}
             onDelete={handleDelete}

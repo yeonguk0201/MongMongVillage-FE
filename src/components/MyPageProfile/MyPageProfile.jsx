@@ -168,7 +168,7 @@ const MyPageProfile = ({ edit }) => {
         <MyInfoContainer>
           <MyName>{myInfo.nickname}</MyName>
           <MyEmail>{myInfo.email}</MyEmail>
-          {myInfo.introduction.length > 0 ? (
+          {myInfo?.introduction?.length > 0 ? (
             <MyIntroduction>{myInfo.introduction}</MyIntroduction>
           ) : (
             <MyIntroduction className="no-introduction">

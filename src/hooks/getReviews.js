@@ -2,7 +2,6 @@ import { instance } from '.';
 import { useQuery } from 'react-query';
 
 const getReviews = async (sortType = 'latest', page = 1) => {
-  console.log(sortType, '타입', page, '페이지');
   const response = await instance.get(
     `/reviews?sortBy=${sortType}&page=${page}`,
   );
