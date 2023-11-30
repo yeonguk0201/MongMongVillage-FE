@@ -71,14 +71,14 @@ const Map = (props) => {
       if (status === kakao.maps.services.Status.OK) {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출
-        const filteredCafes = data.filter((placeFromKakao) =>
+        let filteredCafes = data.filter((placeFromKakao) =>
           cafeData.cafes.some((placeFromDB) =>
             placeFromKakao.place_name.includes(placeFromDB.name),
           ),
         );
 
         // cafeData.cafes 배열을 필터링하여 filteredDBcafes 배열 생성
-        const filteredDBcafes = cafeData.cafes.filter((placeFromDB) =>
+        let filteredDBcafes = cafeData.cafes.filter((placeFromDB) =>
           filteredCafes.some((placeFromKakao) =>
             placeFromKakao.place_name.includes(placeFromDB.name),
           ),
@@ -97,8 +97,27 @@ const Map = (props) => {
         console.log('filter데이터: ', filteredCafes);
         console.log('검색 키워드: ', keyword);
 
+        if (filteredDBcafes.length !== filteredCafes.length) {
+          filteredCafes = data.filter((placeFromKakao) =>
+            cafeData.cafes.some(
+              (placeFromDB) =>
+                placeFromKakao.place_name.includes(placeFromDB.name) &&
+                placeFromKakao.road_address_name === placeFromDB.road_addr,
+            ),
+          );
+
+          // cafeData.cafes 배열을 필터링하여 filteredDBcafes 배열 생성
+          filteredDBcafes = cafeData.cafes.filter((placeFromDB) =>
+            filteredCafes.some(
+              (placeFromKakao) =>
+                placeFromKakao.place_name.includes(placeFromDB.name) &&
+                placeFromKakao.road_address_name === placeFromDB.road_addr,
+            ),
+          );
+        }
+
         // filteredDBcafes를 filteredCafes의 이름에 따라 정렬
-        const sortedFilteredDBcafes = filteredDBcafes.sort((a, b) => {
+        let sortedFilteredDBcafes = filteredDBcafes.sort((a, b) => {
           const nameA = a.name.toLowerCase();
           const nameB = b.name.toLowerCase();
           return (
