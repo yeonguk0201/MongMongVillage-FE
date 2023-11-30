@@ -2,7 +2,7 @@ import { instance } from '.';
 import { useMutation, useQueryClient } from 'react-query';
 
 const putBoardLike = async (boardId) => {
-  const response = await instance.put(`/boards/${boardId}/liked`, { boardId });
+  const response = await instance.put(`/boards/${boardId}/liked`);
 
   if (response) {
     return response;
@@ -17,7 +17,7 @@ export function usePutBoardLike(boardId) {
       console.error(error);
     },
 
-    onSuccess: (response) => {
+    onSuccess: () => {
       queryClient.invalidateQueries(['myLike']);
     },
   });
