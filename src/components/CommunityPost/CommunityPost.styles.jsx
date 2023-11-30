@@ -14,6 +14,9 @@ export const MainImg = styled.div`
     height: 300px;
     margin: 10px;
   }
+
+  display: flex;
+  justify-content: center;
 `;
 
 export const Title = styled.h2`
