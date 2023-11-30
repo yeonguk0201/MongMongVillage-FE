@@ -47,11 +47,11 @@ const CommentItem = ({ item, postId }) => {
           <img
             alt="user_img"
             src={
-              item.user_id.profilePicture ??
+              item?.user_id?.profilePicture ??
               `${process.env.PUBLIC_URL}/imges/user.png`
             }
           />
-          <span className="user">{item.user_id.nickname}</span>
+          <span className="user">{item?.user_id?.nickname}</span>
         </div>
         <span className="time">{getRelativeTime(item.createdAt)}</span>
       </CommentTopContainer>
