@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { instance } from '.';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { ROUTE } from '../routes/Routes';
 
 const patchBoard = async (category, content, title, boardId, images) => {
@@ -20,6 +20,7 @@ const patchBoard = async (category, content, title, boardId, images) => {
 
 export function usePatchBoard(category, content, title, boardId, images) {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   return useMutation(
     () => patchBoard(category, content, title, boardId, images),
@@ -27,6 +28,8 @@ export function usePatchBoard(category, content, title, boardId, images) {
       onSuccess: () => {
         alert('수정이 완료되었습니다.');
         navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${boardId}`);
+
+        queryClient.invalidateQueries(['myBoards']);
         window.scrollTo(0, 0);
       },
       onError: (error) => {

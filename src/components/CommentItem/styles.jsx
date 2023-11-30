@@ -45,6 +45,9 @@ export const EditInput = styled.input`
   padding: 10px;
   border-radius: 5px;
   border: 1px solid lightgrey;
+  &:focus-within {
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const CommentBottomContainer = styled.div`

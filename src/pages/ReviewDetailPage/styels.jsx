@@ -103,7 +103,7 @@ export const ReviewImgContainer = styled.div`
 `;
 
 export const ReviewImg = styled.img`
-  height: 300px;
+  height: 400px;
 `;
 
 export const MainText = styled.p`

@@ -31,7 +31,6 @@ const CommunityComments = ({ post, id, onCommentPosted }) => {
   };
 
   // 댓글 새로 작성되면 페이지 다시 띄워주도록
-  console.log(post);
   return (
     post && (
       <CommentsContainer>

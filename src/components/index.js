@@ -36,3 +36,4 @@ export * from './ReviewItem';
 export * from './ReviewListSort';
 export * from './ReviewPagination';
 export * from './ReviewWriteRating';
+export * from './Loading';
