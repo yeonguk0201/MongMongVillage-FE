@@ -17,6 +17,7 @@ import { ROUTE } from '../../routes/Routes';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { useGetReview } from '../../hooks/getReview';
 import { getRelativeTime } from '../../libs/getRelativeTime';
+import { Loading } from '../Loading';
 
 const ReviewItem = ({ id }) => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const ReviewItem = ({ id }) => {
   const { data: review, isLoading } = useGetReview(id);
 
   return isLoading ? (
-    <Container>로딩 중 </Container>
+    <Loading />
   ) : (
     review && (
       <Container>
