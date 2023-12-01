@@ -43,11 +43,10 @@ export function usePostReview(title, content, rating, images, cafe_id) {
         console.error(error);
         showAlert(
           '',
-          error.response.data.message + '리뷰를 등록할 수 없습니다.',
+          error.message + ', 리뷰를 등록할 수 없습니다.',
           'error',
           () => {},
         );
-        alert();
       },
     },
   );

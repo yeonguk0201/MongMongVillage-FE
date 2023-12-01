@@ -17,7 +17,7 @@ export const UnderContentContainer = styled.div`
 
 export const ContentInfo = styled.div`
   display: flex;
-  width: 90%;
+  width: 100%;
 
   div {
     display: flex;

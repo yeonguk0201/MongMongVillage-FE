@@ -12,6 +12,7 @@ import {
   InputImg,
   InputImgButton,
 } from './NewPost.styles';
+import { showAlert } from '../../util/showAlert';
 
 const NewPost = () => {
   const titleInputRef = useRef();
@@ -53,20 +54,20 @@ const NewPost = () => {
     e.preventDefault();
 
     if (categorySelectRef.current.value === '') {
-      alert('카테고리를 선택해주세요.');
       categorySelectRef.current.focus();
+      showAlert('', '카테고리를 선택해주세요.', 'warning');
     } else if (titleInputRef.current.value === '') {
-      alert('글 제목을 입력해주세요');
       titleInputRef.current.focus();
+      showAlert('', '글 제목을 입력해주세요.', 'warning');
     } else if (titleInputRef.current.value.length > 50) {
-      alert('글 제목은 50자 이하로 작성해주세요.');
       titleInputRef.current.focus();
+      showAlert('', '글 제목은 50자 이하로 작성해주세요.', 'warning');
     } else if (contentInputRef.current.value === '') {
-      alert('글 내용을 입력해주세요.');
       contentInputRef.current.focus();
+      showAlert('', '글 내용을 입력해주세요.', 'warning');
     } else if (contentInputRef.current.value.length > 1000) {
-      alert('글 내용은 500자 이하로 작성해주세요.');
       contentInputRef.current.focus();
+      showAlert('', '글 내용은 500자 이하로 작성해주세요.', 'warning');
     } else {
       setCategory(categorySelectRef.current.value);
       setTitle(titleInputRef.current.value);
@@ -77,8 +78,6 @@ const NewPost = () => {
   useEffect(() => {
     // 상태 업데이트가 완료된 후에 postBoard를 호출
     if (category && title && content) {
-      // 여기까지 잘 나옴
-      // console.log(category, title, content, images);
       postBoard();
     }
   }, [category, title, content, postBoard, images]);

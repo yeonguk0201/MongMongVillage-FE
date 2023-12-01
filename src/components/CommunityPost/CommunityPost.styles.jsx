@@ -11,7 +11,7 @@ export const MainImg = styled.div`
   padding: 20px;
 
   img {
-    height: 300px;
+    height: 400px;
     margin: 10px;
   }
 
