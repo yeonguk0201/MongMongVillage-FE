@@ -33,3 +33,19 @@ export const showConfirm = (title, denyButtonText, onDeined) => {
     }
   });
 };
+
+export const showModal = (title, wrapper, onConfirm) => {
+  Swal.fire({
+    title: title,
+    html: wrapper,
+    icon: null,
+    showCancelButton: true,
+    confirmButtonText: '동의',
+    cancelButtonText: '닫기',
+    width: '60%',
+  }).then((result) => {
+    if (result.isConfirmed && onConfirm) {
+      onConfirm();
+    }
+  });
+};

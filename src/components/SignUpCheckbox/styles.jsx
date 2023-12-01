@@ -7,7 +7,7 @@ export const Container = styled.div`
 
 export const CheckboxContainer = styled.div`
   display: flex;
-  cursor: pointer;
+  align-items: center;
 `;
 
 export const Checkbox = styled.input`
@@ -17,8 +17,16 @@ export const Checkbox = styled.input`
 export const CheckboxText = styled.p`
   margin: 10px;
   font-size: 16px;
+  cursor: pointer;
 `;
 
 export const Space = styled.div`
   width: 5%;
+`;
+
+export const DetailText = styled.span`
+  color: orange;
+  text-decoration: underline;
+  margin: 0 3px;
+  cursor: pointer;
 `;

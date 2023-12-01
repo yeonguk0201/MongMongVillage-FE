@@ -5,13 +5,46 @@ import {
   CheckboxText,
   Checkbox,
   Space,
+  DetailText,
 } from './styles';
 import { InputStatus } from '../../libs/AuthMessage';
+import { showModal } from '../../util/showAlert';
 
 const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
   const [allChecked, setAllChecked] = useState(false);
   const [locationChecked, setLocationChecked] = useState(false);
   const [personalChecked, setPersonalChecked] = useState(false);
+  const [privacyTerms, setPrivacyTerms] = useState('');
+  const [positionTerms, setPositionTerms] = useState('');
+
+  /* 이용약관 텍스트 불러오기 */
+  useEffect(() => {
+    fetch(`${process.env.PUBLIC_URL}/terms/privacyTerms.txt`)
+      .then((response) => response.text())
+      .then((text) => {
+        setPrivacyTerms(text);
+      });
+    fetch(`${process.env.PUBLIC_URL}/terms/positionTerms.txt`)
+      .then((response) => response.text())
+      .then((text) => {
+        setPositionTerms(text);
+      });
+  }, []);
+
+  const showTermsModal = (targetTerms) => {
+    const wrapper = document.createElement('div');
+    wrapper.style = 'font-size:14px;text-align:left';
+    wrapper.innerHTML = targetTerms;
+    if (targetTerms === privacyTerms) {
+      showModal('개인정보 수집 이용 약관', wrapper, () =>
+        setPersonalChecked(true),
+      );
+    } else {
+      showModal('위치기반 서비스 이용 약관', wrapper, () =>
+        setLocationChecked(true),
+      );
+    }
+  };
 
   const handleAllCheckedChange = () => {
     const newAllChecked = !allChecked;
@@ -44,35 +77,45 @@ const SignUpCheckbox = ({ setCheckboxInputStatus }) => {
 
   return (
     <Container>
-      <CheckboxContainer onClick={handleAllCheckedChange}>
+      <CheckboxContainer>
         <Checkbox
           type="checkbox"
           checked={allChecked}
           onChange={handleAllCheckedChange}
         />
-        <CheckboxText>모두 동의</CheckboxText>
+        <CheckboxText onClick={handleAllCheckedChange}>모두 동의</CheckboxText>
       </CheckboxContainer>
-      <CheckboxContainer
-        onClick={() => handleBottomCheckboxChange(setPersonalChecked)}
-      >
+      <CheckboxContainer>
         <Space />
         <Checkbox
           type="checkbox"
           checked={personalChecked}
           onChange={() => handleBottomCheckboxChange(setPersonalChecked)}
         />
-        <CheckboxText>개인정보 이용 동의</CheckboxText>
+        <CheckboxText
+          onClick={() => handleBottomCheckboxChange(setPersonalChecked)}
+        >
+          개인정보 이용 동의
+        </CheckboxText>
+        <DetailText onClick={() => showTermsModal(privacyTerms)}>
+          자세히
+        </DetailText>
       </CheckboxContainer>
-      <CheckboxContainer
-        onClick={() => handleBottomCheckboxChange(setLocationChecked)}
-      >
+      <CheckboxContainer>
         <Space />
         <Checkbox
           type="checkbox"
           checked={locationChecked}
           onChange={() => handleBottomCheckboxChange(setLocationChecked)}
         />
-        <CheckboxText>위치기반 서비스 이용 동의</CheckboxText>
+        <CheckboxText
+          onClick={() => handleBottomCheckboxChange(setLocationChecked)}
+        >
+          위치기반 서비스 이용 동의
+        </CheckboxText>
+        <DetailText onClick={() => showTermsModal(positionTerms)}>
+          자세히
+        </DetailText>
       </CheckboxContainer>
     </Container>
   );
