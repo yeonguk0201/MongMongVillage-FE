@@ -22,6 +22,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.clear();
+    navigate(ROUTE.MAIN_PAGE.link);
     window.location.reload();
     alert('로그아웃되었습니다.');
   };
@@ -128,17 +129,19 @@ const Header = () => {
         </Navitem>
         {token ? (
           <>
-            <Space style={{ width: isAdmin ? '13%' : '25%' }} />
+            <Space style={{ width: '25%' }} />
             {isAdmin && <span className="admin">관리자님, 반갑습니다.</span>}
-            <Navitem
-              id="mypage"
-              className={activeHeader === ROUTE.MY_PAGE.link ? 'active' : ''}
-              onClick={() => {
-                handleClick(ROUTE.MY_PAGE.link);
-              }}
-            >
-              마이페이지
-            </Navitem>
+            {!isAdmin && (
+              <Navitem
+                id="mypage"
+                className={activeHeader === ROUTE.MY_PAGE.link ? 'active' : ''}
+                onClick={() => {
+                  handleClick(ROUTE.MY_PAGE.link);
+                }}
+              >
+                마이페이지
+              </Navitem>
+            )}
             <Navitem
               id="logout"
               onClick={() => {
