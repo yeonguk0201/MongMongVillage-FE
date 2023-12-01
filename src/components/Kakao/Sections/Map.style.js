@@ -32,14 +32,16 @@ export const MapContainer = styled.div`
 
 export const CafeList = styled.div`
   height: 600px !important;
-  ul {
-    list-style: none;
-    padding: 0;
-  }
+  width: 25%;
+  float: left;
+  padding: 20px;
+  border: 1px solid #eee;
+  overflow-y: auto;
+  max-height: 600px;
 `;
 
 export const CafeListItem = styled.div`
-  margin-bottom: 10px;
+  margin: 10px 0;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -55,8 +57,15 @@ export const CafeListItem = styled.div`
   }
 
   p {
+    display: flex;
     margin: 10px 0;
     font-size: 14px;
     color: #555;
+    word-break: keep-all;
+
+    svg {
+      margin-right: 5px;
+      fill: lightgray;
+    }
   }
 `;

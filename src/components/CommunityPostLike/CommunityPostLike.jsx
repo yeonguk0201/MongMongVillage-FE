@@ -10,16 +10,21 @@ const CommunityPostLike = ({ likeCount, setLikeCount, boardId }) => {
   const { data: myLikes } = useGetMyLike();
 
   /* 내가 좋아요 한 리스트 불러와서 해당 글을 좋아요 한 글인지 비교 */
+
   useEffect(() => {
     myLikes?.forEach((item) => {
-      if (item?.board_id?._id === boardId) {
+      if (item?.board_id?._id === boardId && boardId) {
+        console.log('이 글의 board', boardId);
+        console.log(item?.board_id, '보드');
         setIsLikeClick(true);
+        console.log('같');
       }
     });
   }, [myLikes, boardId]);
 
   const { mutate: putBoardLike } = usePutBoardLike(boardId);
 
+  console.log(islikeClick);
   const handleLikeClick = () => {
     if (userId) {
       putBoardLike();
