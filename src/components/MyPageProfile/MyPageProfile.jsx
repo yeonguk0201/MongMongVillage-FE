@@ -24,6 +24,7 @@ import { FaPencil } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE } from '../../routes/Routes';
 import { Loading } from '../Loading';
+import { showAlert, showConfirm } from '../../util/showAlert';
 
 const MyPageProfile = ({ edit }) => {
   const navigate = useNavigate();
@@ -43,8 +44,9 @@ const MyPageProfile = ({ edit }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      alert('로그인이 필요합니다.');
-      navigate(ROUTE.LOGIN_PAGE.link);
+      showAlert('', '로그인이 필요합니다.', 'waring', () => {
+        navigate(ROUTE.LOGIN_PAGE.link);
+      });
     }
   }, []);
 
@@ -66,10 +68,7 @@ const MyPageProfile = ({ edit }) => {
   const { mutate: deleteUser } = useDeleteUser();
 
   const handleDeleteUser = () => {
-    // eslint-disable-next-line no-restricted-globals
-    if (confirm('정말 탈퇴하시겠습니까?')) {
-      deleteUser();
-    }
+    showConfirm('정말 탈퇴하시겠습니까?', '탈퇴', () => deleteUser());
   };
 
   /* 회원 정보 수정 */

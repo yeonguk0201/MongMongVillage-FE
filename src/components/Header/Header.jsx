@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Container, Navbar, Navitem, Space } from './styles';
 import Logo from '../Logo/Logo';
 import { ROUTE } from '../../routes/Routes';
+import { showAlert } from '../../util/showAlert';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -21,10 +22,11 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
-    navigate(ROUTE.MAIN_PAGE.link);
-    window.location.reload();
-    alert('로그아웃되었습니다.');
+    showAlert('Logout', '로그아웃 되었습니다.', 'success', () => {
+      localStorage.clear();
+      navigate(ROUTE.MAIN_PAGE.link);
+      window.location.reload();
+    });
   };
 
   const checkTokenValid = async (token) => {
@@ -60,9 +62,15 @@ const Header = () => {
         const isValid = await checkTokenValid(token);
 
         if (!isValid) {
-          alert('토큰이 유효하지 않습니다. 재로그인이 필요합니다.');
-          navigate(ROUTE.LOGIN_PAGE.link);
-          handleLogout();
+          showAlert(
+            '',
+            '토큰이 유효하지 않습니다. 재로그인이 필요합니다.',
+            'error',
+            () => {
+              navigate(ROUTE.LOGIN_PAGE.link);
+              handleLogout();
+            },
+          );
         }
       }
     };

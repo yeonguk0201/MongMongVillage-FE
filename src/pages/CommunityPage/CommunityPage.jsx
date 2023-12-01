@@ -14,6 +14,7 @@ import { ROUTE } from '../../routes/Routes';
 import { Container } from './CommunityPage.styles';
 import { CommunityCategory } from '../../libs/CommunityCategory';
 import { Title } from '../../commonStyles';
+import { showAlert } from '../../util/showAlert';
 
 // 카테고리 객체
 const CATEGORY_DIC = CommunityCategory;
@@ -127,8 +128,8 @@ const CommunityPage = () => {
   // id 값을 params로 넘겨줄 함수 - detail 페이지로 정보 넘겨주기
   // 글작성 클릭시 실행 함수
   const handleNewPostClick = () => {
-    if (user === null) {
-      alert('로그인 후 작성해주세요.');
+    if (!user) {
+      showAlert('', '로그인 후 작성해주세요.', 'warning', () => {});
     } else {
       navigate(ROUTE.NEW_POST_PAGE.link);
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -162,12 +163,8 @@ const CommunityPage = () => {
 
   // 각 게시글 클릭시 실행 함수
   const handlePostClick = (postId) => {
-    if (user) {
-      navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${postId}`);
-      window.scrollTo(0, 0);
-    } else {
-      alert('로그인 후 작성해주세요.');
-    }
+    navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${postId}`);
+    window.scrollTo(0, 0);
   };
 
   // 현재 페이지에 표시될 아이템들

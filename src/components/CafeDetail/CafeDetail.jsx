@@ -17,6 +17,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Loading, ReviewItem } from '../../components';
 import { ROUTE } from '../../routes/Routes';
 import { Title } from '../../commonStyles';
+import { showAlert } from '../../util/showAlert';
 
 const CafeDetail = () => {
   const navigate = useNavigate();
@@ -42,6 +43,9 @@ const CafeDetail = () => {
           `${process.env.REACT_APP_DB_API_ENDPOINT}/cafes/${id}`,
         );
         if (!response.ok) {
+          showAlert('', '존재하지 않는 데이터입니다.', 'error', () => {
+            window.history.back();
+          });
           throw new Error('데이터를 불러오지 못했습니다.');
         }
 
@@ -59,6 +63,7 @@ const CafeDetail = () => {
     fetchData();
   }, [id]);
 
+  console.log(cafeDetailInfo);
   return isLoading ? (
     <Loading />
   ) : (
@@ -121,11 +126,11 @@ const CafeDetail = () => {
 
             <InfoMiniContainer>
               <CafeMiniTitle>
-                전체 리뷰 ( {cafeDetailInfo.totalReviews} )
+                전체 리뷰 ( {cafeDetailInfo.reviews.length} )
               </CafeMiniTitle>
               <ReviewStarRatingContainer>
                 <StarRating>
-                  평균 별점 | {cafeDetailInfo.info.rating}점
+                  평균 별점 | {cafeDetailInfo.info.averageRating}점
                 </StarRating>
                 <WriteReviewBtn onClick={linkToWriteReview}>
                   리뷰 작성하러가기
