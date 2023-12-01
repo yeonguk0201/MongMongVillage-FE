@@ -13,6 +13,7 @@ import {
 import { ROUTE } from '../../routes/Routes';
 import { useNavigate } from 'react-router';
 import Slider from 'react-slick';
+import { HiCursorClick } from 'react-icons/hi';
 import './slick.css';
 import './slick-theme.css';
 
@@ -55,22 +56,14 @@ const Banner = () => {
             <PopolarCafeBtn
               onClick={() => window.scrollTo({ top: 850, behavior: 'smooth' })}
             >
-              눌러서 인기 애견카페 확인!
+              인기 애견카페 확인!
+              <HiCursorClick />
             </PopolarCafeBtn>
             <BtnImg src="/imges/btnlogo.png" alt="사진"></BtnImg>
           </HoverContainer>
         </BannerBox>
         <BannerBox>
           <BannerImg src="/banner2.png" />
-        </BannerBox>
-        <BannerBox>
-          <BannerImg src="/banner3.png" />
-        </BannerBox>
-        <BannerBox>
-          <BannerImg src="/banner4.png" />
-        </BannerBox>
-        <BannerBox>
-          <BannerImg src="/banner5.png" />
           <PopolarCafeBtn
             style={{
               left: '270px',
@@ -81,14 +74,24 @@ const Banner = () => {
             }}
             onClick={() => navigate(ROUTE.CAFE_MAP_PAGE.link)}
           >
-            눌러서 강아지랑 같이 갈 애견카페 검색하러 가기!
+            강아지랑 같이 갈 애견카페 검색하러 가기!
+            <HiCursorClick />
           </PopolarCafeBtn>
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner6.png" />
+          <BannerImg src="/banner3.png" />
           <BannerName style={{ left: '283px', bottom: '260px' }}>
             Mong Mong Village
           </BannerName>
+        </BannerBox>
+        <BannerBox>
+          <BannerImg src="/banner4.png" />
+        </BannerBox>
+        <BannerBox>
+          <BannerImg src="/banner5.png" />
+        </BannerBox>
+        <BannerBox>
+          <BannerImg src="/banner6.png" />
         </BannerBox>
       </Slider>
     </Container>

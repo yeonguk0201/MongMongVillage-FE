@@ -75,6 +75,9 @@ export const PopolarCafeBtn = styled.button`
   font-size: 23px;
   font-family: 'KOTRAHOPE';
   z-index: 1;
+  svg {
+    margin: 0 3px;
+  }
 `;
 
 export const BtnImg = styled.img`
