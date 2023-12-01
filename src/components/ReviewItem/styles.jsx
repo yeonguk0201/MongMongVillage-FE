@@ -57,8 +57,6 @@ export const Content = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 
-  white-space: normal;
-
   max-height: 2.4em;
   line-height: 1.2em;
 
