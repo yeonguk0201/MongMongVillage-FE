@@ -50,19 +50,19 @@ export const DogCafeInfoContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
+  align-content: center;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 20px;
 `;
 
 export const DogCafeListItemTitle = styled.span`
-  padding: 20px 0 8px 8px;
   font-size: 24px;
   font-weight: bold;
-  cursor: pointer;
 `;
 
 export const DogCafeListItemRating = styled.span`
   font-size: 18px;
-  margin-right: 30px;
   span {
     padding: 0 5px;
     font-weight: bold;

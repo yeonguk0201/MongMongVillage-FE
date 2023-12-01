@@ -14,10 +14,7 @@ const CommunityPostLike = ({ likeCount, setLikeCount, boardId }) => {
   useEffect(() => {
     myLikes?.forEach((item) => {
       if (item?.board_id?._id === boardId && boardId) {
-        console.log('이 글의 board', boardId);
-        console.log(item?.board_id, '보드');
         setIsLikeClick(true);
-        console.log('같');
       }
     });
   }, [myLikes, boardId]);

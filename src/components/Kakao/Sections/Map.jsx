@@ -62,8 +62,6 @@ export default function Map(props) {
         level: 7,
       };
 
-      console.log(resultCafe);
-
       //map
       const map = new kakao.maps.Map(container, options);
 
@@ -159,7 +157,7 @@ export default function Map(props) {
               <ul>
                 {resultCafe.map((cafe) => (
                   <CafeListItem
-                    key={cafe.id}
+                    key={cafe._id}
                     onClick={() =>
                       navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${cafe._id}`)
                     }

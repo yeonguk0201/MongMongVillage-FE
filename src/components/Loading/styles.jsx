@@ -19,6 +19,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 90vh;
+  opacity: 0.5;
 
   .paw {
     width: 50px;

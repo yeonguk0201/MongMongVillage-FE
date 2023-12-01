@@ -17,8 +17,8 @@ const Header = () => {
 
   const handleClick = (route) => {
     setActiveHeader(route);
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     navigate(route);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLogout = () => {
