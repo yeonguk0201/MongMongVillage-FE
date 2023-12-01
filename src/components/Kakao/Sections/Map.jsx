@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useGetAllCafes } from '../../../hooks/getAllCafes';
 import { ROUTE } from '../../../routes/Routes';
 import { useNavigate } from 'react-router-dom';
-import { MapContainer, CafeList } from './Map.style';
+import { MapContainer, CafeList, CafeListItem } from './Map.style';
+import { TbMapX } from 'react-icons/tb';
 const { kakao } = window;
 
 export default function Map(props) {
@@ -141,31 +142,38 @@ export default function Map(props) {
             maxHeight: '600px',
           }}
         >
-          <h2>카페 목록</h2>
+          <h2>카페 목록{resultCafe.length > 0 && ` (${resultCafe.length})`}</h2>
           {resultCafe.length === 0 ? (
-            <div>
-              <p className="noSearchTitle" style={{ marginTop: '30px' }}>
+            <div className="noResult">
+              <TbMapX size={'50px'} color="grey" />
+              <p className="noSearchTitle" style={{ marginTop: '20px' }}>
                 검색 결과가 없습니다.
               </p>
-              <p>서울의 '구' 명 이나 업체의 상호명을 입력해주세요.</p>
+              <p>서울의 지역명이나</p>
+              <p>업체의 상호명을 입력해주세요.</p>
               <p>예 : '강남구' or '멍멍이다방'</p>
             </div>
           ) : (
-            <ul>
-              {resultCafe.map((cafe) => (
-                <li
-                  key={cafe.id}
-                  style={{ cursor: 'pointer', marginBottom: '10px' }}
-                  onClick={() =>
-                    navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${cafe._id}`)
-                  }
-                >
-                  <p className="cafename">{cafe.name}</p>
-                  <p>{cafe.road_addr}</p>
-                  <p>{cafe.phone_number}</p>
-                </li>
-              ))}
-            </ul>
+            <>
+              <p className="searchResult">
+                {'>'}
+                <span> {props.searchKeyword} </span>검색결과
+              </p>
+              <ul>
+                {resultCafe.map((cafe) => (
+                  <CafeListItem
+                    key={cafe.id}
+                    onClick={() =>
+                      navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${cafe._id}`)
+                    }
+                  >
+                    <p className="cafename">{cafe.name}</p>
+                    <p>{cafe.road_addr}</p>
+                    <p>{cafe.phone_number}</p>
+                  </CafeListItem>
+                ))}
+              </ul>
+            </>
           )}
         </CafeList>
       </div>
