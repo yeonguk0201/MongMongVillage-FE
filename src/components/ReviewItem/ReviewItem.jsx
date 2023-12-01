@@ -31,7 +31,7 @@ const ReviewItem = ({ id }) => {
   };
 
   const { data: review, isLoading } = useGetReview(id);
-
+  console.log(review?.content);
   return isLoading ? (
     <Loading />
   ) : (

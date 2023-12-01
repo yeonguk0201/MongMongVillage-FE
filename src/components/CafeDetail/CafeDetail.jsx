@@ -2,7 +2,6 @@ import {
   Container,
   StarRating,
   CafeDetailContainer,
-  CafeImgContainer,
   CafeImg,
   CafeInfoContainer,
   CafeInfo,
@@ -69,15 +68,7 @@ const CafeDetail = () => {
           <Title fontSize="40px">{cafeDetailInfo.info.name}</Title>
 
           {cafeDetailInfo.info.image.length > 0 ? (
-            <CafeImgContainer>
-              <CafeImg
-                style={{
-                  backgroundImage: `url('${cafeDetailInfo.info.image}')`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                }}
-              ></CafeImg>
-            </CafeImgContainer>
+            <CafeImg src={cafeDetailInfo.info.image}></CafeImg>
           ) : (
             <></>
           )}
@@ -104,14 +95,15 @@ const CafeDetail = () => {
                 <CafeInfo>영업시간 정보가 없습니다.</CafeInfo>
               )}
             </InfoMiniContainer>
+
             <InfoMiniContainer>
               <CafeMiniTitle>메뉴</CafeMiniTitle>
               {cafeDetailInfo.info.menu ? (
-                cafeDetailInfo.info.menu
-                  .split('/')
-                  .map((item, index) => (
-                    <CafeInfo key={index}>- {item}</CafeInfo>
-                  ))
+                cafeDetailInfo.info.menu.split('/').map((item, index) => (
+                  <CafeInfo className="menu" key={index}>
+                    - {item}
+                  </CafeInfo>
+                ))
               ) : (
                 <CafeInfo>메뉴 정보가 없습니다.</CafeInfo>
               )}

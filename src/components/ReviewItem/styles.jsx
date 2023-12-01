@@ -61,6 +61,8 @@ export const Content = styled.p`
 
   max-height: 2.4em;
   line-height: 1.2em;
+
+  white-space: pre-wrap;
 `;
 
 export const PreviewImgContainer = styled.div`
