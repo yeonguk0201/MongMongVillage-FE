@@ -4,14 +4,16 @@ import { ROUTE } from '../../../routes/Routes';
 import { useNavigate } from 'react-router-dom';
 import { MapContainer, CafeList, CafeListItem } from './Map.style';
 import { TbMapX } from 'react-icons/tb';
+import { ImPhone } from 'react-icons/im';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 const { kakao } = window;
 
 export default function Map(props) {
   const keyword = props.searchKeyword;
   const { mutate: mutateAllCafes, data: allCafesData } = useGetAllCafes();
   const [resultCafe, setResultCafe] = useState([]);
-  const [long, setLong] = useState();
-  const [lat, setLat] = useState();
+  // const [long, setLong] = useState();
+  // const [lat, setLat] = useState();
   const [selectedCafe, setSelectedCafe] = useState(null);
 
   const navigate = useNavigate();
@@ -73,12 +75,14 @@ export default function Map(props) {
           title: el.name,
         });
 
-        const content = `
-          <div style="padding: 10px; background-color: #fff; border-radius: 10px;">
-            <h3 style="margin-bottom: 8px;">${el.name}</h3>
-            <p style="margin-bottom: 5px;">${el.road_addr}</p>
-            <p style="margin-bottom: 5px;">${el.phone_number}</p>
-            <p style="margin-bottom: 5px;">${el.intro}</p>
+        const content = /*html*/ `
+          <div style="padding: 10px; border-radius: 20px; width:400px;
+          
+          ">
+            <h3 style="margin: 8px;">${el.name}</h3>
+            <p style="margin: 5px; font-size:14px;">${el.road_addr}</p>
+            <p style="margin: 5px; font-size:14px;">${el.phone_number}</p>
+            <p style="margin: 5px; color:gray; font-size:12px;">${el.intro}</p>
           </div>
         `;
 
@@ -131,18 +135,8 @@ export default function Map(props) {
           className="map"
           style={{ width: '76%', maxHeight: '600px !important', float: 'left' }}
         ></div>
-        <CafeList
-          className="cafe-list"
-          style={{
-            width: '24%',
-            float: 'left',
-            padding: '20px',
-            border: '1px solid black',
-            overflowY: 'auto',
-            maxHeight: '600px',
-          }}
-        >
-          <h2>카페 목록{resultCafe.length > 0 && ` (${resultCafe.length})`}</h2>
+        <CafeList className="cafe-list">
+          <h2>카페 목록</h2>
           {resultCafe.length === 0 ? (
             <div className="noResult">
               <TbMapX size={'50px'} color="grey" />
@@ -158,6 +152,9 @@ export default function Map(props) {
               <p className="searchResult">
                 {'>'}
                 <span> {props.searchKeyword} </span>검색결과
+                <span>
+                  {resultCafe.length > 0 && ` (${resultCafe.length})`}
+                </span>
               </p>
               <ul>
                 {resultCafe.map((cafe) => (
@@ -168,8 +165,14 @@ export default function Map(props) {
                     }
                   >
                     <p className="cafename">{cafe.name}</p>
-                    <p>{cafe.road_addr}</p>
-                    <p>{cafe.phone_number}</p>
+                    <p>
+                      <FaMapMarkerAlt />
+                      {cafe.road_addr}
+                    </p>
+                    <p>
+                      <ImPhone />
+                      {cafe.phone_number}
+                    </p>
                   </CafeListItem>
                 ))}
               </ul>

@@ -23,7 +23,7 @@ const CommunityListItem = ({
 }) => {
   const formattedContent = item.content.replace(/\n/g, '<br>');
   const [categoryKor, setCategoryKor] = useState('');
-  console.log(item);
+
   useEffect(() => {
     if (item.category === 'info') {
       setCategoryKor('정보글');

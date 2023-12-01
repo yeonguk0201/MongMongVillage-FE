@@ -111,7 +111,9 @@ const CafeDetail = () => {
             <InfoMiniContainer>
               <CafeMiniTitle>소개</CafeMiniTitle>
               {cafeDetailInfo.info.intro ? (
-                <CafeInfo>{cafeDetailInfo.info.intro}</CafeInfo>
+                <CafeInfo>
+                  {cafeDetailInfo.info.intro.replace(/[.]/gim, '.\n')}
+                </CafeInfo>
               ) : (
                 <CafeInfo>소개 정보가 없습니다.</CafeInfo>
               )}

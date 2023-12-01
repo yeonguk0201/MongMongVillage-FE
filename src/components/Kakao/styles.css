@@ -1,6 +1,6 @@
 .landing-page {
   height: 100%;
-  width: 80%;
+  width: 85%;
 }
 
 .landing-page__inner {
@@ -64,7 +64,7 @@
 }
 
 .map {
-  width: 75%;
+  width: 75% !important;
   height: 640px;
   border: 1px solid #eee;
 }
