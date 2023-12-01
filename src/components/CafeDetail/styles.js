@@ -93,6 +93,13 @@ export const InfoMiniContainer = styled.article`
   .reviewContainer {
     padding: 10px;
   }
+
+  .noReview {
+    padding: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+  }
 `;
 
 export const ReviewStarRatingContainer = styled.div`

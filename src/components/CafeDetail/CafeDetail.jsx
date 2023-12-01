@@ -138,11 +138,15 @@ const CafeDetail = () => {
                   <BsPencilSquare size={'18px'} />
                 </WriteReviewBtn>
               </ReviewStarRatingContainer>
-              <div className="reviewContainer">
-                {cafeDetailInfo.reviews.map((review) => (
-                  <ReviewItem key={review._id} id={review._id} />
-                ))}
-              </div>
+              {cafeDetailInfo?.reviews.length > 0 ? (
+                <div className="reviewContainer">
+                  {cafeDetailInfo.reviews.map((review) => (
+                    <ReviewItem key={review._id} id={review._id} />
+                  ))}
+                </div>
+              ) : (
+                <div className="noReview">작성된 리뷰가 없습니다.</div>
+              )}
             </InfoMiniContainer>
           </CafeInfoContainer>
         </CafeDetailContainer>
