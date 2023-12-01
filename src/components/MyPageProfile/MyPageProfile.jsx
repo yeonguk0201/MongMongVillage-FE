@@ -25,6 +25,7 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTE } from '../../routes/Routes';
 import { Loading } from '../Loading';
 import { showAlert, showConfirm } from '../../util/showAlert';
+import { InputStatus, SetMessage } from '../../libs/AuthMessage';
 
 const MyPageProfile = ({ edit }) => {
   const navigate = useNavigate();
@@ -39,7 +40,9 @@ const MyPageProfile = ({ edit }) => {
   const userId = localStorage.getItem('userId');
   const { isLoading, data: userData } = useGetUserInfo(userId);
   const [preview, setPreview] = useState(myInfo.profilePicture);
-  const [nicknameIsAvailable, setNickNameIsAvailable] = useState(undefined);
+  const [nicknameInputStatus, setNickNameInputStatus] = useState(
+    InputStatus.DEFAULT,
+  );
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -50,6 +53,7 @@ const MyPageProfile = ({ edit }) => {
     }
   }, []);
 
+  /* 현재 유저 정보 불러오기 */
   useEffect(() => {
     if (userData) {
       setMyInfo({
@@ -71,6 +75,15 @@ const MyPageProfile = ({ edit }) => {
     showConfirm('정말 탈퇴하시겠습니까?', '탈퇴', () => deleteUser());
   };
 
+  /* 닉네임 값 바뀔 때마다 상태 체크 */
+  useEffect(() => {
+    if (myInfo.nickname === userData?.nickname) {
+      setNickNameInputStatus(InputStatus.DEFAULT);
+    } else {
+      setNickNameInputStatus(InputStatus.CHECK_REQUIRED);
+    }
+  }, [myInfo.nickname]);
+
   /* 회원 정보 수정 */
   const { mutate: putUser } = usePatchUserInfo(
     myInfo.nickname,
@@ -79,16 +92,15 @@ const MyPageProfile = ({ edit }) => {
   );
 
   const handlePutUser = () => {
-    if (nicknameIsAvailable === undefined) {
-      alert('닉네임 중복확인이 필요합니다.');
-    } else if (!nicknameIsAvailable) {
-      alert('닉네임이 중복되었습니다. 다시 확인해주세요.');
-      setNickNameIsAvailable(undefined);
-    } else {
-      // eslint-disable-next-line no-restricted-globals
-      if (confirm('회원정보를 수정하시겠습니까?')) {
-        putUser();
-      }
+    if (
+      nicknameInputStatus === InputStatus.DEFAULT ||
+      nicknameInputStatus === InputStatus.SUCCESS
+    ) {
+      putUser();
+    } else if (nicknameInputStatus === InputStatus.CHECK_REQUIRED) {
+      showAlert('', '닉네임 중복확인이 필요합니다.');
+    } else if (nicknameInputStatus === InputStatus.DUPLICATE) {
+      showAlert('', '이미 사용중인 닉네임입니다.');
     }
   };
 
@@ -113,11 +125,9 @@ const MyPageProfile = ({ edit }) => {
     const isDuplicate = await getCheckNickname(myInfo.nickname);
 
     if (!isDuplicate) {
-      alert('사용 가능한 닉네임입니다.');
-      setNickNameIsAvailable(true);
+      setNickNameInputStatus(InputStatus.SUCCESS);
     } else {
-      alert('이미 존재하는 닉네임입니다.');
-      setNickNameIsAvailable(false);
+      setNickNameInputStatus(InputStatus.DUPLICATE);
     }
   };
 
@@ -156,6 +166,13 @@ const MyPageProfile = ({ edit }) => {
                 중복확인
               </CheckButton>
             </MyInfoEditItemContainer>
+            <p
+              className={`inputText ${
+                nicknameInputStatus === InputStatus.SUCCESS ? 'green' : ''
+              }`}
+            >
+              {SetMessage('nickName', nicknameInputStatus)}
+            </p>
             <MyInfoEditItemContainer>
               <label>소개</label>
               <textarea

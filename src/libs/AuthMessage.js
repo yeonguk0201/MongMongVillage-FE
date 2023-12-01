@@ -36,6 +36,7 @@ export const NickNameMessage = {
 
 export const SetMessage = (type, status) => {
   let message;
+
   if (type === 'email') message = EmailMessage;
   else if (type === 'nickName') message = NickNameMessage;
   else if (type === 'password') message = PasswordMessage;

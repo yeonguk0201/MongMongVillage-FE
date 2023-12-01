@@ -71,6 +71,16 @@ export const MyInfoEditContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
+
+  .inputText {
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: red;
+    &.green {
+      color: green;
+    }
+  }
 `;
 
 export const MyInfoEditItemContainer = styled.div`
@@ -87,9 +97,9 @@ export const MyInfoEditItemContainer = styled.div`
   }
   input,
   textarea {
-    border: none;
-    border-bottom: 1px lightgray solid;
+    border: 1px lightgray solid;
     padding: 15px;
+    border-radius: 10px;
   }
   textarea {
     height: 150px;
@@ -119,9 +129,5 @@ export const CheckButton = styled.button`
   border-radius: 20px;
   margin-left: 10px;
   width: 20%;
-  padding: 10px;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
+  padding: 15px;
 `;
