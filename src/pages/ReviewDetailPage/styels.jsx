@@ -3,10 +3,9 @@ import styled from 'styled-components';
 export const ReviewDetailContainer = styled.div`
   display: flex;
   width: 1280px;
-  margin: 0 auto;
+  margin: 30px auto;
   flex-direction: column;
-  margin-top: 30px;
-  padding: 20px;
+  padding-bottom: 100px;
   border-bottom: 1px solid gray;
 `;
 

@@ -16,7 +16,7 @@ export function usePostComment(content, boardId) {
   return useMutation(() => postComment(content, boardId), {
     onError: (error) => {
       console.error(error);
-      showAlert('', '로그인 후 댓글을 작성해주세요.', 'success');
+      showAlert('', '로그인 후 댓글을 작성해주세요.', 'warning');
     },
 
     onSettled: () => {

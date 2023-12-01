@@ -7,16 +7,19 @@ import { showAlert } from '../../util/showAlert';
 const CommunityPostLike = ({ likeCount, setLikeCount, boardId }) => {
   const userId = localStorage.getItem('userId');
   const [islikeClick, setIsLikeClick] = useState(false);
-  const { data: myLikes } = useGetMyLike();
+  const { data: myLikes, refetch: refetchLike } = useGetMyLike();
 
   /* 내가 좋아요 한 리스트 불러와서 해당 글을 좋아요 한 글인지 비교 */
-
   useEffect(() => {
-    myLikes?.forEach((item) => {
-      if (item?.board_id?._id === boardId && boardId) {
-        setIsLikeClick(true);
-      }
-    });
+    if (userId) refetchLike();
+
+    if (myLikes && boardId) {
+      myLikes?.forEach((item) => {
+        if (item?.board_id?._id === boardId && boardId) {
+          setIsLikeClick(true);
+        }
+      });
+    }
   }, [myLikes, boardId]);
 
   const { mutate: putBoardLike } = usePutBoardLike(boardId);

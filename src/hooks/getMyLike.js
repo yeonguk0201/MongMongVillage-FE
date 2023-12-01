@@ -3,8 +3,12 @@ import { useQuery } from 'react-query';
 import { showAlert } from '../util/showAlert';
 
 const getMyLike = async () => {
-  const response = await instance.get(`/boards/mypage/user/liked`);
-  if (response.data?.liked) return response.data.liked;
+  try {
+    const response = await instance.get(`/boards/mypage/user/liked`);
+    if (response.data?.liked) return response.data.liked;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export function useGetMyLike() {
@@ -12,6 +16,7 @@ export function useGetMyLike() {
 
   return useQuery(['myLike'], () => getMyLike(), {
     enabled: !!userId,
+    retry: false,
     onError: (error) => {
       showAlert(
         '',

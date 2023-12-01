@@ -33,7 +33,6 @@ const EditCommunityPost = () => {
   const post = state ? state.post : {};
 
   const [selectedPost, setSelectedPost] = useState(post.board);
-  console.log('선택 게시글 : ', selectedPost);
 
   // selectedPost로 editPost 초기 state 저장
   // const [editPost, setEditPost] = useState(post.board);
@@ -49,7 +48,7 @@ const EditCommunityPost = () => {
 
   useEffect(() => {
     setCategory(selectedPost.category);
-    setContent(selectedPost.content);
+    setContent(selectedPost.content.replace(/<br>/g, '\n'));
     setTitle(selectedPost.title);
     setBoardId(selectedPost._id);
     setPrevBoard(selectedPost);
@@ -144,7 +143,7 @@ const EditCommunityPost = () => {
 
         <TextArea
           placeholder="내용을 입력해주세요...(1000자 이내)"
-          defaultValue={selectedPost?.content}
+          defaultValue={selectedPost?.content.replace(/<br>/g, '\n')}
           // onChange={(e) => setEditPost({ ...editPost, content: e.target.value })}
           ref={contentInputRef}
         />
