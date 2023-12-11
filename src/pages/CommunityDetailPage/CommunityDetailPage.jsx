@@ -58,15 +58,7 @@ const CommunityDetailPage = () => {
   }, [postData, id, newCommentState]);
 
   // 서버로부터 list 받아옴
-  const { mutate: mutateBoards, data: boardsData } = useGetBoards(
-    currentPage,
-    filteredCategory,
-  );
-
-  // 게시글
-  useEffect(() => {
-    mutateBoards();
-  }, [currentPage, filteredCategory, mutateBoards]);
+  const { data: boardsData } = useGetBoards(currentPage, filteredCategory);
 
   // 하단 리스트
   useEffect(() => {

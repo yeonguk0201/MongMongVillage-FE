@@ -25,6 +25,8 @@ export function usePostBoard(category, title, content, images) {
   return useMutation(() => postBoard(category, title, content, images), {
     onSuccess: (response) => {
       showAlert('', '게시글이 성공적으로 작성되었습니다.', 'success', () => {
+        queryClient.invalidateQueries(['getBoards']);
+        queryClient.invalidateQueries(['myBoards']);
         navigate(
           `${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${response.data.board_id}`,
         );
@@ -40,10 +42,6 @@ export function usePostBoard(category, title, content, images) {
         error.response.data.message + '로그인이 필요합니다.',
         'error',
       );
-    },
-
-    onSettled: () => {
-      queryClient.invalidateQueries(['myBoards']);
     },
   });
 }

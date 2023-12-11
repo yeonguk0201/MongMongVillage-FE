@@ -1,5 +1,6 @@
 import { instance } from '.';
-import { useMutation } from 'react-query';
+import { useQuery } from 'react-query';
+import { showAlert } from '../util/showAlert';
 
 const getBoards = async (currentPage, filteredCategory, sortBy) => {
   try {
@@ -26,9 +27,22 @@ const getBoards = async (currentPage, filteredCategory, sortBy) => {
 };
 
 export function useGetBoards(currentPage, filteredCategory, sortBy) {
-  return useMutation(() => getBoards(currentPage, filteredCategory, sortBy), {
-    onError: (error) => {
-      console.error('Failed to fetch Boards:', error.message);
+  return useQuery(
+    ['getBoards', currentPage, filteredCategory, sortBy],
+    () => getBoards(currentPage, filteredCategory, sortBy),
+    {
+      keepPreviousData: true,
+      retry: false,
+      onError: (error) => {
+        showAlert(
+          '',
+          error.message + '게시글 목록을 불러올 수 없습니다.',
+          'error',
+          () => {
+            window.history.back();
+          },
+        );
+      },
     },
-  });
+  );
 }
