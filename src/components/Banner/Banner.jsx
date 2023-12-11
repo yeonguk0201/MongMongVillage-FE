@@ -66,7 +66,7 @@ const Banner = () => {
           <BannerImg src="/banner2.png" />
           <PopolarCafeBtn
             style={{
-              left: '270px',
+              left: '30vw',
               width: '680px',
               height: '70px',
               fontSize: '35px',
@@ -80,7 +80,7 @@ const Banner = () => {
         </BannerBox>
         <BannerBox>
           <BannerImg src="/banner3.png" />
-          <BannerName style={{ left: '283px', bottom: '260px' }}>
+          <BannerName style={{ left: '30vw', top: '45%' }}>
             Mong Mong Village
           </BannerName>
         </BannerBox>

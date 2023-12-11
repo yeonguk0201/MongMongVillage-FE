@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   background-color: white;
 `;
 
@@ -17,9 +17,12 @@ export const BannerBox = styled.div`
 `;
 
 export const BannerImg = styled.img`
-  width: 1200px;
-  max-width: 1420px;
+  width: 80vw;
   border-radius: 50px;
+
+  @media screen and (max-width: 1023px) {
+    border-radius: 20px;
+  }
 `;
 
 export const BannerName = styled.p`
@@ -28,9 +31,11 @@ export const BannerName = styled.p`
   font-size: 90px;
   text-align: center;
   position: absolute;
-  bottom: 314px;
-  left: 33px;
-  cursor: default;
+  top: 15%;
+  left: 15vw;
+  @media screen and (max-width: 1023px) {
+    font-size: 40px;
+  }
 `;
 
 export const BannerSub = styled.p`
@@ -39,9 +44,12 @@ export const BannerSub = styled.p`
   font-size: 32px;
   text-align: center;
   position: absolute;
-  bottom: 259px;
-  left: 209px;
-  cursor: default;
+  left: 24vw;
+  top: 52%;
+  @media screen and (max-width: 1023px) {
+    border-radius: 20px;
+    font-size: 20px;
+  }
 `;
 
 export const BannerInfo = styled.p`
@@ -49,18 +57,22 @@ export const BannerInfo = styled.p`
   font-size: 20px;
   text-align: left;
   position: absolute;
-  bottom: 176px;
-  left: 149px;
-  cursor: default;
+  left: 20vw;
+  top: 62%;
+  @media screen and (max-width: 1023px) {
+    font-size: 16px;
+  }
 `;
 
 export const BannerPhoneNumber = styled.h3`
   color: #00573b;
   font-size: 20px;
   position: absolute;
-  bottom: 117px;
-  left: 200px;
-  cursor: default;
+  top: 76%;
+  left: 23.5vw;
+  @media screen and (max-width: 1023px) {
+    font-size: 14px;
+  }
 `;
 
 export const PopolarCafeBtn = styled.button`
@@ -68,32 +80,40 @@ export const PopolarCafeBtn = styled.button`
   height: 50px;
   border-radius: 50px;
   position: absolute;
-  bottom: 20px;
-  left: 150px;
+  bottom: 3vh;
+  left: 20vw;
   background: #ffa6e2;
   color: white;
   font-size: 23px;
   font-family: 'KOTRAHOPE';
   z-index: 1;
+
   svg {
     margin: 0 3px;
+  }
+
+  @media screen and (max-width: 1023px) {
+    display: none;
   }
 `;
 
 export const BtnImg = styled.img`
   position: absolute;
-  bottom: 30px;
-  left: 350px;
+  bottom: 3.5vh;
+  left: 22vw;
   width: 40px;
   height: 40px;
   transform: rotate(20deg);
 `;
 
 export const HoverContainer = styled.div`
+  @media screen and (max-width: 1023px) {
+    display: none;
+  }
   &:hover {
     ${BtnImg} {
-      left: 368px;
-      bottom: 63px;
+      left: 24vw;
+      bottom: 7.5vh;
       transition: 0.5s;
     }
   }
