@@ -32,7 +32,6 @@ export function useGetBoards(currentPage, filteredCategory, sortBy) {
     () => getBoards(currentPage, filteredCategory, sortBy),
     {
       keepPreviousData: true,
-      retry: false,
       onError: (error) => {
         showAlert(
           '',

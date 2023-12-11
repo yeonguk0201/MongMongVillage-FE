@@ -6,10 +6,10 @@ import { showAlert } from '../util/showAlert';
 
 const patchBoard = async (category, content, title, boardId, images) => {
   const formData = new FormData();
-  formData.append('category', category);
   images.forEach((image) => {
     formData.append('images', image);
   });
+  formData.append('category', category);
   formData.append('title', title);
   formData.append('content', content);
   formData.append('_id', boardId);
@@ -30,6 +30,8 @@ export function usePatchBoard(category, content, title, boardId, images) {
         showAlert('', '수정이 완료되었습니다.', 'success', () => {
           navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${boardId}`);
           queryClient.invalidateQueries(['myBoards']);
+          queryClient.invalidateQueries(['getBoards']);
+          queryClient.invalidateQueries(['getBoard' + boardId]);
           window.scrollTo(0, 0);
         });
       },

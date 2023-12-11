@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useGetBoards } from '../../hooks/getBoards';
-import { useGetDetailBoard } from '../../hooks/getDetailBoard';
+import { useGetBoard } from '../../hooks/getBoard.js';
 import { useDeleteBoard } from '../../hooks/deleteBoard';
 import {
   CommunityList,
@@ -34,18 +34,7 @@ const CommunityDetailPage = () => {
   const [newCommentState, setNewCommentState] = useState(false);
 
   // 서버로부터 해당 작성글 받아오도록 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-  const {
-    mutate: mutatePost,
-    data: postData,
-    isLoading,
-  } = useGetDetailBoard(id);
-
-  useEffect(() => {
-    // 페이지가 처음 로딩될 때는 mutatePost를 호출하지 않도록
-    if (id) {
-      mutatePost();
-    }
-  }, [id, mutatePost, newCommentState]);
+  const { data: postData, isLoading } = useGetBoard(id);
 
   useEffect(() => {
     if (postData) {
