@@ -16,7 +16,7 @@ export function useDeleteComment(commentId, boardId) {
   return useMutation(() => deleteComment(commentId, boardId), {
     onSuccess: () => {
       showAlert('', '댓글이 삭제되었습니다.', 'success', () => {
-        window.location.reload();
+        queryClient.invalidateQueries(['getBoard' + boardId]);
         queryClient.invalidateQueries(['myComments']);
       });
     },

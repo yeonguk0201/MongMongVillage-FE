@@ -1,6 +1,6 @@
 import { Title } from '../../commonStyles';
 import { Kakao } from '../../components';
-import { Container, Content } from './styles';
+import { Container } from './styles';
 
 const CafeMapPage = () => {
   return (

@@ -53,11 +53,11 @@ const CommunityPage = () => {
   const endIndex = startIndex + ITEMS_PER_PAGE;
 
   // 서버로부터 list 받아옴
-  const {
-    mutate,
-    data,
-    isLoading: boardLoading,
-  } = useGetBoards(currentPage, filteredCategory, sortBy);
+  const { data, isLoading: boardLoading } = useGetBoards(
+    currentPage,
+    filteredCategory,
+    sortBy,
+  );
 
   // search 결과 서버로부터 받아옴
   const {
@@ -69,11 +69,8 @@ const CommunityPage = () => {
   useEffect(() => {
     if (searchTerm) {
       mutateSearch();
-    } else {
-      // 검색어가 없을 경우 전체 게시글 가져오도록 수정
-      mutate();
     }
-  }, [currentPage, filteredCategory, mutate, searchTerm, mutateSearch, sortBy]);
+  }, [currentPage, filteredCategory, searchTerm, mutateSearch, sortBy]);
 
   useEffect(() => {
     if (data && data.boards) {
@@ -154,9 +151,6 @@ const CommunityPage = () => {
     setCurrentPage(page);
     if (searchTerm) {
       mutateSearch();
-    } else {
-      // 검색어가 없을 경우 전체 게시글 가져오도록 수정
-      mutate();
     }
     // !!! 서버로부터 현재 CurrentPage 와 일치하는 페이지 요청해서 받아오도록 해야함
   };
@@ -170,7 +164,7 @@ const CommunityPage = () => {
   // 현재 페이지에 표시될 아이템들
   const currentPageItems = list;
 
-  return boardLoading ? (
+  return boardLoading || searchLoading ? (
     <Loading />
   ) : (
     <Container>
