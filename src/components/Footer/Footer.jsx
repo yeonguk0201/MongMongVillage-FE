@@ -2,12 +2,13 @@ import {
   Container,
   Content,
   FooterContainer,
-  CommunityList,
-  LogoContainer,
+  NavList,
   ListContainer,
-  Info,
-  LogoListContainer,
+  InfoContainer,
+  SiteName,
   SnsContainer,
+  LogoContainer,
+  Line,
 } from './styles';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoSVG } from '../Logo/Logo.svg';
@@ -28,100 +29,65 @@ const Footer = () => {
   return (
     <Container>
       <FooterContainer>
-        <LogoListContainer>
-          <LogoContainer>
-            <LogoSVG width="93px" height="93px" />
-            <Content id="bannerText">
-              &nbsp;MONGMONG <br /> &nbsp; &nbsp;- VILLAGE-
+        <LogoContainer>
+          <LogoSVG width="15vw" />
+          <SiteName>
+            MONGMONG <br />- VILLAGE-
+          </SiteName>
+        </LogoContainer>
+        <Line />
+        <InfoContainer>
+          <Content>상호명 : 멍멍빌리지 | 대표 : 최정윤 </Content>
+          <Content>고객센터 : mongmonghelp@gmail.com</Content>
+          <Content>배너 출처 : wepik.com</Content>
+          <Content>Copyright 2023 by Team6, Inc, All rights reserved</Content>
+        </InfoContainer>
+
+        <Line />
+        <ListContainer>
+          <NavList>
+            <Content
+              onClick={() => {
+                navigate(ROUTE.MAIN_PAGE.link);
+                scrollTop();
+              }}
+            >
+              HOME
             </Content>
-          </LogoContainer>
-
-          <Info>
-            <Content id="info">상호명: 멍멍빌리지 | 대표: 최정윤 </Content>
-            <Content id="info">고객센터: mongmonghelp@gmail.com</Content>
-            <Content id="info">서비스문의: mongmongv6@gmail.com</Content>
-            <Content id="info">
-              Copyright 2023 by Team6, Inc, All rights reserved
+            <Content
+              onClick={() => {
+                navigate(ROUTE.COMMUNITY_PAGE.link);
+                scrollTop();
+              }}
+            >
+              COMMUNITY
             </Content>
-            <Content id="info">배너 출처: wepik.com</Content>
-          </Info>
+            <Content
+              onClick={() => {
+                navigate(ROUTE.REVIEW_LIST_PAGE.link);
+                scrollTop();
+              }}
+            >
+              REVIEW
+            </Content>
+            <Content
+              onClick={() => {
+                navigate(ROUTE.CAFE_MAP_PAGE.link);
+                scrollTop();
+              }}
+            >
+              SEARCH CAFE
+            </Content>
+          </NavList>
+        </ListContainer>
 
-          <ListContainer>
-            <CommunityList>
-              <Content
-                id="linkTo"
-                onClick={() => {
-                  navigate(ROUTE.MAIN_PAGE.link);
-                  scrollTop();
-                }}
-              >
-                HOME
-              </Content>
-              <Content
-                id="linkTo"
-                onClick={() => {
-                  navigate(ROUTE.COMMUNITY_PAGE.link);
-                  scrollTop();
-                }}
-              >
-                COMMUNITY
-              </Content>
-              <Content
-                id="linkTo"
-                onClick={() => {
-                  navigate(ROUTE.REVIEW_LIST_PAGE.link);
-                  scrollTop();
-                }}
-              >
-                REVIEW
-              </Content>
-              <Content
-                id="linkTo"
-                onClick={() => {
-                  navigate(ROUTE.CAFE_MAP_PAGE.link);
-                  scrollTop();
-                }}
-              >
-                SEARCH CAFE
-              </Content>
-            </CommunityList>
-          </ListContainer>
-
-          <SnsContainer>
-            <FaInstagram
-              style={{ cursor: 'pointer', transition: '0.5s' }}
-              size="36px"
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = 'var(--main-yellow-color)')
-              }
-              onMouseOut={(e) => (e.currentTarget.style.color = 'black')}
-            />
-            <FaFacebook
-              style={{ cursor: 'pointer', transition: '0.5s' }}
-              size="36px"
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = 'var(--main-yellow-color)')
-              }
-              onMouseOut={(e) => (e.currentTarget.style.color = 'black')}
-            />
-            <FaXTwitter
-              style={{ cursor: 'pointer', transition: '0.5s' }}
-              size="36px"
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = 'var(--main-yellow-color)')
-              }
-              onMouseOut={(e) => (e.currentTarget.style.color = 'black')}
-            />
-            <FaBlogger
-              style={{ cursor: 'pointer', transition: '0.5s' }}
-              size="36px"
-              onMouseOver={(e) =>
-                (e.currentTarget.style.color = 'var(--main-yellow-color)')
-              }
-              onMouseOut={(e) => (e.currentTarget.style.color = 'black')}
-            />
-          </SnsContainer>
-        </LogoListContainer>
+        <Line />
+        <SnsContainer>
+          <FaInstagram size="3vw" />
+          <FaFacebook size="3vw" />
+          <FaXTwitter size="3vw" />
+          <FaBlogger size="3vw" />
+        </SnsContainer>
       </FooterContainer>
     </Container>
   );

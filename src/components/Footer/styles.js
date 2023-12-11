@@ -1,104 +1,90 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-  height: 188px;
-  display: flex;
+  width: 100vw;
+  height: 7%;
 `;
 
 export const FooterContainer = styled.div`
   width: 90%;
-  margin: auto;
-  margin-left: 186px;
-`;
-
-export const LogoListContainer = styled.div`
-  display: grid;
-  grid-template-columns: 0.4fr 1fr 0.7fr 1.25fr;
+  height: 90%;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 `;
 
-export const LogoContainer = styled.section`
-  margin: 0;
-  display: inline-block;
-  position: relative;
+export const Line = styled.div`
+  height: 90%;
   border-right: 1px solid gray;
-  width: 230px;
-  height: 100%;
+  margin: 0 2%;
+`;
+
+export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 2%;
+`;
+
+export const SiteName = styled.p`
+  font-size: 1.2rem;
+  text-align: center;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const ListContainer = styled.section`
-  margin: 0;
+  height: 90%;
   display: flex;
   align-items: center;
-  padding-top: 4px;
 `;
 
-export const CommunityList = styled.section`
-  display: flex;
+export const InfoContainer = styled.section`
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0 24px;
-  width: 100%;
-  border-right: 1px solid gray;
-`;
-
-export const Info = styled.section`
-  padding-left: 39px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  line-height: 9px;
-  border-right: 1px solid gray;
-  width: 480px;
   justify-content: center;
-  height: 100%;
+`;
+
+export const NavList = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 5%;
+  p {
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+      color: var(--main-yellow-color);
+    }
+  }
 `;
 
 export const Content = styled.p`
-  font-size: 16px;
-  text-align: center;
-  margin: 10px 0;
+  font-size: 1rem;
+  margin: 7% 0;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 12px;
+  }
 
-  ${(props) =>
-    props.id === 'bannerText' &&
-    `
-    text-align: left;
-    display: inline-block;
-    position: absolute;
-    top: 18px;
-    left: 70px;
-    `};
-
-  ${(props) =>
-    props.id === 'linkTo' &&
-    `
-    cursor: pointer;
-    &:hover {
-      color: var(--main-yellow-color);
-      transition: 0.5s;
-    }
-    `};
-
-  ${(props) =>
-    props.id === 'listTitle' &&
-    `
-    color: #949494;
-    `};
+  @media screen and (max-width: 767px) {
+    font-size: 10px;
+  }
 `;
 
 export const SnsContainer = styled.section`
-  padding-left: 36px;
   display: grid;
   grid-template-columns: 0.3fr 0.5fr;
-  grid-gap: 23px;
-`;
+  grid-gap: 2vw;
+  svg {
+    cursor: pointer;
+    transition: fill 0.5s;
 
-export const SnsIcon = styled.article`
-  cursor: pointer;
-
-  &:hover {
-    color: var(--main-yellow-color);
-    transition: 0.5s;
+    &:hover {
+      fill: var(--main-yellow-color);
+    }
   }
 `;
