@@ -1,19 +1,32 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  height: 1150px;
   width: 90%;
 `;
 
-export const Content = styled.h5`
-  font-size: 33px;
-  margin: 80px 0 35px 17px;
-  width: 290px;
+export const Content = styled.h1`
+  font-size: 32px;
+  margin: 50px 0;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+
   background: linear-gradient(
     to top,
-    var(--main-yellow-color) 35%,
-    transparent 30%
+    var(--main-yellow-color) 40%,
+    transparent 20%
   );
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 26px;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+    svg {
+      scale: 0.7;
+    }
+  }
 `;
 
 export const DogCafeList = styled.article`
@@ -26,12 +39,24 @@ export const DogCafeList = styled.article`
   padding: 86px;
   padding-bottom: 124px;
   margin: 0 auto;
+
+  @media screen and (max-width: 767px) {
+    grid-gap: 20px;
+    grid-row-gap: 20px;
+    border-radius: 20px;
+    padding: 30px;
+    padding-bottom: 10px;
+  }
 `;
 
 export const DogCafeListItem = styled.section`
   height: 300px;
   background-color: none;
   cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    height: 150px;
+  }
 `;
 
 export const DogCafeListItemImg = styled.img`
@@ -44,6 +69,11 @@ export const DogCafeListItemImg = styled.img`
     transition: all 0.2s linear;
     transform: scale(1.05);
   }
+
+  @media screen and (max-width: 767px) {
+    border-radius: 20px;
+    height: 50%;
+  }
 `;
 
 export const DogCafeInfoContainer = styled.section`
@@ -54,18 +84,30 @@ export const DogCafeInfoContainer = styled.section`
   width: 90%;
   margin: 0 auto;
   padding-top: 20px;
+  @media screen and (max-width: 767px) {
+    display: block;
+  }
 `;
 
 export const DogCafeListItemTitle = styled.span`
   font-size: 24px;
   font-weight: bold;
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 `;
 
-export const DogCafeListItemRating = styled.span`
+export const DogCafeListItemRating = styled.p`
   font-size: 18px;
   span {
     padding: 0 5px;
     font-weight: bold;
     font-size: 20px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+    span {
+      font-size: 14px;
+    }
   }
 `;

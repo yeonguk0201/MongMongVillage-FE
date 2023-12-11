@@ -29,10 +29,10 @@ const PopularCafes = () => {
   ) : (
     <Container>
       <Content>
-        <GiPartyPopper size={'43px'} color="rgba(255, 77, 77, 0.94)" />
-        인기 애견카페
+        <GiPartyPopper size={'40px'} color="rgba(255, 77, 77, 0.94)" />
+        <span>인기 애견카페</span>
         <GiPartyPopper
-          size={'43px'}
+          size={'40px'}
           color="rgba(255, 77, 77, 0.94)"
           style={{ transform: 'scaleX(-1)' }}
         />
