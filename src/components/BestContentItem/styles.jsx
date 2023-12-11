@@ -3,18 +3,26 @@ import styled from 'styled-components';
 export const Container = styled.section`
   height: 300px;
   background-color: none;
+
+  @media screen and (max-width: 767px) {
+    height: 150px;
+  }
 `;
 
 export const BestImg = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: 50px;
-  cursor: pointer;
+  object-fit: cover;
 
   &:hover {
     transition: all 0.2s linear;
     transform: scale(1.05);
+  }
+
+  @media screen and (max-width: 767px) {
+    border-radius: 20px;
+    height: 50%;
   }
 `;
 
@@ -42,6 +50,11 @@ export const BestTitle = styled.p`
 
   max-height: 1em;
   line-height: 2rem; /* 적절한 줄 높이 설정 */
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 `;
 
 export const BestWriter = styled.div`
@@ -58,6 +71,14 @@ export const BestWriter = styled.div`
     width: 25px;
     height: 25px;
     padding-right: 7px;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    img {
+      width: 15px;
+      height: 15px;
+    }
   }
 `;
 
