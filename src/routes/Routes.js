@@ -15,6 +15,7 @@ import {
   ReviewWritePage,
   EditPostPage,
   NotFoundPage,
+  PopularCafePage,
 } from '../pages';
 
 export const ROUTE = {
@@ -110,6 +111,11 @@ export const ROUTE = {
   NOT_FOUND_PAGE: {
     path: '/*',
     element: <NotFoundPage />,
+  },
+  Popular_Cafe_List_Page: {
+    path: '/top100',
+    link: '/top100',
+    element: <PopularCafePage />,
   },
 };
 

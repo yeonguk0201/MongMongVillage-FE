@@ -14,9 +14,9 @@ import { ReactComponent as LogoSVG } from '../Logo/Logo.svg';
 import { ROUTE } from '../../routes/Routes';
 
 import { FaInstagram } from 'react-icons/fa';
-import { FaFacebook } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaBlogger } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -95,14 +95,22 @@ const Footer = () => {
                 (e.currentTarget.style.color = 'var(--main-yellow-color)')
               }
               onMouseOut={(e) => (e.currentTarget.style.color = 'black')}
+              onClick={() => {
+                window.location.href =
+                  'https://www.instagram.com/mongmongvillage';
+              }}
             />
-            <FaFacebook
+            <FaGithub
               style={{ cursor: 'pointer', transition: '0.5s' }}
               size="36px"
               onMouseOver={(e) =>
                 (e.currentTarget.style.color = 'var(--main-yellow-color)')
               }
               onMouseOut={(e) => (e.currentTarget.style.color = 'black')}
+              onClick={() => {
+                window.location.href =
+                  'https://github.com/elice-final-team6/MongMongVillage-FE';
+              }}
             />
             <FaXTwitter
               style={{ cursor: 'pointer', transition: '0.5s' }}
@@ -111,6 +119,9 @@ const Footer = () => {
                 (e.currentTarget.style.color = 'var(--main-yellow-color)')
               }
               onMouseOut={(e) => (e.currentTarget.style.color = 'black')}
+              onClick={() => {
+                window.location.href = 'https://twitter.com/meongmeong13573';
+              }}
             />
             <FaBlogger
               style={{ cursor: 'pointer', transition: '0.5s' }}
@@ -119,6 +130,9 @@ const Footer = () => {
                 (e.currentTarget.style.color = 'var(--main-yellow-color)')
               }
               onMouseOut={(e) => (e.currentTarget.style.color = 'black')}
+              onClick={() => {
+                window.location.href = 'https://velog.io/@mongmongv6';
+              }}
             />
           </SnsContainer>
         </LogoListContainer>
