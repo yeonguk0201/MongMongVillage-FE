@@ -45,7 +45,7 @@ const PopularCafeLists = () => {
       <ShowBubbleContainer>
         <ShowInfo>카페 랭킹이란?</ShowInfo>
         <SpeachBubble>
-          리뷰수와 별점이 높을 수록 순위가 높아집니다!
+          리뷰 수와 별점이 높을수록 순위가 높아집니다!
         </SpeachBubble>
       </ShowBubbleContainer>
 
