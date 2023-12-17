@@ -6,6 +6,7 @@ export const Container = styled.main`
 `;
 
 export const Content = styled.h5`
+  display: inline-block;
   font-size: 33px;
   margin: 80px 0 35px 17px;
   width: 290px;
@@ -79,4 +80,11 @@ export const ErrorContainer = styled.div`
   background-color: #f0f0f0;
   border-radius: 50px;
   font-size: 40px;
+`;
+
+export const More = styled.span`
+  font-size: 18px;
+  color: darkslategrey;
+  margin-left: 5px;
+  cursor: pointer;
 `;

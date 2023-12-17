@@ -8,6 +8,7 @@ import {
   DogCafeListItemRating,
   DogCafeInfoContainer,
   ErrorContainer,
+  More,
 } from './styles';
 import { useGetPolularCafes } from '../../hooks/getPopularCafes';
 import { useNavigate } from 'react-router-dom';
@@ -20,6 +21,11 @@ const PopularCafes = () => {
 
   const linkToCafe = (id) => {
     navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${id}`);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
+
+  const linkTop100 = (id) => {
+    navigate(ROUTE.Popular_Cafe_List_Page.link);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
@@ -53,6 +59,13 @@ const PopularCafes = () => {
           style={{ transform: 'scaleX(-1)' }}
         />
       </Content>
+      <More
+        onClick={() => {
+          linkTop100();
+        }}
+      >
+        더보기
+      </More>
       <DogCafeList>
         {data &&
           data.cafes.map((content, index) => (

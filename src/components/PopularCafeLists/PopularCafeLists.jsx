@@ -16,6 +16,7 @@ import {
   ShowBubbleContainer,
   Line,
 } from './styles';
+import { useGetTop100 } from '../../hooks/getTop100';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE } from '../../routes/Routes';
 import { Loading } from '../Loading';
@@ -31,40 +32,14 @@ const PopularCafeLists = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  const allPopularCafes = [
-    {
-      _id: 12345678,
-      name: '캠핑고양이 양재점1',
-      road_addr: '서울 강남구 도곡로4길 38 1층',
-      image: '',
-      intro: '안녕하세요 소개창입니다.',
-      operating_time: '매일 12:00 - 22:00',
-      phone_number: '0507-1497-0881',
-      rating: 3.3,
-    },
-    {
-      _id: 12345678,
-      name: '캠핑고양이 양재점2',
-      road_addr: '서울 강남구 도곡로4길 38 1층',
-      image: '',
-      intro: '안녕하세요 소개창입니다.',
-      operating_time: '매일 12:00 - 22:00',
-      phone_number: '0507-1497-0881',
-      rating: 3.3,
-    },
-    {
-      _id: 12345678,
-      name: '캠핑고양이 양재점3',
-      road_addr: '서울 강남구 도곡로4길 38 1층',
-      image: '',
-      intro: '안녕하세요 소개창입니다.',
-      operating_time: '매일 12:00 - 22:00',
-      phone_number: '0507-1497-0881',
-      rating: 3.3,
-    },
-  ];
+  const { data, isLoading, error } = useGetTop100();
+  console.log('데이터', data);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : error ? (
+    <h1>에러</h1>
+  ) : (
     <Container>
       <PageTitle>카페 랭킹 TOP 100</PageTitle>
       <ShowBubbleContainer>
@@ -77,52 +52,53 @@ const PopularCafeLists = () => {
       <Line />
 
       <GridCafe>
-        {allPopularCafes.map((content, index) => (
-          <CafeListItemContainer key={index}>
-            <CafeRanking>{index + 1}</CafeRanking>
-            <CafeContainer
-              onClick={() => {
-                linkToCafe(content._id);
-              }}
-            >
-              <CafeImg
-                src={
-                  content.image.length > 0
-                    ? content.image
-                    : '/imges/default.png'
-                }
-                alt={`cafe ${index}`}
-              />
-              <ItemContainer>
-                <CafeTitle>{content.name}</CafeTitle>
-                <StarContainer>
-                  <FaStar
-                    color="var(--main-yellow-color)"
-                    style={{ verticalAlign: 'middle' }}
-                  />
-                  &nbsp;
-                  <StarRating>{content.rating}</StarRating>
-                </StarContainer>
-                <Info>
-                  <HiHome
-                    color="var(--main-yellow-color)"
-                    style={{ verticalAlign: 'middle' }}
-                  />
-                  &nbsp;
-                  {content.road_addr}
-                </Info>
-                <Info>
-                  <GoClockFill
-                    color="var(--main-yellow-color)"
-                    style={{ verticalAlign: 'middle' }}
-                  />
-                  &nbsp;
-                  {content.operating_time}
-                </Info>
-              </ItemContainer>
-            </CafeContainer>
-          </CafeListItemContainer>
-        ))}
+        {data &&
+          data.cafes.map((content, index) => (
+            <CafeListItemContainer key={index}>
+              <CafeRanking>{index + 1}</CafeRanking>
+              <CafeContainer
+                onClick={() => {
+                  linkToCafe(content._id);
+                }}
+              >
+                <CafeImg
+                  src={
+                    content.image.length > 0
+                      ? content.image
+                      : '/imges/default.png'
+                  }
+                  alt={`cafe ${index}`}
+                />
+                <ItemContainer>
+                  <CafeTitle>{content.name}</CafeTitle>
+                  <StarContainer>
+                    <FaStar
+                      color="var(--main-yellow-color)"
+                      style={{ verticalAlign: 'middle' }}
+                    />
+                    &nbsp;
+                    <StarRating>{content.rating}</StarRating>
+                  </StarContainer>
+                  <Info>
+                    <HiHome
+                      color="var(--main-yellow-color)"
+                      style={{ verticalAlign: 'middle' }}
+                    />
+                    &nbsp;
+                    {content.road_addr}
+                  </Info>
+                  <Info>
+                    <GoClockFill
+                      color="var(--main-yellow-color)"
+                      style={{ verticalAlign: 'middle' }}
+                    />
+                    &nbsp;
+                    {content.operating_time}
+                  </Info>
+                </ItemContainer>
+              </CafeContainer>
+            </CafeListItemContainer>
+          ))}
       </GridCafe>
     </Container>
   );

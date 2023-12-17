@@ -113,8 +113,8 @@ export const ROUTE = {
     element: <NotFoundPage />,
   },
   Popular_Cafe_List_Page: {
-    path: '/popularcafe',
-    link: '/popularcafe',
+    path: '/top100',
+    link: '/top100',
     element: <PopularCafePage />,
   },
 };
