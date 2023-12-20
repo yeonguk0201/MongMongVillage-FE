@@ -109,7 +109,7 @@ export const ROUTE = {
     element: <EditPostPage />,
   },
 
-  Popular_Cafe_List_Page: {
+  CAFE_LIST_PAGE: {
     path: '/cafes',
     link: '/cafes',
     element: <PopularCafePage />,

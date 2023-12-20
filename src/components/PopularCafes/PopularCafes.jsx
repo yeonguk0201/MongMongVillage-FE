@@ -17,7 +17,7 @@ const PopularCafes = () => {
   const navigate = useNavigate();
 
   const linkTop100 = () => {
-    navigate(ROUTE.Popular_Cafe_List_Page.link);
+    navigate(ROUTE.CAFE_LIST_PAGE.link);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
