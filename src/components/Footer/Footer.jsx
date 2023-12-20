@@ -15,9 +15,9 @@ import { ReactComponent as LogoSVG } from '../Logo/Logo.svg';
 import { ROUTE } from '../../routes/Routes';
 
 import { FaInstagram } from 'react-icons/fa';
-import { FaFacebook } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaBlogger } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -42,7 +42,6 @@ const Footer = () => {
           <Content>배너 출처 : wepik.com</Content>
           <Content>Copyright 2023 by Team6, Inc, All rights reserved</Content>
         </InfoContainer>
-
         <Line />
         <ListContainer>
           <NavList>
@@ -80,13 +79,34 @@ const Footer = () => {
             </Content>
           </NavList>
         </ListContainer>
-
         <Line />
         <SnsContainer>
-          <FaInstagram size="3vw" />
-          <FaFacebook size="3vw" />
-          <FaXTwitter size="3vw" />
-          <FaBlogger size="3vw" />
+          <FaInstagram
+            size="3vw"
+            onClick={() => {
+              navigate('https://www.instagram.com/mongmongvillage');
+            }}
+          />
+          <FaGithub
+            size="3vw"
+            onClick={() => {
+              navigate(
+                'https://github.com/elice-final-team6/MongMongVillage-FE',
+              );
+            }}
+          />
+          <FaXTwitter
+            size="3vw"
+            onClick={() => {
+              navigate('https://twitter.com/meongmeong13573');
+            }}
+          />
+          <FaBlogger
+            size="3vw"
+            onClick={() => {
+              navigate('https://velog.io/@mongmongv6');
+            }}
+          />
         </SnsContainer>
       </FooterContainer>
     </Container>

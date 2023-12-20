@@ -51,10 +51,12 @@ export const DogCafeList = styled.article`
 `;
 
 export const ErrorContainer = styled.div`
-  width: 90%;
-  height: 100px;
+  width: 100%;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
+  border-radius: 50px;
+  font-size: 40px;
 `;

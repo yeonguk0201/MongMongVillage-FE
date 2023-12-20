@@ -81,10 +81,10 @@ export const SnsContainer = styled.section`
   grid-gap: 2vw;
   svg {
     cursor: pointer;
-    transition: fill 0.5s;
+    transition: all 0.5s;
 
     &:hover {
-      fill: var(--main-yellow-color);
+      color: var(--main-yellow-color);
     }
   }
 `;

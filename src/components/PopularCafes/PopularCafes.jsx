@@ -7,6 +7,8 @@ import {
   DogCafeListItemTitle,
   DogCafeListItemRating,
   DogCafeInfoContainer,
+  ErrorContainer,
+  More,
 } from './styles';
 import { useGetPolularCafes } from '../../hooks/getPopularCafes';
 import { useNavigate } from 'react-router-dom';
@@ -22,10 +24,30 @@ const PopularCafes = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  const { data, isLoading } = useGetPolularCafes();
+  const linkTop100 = (id) => {
+    navigate(ROUTE.Popular_Cafe_List_Page.link);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
+
+  const { data, isLoading, error } = useGetPolularCafes();
 
   return isLoading ? (
     <Loading />
+  ) : error ? (
+    <Container>
+      <Content>
+        <GiPartyPopper size={'43px'} color="rgba(255, 77, 77, 0.94)" />
+        인기 애견카페
+        <GiPartyPopper
+          size={'43px'}
+          color="rgba(255, 77, 77, 0.94)"
+          style={{ transform: 'scaleX(-1)' }}
+        />
+      </Content>
+      <ErrorContainer>
+        인기 애견카페를 불러오는 도중 에러가 생겼습니다.
+      </ErrorContainer>
+    </Container>
   ) : (
     <Container>
       <Content>
@@ -37,6 +59,13 @@ const PopularCafes = () => {
           style={{ transform: 'scaleX(-1)' }}
         />
       </Content>
+      <More
+        onClick={() => {
+          linkTop100();
+        }}
+      >
+        더보기
+      </More>
       <DogCafeList>
         {data &&
           data.cafes.map((content, index) => (

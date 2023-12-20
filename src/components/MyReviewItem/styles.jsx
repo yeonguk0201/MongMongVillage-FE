@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: grid;
+  grid-template-columns: 200px 500px 200px 200px;
   padding: 20px;
   margin: 15px 0;
   border-bottom: 1px gray solid;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
@@ -22,6 +23,7 @@ export const Title = styled.p`
 `;
 
 export const Content = styled.p`
+  line-height: 1.5;
   color: gray;
   width: 500px;
   text-overflow: ellipsis;
