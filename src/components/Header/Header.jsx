@@ -1,9 +1,10 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Container, Navbar, Navitem, Space } from './styles';
 import Logo from '../Logo/Logo';
 import { ROUTE } from '../../routes/Routes';
 import { showAlert } from '../../util/showAlert';
+import { getCheckTokenValid } from '../../hooks/getCheckTokenValid';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -21,45 +22,18 @@ const Header = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     showAlert('Logout', '로그아웃 되었습니다.', 'success', () => {
       localStorage.clear();
       navigate(ROUTE.MAIN_PAGE.link);
       window.location.reload();
     });
-  };
-
-  const checkTokenValid = async (token) => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_DB_API_ENDPOINT}/users/token-check`,
-        {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error(
-          `토큰 검증에 실패했습니다.  응답 코드: ${response.status}`,
-        );
-      }
-
-      const data = await response.json();
-
-      return data.status === 200; // 유효성 여부를 반환
-    } catch (error) {
-      console.error('토큰 검증 중 오류 발생:', error.message);
-      return false; // 오류가 발생하면 유효하지 않은 것으로 처리
-    }
-  };
+  }, [navigate]);
 
   useEffect(() => {
     const checkAndHandleLogout = async () => {
       if (token) {
-        const isValid = await checkTokenValid(token);
+        const isValid = await getCheckTokenValid();
 
         if (!isValid) {
           showAlert(
@@ -76,7 +50,7 @@ const Header = () => {
     };
 
     checkAndHandleLogout();
-  }, [navigate, token]);
+  }, [handleLogout, navigate, token]);
 
   useEffect(() => {
     setActiveHeader(`/${location.pathname.split('/')[1]}`);
