@@ -4,6 +4,7 @@ export * from './Header';
 export * from './Banner';
 export * from './SearchBar';
 export * from './PopularCafes';
+export * from './PopularCafeItem';
 export * from './BestContents';
 export * from './BestContentItem';
 export * from './SignUpCheckbox';

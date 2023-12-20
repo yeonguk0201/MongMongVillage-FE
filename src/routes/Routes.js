@@ -108,14 +108,16 @@ export const ROUTE = {
     link: '/community/edit',
     element: <EditPostPage />,
   },
+
+  Popular_Cafe_List_Page: {
+    path: '/cafes',
+    link: '/cafes',
+    element: <PopularCafePage />,
+  },
+
   NOT_FOUND_PAGE: {
     path: '/*',
     element: <NotFoundPage />,
-  },
-  Popular_Cafe_List_Page: {
-    path: '/top100',
-    link: '/top100',
-    element: <PopularCafePage />,
   },
 };
 

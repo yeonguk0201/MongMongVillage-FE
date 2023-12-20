@@ -42,10 +42,10 @@ export const DogCafeList = styled.article`
   margin: 0 auto;
 
   @media screen and (max-width: 767px) {
-    grid-gap: 20px;
-    grid-row-gap: 20px;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
     padding: 30px;
+    border-radius: 24px;
     padding-bottom: 10px;
   }
 `;

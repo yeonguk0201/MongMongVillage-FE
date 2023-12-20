@@ -22,7 +22,6 @@ export const BestImg = styled.img`
 
   @media screen and (max-width: 767px) {
     border-radius: 20px;
-    height: 50%;
   }
 `;
 

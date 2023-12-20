@@ -4,9 +4,26 @@ export const Container = styled.main`
   width: 90%;
 `;
 
+export const Title = styled.div`
+  margin: 40px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+`;
+
+export const More = styled.button`
+  font-size: 18px;
+  background: none;
+  color: darkslategray;
+  padding: 0 30px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
+`;
+
 export const Content = styled.h1`
   font-size: 32px;
-  margin: 50px 0;
   display: flex;
   width: fit-content;
   align-items: center;
@@ -41,74 +58,11 @@ export const DogCafeList = styled.article`
   margin: 0 auto;
 
   @media screen and (max-width: 767px) {
-    grid-gap: 20px;
-    grid-row-gap: 20px;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
     padding: 30px;
+    border-radius: 24px;
     padding-bottom: 10px;
-  }
-`;
-
-export const DogCafeListItem = styled.section`
-  height: 300px;
-  background-color: none;
-  cursor: pointer;
-
-  @media screen and (max-width: 767px) {
-    height: 150px;
-  }
-`;
-
-export const DogCafeListItemImg = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 50px;
-  object-fit: cover;
-
-  &:hover {
-    transition: all 0.2s linear;
-    transform: scale(1.05);
-  }
-
-  @media screen and (max-width: 767px) {
-    border-radius: 20px;
-    height: 50%;
-  }
-`;
-
-export const DogCafeInfoContainer = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  width: 90%;
-  margin: 0 auto;
-  padding-top: 20px;
-  @media screen and (max-width: 767px) {
-    display: block;
-  }
-`;
-
-export const DogCafeListItemTitle = styled.span`
-  font-size: 24px;
-  font-weight: bold;
-  @media screen and (max-width: 767px) {
-    font-size: 16px;
-  }
-`;
-
-export const DogCafeListItemRating = styled.p`
-  font-size: 18px;
-  span {
-    padding: 0 5px;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  @media screen and (max-width: 767px) {
-    font-size: 12px;
-    span {
-      font-size: 14px;
-    }
   }
 `;
 
@@ -121,11 +75,4 @@ export const ErrorContainer = styled.div`
   background-color: #f0f0f0;
   border-radius: 50px;
   font-size: 40px;
-`;
-
-export const More = styled.span`
-  font-size: 18px;
-  color: darkslategrey;
-  margin-left: 5px;
-  cursor: pointer;
 `;
