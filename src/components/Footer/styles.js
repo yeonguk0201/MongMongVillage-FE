@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
-  height: 7%;
+  height: 20vh;
 `;
 
 export const FooterContainer = styled.div`
@@ -71,7 +71,7 @@ export const Content = styled.p`
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 10px;
+    font-size: 8px;
   }
 `;
 
@@ -80,11 +80,24 @@ export const SnsContainer = styled.section`
   grid-template-columns: 0.3fr 0.5fr;
   grid-gap: 2vw;
   svg {
-    cursor: pointer;
+    width: 50px;
+    height: auto;
     transition: all 0.5s;
 
+    cursor: pointer;
     &:hover {
       color: var(--main-yellow-color);
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    svg {
+      width: 30px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    svg {
+      width: 20px;
     }
   }
 `;

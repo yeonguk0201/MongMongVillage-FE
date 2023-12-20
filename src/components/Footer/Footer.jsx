@@ -82,13 +82,11 @@ const Footer = () => {
         <Line />
         <SnsContainer>
           <FaInstagram
-            size="3vw"
             onClick={() => {
               navigate('https://www.instagram.com/mongmongvillage');
             }}
           />
           <FaGithub
-            size="3vw"
             onClick={() => {
               navigate(
                 'https://github.com/elice-final-team6/MongMongVillage-FE',
@@ -96,13 +94,11 @@ const Footer = () => {
             }}
           />
           <FaXTwitter
-            size="3vw"
             onClick={() => {
               navigate('https://twitter.com/meongmeong13573');
             }}
           />
           <FaBlogger
-            size="3vw"
             onClick={() => {
               navigate('https://velog.io/@mongmongv6');
             }}
