@@ -46,6 +46,7 @@ export const DogCafeInfoContainer = styled.section`
 export const DogCafeListItemTitle = styled.span`
   font-size: 24px;
   font-weight: bold;
+
   @media screen and (max-width: 767px) {
     font-size: 16px;
   }
