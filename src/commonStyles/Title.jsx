@@ -10,10 +10,10 @@ export const Title = styled.h2`
     transparent 30%
   );
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    font-size: 26px;
+    font-size: ${(props) => (props.fontSize ? props.fontSize : '26px')};
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 20px;
+    font-size: ${(props) => (props.fontSize ? props.fontSize : '20px')};
   }
 `;

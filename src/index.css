@@ -16,7 +16,7 @@
 
 .page-content-container {
   padding: 100px 0 12px 0;
-  width: 100vw;
+  max-width: 100vw;
 }
 
 body {
@@ -160,6 +160,7 @@ table {
 button {
   cursor: pointer;
   border: none;
+  color: black;
 }
 
 input,
@@ -198,4 +199,32 @@ body {
 .swal2-icon {
   margin: 20px auto;
   background-color: transparent;
+}
+
+@media screen and (max-width: 767px) {
+  .swal2-container {
+    width: 100vw;
+  }
+  .swal2-modal {
+    width: 90vw;
+    height: 230px;
+  }
+  .swal2-icon {
+    padding: 0 !important;
+    margin: 0 auto !important;
+    scale: 0.6;
+  }
+  .swal2-title {
+    font-size: 22px;
+    margin: 5px auto !important;
+  }
+  .swal2-html-container {
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+  .swal2-actions button {
+    width: 70px;
+    font-size: 18px;
+    margin: 0 !important;
+  }
 }

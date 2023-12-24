@@ -21,17 +21,28 @@ export const RightContainer = styled.div`
   padding-top: 10px;
   height: 130px;
   justify-content: space-between;
+  @media screen and (max-width: 767px) {
+    height: 110px;
+  }
 `;
 
 export const ReviewTitle = styled.p`
   font-weight: 700;
-  font-size: 18px;
   padding: 10px 0;
+  @media screen and (min-width: 1024px) {
+    font-size: 18px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 export const CafeName = styled.p`
   font-weight: bold;
-  font-size: 16px;
   color: gray;
   cursor: pointer;
   display: flex;
@@ -43,11 +54,23 @@ export const CafeName = styled.p`
   svg {
     margin-right: 5px;
   }
+  @media screen and (min-width: 1024px) {
+    font-size: 16px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+    padding: 1px 0;
+    svg {
+      scale: 0.8;
+    }
+  }
 `;
 
 export const Content = styled.p`
   padding: 5px 0;
-  font-size: 16px;
 
   text-overflow: ellipsis;
   overflow: hidden;
@@ -61,20 +84,47 @@ export const Content = styled.p`
   line-height: 1.5em;
 
   white-space: pre-wrap;
+  @media screen and (min-width: 1024px) {
+    font-size: 16px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 export const PreviewImgContainer = styled.div`
   height: 130px;
   display: flex;
+  @media screen and (max-width: 767px) {
+    height: 110px;
+  }
 `;
 
 export const PreviewImg = styled.img`
-  width: 130px;
-  height: 100%;
   border-radius: 10px;
   object-fit: cover;
-  border-radius: 15px;
   margin: 0 5px;
+
+  @media screen and (min-width: 1024px) {
+    width: 130px;
+    height: 130px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 75px;
+    height: 75px;
+    &:nth-child(2),
+    &:nth-child(3) {
+      display: none;
+    }
+  }
 `;
 
 export const BottomContainer = styled.div`
@@ -82,6 +132,10 @@ export const BottomContainer = styled.div`
   padding: 10px 0;
   align-items: center;
   gap: 20px;
+  span,
+  p {
+    font-size: 12px;
+  }
 `;
 
 export const Writer = styled.div`
@@ -97,6 +151,13 @@ export const Writer = styled.div`
     overflow: hidden;
     width: 25px;
     height: 25px;
+  }
+
+  @media screen and (max-width: 767px) {
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 
@@ -118,5 +179,10 @@ export const StarRating = styled.div`
   .ratingValue {
     color: gray;
     font-size: 14px;
+  }
+  @media screen and (max-width: 767px) {
+    .ratingValue {
+      font-size: 11px;
+    }
   }
 `;

@@ -6,10 +6,11 @@ export const Container = styled.div`
 `;
 
 export const ReviewListContainer = styled.div`
-  width: 1280px !important;
+  width: 95vw !important;
+  max-width: 1280px;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 1vh;
   border-top: solid 3px var(--main-yellow-color);
 `;

@@ -5,6 +5,10 @@ export const Container = styled.div`
   display: flex;
   padding: 50px 0;
   margin: 0 auto;
+  @media screen and (max-width: 767px) {
+    gap: 5px;
+    padding: 30px 0;
+  }
 `;
 
 export const Button = styled.button`
@@ -19,6 +23,12 @@ export const Button = styled.button`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+
+  @media screen and (max-width: 767px) {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
 
   &[disabled] {
     cursor: revert;
