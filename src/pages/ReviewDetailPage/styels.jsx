@@ -2,11 +2,20 @@ import styled from 'styled-components';
 
 export const ReviewDetailContainer = styled.div`
   display: flex;
-  width: 1280px;
-  margin: 30px auto;
+  width: 95vw;
+  max-width: 1280px;
   flex-direction: column;
   padding-bottom: 100px;
-  border-bottom: 1px solid gray;
+  @media screen and (min-width: 1024px) {
+    margin: 30px auto;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin: 15px auto;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin: 0 auto;
+  }
 `;
 
 export const ReviewTitleContainer = styled.div`
@@ -30,6 +39,9 @@ export const TitleStarRaiting = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+  @media screen and (max-width: 767px) {
+    width: 70%;
+  }
 `;
 
 export const StarRaiting = styled.div`
@@ -40,12 +52,20 @@ export const StarRaiting = styled.div`
     margin: 0 5px;
     color: var(--main-yellow-color);
   }
+
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 export const ReviewTitle = styled.p`
   font-size: 22px;
   font-weight: 700;
   margin: 10px 0;
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 `;
 
 export const ProfileContainer = styled.div`
@@ -54,6 +74,10 @@ export const ProfileContainer = styled.div`
   align-self: center;
   padding: 20px;
   margin: 0 20px;
+  @media screen and (max-width: 767px) {
+    margin: 0 5px;
+    padding: 10px;
+  }
 `;
 
 export const ProfileImg = styled.img`
@@ -61,12 +85,19 @@ export const ProfileImg = styled.img`
   height: 36px;
   border-radius: 50%;
   overflow: hidden;
+  @media screen and (max-width: 767px) {
+    width: 26px;
+    height: 26px;
+  }
 `;
 
 export const Username = styled.p`
   padding-left: 5px;
   font-weight: bold;
   font-size: 18px;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 export const ReviewDate = styled.p`
@@ -74,6 +105,9 @@ export const ReviewDate = styled.p`
   font-size: 13px;
   color: #868688;
   padding-left: 30px;
+  @media screen and (max-width: 767px) {
+    font-size: 10px;
+  }
 `;
 
 export const CafeName = styled.p`
@@ -88,6 +122,12 @@ export const CafeName = styled.p`
   }
   &:hover {
     opacity: 0.5;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    svg {
+      scale: 0.8;
+    }
   }
 `;
 
@@ -107,6 +147,9 @@ export const ReviewImgContainer = styled.div`
 
 export const ReviewImg = styled.img`
   height: 400px;
+  @media screen and (max-width: 767px) {
+    height: 200px;
+  }
 `;
 
 export const MainText = styled.p`
@@ -116,6 +159,9 @@ export const MainText = styled.p`
   line-height: 150%;
   word-spacing: 2px;
   padding: 20px;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -135,8 +181,9 @@ export const Button = styled.button`
 
 export const AnotherReviewsContainer = styled.div`
   display: flex;
-  width: 1280px;
+  width: 100%;
   flex-direction: column;
   margin: 0 auto;
   padding-top: 20px;
+  border-top: 1px solid gray;
 `;

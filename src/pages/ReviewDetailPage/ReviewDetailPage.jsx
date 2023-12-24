@@ -58,59 +58,57 @@ const ReviewDetailPage = () => {
     <Loading />
   ) : (
     review && (
-      <>
-        <ReviewDetailContainer>
-          <ReviewTitleContainer>
-            <TitleStarRaiting>
-              <ReviewTitle>{review.title}</ReviewTitle>
-              <StarRaiting>
-                <span>
-                  {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
-                </span>
-                {`(${review.rating})`}
-                <ReviewDate>
-                  {new Date(review.createdAt).toLocaleString()} 작성
-                </ReviewDate>
-              </StarRaiting>
-            </TitleStarRaiting>
-            <ProfileContainer>
-              <ProfileImg
-                src={
-                  review?.user_id?.profilePicture ??
-                  `${`${process.env.PUBLIC_URL}/imges/user.png`}`
-                }
-              ></ProfileImg>
-              <Username>{review?.user_id?.nickname ?? ''}</Username>
-            </ProfileContainer>
-          </ReviewTitleContainer>
-          <MapContainer>
-            <CafeName onClick={linkToCafeDetailPage}>
-              <FaMapMarkerAlt size={'24px'} color="green" />
-              {review?.cafe_id?.name}
-            </CafeName>
-          </MapContainer>
-          <ReviewMainSection>
-            <ReviewImgContainer>
-              {review.images.length > 0 &&
-                review.images.map((item) => (
-                  <ReviewImg src={item} alt="" key={item} />
-                ))}
-            </ReviewImgContainer>
-            <MainText>{review.content.replace(/<br>/g, '\n')}</MainText>
-          </ReviewMainSection>
-          {
-            <ButtonContainer>
-              {review?.user_id?._id === userId && (
-                <Button onClick={linkToReviewEditPage}>수정</Button>
-              )}
-              {role === 'ADMIN' || review?.user_id?._id === userId ? (
-                <Button onClick={deleteReview}>삭제</Button>
-              ) : (
-                <></>
-              )}
-            </ButtonContainer>
-          }
-        </ReviewDetailContainer>
+      <ReviewDetailContainer>
+        <ReviewTitleContainer>
+          <TitleStarRaiting>
+            <ReviewTitle>{review.title}</ReviewTitle>
+            <StarRaiting>
+              <span>
+                {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
+              </span>
+              {`(${review.rating})`}
+              <ReviewDate>
+                {new Date(review.createdAt).toLocaleString()} 작성
+              </ReviewDate>
+            </StarRaiting>
+          </TitleStarRaiting>
+          <ProfileContainer>
+            <ProfileImg
+              src={
+                review?.user_id?.profilePicture ??
+                `${`${process.env.PUBLIC_URL}/imges/user.png`}`
+              }
+            ></ProfileImg>
+            <Username>{review?.user_id?.nickname ?? ''}</Username>
+          </ProfileContainer>
+        </ReviewTitleContainer>
+        <MapContainer>
+          <CafeName onClick={linkToCafeDetailPage}>
+            <FaMapMarkerAlt size={'24px'} color="green" />
+            {review?.cafe_id?.name}
+          </CafeName>
+        </MapContainer>
+        <ReviewMainSection>
+          <ReviewImgContainer>
+            {review.images.length > 0 &&
+              review.images.map((item) => (
+                <ReviewImg src={item} alt="" key={item} />
+              ))}
+          </ReviewImgContainer>
+          <MainText>{review.content.replace(/<br>/g, '\n')}</MainText>
+        </ReviewMainSection>
+        {
+          <ButtonContainer>
+            {review?.user_id?._id === userId && (
+              <Button onClick={linkToReviewEditPage}>수정</Button>
+            )}
+            {role === 'ADMIN' || review?.user_id?._id === userId ? (
+              <Button onClick={deleteReview}>삭제</Button>
+            ) : (
+              <></>
+            )}
+          </ButtonContainer>
+        }
         <AnotherReviewsContainer>
           <Title>"{review?.cafe_id?.name}"의 리뷰 리스트</Title>
           {cafe &&
@@ -118,7 +116,7 @@ const ReviewDetailPage = () => {
               <ReviewItem id={item._id} key={item._id} />
             ))}
         </AnotherReviewsContainer>
-      </>
+      </ReviewDetailContainer>
     )
   );
 };
