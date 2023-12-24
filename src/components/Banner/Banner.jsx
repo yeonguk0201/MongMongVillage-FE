@@ -40,7 +40,7 @@ const Banner = () => {
         <BannerBox>
           <BannerImg src="/banner.png" />
           <BannerName>
-            멍멍 <br />{' '}
+            멍멍 <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;빌리지
           </BannerName>
 

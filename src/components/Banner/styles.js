@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  max-width: 100vw;
   background-color: white;
 `;
 
@@ -17,7 +17,7 @@ export const BannerBox = styled.div`
 `;
 
 export const BannerImg = styled.img`
-  width: 80vw;
+  max-width: 80vw;
   border-radius: 50px;
 
   @media screen and (max-width: 1023px) {

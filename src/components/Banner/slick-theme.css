@@ -16,6 +16,14 @@
     url('./fonts/slick.svg#slick') format('svg');
 }
 /* Arrows */
+/* 모바일 버전에서는 화살표 숨기기 */
+@media screen and (max-width: 767px) {
+  .slick-prev,
+  .slick-next {
+    display: none !important;
+  }
+}
+
 .slick-prev,
 .slick-next {
   font-size: 0;
