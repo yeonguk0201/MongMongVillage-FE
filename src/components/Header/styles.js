@@ -12,6 +12,7 @@ export const Container = styled.div`
   align-items: center;
   box-shadow: 3px 3px 10px 0px lightgray;
   font-size: 18px;
+
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     height: 80px;
     font-size: 16px;
@@ -37,17 +38,38 @@ export const Navbar = styled.div`
 `;
 
 export const MenuButton = styled.button`
-  background-color: transparent;
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  padding: 10px;
+  display: none;
+  @media screen and (max-width: 767px) {
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+    justify-content: end;
+    padding: 0;
+    &.side {
+      padding: 20px 5vw;
+    }
+  }
+`;
+
+export const Logo = styled.img`
+  @media screen and (min-width: 1024px) {
+    width: 125px;
+    height: 125px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 75px;
+    height: 75px;
+  }
 `;
 
 export const NavitemContainer = styled.div`
   display: flex;
   width: 80%;
-  background-color: green;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     width: 70%;
@@ -55,7 +77,8 @@ export const NavitemContainer = styled.div`
 
   @media screen and (max-width: 767px) {
     display: none;
-    &.hide {
+    &.side {
+      margin: 0 auto;
       background-color: var(--main-yellow-color);
       box-shadow: 3px 3px 10px 0px lightgray;
       display: block;
@@ -69,21 +92,18 @@ export const NavitemContainer = styled.div`
 `;
 
 export const Navitem = styled.nav`
-  display: flex;
-  align-items: center;
   cursor: pointer;
+  display: flex;
+  width: auto;
+  align-items: center;
   text-align: center;
+  justify-content: center;
   margin: 0 10px;
   border-radius: 10px;
   padding: 10px 15px;
-  width: auto;
   &:hover {
     background-color: #ffe794;
     transition: 0.5s;
-  }
-
-  &#home {
-    margin: 0 1% 0 5%;
   }
 
   &.active {
@@ -91,7 +111,8 @@ export const Navitem = styled.nav`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 70%;
+    width: 50%;
+    padding: 10px 0;
   }
 
   @media screen and (max-width: 767px) {

@@ -7,8 +7,8 @@ import {
   Space,
   NavitemContainer,
   MenuButton,
+  Logo,
 } from './styles';
-import Logo from '../Logo/Logo';
 import { ROUTE } from '../../routes/Routes';
 import { showAlert } from '../../util/showAlert';
 import { getCheckTokenValid } from '../../hooks/getCheckTokenValid';
@@ -76,6 +76,7 @@ const Header = () => {
     <Container>
       <Navbar>
         <Logo
+          src={`${process.env.PUBLIC_URL}/logo.png`}
           onClick={() => {
             handleClick(ROUTE.MAIN_PAGE.link);
           }}
@@ -87,9 +88,9 @@ const Header = () => {
           </MenuButton>
         )}
 
-        <NavitemContainer className={!hideSideMenu ? 'hide' : ''}>
+        <NavitemContainer className={!hideSideMenu ? 'side' : ''}>
           {hideSideMenu || (
-            <MenuButton>
+            <MenuButton className="side">
               <TbMenu2 size={'30px'} onClick={toggleSideMenu} />
             </MenuButton>
           )}
