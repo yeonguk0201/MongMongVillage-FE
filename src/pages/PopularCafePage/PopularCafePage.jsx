@@ -1,11 +1,7 @@
 import { PopularCafeLists } from '../../components';
 
 const PopularCafePage = () => {
-  return (
-    <>
-      <PopularCafeLists></PopularCafeLists>
-    </>
-  );
+  return <PopularCafeLists></PopularCafeLists>;
 };
 
 export default PopularCafePage;
