@@ -29,8 +29,7 @@ const CommunityPagination = ({
 
   useEffect(() => {
     setPages(newPages);
-    // window.scrollTo(0, 0);
-  }, [currentPage, totalPages]);
+  }, [currentPage, newPages, totalPages]);
 
   return (
     <Container>

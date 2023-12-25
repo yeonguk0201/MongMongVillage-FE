@@ -110,6 +110,7 @@ export default function Map(props) {
         });
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resultCafe]);
 
   // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
