@@ -51,7 +51,7 @@ const MyPageProfile = ({ edit }) => {
         navigate(ROUTE.LOGIN_PAGE.link);
       });
     }
-  }, []);
+  }, [navigate]);
 
   /* 현재 유저 정보 불러오기 */
   useEffect(() => {
@@ -82,7 +82,7 @@ const MyPageProfile = ({ edit }) => {
     } else {
       setNickNameInputStatus(InputStatus.CHECK_REQUIRED);
     }
-  }, [myInfo.nickname]);
+  }, [myInfo.nickname, userData?.nickname]);
 
   /* 회원 정보 수정 */
   const { mutate: putUser } = usePatchUserInfo(

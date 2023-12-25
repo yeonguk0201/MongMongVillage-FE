@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-// import { usePatchBoard } from '../../hooks';
 import { usePatchBoard } from '../../hooks/patchBoard';
-import { ROUTE } from '../../routes/Routes';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { FaCamera } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
 import {
@@ -10,8 +8,6 @@ import {
   CategorySelector,
   Input,
   TextArea,
-  ImageUploadContainer,
-  ImageUploadText,
   Title,
   PostBTN,
   InputImgButton,
@@ -20,7 +16,6 @@ import {
 } from './EditCommunityPost.styles';
 
 const EditCommunityPost = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const titleInputRef = useRef();
   const contentInputRef = useRef();
@@ -28,15 +23,13 @@ const EditCommunityPost = () => {
   const imageInputRef = useRef();
 
   // 해당 게시글의 id
-  const { id } = useParams();
   const { state } = location;
   const post = state ? state.post : {};
 
-  const [selectedPost, setSelectedPost] = useState(post.board);
+  const selectedPost = post.board;
 
   // selectedPost로 editPost 초기 state 저장
   // const [editPost, setEditPost] = useState(post.board);
-  const [prevBoard, setPrevBoard] = useState();
   const [category, setCategory] = useState('');
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
@@ -51,7 +44,6 @@ const EditCommunityPost = () => {
     setContent(selectedPost.content.replace(/<br>/g, '\n'));
     setTitle(selectedPost.title);
     setBoardId(selectedPost._id);
-    setPrevBoard(selectedPost);
     setImages(selectedPost.images);
     setPhotos(selectedPost.images);
   }, [selectedPost]);
@@ -115,7 +107,7 @@ const EditCommunityPost = () => {
     if (editStatus && category && title && content) {
       patchBoard();
     }
-  }, [editStatus]); // 이 부분에서 의존성 배열을 수정합니다.
+  }, [category, content, editStatus, patchBoard, title]); // 이 부분에서 의존성 배열을 수정합니다.
 
   return (
     <form encType="multipart/form-data" onSubmit={handleEditPost}>
