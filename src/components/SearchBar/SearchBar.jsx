@@ -41,7 +41,7 @@ const SearchBar = () => {
         />
         <SearchButton>
           <div>
-            <FaSearch size={'23px'} />
+            <FaSearch size={'20px'} />
           </div>
         </SearchButton>
       </StyledForm>

@@ -9,4 +9,11 @@ export const Title = styled.h2`
     var(--main-yellow-color) 40%,
     transparent 30%
   );
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: ${(props) => (props.fontSize ? props.fontSize : '26px')};
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: ${(props) => (props.fontSize ? props.fontSize : '20px')};
+  }
 `;

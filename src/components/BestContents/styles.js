@@ -1,20 +1,33 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  padding-top: 54px;
+  padding: 54px 0;
   width: 90%;
-  height: 1150px;
 `;
 
-export const Content = styled.h5`
-  font-size: 33px;
-  margin: 35px 0 35px 17px;
-  width: 206px;
+export const Content = styled.h1`
+  font-size: 32px;
+  margin: 50px 0;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+
   background: linear-gradient(
     to top,
-    var(--main-yellow-color) 35%,
-    transparent 30%
+    var(--main-yellow-color) 40%,
+    transparent 20%
   );
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 26px;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+    svg {
+      scale: 0.7;
+    }
+  }
 `;
 
 export const DogCafeList = styled.article`
@@ -26,63 +39,24 @@ export const DogCafeList = styled.article`
   background: #ffe7bd;
   padding: 86px;
   padding-bottom: 124px;
-`;
+  margin: 0 auto;
 
-export const DogCafeListItem = styled.section`
-  height: 300px;
-  background-color: none;
-`;
-
-export const DogCafeListItemImg = styled.div`
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 50px;
-  cursor: pointer;
-
-  &:hover {
-    transition: all 0.2s linear;
-    transform: scale(1.05);
-  }
-`;
-
-export const DogCafeItemInfo = styled.article`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-`;
-
-export const DogCafeListItemTitle = styled.p`
-  padding: 20px 0 8px 8px;
-  font-size: 23px;
-  cursor: pointer;
-`;
-
-export const DogCafeListItemWriter = styled.div`
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
-  font-size: 20px;
-  cursor: pointer;
-  padding-right: 20px;
-
-  img {
-    border-radius: 70%;
-    overflow: hidden;
-    width: 25px;
-    height: 25px;
-    padding-right: 7px;
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 24px;
+    padding-bottom: 10px;
   }
 `;
 
 export const ErrorContainer = styled.div`
-  width: 90%;
-  height: 100px;
+  width: 100%;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
+  border-radius: 50px;
+  font-size: 40px;
 `;

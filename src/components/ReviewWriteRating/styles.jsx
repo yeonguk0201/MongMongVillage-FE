@@ -33,14 +33,27 @@ export const StarContainer = styled.fieldset`
   label:hover {
     text-shadow: 0 0 0 var(--main-yellow-color) !important;
   }
+
+  @media screen and (max-width: 767px) {
+    label {
+      font-size: 14px;
+      margin: 0 1px;
+    }
+  }
 `;
 
 export const StarValue = styled.span`
   margin: 0 10px;
   font-size: 18px;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 export const Info = styled.span`
   color: gray;
   margin: 0 10px;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;

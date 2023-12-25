@@ -15,6 +15,7 @@ import {
   ReviewWritePage,
   EditPostPage,
   NotFoundPage,
+  CafeListPage,
 } from '../pages';
 
 export const ROUTE = {
@@ -107,6 +108,13 @@ export const ROUTE = {
     link: '/community/edit',
     element: <EditPostPage />,
   },
+
+  CAFE_LIST_PAGE: {
+    path: '/cafes',
+    link: '/cafes',
+    element: <CafeListPage />,
+  },
+
   NOT_FOUND_PAGE: {
     path: '/*',
     element: <NotFoundPage />,

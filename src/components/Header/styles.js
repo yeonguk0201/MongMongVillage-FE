@@ -5,19 +5,30 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 95px;
   z-index: 10;
   display: flex;
   align-items: center;
   box-shadow: 3px 3px 10px 0px lightgray;
   font-size: 18px;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    height: 80px;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 70px;
+    font-size: 14px;
+  }
 `;
 
 export const Navbar = styled.div`
   max-width: 1920px;
-  width: 90%;
+  width: 90vw;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   .admin {
@@ -26,31 +37,88 @@ export const Navbar = styled.div`
   }
 `;
 
-export const Navitem = styled.nav`
+export const MenuButton = styled.button`
+  display: none;
+  @media screen and (max-width: 767px) {
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+    justify-content: end;
+    padding: 0;
+    &.side {
+      padding: 20px 5vw;
+    }
+  }
+`;
+
+export const Logo = styled.img`
+  @media screen and (min-width: 1024px) {
+    width: 125px;
+    height: 125px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 75px;
+    height: 75px;
+  }
+`;
+
+export const NavitemContainer = styled.div`
   display: flex;
-  align-items: center;
+  width: 80%;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: none;
+    &.side {
+      margin: 0 auto;
+      background-color: var(--main-yellow-color);
+      box-shadow: 3px 3px 10px 0px lightgray;
+      display: block;
+      width: 100vw;
+      position: absolute;
+      z-index: 12;
+      right: 0;
+      top: 0;
+    }
+  }
+`;
+
+export const Navitem = styled.nav`
   cursor: pointer;
+  display: flex;
+  width: auto;
+  align-items: center;
   text-align: center;
+  justify-content: center;
   margin: 0 10px;
   border-radius: 10px;
   padding: 10px 15px;
-  width: auto;
   &:hover {
     background-color: #ffe794;
     transition: 0.5s;
   }
 
-  ${(props) =>
-    props.id === 'home' &&
-    `
-      margin: 0 1% 0 5%;
-  `};
+  &.active {
+    background-color: var(--main-yellow-color);
+  }
 
-  ${(props) =>
-    props.className === 'active' &&
-    `
-      background-color: var(--main-yellow-color);
-  `};
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 50%;
+    padding: 10px 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: block;
+    margin: 10px 0;
+  }
 `;
 
 export const Space = styled.div``;

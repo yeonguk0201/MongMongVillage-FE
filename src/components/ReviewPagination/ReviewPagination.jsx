@@ -1,5 +1,5 @@
 import { Button, Container } from './styles';
-const ReviewPagintaion = ({ page, navigatePage, totalNum = 40 }) => {
+const ReviewPagintaion = ({ page, navigatePage, totalNum }) => {
   const reviewsPerPage = 10;
   const pageNum = parseInt(totalNum / reviewsPerPage) + 1;
   const currentPage = parseInt(page);
