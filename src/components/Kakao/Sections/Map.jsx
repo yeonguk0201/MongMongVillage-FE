@@ -14,7 +14,7 @@ export default function Map(props) {
   const [resultCafe, setResultCafe] = useState([]);
   // const [long, setLong] = useState();
   // const [lat, setLat] = useState();
-  const [selectedCafe, setSelectedCafe] = useState(null);
+  const [setSelectedCafe] = useState(null);
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export default function Map(props) {
     } else {
       alert('검색어를 입력해주세요.');
     }
-  }, [keyword]);
+  }, [keyword, mutateAllCafes]);
 
   useEffect(() => {
     if (allCafesData && allCafesData.cafes) {
@@ -39,7 +39,7 @@ export default function Map(props) {
 
       setResultCafe(mergedResults);
     }
-  }, [allCafesData]);
+  }, [allCafesData, keyword]);
 
   useEffect(() => {
     // 정상 출력
@@ -51,6 +51,7 @@ export default function Map(props) {
       };
 
       //map
+      // eslint-disable-next-line no-unused-vars
       const map = new kakao.maps.Map(container, options);
     }
     if (resultCafe.length > 0) {
@@ -109,6 +110,7 @@ export default function Map(props) {
         });
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resultCafe]);
 
   // 인포윈도우를 표시하는 클로저를 만드는 함수입니다

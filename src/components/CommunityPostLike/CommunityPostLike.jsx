@@ -20,7 +20,7 @@ const CommunityPostLike = ({ likeCount, setLikeCount, boardId }) => {
         }
       });
     }
-  }, [myLikes, boardId]);
+  }, [myLikes, boardId, userId, refetchLike]);
 
   const { mutate: putBoardLike } = usePutBoardLike(boardId);
 
