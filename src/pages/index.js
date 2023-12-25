@@ -14,4 +14,4 @@ export * from './CommunityDetailPage';
 export * from './NewPostPage';
 export * from './EditPostPage';
 export * from './NotFoundPage';
-export * from './PopularCafePage';
+export * from './CafeListPage';
