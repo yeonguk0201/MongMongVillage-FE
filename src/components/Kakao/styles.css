@@ -1,6 +1,6 @@
 .landing-page {
   height: 100%;
-  width: 85%;
+  width: 90%;
 }
 
 .landing-page__inner {
@@ -67,6 +67,22 @@
   width: 75% !important;
   height: 640px;
   border: 1px solid #eee;
+}
+
+@media screen and (max-width: 767px) {
+  .map {
+    height: 300px;
+    width: 100% !important;
+  }
+
+  .map-container {
+    display: block;
+  }
+
+  .search-form .form__input {
+    width: 80vw;
+    font-size: 12px;
+  }
 }
 
 .marker-title {
