@@ -6,7 +6,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 95px;
+  height: 100px;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@ export const Container = styled.div`
   font-size: 18px;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    height: 80px;
+    height: 90px;
     font-size: 16px;
   }
 
@@ -26,7 +26,7 @@ export const Container = styled.div`
 
 export const Navbar = styled.div`
   max-width: 1920px;
-  width: 90vw;
+  width: 95vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,6 +34,9 @@ export const Navbar = styled.div`
   .admin {
     font-size: 14px;
     color: var(--main-yellow-color);
+  }
+  @media screen and (max-width: 767px) {
+    width: 90vw;
   }
 `;
 
@@ -69,10 +72,10 @@ export const Logo = styled.img`
 
 export const NavitemContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 90%;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 70%;
+    width: 85%;
   }
 
   @media screen and (max-width: 767px) {
@@ -121,4 +124,9 @@ export const Navitem = styled.nav`
   }
 `;
 
-export const Space = styled.div``;
+export const Space = styled.div`
+  width: 40%;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 30%;
+  }
+`;

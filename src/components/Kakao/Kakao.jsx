@@ -44,7 +44,7 @@ const Kakao = () => {
                 className="form__input"
                 name="place"
                 onChange={keywordChange}
-                placeholder="서울의 지역명 이나 업체의 상호명을 입력해주세요... ex) 강서구"
+                placeholder="서울의 지역명이나 상호명을 입력해주세요... ex) 강서구"
                 required
               />
               <div className="btn-box">

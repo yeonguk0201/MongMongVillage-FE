@@ -42,7 +42,7 @@ export const showModal = (title, wrapper, onConfirm) => {
     showCancelButton: true,
     confirmButtonText: '동의',
     cancelButtonText: '닫기',
-    width: '60%',
+    width: '90%',
   }).then((result) => {
     if (result.isConfirmed && onConfirm) {
       onConfirm();

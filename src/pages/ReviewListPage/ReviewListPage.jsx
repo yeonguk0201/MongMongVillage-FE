@@ -31,7 +31,7 @@ const ReviewListPage = () => {
   }, [reviews]);
 
   /* 페이지 변경 */
-  const handlePage = (newPage) => {
+  const navigatePage = (newPage) => {
     navigate(ROUTE.REVIEW_LIST_PAGE.link + `?sort=${sort}&page=${newPage}`);
 
     window.scroll({ top: 0, behavior: 'smooth' });
@@ -55,8 +55,8 @@ const ReviewListPage = () => {
           list.map((item) => <ReviewItem key={item._id} id={item._id} />)}
       </ReviewListContainer>
       <ReviewPagintaion
-        page={page}
-        navigatePage={handlePage}
+        currentPage={parseInt(page)}
+        navigatePage={navigatePage}
         totalNum={reviews?.totalReviews}
       />
     </Container>

@@ -142,7 +142,7 @@ const Header = () => {
           </Navitem>
           {token ? (
             <>
-              <Space style={{ width: '25%' }} />
+              <Space />
               {isAdmin && <span className="admin">관리자님, 반갑습니다.</span>}
               {!isAdmin && (
                 <Navitem
@@ -168,7 +168,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Space style={{ width: '25%' }} />
+              <Space />
               <Navitem
                 id="login"
                 className={

@@ -7,27 +7,6 @@ export const MapContainer = styled.div`
     padding-bottom: 10px;
     font-size: 24px;
   }
-
-  .noResult {
-    text-align: center;
-    svg {
-      margin: 50px 0 20px 0;
-    }
-
-    p {
-      padding: 10px;
-    }
-  }
-
-  .searchResult {
-    display: flex;
-    padding: 10px;
-    margin: 10px 0;
-    span {
-      font-weight: bold;
-      margin: 0 5px;
-    }
-  }
 `;
 
 export const CafeList = styled.div`
@@ -38,11 +17,66 @@ export const CafeList = styled.div`
   border: 1px solid #eee;
   overflow-y: auto;
   max-height: 600px;
+
+  .searchResult {
+    display: flex;
+    padding: 10px;
+    margin: 10px 0;
+    span {
+      font-weight: bold;
+      margin: 0 5px;
+    }
+  }
+
+  .noResult {
+    text-align: center;
+
+    svg {
+      margin: 50px 0 20px 0;
+    }
+    .noSearchTitle {
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    p {
+      padding: 10px;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 35%;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 95%;
+    height: 300px !important;
+    margin: 10px auto;
+    padding: 2%;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 80%;
+    }
+
+    .searchResult {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+    .noResult {
+      svg {
+        scale: 0.7;
+        margin: 5px 0;
+      }
+    }
+  }
 `;
 
 export const CafeListItem = styled.div`
   margin: 10px 0;
-  padding: 10px;
+  padding: 5px 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
   cursor: pointer;
@@ -52,7 +86,7 @@ export const CafeListItem = styled.div`
   }
 
   .cafename {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
   }
 
@@ -66,6 +100,12 @@ export const CafeListItem = styled.div`
     svg {
       margin-right: 5px;
       fill: lightgray;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .cafename {
+      font-size: 16px;
     }
   }
 `;

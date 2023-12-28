@@ -10,6 +10,12 @@ export const Container = styled.div`
   padding: 50px;
   border: 2px solid var(--main-yellow-color);
   border-radius: 30px;
+
+  @media screen and (max-width: 767px) {
+    max-width: 80vw;
+    padding: 20px;
+    margin: 30px auto;
+  }
 `;
 
 export const CheckButton = styled.button`
@@ -23,6 +29,13 @@ export const CheckButton = styled.button`
   &:disabled {
     cursor: not-allowed;
   }
+
+  @media screen and (max-width: 767px) {
+    border-radius: 10px;
+    font-size: 12px;
+    width: 30%;
+    padding: 10px 5px;
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -33,6 +46,12 @@ export const SubmitButton = styled.button`
   padding: 10px;
   width: 100%;
   margin: 30px 0;
+
+  @media screen and (max-width: 767px) {
+    margin: 15px 0;
+    padding: 7px;
+    font-size: 16px;
+  }
 `;
 
 export const InputContainer = styled.form`
@@ -62,15 +81,26 @@ export const AuthInput = styled.input`
   border: none;
   border-bottom: ${(props) =>
     props.border === 'none' ? 'none' : '1px solid gray'};
+
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 export const Text = styled.p`
   font-size: 12px;
   margin: 10px;
   color: ${(props) => (props.success === 'true' ? 'green' : 'red')};
+
+  @media screen and (max-width: 767px) {
+    font-size: 10px;
+  }
 `;
 
 export const Img = styled.img`
   width: 200px;
   margin: 0;
+  @media screen and (max-width: 767px) {
+    width: 150px;
+  }
 `;
