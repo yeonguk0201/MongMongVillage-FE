@@ -2,7 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
-  height: 20vh;
+  height: 30vh;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    height: 20vh;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 15vh;
+  }
 `;
 
 export const FooterContainer = styled.div`
@@ -15,8 +23,8 @@ export const FooterContainer = styled.div`
 `;
 
 export const Line = styled.div`
-  height: 90%;
-  border-right: 1px solid gray;
+  height: 80%;
+  border-right: 1px solid lightgrey;
   margin: 0 2%;
 `;
 
@@ -66,12 +74,14 @@ export const NavList = styled.section`
 export const Content = styled.p`
   font-size: 1rem;
   margin: 7% 0;
+
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     font-size: 12px;
   }
 
   @media screen and (max-width: 767px) {
     font-size: 8px;
+    margin: 5% 0;
   }
 `;
 

@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: 767px) {
     max-width: 80vw;
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 15px;
     border: 1px solid var(--main-yellow-color);
   }
@@ -69,6 +69,16 @@ export const TextButtonContainer = styled.div`
       color: var(--main-yellow-color);
     }
   }
+
+  @media screen and (max-width: 767px) {
+    margin: 10px 0;
+    span {
+      font-size: 10px;
+    }
+    button {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -78,4 +88,9 @@ export const SubmitButton = styled.button`
   padding: 10px;
   width: 100%;
   margin-top: 30px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    padding: 7px;
+  }
 `;

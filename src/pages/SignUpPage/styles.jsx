@@ -49,6 +49,8 @@ export const SubmitButton = styled.button`
 
   @media screen and (max-width: 767px) {
     margin: 15px 0;
+    padding: 7px;
+    font-size: 16px;
   }
 `;
 
