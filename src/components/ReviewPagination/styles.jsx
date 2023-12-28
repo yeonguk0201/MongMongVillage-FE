@@ -18,11 +18,8 @@ export const Button = styled.button`
   background-color: transparent;
   border-radius: 50%;
   font-size: 20px;
+  color: black;
   text-align: center;
-  text-decoration: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 
   @media screen and (max-width: 767px) {
     width: 24px;
@@ -30,15 +27,8 @@ export const Button = styled.button`
     font-size: 16px;
   }
 
-  &[disabled] {
-    cursor: revert;
-    transform: revert;
-  }
-
   &[aria-current] {
     border: solid 3px var(--main-yellow-color);
-    cursor: revert;
-    transform: revert;
   }
 
   &:hover {

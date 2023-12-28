@@ -1,5 +1,5 @@
 import { instance } from '.';
-import { useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 import { showAlert } from '../util/showAlert';
 
 const getCommunitySearch = async (searchTerm, currentPage) => {
@@ -12,18 +12,21 @@ const getCommunitySearch = async (searchTerm, currentPage) => {
     }
 
     const response = await instance.get(url);
-
-    return response.data;
+    if (response.data) return response?.data;
   } catch (error) {
     throw new Error(`Failed to fetch search Content: ${error.message}`);
   }
 };
 
 export function useGetCommunitySearch(searchTerm, currentPage) {
-  return useMutation(() => getCommunitySearch(searchTerm, currentPage), {
-    onError: (error) => {
-      showAlert('', '검색된 게시글이 없습니다.', 'warning', () => {});
-      console.error('Failed to fetch search Content:', error.message);
+  return useQuery(
+    ['getCommunitySearch', searchTerm, currentPage],
+    () => getCommunitySearch(searchTerm, currentPage),
+    {
+      onError: (error) => {
+        showAlert('', '검색된 게시글이 없습니다.', 'warning', () => {});
+        console.error('Failed to fetch search Content:', error.message);
+      },
     },
-  });
+  );
 }

@@ -6,7 +6,7 @@ const ReviewListSort = ({ handleSorting }) => {
       <label>
         <input
           type="radio"
-          name="contact"
+          name="sortType"
           value="latest"
           defaultChecked
           onChange={() => handleSorting('latest')}
@@ -16,7 +16,7 @@ const ReviewListSort = ({ handleSorting }) => {
       <label>
         <input
           type="radio"
-          name="contact"
+          name="sortType"
           value="popular"
           onChange={() => handleSorting('popular')}
         />

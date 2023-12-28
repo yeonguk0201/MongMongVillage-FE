@@ -61,16 +61,16 @@ const CommunityPage = () => {
 
   // search 결과 서버로부터 받아옴
   const {
-    mutate: mutateSearch,
     data: searchData,
     isLoading: searchLoading,
+    refetch,
   } = useGetCommunitySearch(searchTerm, currentPage);
 
   useEffect(() => {
     if (searchTerm) {
-      mutateSearch();
+      refetch();
     }
-  }, [currentPage, filteredCategory, searchTerm, mutateSearch, sortBy]);
+  }, [currentPage, filteredCategory, searchTerm, sortBy]);
 
   useEffect(() => {
     if (data && data.boards) {
@@ -140,17 +140,19 @@ const CommunityPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
+
   // 다음 페이지로 이동하는 함수
   const goToNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
+
   // 해당 페이지로 설정 함수
   const goToPage = (page) => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     setCurrentPage(page);
     if (searchTerm) {
-      mutateSearch();
+      refetch();
     }
     // !!! 서버로부터 현재 CurrentPage 와 일치하는 페이지 요청해서 받아오도록 해야함
   };
