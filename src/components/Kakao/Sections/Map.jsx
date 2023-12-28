@@ -142,9 +142,7 @@ export default function Map(props) {
         {resultCafe.length === 0 ? (
           <div className="noResult">
             <TbMapX size={'50px'} color="grey" />
-            <p className="noSearchTitle" style={{ marginTop: '20px' }}>
-              검색 결과가 없습니다.
-            </p>
+            <p className="noSearchTitle">검색 결과가 없습니다.</p>
             <p>서울의 지역명이나</p>
             <p>업체의 상호명을 입력해주세요.</p>
             <p>예 : '강남구' or '멍멍이다방'</p>

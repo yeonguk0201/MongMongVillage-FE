@@ -17,7 +17,6 @@ export const CafeList = styled.div`
   border: 1px solid #eee;
   overflow-y: auto;
   max-height: 600px;
-  text-align: center;
 
   .searchResult {
     display: flex;
@@ -30,12 +29,21 @@ export const CafeList = styled.div`
   }
 
   .noResult {
+    text-align: center;
+
     svg {
       margin: 50px 0 20px 0;
+    }
+    .noSearchTitle {
+      font-weight: bold;
+      margin: 15px 0;
     }
     p {
       padding: 10px;
     }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 35%;
   }
 
   @media screen and (max-width: 767px) {
