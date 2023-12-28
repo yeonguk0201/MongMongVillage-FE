@@ -30,7 +30,7 @@ const CommunityPagination = ({
 
   useEffect(() => {
     setPages(newPages);
-  }, [currentPage, newPages, totalPages]);
+  }, [newPages]);
 
   return (
     <Container>
