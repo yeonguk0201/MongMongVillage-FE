@@ -7,7 +7,9 @@ export const Container = styled.div`
   margin: 50px 0;
   button {
     border-radius: 5px;
-    border: none;
+  }
+  @media screen and (max-width: 767px) {
+    margin: 30px 0;
   }
 `;
 

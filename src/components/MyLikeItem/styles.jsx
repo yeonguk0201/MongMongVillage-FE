@@ -5,11 +5,25 @@ export const Container = styled.div`
   margin: 15px 0;
   border-bottom: 1px gray solid;
   cursor: pointer;
+  @media screen and (max-width: 767px) {
+    padding: 10px 0;
+    margin: 5px 0;
+  }
 `;
 
 export const Title = styled.p`
   font-weight: bold;
   padding: 10px 0;
+  svg {
+    margin-left: 5px;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 5px 0;
+    font-size: 16px;
+    svg {
+      scale: 0.8;
+    }
+  }
 `;
 
 export const Content = styled.p`
@@ -25,6 +39,9 @@ export const Content = styled.p`
   -webkit-box-orient: vertical;
 
   white-space: break-spaces;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 export const TopContainer = styled.div`

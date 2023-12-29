@@ -17,12 +17,18 @@ export const Line = styled.div`
   width: 40%;
   margin: 5px auto;
   border-bottom: 2px gray solid;
+  @media screen and (max-width: 767px) {
+    width: 90%;
+  }
 `;
 
 export const CountContainer = styled.div`
   display: flex;
   margin: 15px auto;
   width: 40%;
+  @media screen and (max-width: 767px) {
+    width: 90%;
+  }
 `;
 
 export const CountItem = styled.div`

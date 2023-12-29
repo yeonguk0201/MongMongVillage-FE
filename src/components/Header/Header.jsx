@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   const handleLogout = useCallback(() => {
-    showAlert('Logout', '로그아웃 되었습니다.', 'success', () => {
+    showAlert('로그아웃', '로그아웃 되었습니다.', 'success', () => {
       localStorage.clear();
       navigate(ROUTE.MAIN_PAGE.link);
       window.location.reload();
