@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
+  max-width: 100vw;
   height: 30vh;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -26,6 +27,11 @@ export const Line = styled.div`
   height: 80%;
   border-right: 1px solid lightgrey;
   margin: 0 2%;
+  @media screen and (max-width: 767px) {
+    &.navListLine {
+      display: none;
+    }
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -50,6 +56,9 @@ export const ListContainer = styled.section`
   height: 90%;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const InfoContainer = styled.section`
@@ -80,7 +89,7 @@ export const Content = styled.p`
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 8px;
+    font-size: 10px;
     margin: 5% 0;
   }
 `;
@@ -107,7 +116,7 @@ export const SnsContainer = styled.section`
 
   @media screen and (max-width: 767px) {
     svg {
-      width: 20px;
+      width: 24px;
     }
   }
 `;
