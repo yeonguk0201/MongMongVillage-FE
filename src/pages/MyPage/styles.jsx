@@ -28,6 +28,10 @@ export const InfoUpdateButton = styled.button`
   font-weight: bold;
   font-size: 16px;
   padding: 10px;
+  @media screen and (max-width: 767px) {
+    width: 150px;
+    font-size: 14px;
+  }
 `;
 
 export const LogoutButton = styled.button`
@@ -36,4 +40,8 @@ export const LogoutButton = styled.button`
   box-shadow: 1px 1px 1px grey;
   font-size: 14px;
   padding: 5px;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+    width: 100px;
+  }
 `;
