@@ -50,8 +50,8 @@ export const ROUTE = {
   },
 
   COMMUNITY_DETAIL_PAGE: {
-    path: '/community/:id',
-    link: '/community',
+    path: '/community/detail/:id',
+    link: '/community/detail',
     element: <CommunityDetailPage />,
   },
 

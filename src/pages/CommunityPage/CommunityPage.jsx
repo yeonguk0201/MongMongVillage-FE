@@ -1,7 +1,7 @@
 import { useGetBoards } from '../../hooks/getBoards';
 import { useGetCommunitySearch } from '../../hooks/getCommunitySearch';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   CommunityNav,
   CommunitySelectSort,
@@ -26,17 +26,18 @@ const CommunityPage = () => {
 
   // navigate 객체 생성
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // 현재 페이지 , 카테고리, 정렬기준 param을 통해 받음
+  const page =
+    Number(new URLSearchParams(location.search).get('page')) || Number(1); // 페이지
+  const category =
+    new URLSearchParams(location.search).get('category') || 'all';
+  const sort = new URLSearchParams(location.search).get('sort') || 'latest';
 
   const [list, setList] = useState([]);
   // 총 게시글 수
   const [totalBoards, setTotalBoards] = useState(0);
-
-  // 최신순, 인기순 정렬 옵션 state
-  const [sortOption, setSortOption] = useState('latest');
-  const [sortBy, setSortBy] = useState('');
-
-  // 카테고리 filtered state
-  const [filteredCategory, setFilteredCategory] = useState(CATEGORY_DIC.all);
 
   // 검색 기능을 위한 state
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,80 +47,75 @@ const CommunityPage = () => {
   const [searchTotal, setSearchTotal] = useState();
 
   // 페이지네이션 관련 기능 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-  // 현재 페이지 상태
-  const [currentPage, setCurrentPage] = useState(1);
   // 시작 인덱스와 끝 인덱스 계산
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
+  // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
   // 서버로부터 list 받아옴
-  const { data, isLoading: boardLoading } = useGetBoards(
-    currentPage,
-    filteredCategory,
-    sortBy,
-  );
+  const { data, isLoading: boardLoading } = useGetBoards(page, category, sort);
 
   // search 결과 서버로부터 받아옴
   const {
     data: searchData,
     isLoading: searchLoading,
     refetch,
-  } = useGetCommunitySearch(searchTerm, currentPage);
+  } = useGetCommunitySearch(searchTerm, page);
 
   useEffect(() => {
     if (searchTerm) {
       refetch();
     }
-  }, [currentPage, filteredCategory, searchTerm, sortBy]);
+  }, [page, category, searchTerm, sort]);
 
   useEffect(() => {
     if (data && data.boards) {
       setList(data.boards);
       setTotalBoards(data.total_number_of_boards);
+      // console.log('게시글들 정보 : ', data.boards);
     }
-  }, [data, currentPage, filteredCategory, sortBy]);
+  }, [data, page, category, sort]);
 
+  // 여기가 문제
   useEffect(() => {
-    if (searchData && searchData.boards) {
+    if (searchTerm && searchData && searchData.boards) {
       setList(searchData.boards);
       setTotalBoards(searchData.total_number_of_boards);
       setSearchWord(searchTerm);
       setSearchTotal(searchData.total_number_of_boards);
     }
-  }, [searchData, searchTerm, currentPage, sortBy]);
+  }, [searchData, searchTerm]);
+
+  // 전체 페이지 수 계산
+  const totalPages = Math.ceil(totalBoards / ITEMS_PER_PAGE);
+  console.log('전체 페이지', totalPages);
 
   // 검색창 input을 입력받는 onChange 핸들러
   const handleSearchInputChange = (searchValue) => {
     if (searchValue) {
-      setCurrentPage(1);
       setSearchTerm(searchValue);
+      navigate(ROUTE.COMMUNITY_PAGE.link + `?category=all&sort=latest&page=1`);
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
   };
   // 카테고리 선택 onChange 핸들러
   const handleNavClick = (category) => {
-    setFilteredCategory(category);
+    navigate(
+      ROUTE.COMMUNITY_PAGE.link + `?category=${category}&sort=${sort}&page=1`,
+    );
     setSearchTerm(''); // 카테고리 변경 시 검색어를 비웁니다.
     // 카테고리 변경 시 1페이지로 전환해줌
-    setCurrentPage(1);
+    setSearchWord('');
+    setSearchTotal('');
   };
 
   // 정렬 onChange 핸들러
   const handleSortChange = (e) => {
-    setSortOption(e.target.value);
-    sortOptionChange(e.target.value);
-  };
-
-  // 정렬 sortBy set 함수
-  const sortOptionChange = (option) => {
-    let sort;
-    if (option === 'latest') {
-      sort = '';
-    } else {
-      sort = 'likes';
-    }
-
-    setSortBy(sort);
+    // console.log(`Sorting option changed: ${e.target.value}`);
+    navigate(
+      ROUTE.COMMUNITY_PAGE.link +
+        `?category=${category}&sort=${e.target.value}&page=${page}`,
+    );
   };
 
   // id 값을 params로 넘겨줄 함수 - detail 페이지로 정보 넘겨주기
@@ -132,29 +128,41 @@ const CommunityPage = () => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
   };
-  // 전체 페이지 수 계산
-  const totalPages = Math.ceil(totalBoards / ITEMS_PER_PAGE);
 
   // 이전 페이지로 이동하는 함수
   const goToPrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    // setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    const prevPage = Number(page) - 1;
+    console.log(prevPage);
+    navigate(
+      ROUTE.COMMUNITY_PAGE.link +
+        `?category=${category}&sort=${sort}&page=${prevPage}`,
+    );
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   // 다음 페이지로 이동하는 함수
   const goToNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    // setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    const nextPage = Number(page) + 1;
+    console.log(nextPage);
+    navigate(
+      ROUTE.COMMUNITY_PAGE.link +
+        `?category=${category}&sort=${sort}&page=${nextPage}`,
+    );
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   // 해당 페이지로 설정 함수
-  const goToPage = (page) => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    setCurrentPage(page);
+  const goToPage = (targetPage) => {
     if (searchTerm) {
       refetch();
     }
-    // !!! 서버로부터 현재 CurrentPage 와 일치하는 페이지 요청해서 받아오도록 해야함
+    navigate(
+      ROUTE.COMMUNITY_PAGE.link +
+        `?category=${category}&sort=${sort}&page=${targetPage}`,
+    );
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   // 각 게시글 클릭시 실행 함수
@@ -166,18 +174,18 @@ const CommunityPage = () => {
   // 현재 페이지에 표시될 아이템들
   const currentPageItems = list;
 
-  return boardLoading || searchLoading ? (
+  return boardLoading || searchLoading || totalPages === Number(0) ? (
     <Loading />
   ) : (
     <Container>
       <Title>커뮤니티</Title>
       <CommunityNav
-        category={filteredCategory}
+        category={category}
         handleNavClick={handleNavClick}
       ></CommunityNav>
 
       <CommunitySelectSort
-        sortOption={sortOption}
+        sortOption={sort}
         handleSortChange={handleSortChange}
       ></CommunitySelectSort>
 
@@ -202,7 +210,7 @@ const CommunityPage = () => {
       ></CommunitySearchAndPost>
 
       <CommunityPagination
-        currentPage={currentPage}
+        currentPage={page}
         goToPrevPage={goToPrevPage}
         goToNextPage={goToNextPage}
         currentPageItems={currentPageItems}
