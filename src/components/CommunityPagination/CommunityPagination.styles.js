@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
 `;
 
 export const PageButton = styled.button`
@@ -26,5 +25,8 @@ export const PageButton = styled.button`
 
   @media screen and (max-width: 767px) {
     font-size: 16px;
+    width: 25px;
+    height: 25px;
+    margin: 0 3px;
   }
 `;
