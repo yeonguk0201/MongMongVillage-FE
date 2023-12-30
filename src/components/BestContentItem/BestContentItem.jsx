@@ -22,6 +22,7 @@ const BestContentItem = ({ item }) => {
         src={item?.images?.length > 0 ? item?.images[0] : '/imges/default.png'}
         alt={`bestImg`}
       />
+
       <BestInfo>
         <BestTitle>{item.title}</BestTitle>
         <BestWriter>

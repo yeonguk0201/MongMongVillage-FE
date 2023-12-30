@@ -11,7 +11,6 @@ import {
   Title,
   PostBTN,
   InputImgButton,
-  Text,
   InputImg,
 } from './EditCommunityPost.styles';
 
@@ -28,8 +27,6 @@ const EditCommunityPost = () => {
 
   const selectedPost = post.board;
 
-  // selectedPost로 editPost 초기 state 저장
-  // const [editPost, setEditPost] = useState(post.board);
   const [category, setCategory] = useState('');
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
@@ -116,7 +113,6 @@ const EditCommunityPost = () => {
         <CategorySelector
           ref={categorySelectRef}
           defaultValue={selectedPost?.category}
-          // onChange={(e) => setEditPost({ ...editPost, category: e.target.value })}
         >
           <option value="">카테고리 선택</option>
           <option value="info">정보글</option>
@@ -129,18 +125,16 @@ const EditCommunityPost = () => {
           type="text"
           placeholder="제목을 입력해주세요...(50자 이내)"
           defaultValue={selectedPost?.title}
-          // onChange={(e) => setEditPost({ ...editPost, title: e.target.value })}
           ref={titleInputRef}
         />
 
         <TextArea
           placeholder="내용을 입력해주세요...(1000자 이내)"
           defaultValue={selectedPost?.content.replace(/<br>/g, '\n')}
-          // onChange={(e) => setEditPost({ ...editPost, content: e.target.value })}
           ref={contentInputRef}
         />
 
-        <Text>사진</Text>
+        <Title>사진</Title>
         <InputImg>
           {photos.map((photoUrl, index) => (
             <div key={`post${index}`}>

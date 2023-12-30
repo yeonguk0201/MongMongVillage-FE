@@ -36,8 +36,7 @@ const CafeDetail = () => {
     !isError && cafeDetailInfo.cafe && cafeDetailInfo.reviews && (
       <Container>
         <CafeDetailContainer>
-          <Title fontSize="40px">{cafeDetailInfo.cafe.name}</Title>
-
+          <Title>{cafeDetailInfo.cafe.name}</Title>
           {cafeDetailInfo.cafe.image.length > 0 ? (
             <CafeImg src={cafeDetailInfo.cafe.image}></CafeImg>
           ) : (
@@ -99,7 +98,7 @@ const CafeDetail = () => {
                   평균 별점 | {cafeDetailInfo.cafe.rating}점
                 </StarRating>
                 <WriteReviewBtn onClick={linkToWriteReview}>
-                  리뷰 작성하러가기
+                  리뷰 작성하기
                   <BsPencilSquare size={'18px'} />
                 </WriteReviewBtn>
               </ReviewStarRatingContainer>

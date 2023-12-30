@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const UnderContentContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   width: 100%;
   margin-top: 30px;
@@ -17,7 +18,6 @@ export const UnderContentContainer = styled.div`
 
 export const ContentInfo = styled.div`
   display: flex;
-  width: 100%;
 
   div {
     display: flex;
@@ -42,25 +42,34 @@ export const ContentInfo = styled.div`
     height: 40px;
     border-radius: 50%;
   }
+
+  @media screen and (max-width: 767px) {
+    span {
+      font-size: 12px;
+    }
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
 `;
 
 export const ContentButton = styled.div`
   display: flex;
-  width: 10%;
 `;
 
 export const BTN = styled.button`
   width: 70px;
   border-radius: 10px;
   padding: 10px;
+  margin-right: 5px;
   font-size: 16px;
   background-color: var(--main-yellow-color);
 
-  + button {
-    margin-left: 10px;
-  }
-
-  p {
-    margin-top: 4px;
+  @media screen and (max-width: 767px) {
+    width: 40px;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 5px;
   }
 `;

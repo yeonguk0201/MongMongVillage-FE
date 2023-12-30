@@ -72,7 +72,7 @@ export const Logo = styled.img`
 
 export const NavitemContainer = styled.div`
   display: flex;
-  width: 90%;
+  width: 85%;
   justify-content: space-between;
 
   @media screen and (max-width: 767px) {

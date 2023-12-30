@@ -4,31 +4,29 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  margin-right: 100px;
-
-  .space {
-    width: 60px;
-  }
 `;
+
 export const PageButton = styled.button`
   font-size: 20px;
-  margin-right: 10px;
-  margin-left: 10px;
-  padding: none;
   border-radius: 50%;
-  padding-top: 6px;
-  width: 40px;
-  height: 40px;
-  background-color: white !important;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  background-color: white;
+  color: black;
 
   border: 3px solid
     ${(props) => (props.active ? 'var(--main-yellow-color)' : 'white')};
 
-  color: ${(props) => (props.active ? 'black' : '#333')};
-
   &:hover {
     background-color: ${(props) =>
       props.active ? 'white' : 'var(--main-yellow-color)'} !important;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    width: 25px;
+    height: 25px;
+    margin: 0 3px;
   }
 `;

@@ -12,12 +12,9 @@ import {
 } from '../../components';
 import { ROUTE } from '../../routes/Routes';
 import { Container } from './CommunityPage.styles';
-import { CommunityCategory } from '../../libs/CommunityCategory';
 import { Title } from '../../commonStyles';
 import { showAlert } from '../../util/showAlert';
 
-// 카테고리 객체
-const CATEGORY_DIC = CommunityCategory;
 // 페이지네이션 페이지 당 아이템 수
 const ITEMS_PER_PAGE = 10;
 
@@ -29,8 +26,7 @@ const CommunityPage = () => {
   const location = useLocation();
 
   // 현재 페이지 , 카테고리, 정렬기준 param을 통해 받음
-  const page =
-    Number(new URLSearchParams(location.search).get('page')) || Number(1); // 페이지
+  const page = Number(new URLSearchParams(location.search).get('page')) || 1; // 페이지
   const category =
     new URLSearchParams(location.search).get('category') || 'all';
   const sort = new URLSearchParams(location.search).get('sort') || 'latest';
@@ -46,12 +42,6 @@ const CommunityPage = () => {
   const [searchWord, setSearchWord] = useState();
   const [searchTotal, setSearchTotal] = useState();
 
-  // 페이지네이션 관련 기능 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-  // 시작 인덱스와 끝 인덱스 계산
-  const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
-  // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-
   // 서버로부터 list 받아옴
   const { data, isLoading: boardLoading } = useGetBoards(page, category, sort);
 
@@ -66,13 +56,12 @@ const CommunityPage = () => {
     if (searchTerm) {
       refetch();
     }
-  }, [page, category, searchTerm, sort]);
+  }, [page, category, searchTerm, sort, refetch]);
 
   useEffect(() => {
     if (data && data.boards) {
       setList(data.boards);
       setTotalBoards(data.total_number_of_boards);
-      // console.log('게시글들 정보 : ', data.boards);
     }
   }, [data, page, category, sort]);
 
@@ -88,7 +77,6 @@ const CommunityPage = () => {
 
   // 전체 페이지 수 계산
   const totalPages = Math.ceil(totalBoards / ITEMS_PER_PAGE);
-  console.log('전체 페이지', totalPages);
 
   // 검색창 input을 입력받는 onChange 핸들러
   const handleSearchInputChange = (searchValue) => {
@@ -111,7 +99,6 @@ const CommunityPage = () => {
 
   // 정렬 onChange 핸들러
   const handleSortChange = (e) => {
-    // console.log(`Sorting option changed: ${e.target.value}`);
     navigate(
       ROUTE.COMMUNITY_PAGE.link +
         `?category=${category}&sort=${e.target.value}&page=${page}`,
@@ -131,9 +118,7 @@ const CommunityPage = () => {
 
   // 이전 페이지로 이동하는 함수
   const goToPrevPage = () => {
-    // setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    const prevPage = Number(page) - 1;
-    console.log(prevPage);
+    const prevPage = page - 1;
     navigate(
       ROUTE.COMMUNITY_PAGE.link +
         `?category=${category}&sort=${sort}&page=${prevPage}`,
@@ -143,9 +128,7 @@ const CommunityPage = () => {
 
   // 다음 페이지로 이동하는 함수
   const goToNextPage = () => {
-    // setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-    const nextPage = Number(page) + 1;
-    console.log(nextPage);
+    const nextPage = page + 1;
     navigate(
       ROUTE.COMMUNITY_PAGE.link +
         `?category=${category}&sort=${sort}&page=${nextPage}`,
@@ -165,16 +148,10 @@ const CommunityPage = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  // 각 게시글 클릭시 실행 함수
-  const handlePostClick = (postId) => {
-    navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${postId}`);
-    window.scrollTo(0, 0);
-  };
-
   // 현재 페이지에 표시될 아이템들
   const currentPageItems = list;
 
-  return boardLoading || searchLoading || totalPages === Number(0) ? (
+  return boardLoading || searchLoading ? (
     <Loading />
   ) : (
     <Container>
@@ -196,27 +173,18 @@ const CommunityPage = () => {
         </p>
       )}
 
-      <CommunityList
-        currentPageItems={currentPageItems}
-        handlePostClick={handlePostClick}
-        // handleUserClick={handleUserClick}
-        totalPages={totalPages}
-      ></CommunityList>
+      <CommunityList currentPageItems={currentPageItems}></CommunityList>
 
       <CommunitySearchAndPost
         handleSearchInputChange={handleSearchInputChange}
         handleNewPostClick={handleNewPostClick}
-        user={user}
       ></CommunitySearchAndPost>
 
       <CommunityPagination
         currentPage={page}
         goToPrevPage={goToPrevPage}
         goToNextPage={goToNextPage}
-        currentPageItems={currentPageItems}
         totalPages={totalPages}
-        startIndex={startIndex}
-        endIndex={endIndex}
         goToPage={goToPage}
       ></CommunityPagination>
     </Container>
