@@ -15,6 +15,11 @@ import { getCheckTokenValid } from '../../hooks/getCheckTokenValid';
 import { TbMenu2 } from 'react-icons/tb';
 
 const Header = () => {
+  // 커뮤니티용
+  const page = 1;
+  const category = 'all';
+  const sort = 'latest';
+
   const navigate = useNavigate();
 
   const token = localStorage.getItem('token');
@@ -129,7 +134,10 @@ const Header = () => {
               activeHeader === ROUTE.COMMUNITY_DETAIL_PAGE.link ? 'active' : ''
             }
             onClick={() => {
-              handleClick(ROUTE.COMMUNITY_DETAIL_PAGE.link);
+              navigate(
+                ROUTE.COMMUNITY_PAGE.link +
+                  `?category=${category}&sort=${sort}&page=${page}`,
+              );
             }}
           >
             커뮤니티

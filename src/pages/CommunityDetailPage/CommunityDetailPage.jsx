@@ -139,10 +139,7 @@ const CommunityDetailPage = () => {
         currentPage={currentPage}
         goToPrevPage={goToPrevPage}
         goToNextPage={goToNextPage}
-        currentPageItems={currentPageItems}
         totalPages={totalPages}
-        startIndex={startIndex}
-        endIndex={endIndex}
         goToPage={goToPage}
       ></CommunityPagination>
     </Container>

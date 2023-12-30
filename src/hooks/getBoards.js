@@ -2,19 +2,19 @@ import { instance } from '.';
 import { useQuery } from 'react-query';
 import { showAlert } from '../util/showAlert';
 
-const getBoards = async (currentPage, filteredCategory, sortBy) => {
+const getBoards = async (page, category, sort) => {
   try {
     let url = '/boards';
 
     // category가 주어진 경우 카테고리에 따라 경로를 설정
-    if (filteredCategory === 'all') {
-      url += `?currentPage=${currentPage}`;
+    if (category === 'all') {
+      url += `?currentPage=${page}`;
     } else {
-      url += `/category/${filteredCategory}?currentPage=${currentPage}`;
+      url += `/category/${category}?currentPage=${page}`;
     }
 
     // sort option에 따라 쿼리스트링으로 붙여줌
-    if (sortBy === 'likes') {
+    if (sort === 'likes') {
       url += `&sortBy=likes`;
     }
 
@@ -26,10 +26,10 @@ const getBoards = async (currentPage, filteredCategory, sortBy) => {
   }
 };
 
-export function useGetBoards(currentPage, filteredCategory, sortBy) {
+export function useGetBoards(page, category, sort) {
   return useQuery(
-    ['getBoards', currentPage, filteredCategory, sortBy],
-    () => getBoards(currentPage, filteredCategory, sortBy),
+    ['getBoards', page, category, sort],
+    () => getBoards(page, category, sort),
     {
       keepPreviousData: true,
       onError: (error) => {
