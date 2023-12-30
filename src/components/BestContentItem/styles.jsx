@@ -3,6 +3,11 @@ import styled from 'styled-components';
 export const Container = styled.section`
   height: 300px;
   background-color: none;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    height: 200px;
+  }
 
   @media screen and (max-width: 767px) {
     height: 150px;
