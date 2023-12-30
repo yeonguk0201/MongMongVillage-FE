@@ -99,7 +99,7 @@ export const PreviewImgContainer = styled.div`
   height: 130px;
   display: flex;
   @media screen and (max-width: 767px) {
-    height: 110px;
+    height: 100px;
   }
 `;
 
@@ -118,8 +118,9 @@ export const PreviewImg = styled.img`
   }
 
   @media screen and (max-width: 767px) {
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
+    margin: 0 10px;
     &:nth-child(2),
     &:nth-child(3) {
       display: none;
