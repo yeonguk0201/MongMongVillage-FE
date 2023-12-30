@@ -12,7 +12,6 @@ import { FaSearch, FaPencilAlt } from 'react-icons/fa';
 const CommunitySearchAndPost = ({
   handleSearchInputChange,
   handleNewPostClick,
-  user,
 }) => {
   const searchInputRef = useRef(null);
 
@@ -27,28 +26,27 @@ const CommunitySearchAndPost = ({
       searchInputRef.current.value = '';
     }
   };
+
   return (
-    <>
-      <SearchAndPostContainer>
-        <SearchContainer>
-          <SearchInputBox>
-            <SearchButton onClick={handleSearchButtonClick}>
-              <FaSearch size={'20px'} />
-            </SearchButton>
-            <SearchInput
-              type="text"
-              placeholder="커뮤니티 게시글 검색"
-              onKeyPress={handleKeyPress}
-              ref={searchInputRef}
-            />
-          </SearchInputBox>
-        </SearchContainer>
-        <PostBTN onClick={handleNewPostClick}>
-          글작성
-          <FaPencilAlt />
-        </PostBTN>
-      </SearchAndPostContainer>
-    </>
+    <SearchAndPostContainer>
+      <SearchContainer>
+        <SearchInputBox>
+          <SearchButton onClick={handleSearchButtonClick}>
+            <FaSearch size={'20px'} />
+          </SearchButton>
+          <SearchInput
+            type="text"
+            placeholder="커뮤니티 게시글 검색"
+            onKeyDown={handleKeyPress}
+            ref={searchInputRef}
+          />
+        </SearchInputBox>
+      </SearchContainer>
+      <PostBTN onClick={handleNewPostClick}>
+        글작성
+        <FaPencilAlt />
+      </PostBTN>
+    </SearchAndPostContainer>
   );
 };
 
