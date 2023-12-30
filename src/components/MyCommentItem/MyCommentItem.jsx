@@ -14,7 +14,7 @@ const MyCommentItem = ({ comment }) => {
       }}
     >
       <Content>
-        <FaExternalLinkAlt />
+        <FaExternalLinkAlt color="gray" />
         {comment.content}
       </Content>
       <DateText>{new Date(comment.updatedAt).toLocaleString()} 작성</DateText>

@@ -9,6 +9,12 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    display: block;
+    padding: 10px 0;
+    margin: 5px 0;
+  }
 `;
 
 export const Title = styled.p`
@@ -18,7 +24,7 @@ export const Title = styled.p`
   text-align: center;
 
   svg {
-    margin: 0 10px;
+    margin-right: 10px;
   }
 `;
 

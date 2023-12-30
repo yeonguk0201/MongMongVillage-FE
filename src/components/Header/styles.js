@@ -73,10 +73,7 @@ export const Logo = styled.img`
 export const NavitemContainer = styled.div`
   display: flex;
   width: 90%;
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 85%;
-  }
+  justify-content: space-between;
 
   @media screen and (max-width: 767px) {
     display: none;
@@ -114,8 +111,8 @@ export const Navitem = styled.nav`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 50%;
-    padding: 10px 0;
+    padding: 10px;
+    margin: 0 5px;
   }
 
   @media screen and (max-width: 767px) {
@@ -127,6 +124,6 @@ export const Navitem = styled.nav`
 export const Space = styled.div`
   width: 40%;
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 30%;
+    width: 15%;
   }
 `;

@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   Container,
   Navbar,
@@ -29,6 +29,7 @@ const Header = () => {
 
   const [activeHeader, setActiveHeader] = useState(location.pathname);
   const [hideSideMenu, setHideSideMenu] = useState(true);
+  const sideMenuRef = useRef(null);
 
   const handleClick = (route) => {
     setActiveHeader(route);
@@ -38,7 +39,7 @@ const Header = () => {
   };
 
   const handleLogout = useCallback(() => {
-    showAlert('Logout', '로그아웃 되었습니다.', 'success', () => {
+    showAlert('로그아웃', '로그아웃 되었습니다.', 'success', () => {
       localStorage.clear();
       navigate(ROUTE.MAIN_PAGE.link);
       window.location.reload();
@@ -48,6 +49,22 @@ const Header = () => {
   const toggleSideMenu = () => {
     setHideSideMenu(!hideSideMenu);
   };
+
+  useEffect(() => {
+    const handleClickOutSide = (e) => {
+      if (
+        !hideSideMenu &&
+        sideMenuRef.current &&
+        !sideMenuRef.current.contains(e.target)
+      )
+        setHideSideMenu(true);
+    };
+
+    document.addEventListener('mousedown', handleClickOutSide);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutSide);
+    };
+  }, [hideSideMenu, sideMenuRef]);
 
   // 토큰 검증
   useEffect(() => {
@@ -93,7 +110,10 @@ const Header = () => {
           </MenuButton>
         )}
 
-        <NavitemContainer className={!hideSideMenu ? 'side' : ''}>
+        <NavitemContainer
+          className={!hideSideMenu ? 'side' : ''}
+          ref={sideMenuRef}
+        >
           {hideSideMenu || (
             <MenuButton className="side">
               <TbMenu2 size={'30px'} onClick={toggleSideMenu} />

@@ -27,4 +27,15 @@ export const Container = styled.div`
       opacity: 0.5;
     }
   }
+  @media screen and (max-width: 768px) {
+    img {
+      width: 40%;
+    }
+    h1 {
+      font-size: 20px;
+    }
+    button {
+      font-size: 16px;
+    }
+  }
 `;
