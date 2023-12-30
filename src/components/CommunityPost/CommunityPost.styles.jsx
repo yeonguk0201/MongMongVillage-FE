@@ -14,9 +14,13 @@ export const MainImg = styled.div`
     height: 400px;
     margin: 10px;
   }
-
-  display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 767px) {
+    img {
+      height: 200px;
+    }
+  }
 `;
 
 export const Title = styled.h2`
@@ -25,6 +29,15 @@ export const Title = styled.h2`
   align-items: center;
   border-bottom: 2px solid lightgray;
   padding-bottom: 20px;
+  p {
+    width: 90%;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    p {
+      width: 85%;
+    }
+  }
 `;
 
 export const Category = styled.span`
@@ -35,10 +48,20 @@ export const Category = styled.span`
   font-size: 12px;
   font-weight: bold;
   margin-right: 20px;
+  @media screen and (max-width: 767px) {
+    padding: 5px;
+    font-size: 10px;
+    margin-right: 5px;
+  }
 `;
 
 export const Content = styled.div`
   margin: 12px 0;
   font-size: 18px;
   line-height: 1.5;
+  padding: 0 20px;
+  @media screen and (max-width: 767px) {
+    margin: 10px 0;
+    font-size: 14px;
+  }
 `;
