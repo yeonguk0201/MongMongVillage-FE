@@ -12,15 +12,9 @@ export const Container = styled.div`
     span {
       font-weight: 900;
     }
-  }
-`;
-
-export const PageButton = styled.button`
-  background-color: ${(props) => (props.active ? '#007bff' : '#f2f2f2')};
-  color: ${(props) => (props.active ? '#fff' : '#333')};
-
-  &:hover {
-    background-color: ${(props) => (props.active ? '#0056b3' : '#ddd')};
-    color: ${(props) => (props.active ? '#fff' : '#333')};
+    @media screen and (max-width: 767px) {
+      font-size: 14px;
+      text-align: center;
+    }
   }
 `;

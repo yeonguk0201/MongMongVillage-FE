@@ -118,9 +118,8 @@ export const PreviewImg = styled.img`
   }
 
   @media screen and (max-width: 767px) {
-    width: 70px;
-    height: 70px;
-    margin: 0 10px;
+    width: 75px;
+    height: 75px;
     &:nth-child(2),
     &:nth-child(3) {
       display: none;

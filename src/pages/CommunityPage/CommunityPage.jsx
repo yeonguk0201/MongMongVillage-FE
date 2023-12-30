@@ -148,16 +148,10 @@ const CommunityPage = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  // 각 게시글 클릭시 실행 함수
-  const handlePostClick = (postId) => {
-    navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${postId}`);
-    window.scrollTo(0, 0);
-  };
-
   // 현재 페이지에 표시될 아이템들
   const currentPageItems = list;
 
-  return boardLoading || searchLoading || totalPages === 0 ? (
+  return boardLoading || searchLoading ? (
     <Loading />
   ) : (
     <Container>
@@ -179,11 +173,7 @@ const CommunityPage = () => {
         </p>
       )}
 
-      <CommunityList
-        currentPageItems={currentPageItems}
-        handlePostClick={handlePostClick}
-        totalPages={totalPages}
-      ></CommunityList>
+      <CommunityList currentPageItems={currentPageItems}></CommunityList>
 
       <CommunitySearchAndPost
         handleSearchInputChange={handleSearchInputChange}

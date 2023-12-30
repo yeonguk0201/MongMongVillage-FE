@@ -84,7 +84,7 @@ export const SearchButton = styled.button`
 export const SearchInput = styled.input`
   padding: 10px;
   border: none;
-  height: 24px;
+  width: 100%;
   @media screen and (max-width: 767px) {
     font-size: 14px;
   }
