@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button, Container } from './styles';
 
 const ReviewPagintaion = ({ currentPage, navigatePage, totalNum }) => {
-  const pagePerScreen = 10; // 한 화면에 보이는 페이지 번호 갯수
+  const pagePerScreen = 5; // 한 화면에 보이는 페이지 번호 갯수
   const reviewsPerPage = 10; // 한 페이지 당 보일 리뷰 갯수
 
   const pageNum = parseInt(totalNum / reviewsPerPage) + 1; // 총 페이지 갯수 (전체/한 페이지 당 리뷰 수)

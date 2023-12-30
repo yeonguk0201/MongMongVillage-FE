@@ -42,7 +42,7 @@ const Footer = () => {
           <Content>배너 출처 : wepik.com</Content>
           <Content>Copyright 2023 by Team6, Inc, All rights reserved</Content>
         </InfoContainer>
-        <Line />
+        <Line className="navListLine" />
         <ListContainer>
           <NavList>
             <Content

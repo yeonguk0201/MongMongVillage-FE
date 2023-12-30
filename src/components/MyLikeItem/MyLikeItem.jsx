@@ -10,6 +10,8 @@ import { FaHeart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE } from '../../routes/Routes';
 
+import { FaExternalLinkAlt } from 'react-icons/fa';
+
 const MyLikeItem = ({ post }) => {
   const navigate = useNavigate();
 
@@ -23,7 +25,10 @@ const MyLikeItem = ({ post }) => {
       >
         <TopContainer>
           <div>
-            <Title>{post?.title}</Title>
+            <Title>
+              {post?.title}
+              <FaExternalLinkAlt color="gray" />
+            </Title>
             <Content>{post?.content.replace(/<br>/g, '\n')}</Content>
           </div>
         </TopContainer>

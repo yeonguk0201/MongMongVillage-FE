@@ -22,8 +22,8 @@ export const Button = styled.button`
   text-align: center;
 
   @media screen and (max-width: 767px) {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     font-size: 16px;
   }
 
