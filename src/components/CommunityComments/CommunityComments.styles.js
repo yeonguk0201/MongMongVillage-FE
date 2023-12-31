@@ -19,6 +19,7 @@ export const CommentsContainer = styled.div`
 export const CommentInputContainer = styled.form`
   display: flex;
   padding: 20px;
+  justify-content: space-between;
 `;
 
 export const CommentInput = styled.input`
@@ -31,6 +32,10 @@ export const CommentInput = styled.input`
   &:focus-within {
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
   }
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+    width: 85%;
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -38,6 +43,10 @@ export const SubmitButton = styled.button`
   width: 5%;
   padding: 10px;
   border-radius: 8px;
+  @media screen and (max-width: 767px) {
+    width: 15%;
+    padding: 10px 5px;
+  }
 `;
 
 export const PostCommentsContainer = styled.div`

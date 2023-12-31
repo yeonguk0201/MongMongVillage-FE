@@ -15,11 +15,6 @@ import { getCheckTokenValid } from '../../hooks/getCheckTokenValid';
 import { TbMenu2 } from 'react-icons/tb';
 
 const Header = () => {
-  // 커뮤니티용
-  const page = 1;
-  const category = 'all';
-  const sort = 'latest';
-
   const navigate = useNavigate();
 
   const token = localStorage.getItem('token');
@@ -131,26 +126,17 @@ const Header = () => {
           <Navitem
             id="community"
             className={
-              activeHeader === ROUTE.COMMUNITY_DETAIL_PAGE.link ? 'active' : ''
+              activeHeader.includes(ROUTE.COMMUNITY_PAGE.link) ? 'active' : ''
             }
             onClick={() => {
-              navigate(
-                ROUTE.COMMUNITY_PAGE.link +
-                  `?category=${category}&sort=${sort}&page=${page}`,
-              );
+              handleClick(ROUTE.COMMUNITY_PAGE.link);
             }}
           >
             커뮤니티
           </Navitem>
           <Navitem
             id="information"
-            className={
-              activeHeader === ROUTE.CAFE_MAP_PAGE.link ||
-              activeHeader === ROUTE.CAFE_DETAIL_PAGE.link ||
-              activeHeader === ROUTE.CAFE_LIST_PAGE.link
-                ? 'active'
-                : ''
-            }
+            className={activeHeader.includes('cafe') ? 'active' : ''}
             onClick={() => {
               handleClick(ROUTE.CAFE_MAP_PAGE.link);
             }}

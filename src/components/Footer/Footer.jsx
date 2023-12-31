@@ -22,11 +22,6 @@ import { FaGithub } from 'react-icons/fa';
 const Footer = () => {
   const navigate = useNavigate();
 
-  // 커뮤니티용
-  const page = 1;
-  const category = 'all';
-  const sort = 'latest';
-
   const scrollTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
@@ -60,10 +55,7 @@ const Footer = () => {
             </Content>
             <Content
               onClick={() => {
-                navigate(
-                  ROUTE.COMMUNITY_PAGE.link +
-                    `?category=${category}&sort=${sort}&page=${page}`,
-                );
+                navigate(ROUTE.COMMUNITY_PAGE.link);
                 scrollTop();
               }}
             >
