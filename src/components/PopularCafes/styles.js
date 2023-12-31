@@ -7,8 +7,12 @@ export const Container = styled.main`
 export const Title = styled.div`
   margin: 40px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: end;
+
+  @media screen and (max-width: 767px) {
+    justify-content: space-between;
+  }
 `;
 
 export const More = styled.button`

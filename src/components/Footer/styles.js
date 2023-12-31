@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100vw;
   max-width: 100vw;
-  height: 30vh;
+  height: 25vh;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     height: 20vh;
@@ -21,6 +21,10 @@ export const FooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
 `;
 
 export const Line = styled.div`
@@ -38,6 +42,11 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 2%;
+  max-width: 250px;
+
+  @media screen and (max-width: 1023px) {
+    max-width: 200px;
+  }
 `;
 
 export const SiteName = styled.p`
@@ -99,7 +108,7 @@ export const SnsContainer = styled.section`
   grid-template-columns: 0.3fr 0.5fr;
   grid-gap: 2vw;
   svg {
-    width: 50px;
+    width: 40px;
     height: auto;
     transition: all 0.5s;
 
