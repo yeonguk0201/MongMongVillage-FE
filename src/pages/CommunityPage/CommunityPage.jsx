@@ -82,7 +82,10 @@ const CommunityPage = () => {
   const handleSearchInputChange = (searchValue) => {
     if (searchValue) {
       setSearchTerm(searchValue);
-      navigate(ROUTE.COMMUNITY_PAGE.link + `?category=all&sort=latest&page=1`);
+      navigate(
+        ROUTE.COMMUNITY_PAGE.link +
+          `?category=all&sort=latest&page=1&search=${searchValue}`,
+      );
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
   };
