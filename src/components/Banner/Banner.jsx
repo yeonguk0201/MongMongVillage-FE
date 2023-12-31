@@ -24,7 +24,7 @@ const Banner = () => {
     className: 'center',
     centerMode: true,
     infinite: true,
-    centerPadding: '60px',
+    centerPadding: '0px',
     slidesToShow: 1,
     autoplay: true,
     speed: 1000,
@@ -65,13 +65,7 @@ const Banner = () => {
         <BannerBox>
           <BannerImg src="/banner2.png" />
           <PopolarCafeBtn
-            style={{
-              left: '30vw',
-              width: '680px',
-              height: '70px',
-              fontSize: '35px',
-              backgroundColor: '#FF814C',
-            }}
+            className="search"
             onClick={() => navigate(ROUTE.CAFE_MAP_PAGE.link)}
           >
             강아지랑 같이 갈 애견카페 검색하러 가기!
@@ -80,9 +74,7 @@ const Banner = () => {
         </BannerBox>
         <BannerBox>
           <BannerImg src="/banner3.png" />
-          <BannerName style={{ left: '30vw', top: '45%' }}>
-            Mong Mong Village
-          </BannerName>
+          <BannerName>Mong Mong Village</BannerName>
         </BannerBox>
         <BannerBox>
           <BannerImg src="/banner4.png" />

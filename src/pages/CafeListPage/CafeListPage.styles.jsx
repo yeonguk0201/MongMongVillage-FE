@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  padding-top: 110px;
   width: 95vw !important;
   max-width: 1280px;
   display: flex;
@@ -54,11 +55,36 @@ export const SpeechBubble = styled.div`
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  &::after {
+    transform: rotate(180deg);
+    position: absolute;
+    top: 104%;
+    left: 8%;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: #f0f0f0;
+    border-width: 10px;
+    pointer-events: none;
+    content: ' ';
+  }
   &.show {
     display: block;
-    top: -100%;
-    width: 30vw;
+    padding: 10px 0;
+    top: -50px;
+    left: -20px;
+    width: 400px;
     text-align: center;
+
+    @media screen and (max-width: 1000px) {
+      width: 300px;
+      font-size: 13px;
+    }
+    @media screen and (max-width: 710px) {
+      width: 250px;
+      font-size: 10px;
+      top: -43px;
+      left: -23px;
+    }
   }
 `;
 

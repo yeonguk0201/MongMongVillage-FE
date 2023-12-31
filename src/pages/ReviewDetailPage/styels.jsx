@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ReviewDetailContainer = styled.div`
+  padding-top: 110px;
   display: flex;
   width: 95vw;
   max-width: 1280px;
