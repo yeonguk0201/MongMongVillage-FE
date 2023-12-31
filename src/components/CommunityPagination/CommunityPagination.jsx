@@ -9,8 +9,6 @@ const CommunityPagination = ({
   totalPages,
   goToPage,
 }) => {
-  console.log('현재페이지 : ', Number(currentPage));
-
   const [pages, setPages] = useState([]);
 
   const visiblePages = 5; // 한 번에 표시되는 페이지 수

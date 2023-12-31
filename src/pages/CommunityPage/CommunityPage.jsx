@@ -88,13 +88,15 @@ const CommunityPage = () => {
 
   // 전체 페이지 수 계산
   const totalPages = Math.ceil(totalBoards / ITEMS_PER_PAGE);
-  console.log('전체 페이지', totalPages);
 
   // 검색창 input을 입력받는 onChange 핸들러
   const handleSearchInputChange = (searchValue) => {
     if (searchValue) {
       setSearchTerm(searchValue);
-      navigate(ROUTE.COMMUNITY_PAGE.link + `?category=all&sort=latest&page=1`);
+      navigate(
+        ROUTE.COMMUNITY_PAGE.link +
+          `?category=all&sort=latest&page=1&search=${searchValue}`,
+      );
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
   };
