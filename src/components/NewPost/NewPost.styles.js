@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 100px auto;
-  font-family: 'GmarketSansMedium', sans-serif;
-
-  max-width: 1280px; /* 추가 */
-  width: 100%; /* 추가 */
-
+  margin: 50px auto;
+  max-width: 1280px;
+  width: 95%;
+  @media screen and (max-width: 767px) {
+    margin: 20px auto;
+  }
   .InputPhoto {
     margin-bottom: 100px;
   }
@@ -19,17 +19,20 @@ export const Title = styled.h3`
 `;
 
 export const NewPostContainer = styled.div`
-  margin-top: 160px;
-  width: 100%;
+  margin-top: 100px;
+  width: 95%;
 `;
 
 export const CategorySelector = styled.select`
-  width: 16%;
+  width: 200px;
   padding: 8px;
   margin-bottom: 16px;
   font-size: 16px;
   border-radius: 4px;
   border: 3px solid lightgrey;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 export const Input = styled.input`
@@ -40,6 +43,11 @@ export const Input = styled.input`
   border-radius: 4px;
   border: 3px solid lightgrey;
   box-sizing: border-box;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    padding: 10px;
+    width: 95%;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -47,14 +55,20 @@ export const TextArea = styled.textarea`
   box-sizing: border-box;
   padding: 1%;
   height: 300px;
-  margin-top: 20px;
-  margin-bottom: 100px;
+  margin: 20px 0 100px 0;
   font-size: 16px;
   border-radius: 4px;
   border: 3px solid lightgrey;
-  overflowwrap: break-word;
-  wordwrap: break-word;
-  whitespace: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  @media screen and (max-width: 767px) {
+    width: 95%;
+    font-size: 14px;
+    padding: 10px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const ImageUploadContainer = styled.div`
@@ -65,12 +79,15 @@ export const ImageUploadContainer = styled.div`
   margin-bottom: 60px;
   cursor: pointer;
   border-radius: 8px;
-
-  /* Flexbox를 사용하여 세로 및 가로 중앙 정렬 */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  @media screen and (max-width: 767px) {
+    height: 90px;
+    padding: 10px;
+    width: 95%;
+  }
 `;
 
 export const ImageUploadText = styled.p`
@@ -91,14 +108,17 @@ export const PostBTN = styled.button`
   border: none;
   background-color: var(--main-yellow-color);
 
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 160px;
+  margin: 50px auto;
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+  }
 `;
 
 export const InputImg = styled.div`
-  max-width: 1280px; /* 추가 */
-  width: 100%; /* 추가 */
+  width: 100%;
   box-sizing: border-box;
   margin: 10px 0;
   padding: 10px;
@@ -116,12 +136,17 @@ export const InputImg = styled.div`
     border-radius: 50%;
     cursor: pointer;
   }
+  @media screen and (max-width: 767px) {
+    img {
+      height: 90px;
+    }
+  }
 `;
 
 export const InputImgButton = styled.label`
   cursor: pointer;
-  width: 15%;
-  background-color: #e4e4e6;
+  width: 150px;
+  background-color: #f6f6f9;
   border-radius: 30px;
   font-size: 15px;
   display: flex;
@@ -130,5 +155,14 @@ export const InputImgButton = styled.label`
   padding: 15px;
   svg {
     margin: 0 5px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100px;
+    font-size: 12px;
+    padding: 10px;
+    svg {
+      scale: 0.7;
+    }
   }
 `;
