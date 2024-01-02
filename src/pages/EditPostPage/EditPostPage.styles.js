@@ -5,7 +5,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  font-family: 'GmarketSansMedium', sans-serif;
-
-  max-width: 1280px; /* 추가 */
+  max-width: 1280px;
+  @media screen and (max-width: 767px) {
+    padding: 70px 0;
+    width: 95vw;
+  }
 `;

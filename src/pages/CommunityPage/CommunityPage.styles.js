@@ -18,4 +18,7 @@ export const Container = styled.div`
       text-align: center;
     }
   }
+  @media screen and (max-width: 767px) {
+    padding: 70px 0;
+  }
 `;

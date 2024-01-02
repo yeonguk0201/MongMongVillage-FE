@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding-top: 110px;
   display: flex;
   width: 400px;
   margin: 100px auto;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 0px 27px -5px gray;
-  padding: 50px;
+  padding: 70px 50px;
   border: 2px solid var(--main-yellow-color);
   border-radius: 30px;
 
   @media screen and (max-width: 767px) {
     max-width: 80vw;
-    padding: 20px;
-    margin: 30px auto;
+    margin: 80px auto;
+    padding: 15px 10px;
+    border: 1px solid var(--main-yellow-color);
+    border-radius: 20px;
   }
 `;
 
@@ -63,7 +64,7 @@ export const AuthInputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 0;
+  margin: 10px auto;
   border-bottom: ${(props) =>
     props.border === 'none' ? 'none' : '1px solid gray'};
   svg {
@@ -72,10 +73,15 @@ export const AuthInputContainer = styled.div`
     scale: 1.3;
     color: gray;
   }
+
+  @media screen and (max-width: 767px) {
+    width: 90%;
+    margin: 5px auto;
+  }
 `;
 
 export const AuthInput = styled.input`
-  width: 100%;
+  width: 90%;
   padding: 10px 0 10px 10px;
   margin-top: 10px;
   font-size: 1rem;

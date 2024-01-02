@@ -7,6 +7,9 @@ export const Container = styled.div`
   display: flex;
   margin: 0 auto;
   flex-direction: column;
+  @media screen and (max-width: 767px) {
+    padding: 70px 0;
+  }
 `;
 
 export const TitleContainer = styled.div`
