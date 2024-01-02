@@ -6,6 +6,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
+  max-width: 100vw;
   height: 100px;
   z-index: 10;
   display: flex;
@@ -60,12 +61,12 @@ export const Logo = styled.img`
     width: 100px;
     height: 100px;
   }
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
     width: 100px;
     height: 100px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     width: 75px;
     height: 75px;
   }
@@ -77,17 +78,19 @@ export const NavitemContainer = styled.div`
   justify-content: space-between;
 
   @media screen and (max-width: 767px) {
-    display: none;
+    display: block;
+    width: 100vw;
+    position: absolute;
+    margin: 0 auto;
+    z-index: 12;
+    top: 0;
+    right: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    background-color: var(--main-yellow-color);
+    box-shadow: 3px 3px 10px 0px lightgray;
     &.side {
-      margin: 0 auto;
-      background-color: var(--main-yellow-color);
-      box-shadow: 3px 3px 10px 0px lightgray;
-      display: block;
-      width: 100vw;
-      position: absolute;
-      z-index: 12;
-      right: 0;
-      top: 0;
+      transform: translateY(0);
     }
   }
 `;

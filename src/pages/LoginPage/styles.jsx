@@ -1,22 +1,21 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding-top: 110px;
   width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 100px auto;
   box-shadow: 0px 0px 27px -5px gray;
-  padding: 50px;
+  padding: 70px 50px;
   border: 2px solid var(--main-yellow-color);
   border-radius: 30px;
 
   @media screen and (max-width: 767px) {
     max-width: 80vw;
-    margin: 30px auto;
-    padding: 15px;
+    padding: 15px 10px;
     border: 1px solid var(--main-yellow-color);
+    border-radius: 20px;
   }
 `;
 
@@ -31,7 +30,7 @@ export const Img = styled.img`
 
 export const AuthInputContainer = styled.div`
   border-bottom: 1px solid lightgray;
-  width: 95%;
+  width: 90%;
 
   display: flex;
   align-items: center;
@@ -45,11 +44,14 @@ export const AuthInputContainer = styled.div`
 `;
 
 export const AuthInput = styled.input`
-  width: 80%;
+  width: 90%;
   border: none;
   margin: 10px;
   padding: 10px;
   font-size: 14px;
+  @media screen and (max-width: 767px) {
+    padding: 7px;
+  }
 `;
 
 export const TextButtonContainer = styled.div`

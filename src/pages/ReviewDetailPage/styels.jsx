@@ -15,6 +15,7 @@ export const ReviewDetailContainer = styled.div`
   }
 
   @media screen and (max-width: 767px) {
+    padding: 50px 0;
     margin: 0 auto;
   }
 `;
