@@ -1,11 +1,7 @@
 import { CafeDetail } from '../../components';
 
 const CafeDetailPage = () => {
-  return (
-    <>
-      <CafeDetail></CafeDetail>
-    </>
-  );
+  return <CafeDetail />;
 };
 
 export default CafeDetailPage;
