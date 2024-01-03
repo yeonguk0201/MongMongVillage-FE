@@ -12,7 +12,7 @@ import {
   Loading,
 } from '../../components';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container } from './CommunityDetailPage.styles.js';
+import { Container } from './CommunityDetailPage.styles';
 import { ROUTE } from '../../routes/Routes.js';
 
 const CommunityDetailPage = () => {
