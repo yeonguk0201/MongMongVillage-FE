@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, ReviewListContainer } from './styels';
+import { Container, ReviewListContainer } from './ReviewListPage.styels';
 import { Title } from '../../commonStyles';
 import {
   ReviewItem,
