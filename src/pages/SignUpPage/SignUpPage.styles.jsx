@@ -4,16 +4,15 @@ export const Container = styled.div`
   display: flex;
   width: 400px;
   margin: 100px auto;
+  padding: 60px 50px;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 0px 27px -5px gray;
-  padding: 70px 50px;
   border: 2px solid var(--main-yellow-color);
   border-radius: 30px;
 
   @media screen and (max-width: 767px) {
     max-width: 80vw;
-    margin: 80px auto;
     padding: 15px 10px;
     border: 1px solid var(--main-yellow-color);
     border-radius: 20px;

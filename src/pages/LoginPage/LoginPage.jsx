@@ -7,7 +7,7 @@ import {
   TextButtonContainer,
   SubmitButton,
   AuthInputContainer,
-} from './styles';
+} from './LoginPage.styles';
 import { Title } from '../../commonStyles';
 import { ROUTE } from '../../routes/Routes';
 import { usePostLogin } from '../../hooks/postLogin';
