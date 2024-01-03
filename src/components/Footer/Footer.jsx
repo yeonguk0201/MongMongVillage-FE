@@ -9,7 +9,7 @@ import {
   SnsContainer,
   LogoContainer,
   Line,
-} from './styles';
+} from './Footer.styles';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoSVG } from '../Logo/Logo.svg';
 import { ROUTE } from '../../routes/Routes';

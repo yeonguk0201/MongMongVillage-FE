@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100vw;
-  max-width: 100vw;
+  width: 95vw;
   height: 25vh;
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     height: 20vh;
   }
 
@@ -15,9 +14,9 @@ export const Container = styled.div`
 `;
 
 export const FooterContainer = styled.div`
-  width: 90%;
+  width: 95%;
   height: 90%;
-  margin: 0;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +51,7 @@ export const LogoContainer = styled.div`
 export const SiteName = styled.p`
   font-size: 1.2rem;
   text-align: center;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     font-size: 14px;
   }
 
@@ -93,7 +92,7 @@ export const Content = styled.p`
   font-size: 1rem;
   margin: 7% 0;
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     font-size: 12px;
   }
 
@@ -117,7 +116,7 @@ export const SnsContainer = styled.section`
       color: var(--main-yellow-color);
     }
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     svg {
       width: 30px;
     }
