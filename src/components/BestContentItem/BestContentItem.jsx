@@ -1,5 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { BestInfo, BestImg, Container, BestWriter, BestTitle } from './styles';
+import {
+  BestInfo,
+  BestImg,
+  Container,
+  BestWriter,
+  BestTitle,
+} from './BestContentItem.styles';
 import { ROUTE } from '../../routes/Routes';
 import { useGetUserInfo } from '../../hooks/getUserInfo';
 const BestContentItem = ({ item }) => {

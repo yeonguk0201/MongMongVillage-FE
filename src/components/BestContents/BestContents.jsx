@@ -1,4 +1,9 @@
-import { Container, Content, DogCafeList, ErrorContainer } from './styles';
+import {
+  Container,
+  Content,
+  DogCafeList,
+  ErrorContainer,
+} from './BestContents.styles';
 import { useGetBestContents } from '../../hooks/getBestContents';
 import { GiCurlyWing } from 'react-icons/gi';
 import { BestContentItem } from '../BestContentItem';
