@@ -14,12 +14,12 @@ export const Container = styled.div`
   box-shadow: 3px 3px 10px 0px lightgray;
   font-size: 18px;
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     height: 90px;
     font-size: 16px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     height: 70px;
     font-size: 14px;
   }
@@ -36,14 +36,14 @@ export const Navbar = styled.div`
     font-size: 14px;
     color: var(--main-yellow-color);
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     width: 90vw;
   }
 `;
 
 export const MenuButton = styled.button`
   display: none;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     display: flex;
     width: 100%;
     background-color: transparent;
@@ -57,16 +57,16 @@ export const MenuButton = styled.button`
 
 export const Logo = styled.img`
   cursor: pointer;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     width: 100px;
     height: 100px;
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     width: 100px;
     height: 100px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     width: 75px;
     height: 75px;
   }
@@ -77,7 +77,7 @@ export const NavitemContainer = styled.div`
   width: 85%;
   justify-content: space-between;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     display: block;
     width: 100vw;
     position: absolute;
@@ -114,12 +114,12 @@ export const Navitem = styled.nav`
     background-color: var(--main-yellow-color);
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     padding: 10px;
     margin: 0 5px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     display: block;
     margin: 10px 0;
   }
@@ -127,7 +127,7 @@ export const Navitem = styled.nav`
 
 export const Space = styled.div`
   width: 40%;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     width: 15%;
   }
 `;

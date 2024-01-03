@@ -8,7 +8,7 @@ import {
   NavitemContainer,
   MenuButton,
   Logo,
-} from './styles';
+} from './Header.styles';
 import { ROUTE } from '../../routes/Routes';
 import { showAlert } from '../../util/showAlert';
 import { getCheckTokenValid } from '../../hooks/getCheckTokenValid';
