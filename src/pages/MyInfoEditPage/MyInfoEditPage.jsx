@@ -1,5 +1,5 @@
 import { MyPageProfile } from '../../components';
-import { Container } from './styles';
+import { Container } from './MyInfoEditPage.styles';
 
 const MyInfoEditPage = () => {
   return (

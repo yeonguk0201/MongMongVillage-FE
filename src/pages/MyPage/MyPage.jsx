@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { MyActivity, MyPageProfile } from '../../components';
-import { Container, InfoUpdateButton, LogoutButton } from './styles';
+import { Container, InfoUpdateButton, LogoutButton } from './MyPage.styles';
 import { ROUTE } from '../../routes/Routes';
 import { showAlert } from '../../util/showAlert';
 
