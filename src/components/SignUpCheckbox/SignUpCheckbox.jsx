@@ -6,7 +6,7 @@ import {
   Checkbox,
   Space,
   DetailText,
-} from './styles';
+} from './SignUpCheckbox.styles';
 import { InputStatus } from '../../libs/AuthMessage';
 import { showModal } from '../../util/showAlert';
 

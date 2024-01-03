@@ -31,7 +31,6 @@ export const Img = styled.img`
 export const AuthInputContainer = styled.div`
   border-bottom: 1px solid lightgray;
   width: 90%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -89,7 +88,7 @@ export const SubmitButton = styled.button`
   border-radius: 30px;
   font-size: 1.2rem;
   padding: 10px;
-  width: 100%;
+  width: 90%;
   margin-top: 30px;
 
   @media screen and (max-width: 767px) {

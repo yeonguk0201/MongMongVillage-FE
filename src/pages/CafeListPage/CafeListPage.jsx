@@ -30,7 +30,7 @@ const CafeListPage = () => {
           <Title>카페 랭킹 리스트</Title>
           <ShowBubbleContainer>
             <SpeechBubble className={showInfo ? 'show' : ''}>
-              리뷰 수와 별점이 높을수록 순위가 높아집니다!
+              리뷰 수와 별점이 높을수록 순위가 높아요!
             </SpeechBubble>
 
             <ShowInfo

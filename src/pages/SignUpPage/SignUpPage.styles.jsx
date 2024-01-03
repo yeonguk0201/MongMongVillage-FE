@@ -52,6 +52,7 @@ export const SubmitButton = styled.button`
     margin: 15px 0;
     padding: 7px;
     font-size: 16px;
+    width: 90%;
   }
 `;
 
