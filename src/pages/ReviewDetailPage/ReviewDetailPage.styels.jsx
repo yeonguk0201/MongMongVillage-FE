@@ -1,21 +1,14 @@
 import styled from 'styled-components';
 
 export const ReviewDetailContainer = styled.div`
-  padding-top: 110px;
   display: flex;
   width: 95vw;
   max-width: 1280px;
-  flex-direction: column;
   padding-bottom: 100px;
-  @media screen and (min-width: 1024px) {
-    margin: 30px auto;
-  }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    margin: 15px auto;
-  }
+  margin: 0 auto;
+  flex-direction: column;
 
   @media screen and (max-width: 767px) {
-    padding: 50px 0;
     margin: 0 auto;
   }
 `;
