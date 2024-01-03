@@ -18,7 +18,7 @@ const CafeMapPage = () => {
       <ButtonContainer>
         <span>더 많은 애견카페를 보고 싶으신가요?</span>
         <MoreCafeButton onClick={() => navigate(ROUTE.CAFE_LIST_PAGE.link)}>
-          애견카페 둘러보기 →{' '}
+          애견카페 둘러보기 →
         </MoreCafeButton>
       </ButtonContainer>
     </Container>

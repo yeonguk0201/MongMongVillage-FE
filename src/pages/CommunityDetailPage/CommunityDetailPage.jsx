@@ -57,13 +57,6 @@ const CommunityDetailPage = () => {
     }
   }, [boardsData, currentPage, filteredCategory]);
 
-  // id 값을 params로 넘겨줄 함수 - detail 페이지로 정보 넘겨주기
-  const handlePostClick = (id) => {
-    setSelectedPost(list.find((post) => post._id === id));
-    navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${id}`);
-    window.scrollTo(0, 0);
-  };
-
   // 페이지네이션 관련 기능 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   // 현재 페이지에 표시될 아이템들
   const totalPages = Math.ceil(totalBoards / ITEMS_PER_PAGE);
