@@ -74,7 +74,6 @@ const Banner = () => {
         </BannerBox>
         <BannerBox>
           <BannerImg src="/banner3.png" />
-          <BannerName>Mong Mong Village</BannerName>
         </BannerBox>
         <BannerBox>
           <BannerImg src="/banner4.png" />

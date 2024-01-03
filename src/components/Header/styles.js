@@ -19,7 +19,7 @@ export const Container = styled.div`
     font-size: 16px;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     height: 70px;
     font-size: 14px;
   }
@@ -36,14 +36,14 @@ export const Navbar = styled.div`
     font-size: 14px;
     color: var(--main-yellow-color);
   }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     width: 90vw;
   }
 `;
 
 export const MenuButton = styled.button`
   display: none;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     display: flex;
     width: 100%;
     background-color: transparent;
@@ -66,7 +66,7 @@ export const Logo = styled.img`
     height: 100px;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     width: 75px;
     height: 75px;
   }
@@ -77,7 +77,7 @@ export const NavitemContainer = styled.div`
   width: 85%;
   justify-content: space-between;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     display: block;
     width: 100vw;
     position: absolute;
@@ -119,7 +119,7 @@ export const Navitem = styled.nav`
     margin: 0 5px;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     display: block;
     margin: 10px 0;
   }

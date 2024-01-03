@@ -7,6 +7,13 @@ export const Container = styled.div`
   align-items: center;
   width: 100vw;
   background-color: white;
+
+  @media screen and (max-width: 900px) {
+    padding-top: 11vh;
+  }
+  @media screen and (max-width: 700px) {
+    padding-top: 9vh;
+  }
 `;
 
 export const BannerBox = styled.div`
@@ -29,6 +36,10 @@ export const BannerImg = styled.img`
   }
   @media screen and (max-width: 900px) {
     width: 600px;
+  }
+  @media screen and (max-width: 412px) {
+    width: 340px;
+    border-radius: 25px;
   }
 `;
 
@@ -57,6 +68,11 @@ export const BannerName = styled.p`
     bottom: 160px;
     left: 10px;
   }
+  @media screen and (max-width: 412px) {
+    font-size: 30px;
+    bottom: 90px;
+    left: -5px;
+  }
 `;
 
 export const BannerSub = styled.p`
@@ -84,6 +100,11 @@ export const BannerSub = styled.p`
     bottom: 128px;
     left: 105px;
   }
+  @media screen and (max-width: 412px) {
+    font-size: 10px;
+    bottom: 72px;
+    left: 57px;
+  }
 `;
 
 export const BannerInfo = styled.p`
@@ -110,6 +131,11 @@ export const BannerInfo = styled.p`
     bottom: 85px;
     left: 85px;
   }
+  @media screen and (max-width: 412px) {
+    font-size: 8px;
+    bottom: 47px;
+    left: 45px;
+  }
 `;
 
 export const BannerPhoneNumber = styled.h3`
@@ -134,6 +160,11 @@ export const BannerPhoneNumber = styled.h3`
     font-size: 13px;
     bottom: 58px;
     left: 100px;
+  }
+  @media screen and (max-width: 412px) {
+    font-size: 7.5px;
+    bottom: 32px;
+    left: 55px;
   }
 `;
 
@@ -199,6 +230,14 @@ export const PopolarCafeBtn = styled.button`
       width: 380px;
       height: 35px;
       font-size: 20px;
+    }
+    @media screen and (max-width: 412px) {
+      display: block;
+      left: 65px;
+      bottom: 9.5px;
+      width: 230px;
+      height: 20px;
+      font-size: 14px;
     }
   }
 `;

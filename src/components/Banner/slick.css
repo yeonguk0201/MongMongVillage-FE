@@ -19,6 +19,9 @@
   @media screen and (max-width: 900px) {
     width: 700px;
   }
+  @media screen and (max-width: 412px) {
+    width: 350px;
+  }
 
   position: relative;
 
@@ -60,6 +63,9 @@
   }
   @media screen and (max-width: 900px) {
     padding-left: 50px !important;
+  }
+  @media screen and (max-width: 412px) {
+    padding-left: 5px !important;
   }
 }
 .slick-list:focus {
