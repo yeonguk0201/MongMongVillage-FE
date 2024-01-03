@@ -9,7 +9,7 @@ import {
   SnsContainer,
   LogoContainer,
   Line,
-} from './styles';
+} from './Footer.styles';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoSVG } from '../Logo/Logo.svg';
 import { ROUTE } from '../../routes/Routes';
@@ -42,7 +42,7 @@ const Footer = () => {
           <Content>배너 출처 : wepik.com</Content>
           <Content>Copyright 2023 by Team6, Inc, All rights reserved</Content>
         </InfoContainer>
-        <Line />
+        <Line className="navListLine" />
         <ListContainer>
           <NavList>
             <Content

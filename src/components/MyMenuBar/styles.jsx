@@ -11,7 +11,7 @@ export const Line = styled.div`
 
 export const MenuContainer = styled.div`
   display: flex;
-  margin: 20px;
+  margin: 20px auto;
 `;
 
 export const MenuButton = styled.nav`

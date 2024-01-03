@@ -5,6 +5,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   border-top: 1px solid lightgrey;
+
+  @media screen and (max-width: 767px) {
+    padding: 15px;
+    font-size: 12px;
+  }
 `;
 
 export const CommentTopContainer = styled.div`
@@ -35,6 +40,7 @@ export const CommentTopContainer = styled.div`
 
   .time {
     color: gray;
+    font-size: 12px;
   }
 `;
 
@@ -48,6 +54,12 @@ export const EditInput = styled.input`
   &:focus-within {
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
   }
+  @media screen and (max-width: 767px) {
+    width: 75%;
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
+  }
 `;
 
 export const CommentBottomContainer = styled.div`
@@ -58,6 +70,7 @@ export const CommentBottomContainer = styled.div`
   form {
     width: 100%;
     display: flex;
+    justify-content: space-between;
   }
 `;
 
@@ -74,5 +87,12 @@ export const ButtonContainer = styled.div`
 
   .cancel {
     background-color: lightgray;
+  }
+
+  @media screen and (max-width: 767px) {
+    button {
+      font-size: 12px;
+      padding: 5px;
+    }
   }
 `;

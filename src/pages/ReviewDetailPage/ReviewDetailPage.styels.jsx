@@ -4,14 +4,9 @@ export const ReviewDetailContainer = styled.div`
   display: flex;
   width: 95vw;
   max-width: 1280px;
-  flex-direction: column;
   padding-bottom: 100px;
-  @media screen and (min-width: 1024px) {
-    margin: 30px auto;
-  }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    margin: 15px auto;
-  }
+  margin: 0 auto;
+  flex-direction: column;
 
   @media screen and (max-width: 767px) {
     margin: 0 auto;

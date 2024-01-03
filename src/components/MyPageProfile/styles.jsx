@@ -21,6 +21,10 @@ export const ProfileImgContainer = styled.div`
   height: 150px;
   border-radius: 70%;
   overflow: hidden;
+  @media screen and (max-width: 767px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 export const ProfileImgItem = styled.img`
@@ -38,6 +42,9 @@ export const ImgEditButton = styled.label`
   svg {
     margin: 0 3px;
   }
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 export const MyInfoContainer = styled.div`
@@ -47,11 +54,20 @@ export const MyInfoContainer = styled.div`
   p {
     margin: 10px;
   }
+
+  @media screen and (max-width: 767px) {
+    p {
+      margin: 5px;
+    }
+  }
 `;
 
 export const MyName = styled.p`
   font-weight: bold;
   font-size: 20px;
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+  }
 `;
 
 export const MyIntroduction = styled.p`
@@ -59,11 +75,17 @@ export const MyIntroduction = styled.p`
   &.no-introduction {
     color: lightgray;
   }
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 `;
 
 export const MyEmail = styled.p`
   color: gray;
   padding: 10px 0;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 export const MyInfoEditContainer = styled.div`
@@ -80,6 +102,10 @@ export const MyInfoEditContainer = styled.div`
     &.green {
       color: green;
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 90%;
   }
 `;
 
@@ -105,6 +131,17 @@ export const MyInfoEditItemContainer = styled.div`
     height: 150px;
     width: 75%;
   }
+
+  @media screen and (max-width: 767px) {
+    label {
+      width: 50px;
+    }
+    input,
+    textarea {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -112,10 +149,17 @@ export const SubmitButton = styled.button`
   background-color: var(--main-yellow-color);
   font-size: 18px;
   margin: 30px;
+  @media screen and (max-width: 767px) {
+    width: 90%;
+    font-size: 16px;
+  }
 `;
 
 export const WithdrawalButton = styled.button`
   width: 100%;
+  @media screen and (max-width: 767px) {
+    width: 90%;
+  }
 `;
 
 export const WithdrawText = styled.p`
@@ -130,4 +174,9 @@ export const CheckButton = styled.button`
   margin-left: 10px;
   width: 20%;
   padding: 15px;
+  @media screen and (max-width: 767px) {
+    width: 25%;
+    padding: 10px;
+    margin-left: 5px;
+  }
 `;

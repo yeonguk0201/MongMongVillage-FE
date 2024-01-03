@@ -9,7 +9,7 @@ import {
   SubmitButton,
   Text,
   Img,
-} from './styles';
+} from './SignUpPage.styles';
 import { Title } from '../../commonStyles';
 import {
   EmailValidCheck,

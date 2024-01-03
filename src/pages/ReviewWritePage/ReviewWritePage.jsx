@@ -11,7 +11,7 @@ import {
   InputImgButton,
   SubmitButton,
   CafeName,
-} from './styles';
+} from './ReviewWritePage.styles';
 
 import { FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';

@@ -15,8 +15,6 @@ const CommunityPagination = ({
   const halfVisible = Math.floor(visiblePages / 2);
 
   // 빈 배열 만들어서 5개의 페이지 동적으로 set 해줌
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  let newPages = [];
   let startPage = Math.max(currentPage - halfVisible, 1);
   let endPage = Math.min(startPage + visiblePages - 1, totalPages);
 
@@ -24,42 +22,38 @@ const CommunityPagination = ({
     startPage = Math.max(endPage - visiblePages + 1, 1);
   }
 
-  for (let i = startPage; i <= endPage; i++) {
-    newPages.push(i);
-  }
-
   useEffect(() => {
+    let newPages = [];
+    for (let i = startPage; i <= endPage; i++) {
+      newPages.push(i);
+    }
     setPages(newPages);
-  }, [currentPage, newPages, totalPages]);
+  }, [endPage, startPage]);
 
   return (
     <Container>
-      {currentPage !== 1 ? (
+      {currentPage !== 1 && (
         <PageButton onClick={goToPrevPage} disabled={currentPage === 1}>
           {'<'}
         </PageButton>
-      ) : (
-        <div className="space"></div>
       )}
 
-      {pages.map((page) => (
+      {pages.map((targetPage) => (
         <PageButton
-          key={page}
-          onClick={() => goToPage(page)}
-          active={currentPage === page ? 'true' : undefined}
+          key={targetPage}
+          onClick={() => goToPage(targetPage)}
+          active={currentPage === targetPage ? 'true' : undefined}
         >
-          {page}
+          {targetPage}
         </PageButton>
       ))}
-      {currentPage < totalPages ? (
+      {currentPage < totalPages && (
         <PageButton
           onClick={goToNextPage}
           disabled={currentPage === totalPages}
         >
           {'>'}
         </PageButton>
-      ) : (
-        <div className="space"></div>
       )}
     </Container>
   );

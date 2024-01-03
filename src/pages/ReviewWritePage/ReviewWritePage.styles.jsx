@@ -4,16 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media screen and (min-width: 1024px) {
-    margin-top: 30px;
-  }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    margin-top: 20px;
-  }
-
-  @media screen and (max-width: 767px) {
-    margin-top: 10px;
-  }
+  margin: 10px auto;
 `;
 
 export const ReviewWriteContainer = styled.div`

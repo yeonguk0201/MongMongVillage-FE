@@ -30,6 +30,8 @@ const CafeItem = ({ cafe, ranking }) => {
       <CafeContainer>
         <CafeImgContainer>
           <CafeImg
+            loading="lazy"
+            placeholder="/imges/default.png"
             src={image.length > 0 ? image : '/imges/default.png'}
             alt={`cafe ${ranking}`}
           />

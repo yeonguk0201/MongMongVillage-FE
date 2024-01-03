@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
+  width: 95%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -99,7 +100,7 @@ export const PreviewImgContainer = styled.div`
   height: 130px;
   display: flex;
   @media screen and (max-width: 767px) {
-    height: 110px;
+    height: 100px;
   }
 `;
 

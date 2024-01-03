@@ -43,7 +43,8 @@ export const SearchInput = styled.input`
   border: none;
   outline: none;
   font-size: 20px;
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     font-size: 16px;
     width: 90%;
     padding-left: 20px;

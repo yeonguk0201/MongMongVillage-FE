@@ -3,6 +3,11 @@ import styled from 'styled-components';
 export const Container = styled.section`
   height: 300px;
   background-color: none;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    height: 200px;
+  }
 
   @media screen and (max-width: 767px) {
     height: 150px;
@@ -48,7 +53,7 @@ export const BestTitle = styled.p`
   -webkit-box-orient: vertical;
 
   max-height: 1em;
-  line-height: 2rem; /* 적절한 줄 높이 설정 */
+  line-height: 2rem;
 
   @media screen and (max-width: 767px) {
     font-size: 16px;

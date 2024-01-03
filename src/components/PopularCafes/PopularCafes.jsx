@@ -5,7 +5,7 @@ import {
   ErrorContainer,
   More,
   Title,
-} from './styles';
+} from './PopularCafes.styles';
 import { useGetPolularCafes } from '../../hooks/getPopularCafes';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE } from '../../routes/Routes';

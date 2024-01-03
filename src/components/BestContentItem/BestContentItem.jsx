@@ -1,5 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { BestInfo, BestImg, Container, BestWriter, BestTitle } from './styles';
+import {
+  BestInfo,
+  BestImg,
+  Container,
+  BestWriter,
+  BestTitle,
+} from './BestContentItem.styles';
 import { ROUTE } from '../../routes/Routes';
 import { useGetUserInfo } from '../../hooks/getUserInfo';
 const BestContentItem = ({ item }) => {
@@ -22,6 +28,7 @@ const BestContentItem = ({ item }) => {
         src={item?.images?.length > 0 ? item?.images[0] : '/imges/default.png'}
         alt={`bestImg`}
       />
+
       <BestInfo>
         <BestTitle>{item.title}</BestTitle>
         <BestWriter>

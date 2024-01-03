@@ -5,7 +5,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px auto 200px auto;
-  width: 80%;
+  width: 90%;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    padding: 80px 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 50px 0;
+  }
 `;
 
 export const NameContainer = styled.div`
@@ -18,5 +25,9 @@ export const NameContainer = styled.div`
   span {
     font-weight: bold;
     margin-right: 5px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 80%;
   }
 `;

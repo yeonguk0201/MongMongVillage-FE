@@ -23,7 +23,7 @@ export function useGetReviews(sortType, page) {
     {
       keepPreviousData: true,
       retry: false,
-      onError: (error) => {
+      onError: () => {
         showAlert('', '리뷰 목록을 불러올 수 없습니다.', 'error', () => {
           window.history.back();
         });

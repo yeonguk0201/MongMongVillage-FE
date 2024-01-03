@@ -6,6 +6,11 @@ export const Container = styled.div`
   border-radius: 50px;
   background-color: rgba(255, 232, 148, 0.3);
   padding: 20px 0 50px 0;
+  @media screen and (max-width: 767px) {
+    width: 90%;
+    border-radius: 20px;
+    padding: 10px;
+  }
 `;
 
 export const CafeDetailContainer = styled.div`
@@ -21,6 +26,11 @@ export const CafeImg = styled.img`
   box-shadow: 0px 0px 15px -6px;
   object-fit: cover;
   margin-bottom: 50px;
+  @media screen and (max-width: 767px) {
+    width: 90%;
+    height: 200px;
+    border-radius: 20px;
+  }
 `;
 
 export const TopContainer = styled.div`
@@ -36,6 +46,15 @@ export const TopContainer = styled.div`
   .update {
     color: gray;
   }
+  @media screen and (max-width: 767px) {
+    width: 90%;
+    .title {
+      font-size: 18px;
+    }
+    .update {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const CafeInfoContainer = styled.article`
@@ -44,11 +63,19 @@ export const CafeInfoContainer = styled.article`
   .menu {
     line-height: 100%;
   }
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const CafeInfo = styled.p`
   font-size: 20px;
   padding: 15px;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    padding: 5px;
+    line-height: 1.2;
+  }
 `;
 
 export const WriteReviewBtn = styled.button`
@@ -67,18 +94,27 @@ export const WriteReviewBtn = styled.button`
   svg {
     margin-left: 5px;
   }
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    margin: 0;
+    padding: 10px;
+  }
 `;
 
 export const StarRating = styled.div`
   display: inline;
   font-size: 20px;
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 `;
-
-export const ReviewNum = styled.h2``;
 
 export const CafeMiniTitle = styled.h3`
   font-size: 20px;
   padding: 5px;
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 `;
 
 export const InfoMiniContainer = styled.article`
@@ -100,12 +136,23 @@ export const InfoMiniContainer = styled.article`
     font-weight: bold;
     font-size: large;
   }
+
+  @media screen and (max-width: 767px) {
+    padding: 10px;
+    line-height: 1;
+    .reviewContainer {
+      padding: 0;
+    }
+    .noReview {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const ReviewStarRatingContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: end;
-  padding: 20px 10px;
+  padding: 10px;
   border-bottom: 1px solid lightgrey;
 `;

@@ -7,6 +7,9 @@ export const Container = styled.div`
   margin: 15px 0;
   border-bottom: 1px gray solid;
   cursor: pointer;
+  @media screen and (max-width: 767px) {
+    display: block;
+  }
 `;
 
 export const Content = styled.p`
@@ -33,4 +36,8 @@ export const DateText = styled.p`
   margin: 10px 0;
   font-size: 12px;
   color: gray;
+
+  @media screen and (max-width: 767px) {
+    font-size: 10px;
+  }
 `;

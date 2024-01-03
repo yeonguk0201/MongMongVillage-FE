@@ -14,7 +14,6 @@ export default function Map(props) {
   const [resultCafe, setResultCafe] = useState([]);
   // const [long, setLong] = useState();
   // const [lat, setLat] = useState();
-  const [setSelectedCafe] = useState(null);
 
   const navigate = useNavigate();
 
@@ -106,7 +105,7 @@ export default function Map(props) {
 
         // Add a click event to each marker to update the selectedCafe state
         kakao.maps.event.addListener(marker, 'click', () => {
-          setSelectedCafe(el);
+          linkToCafeDetailPage(el._id);
         });
       });
     }
@@ -127,59 +126,55 @@ export default function Map(props) {
     };
   }
 
+  const linkToCafeDetailPage = (cafeId) => {
+    navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${cafeId}`);
+  };
+
   return (
-    <MapContainer>
-      <div className="map-container">
-        <div
-          id="map"
-          className="map"
-          style={{ width: '76%', maxHeight: '600px !important', float: 'left' }}
-        ></div>
-        <CafeList className="cafe-list">
-          <h2>카페 목록</h2>
-          {resultCafe.length === 0 ? (
-            <div className="noResult">
-              <TbMapX size={'50px'} color="grey" />
-              <p className="noSearchTitle" style={{ marginTop: '20px' }}>
-                검색 결과가 없습니다.
-              </p>
-              <p>서울의 지역명이나</p>
-              <p>업체의 상호명을 입력해주세요.</p>
-              <p>예 : '강남구' or '멍멍이다방'</p>
-            </div>
-          ) : (
-            <>
-              <p className="searchResult">
-                {'>'}
-                <span> {props.searchKeyword} </span>검색결과
-                <span>
-                  {resultCafe.length > 0 && ` (${resultCafe.length})`}
-                </span>
-              </p>
-              <ul>
-                {resultCafe.map((cafe) => (
-                  <CafeListItem
-                    key={cafe._id}
-                    onClick={() =>
-                      navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${cafe._id}`)
-                    }
-                  >
-                    <p className="cafename">{cafe.name}</p>
-                    <p>
-                      <FaMapMarkerAlt />
-                      {cafe.road_addr}
-                    </p>
-                    <p>
-                      <ImPhone />
-                      {cafe.phone_number}
-                    </p>
-                  </CafeListItem>
-                ))}
-              </ul>
-            </>
-          )}
-        </CafeList>
-      </div>
+    <MapContainer className="map-container">
+      <div
+        id="map"
+        className="map"
+        style={{ width: '76%', maxHeight: '600px !important', float: 'left' }}
+      ></div>
+      <CafeList>
+        <h2>카페 목록</h2>
+        {resultCafe.length === 0 ? (
+          <div className="noResult">
+            <TbMapX size={'50px'} color="grey" />
+            <p className="noSearchTitle">검색 결과가 없습니다.</p>
+            <p>서울의 지역명이나</p>
+            <p>업체의 상호명을 입력해주세요.</p>
+            <p>예 : '강남구' or '멍멍이다방'</p>
+          </div>
+        ) : (
+          <>
+            <p className="searchResult">
+              {'>'}
+              <span> {props.searchKeyword} </span>검색결과
+              <span>{resultCafe.length > 0 && ` (${resultCafe.length})`}</span>
+            </p>
+            <ul>
+              {resultCafe.map((cafe) => (
+                <CafeListItem
+                  key={cafe._id}
+                  onClick={() => linkToCafeDetailPage(cafe._id)}
+                >
+                  <p className="cafename">{cafe.name}</p>
+                  <p>
+                    <FaMapMarkerAlt />
+                    {cafe.road_addr}
+                  </p>
+                  <p>
+                    <ImPhone />
+                    {cafe.phone_number}
+                  </p>
+                </CafeListItem>
+              ))}
+            </ul>
+          </>
+        )}
+      </CafeList>
     </MapContainer>
   );
 }

@@ -38,8 +38,9 @@ export const DogCafeInfoContainer = styled.section`
   margin: 0 auto;
   padding-top: 20px;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1024px) {
     display: block;
+    padding-top: 10px;
   }
 `;
 

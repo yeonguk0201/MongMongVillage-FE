@@ -4,10 +4,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px 0;
+  margin: 50px 0 100px 0;
   button {
     border-radius: 5px;
-    border: none;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    padding: 80px 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 50px 0;
   }
 `;
 
@@ -26,6 +32,10 @@ export const InfoUpdateButton = styled.button`
   font-weight: bold;
   font-size: 16px;
   padding: 10px;
+  @media screen and (max-width: 767px) {
+    width: 150px;
+    font-size: 14px;
+  }
 `;
 
 export const LogoutButton = styled.button`
@@ -34,4 +44,8 @@ export const LogoutButton = styled.button`
   box-shadow: 1px 1px 1px grey;
   font-size: 14px;
   padding: 5px;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+    width: 100px;
+  }
 `;

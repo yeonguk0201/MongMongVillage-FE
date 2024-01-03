@@ -7,7 +7,7 @@ import {
   MyComment,
   Loading,
 } from '../../components';
-import { Container, NameContainer } from './styles';
+import { Container, NameContainer } from './MyactivityPage.styles';
 import { MyActivityMenus } from '../../libs/MyActivityMenuBar';
 import { MyReview } from '../../components/MyReview';
 import { useGetUserInfo } from '../../hooks/getUserInfo';

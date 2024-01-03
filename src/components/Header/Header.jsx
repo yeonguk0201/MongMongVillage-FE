@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   Container,
   Navbar,
@@ -8,7 +8,7 @@ import {
   NavitemContainer,
   MenuButton,
   Logo,
-} from './styles';
+} from './Header.styles';
 import { ROUTE } from '../../routes/Routes';
 import { showAlert } from '../../util/showAlert';
 import { getCheckTokenValid } from '../../hooks/getCheckTokenValid';
@@ -24,6 +24,7 @@ const Header = () => {
 
   const [activeHeader, setActiveHeader] = useState(location.pathname);
   const [hideSideMenu, setHideSideMenu] = useState(true);
+  const sideMenuRef = useRef(null);
 
   const handleClick = (route) => {
     setActiveHeader(route);
@@ -33,7 +34,7 @@ const Header = () => {
   };
 
   const handleLogout = useCallback(() => {
-    showAlert('Logout', '로그아웃 되었습니다.', 'success', () => {
+    showAlert('로그아웃', '로그아웃 되었습니다.', 'success', () => {
       localStorage.clear();
       navigate(ROUTE.MAIN_PAGE.link);
       window.location.reload();
@@ -43,6 +44,22 @@ const Header = () => {
   const toggleSideMenu = () => {
     setHideSideMenu(!hideSideMenu);
   };
+
+  useEffect(() => {
+    const handleClickOutSide = (e) => {
+      if (
+        !hideSideMenu &&
+        sideMenuRef.current &&
+        !sideMenuRef.current.contains(e.target)
+      )
+        setHideSideMenu(true);
+    };
+
+    document.addEventListener('mousedown', handleClickOutSide);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutSide);
+    };
+  }, [hideSideMenu, sideMenuRef]);
 
   // 토큰 검증
   useEffect(() => {
@@ -88,7 +105,10 @@ const Header = () => {
           </MenuButton>
         )}
 
-        <NavitemContainer className={!hideSideMenu ? 'side' : ''}>
+        <NavitemContainer
+          className={!hideSideMenu ? 'side' : ''}
+          ref={sideMenuRef}
+        >
           {hideSideMenu || (
             <MenuButton className="side">
               <TbMenu2 size={'30px'} onClick={toggleSideMenu} />
@@ -106,23 +126,17 @@ const Header = () => {
           <Navitem
             id="community"
             className={
-              activeHeader === ROUTE.COMMUNITY_DETAIL_PAGE.link ? 'active' : ''
+              activeHeader.includes(ROUTE.COMMUNITY_PAGE.link) ? 'active' : ''
             }
             onClick={() => {
-              handleClick(ROUTE.COMMUNITY_DETAIL_PAGE.link);
+              handleClick(ROUTE.COMMUNITY_PAGE.link);
             }}
           >
             커뮤니티
           </Navitem>
           <Navitem
             id="information"
-            className={
-              activeHeader === ROUTE.CAFE_MAP_PAGE.link ||
-              activeHeader === ROUTE.CAFE_DETAIL_PAGE.link ||
-              activeHeader === ROUTE.CAFE_LIST_PAGE.link
-                ? 'active'
-                : ''
-            }
+            className={activeHeader.includes('cafe') ? 'active' : ''}
             onClick={() => {
               handleClick(ROUTE.CAFE_MAP_PAGE.link);
             }}
@@ -142,7 +156,7 @@ const Header = () => {
           </Navitem>
           {token ? (
             <>
-              <Space style={{ width: '25%' }} />
+              <Space />
               {isAdmin && <span className="admin">관리자님, 반갑습니다.</span>}
               {!isAdmin && (
                 <Navitem
@@ -168,7 +182,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Space style={{ width: '25%' }} />
+              <Space />
               <Navitem
                 id="login"
                 className={

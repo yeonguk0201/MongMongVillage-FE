@@ -12,7 +12,7 @@ import {
   Loading,
 } from '../../components';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container } from './CommunityDetailPage.styles.js';
+import { Container } from './CommunityDetailPage.styles';
 import { ROUTE } from '../../routes/Routes.js';
 
 const CommunityDetailPage = () => {
@@ -57,18 +57,9 @@ const CommunityDetailPage = () => {
     }
   }, [boardsData, currentPage, filteredCategory]);
 
-  // id 값을 params로 넘겨줄 함수 - detail 페이지로 정보 넘겨주기
-  const handlePostClick = (id) => {
-    setSelectedPost(list.find((post) => post._id === id));
-    navigate(`${ROUTE.COMMUNITY_DETAIL_PAGE.link}/${id}`);
-    window.scrollTo(0, 0);
-  };
-
   // 페이지네이션 관련 기능 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   // 현재 페이지에 표시될 아이템들
   const totalPages = Math.ceil(totalBoards / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
   // 현재 페이지에 표시될 아이템들
   const currentPageItems = list;
   // 전체 페이지 수 계산
@@ -108,44 +99,37 @@ const CommunityDetailPage = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <Container>
-      {selectedPost && (
-        <>
-          <CommunityPost post={post} selectedPost={selectedPost} />
-          <CommunityPostLike
-            likeCount={likeCount}
-            setLikeCount={setLikeCount}
-            boardId={selectedPost?.board?._id}
-          ></CommunityPostLike>
-          <CommunityUnderContent
-            post={post}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-          ></CommunityUnderContent>
-          <CommunityComments
-            selectedPost={selectedPost}
-            post={post}
-            id={id}
-            onCommentPosted={() => setNewCommentState(true)}
-          ></CommunityComments>
-        </>
-      )}
-      <CommunityList
-        currentPageItems={currentPageItems}
-        handlePostClick={handlePostClick}
-      ></CommunityList>
+    selectedPost && (
+      <Container>
+        <CommunityPost post={post} selectedPost={selectedPost} />
+        <CommunityPostLike
+          likeCount={likeCount}
+          setLikeCount={setLikeCount}
+          boardId={selectedPost?.board?._id}
+        ></CommunityPostLike>
+        <CommunityUnderContent
+          post={post}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        ></CommunityUnderContent>
+        <CommunityComments
+          selectedPost={selectedPost}
+          post={post}
+          id={id}
+          onCommentPosted={() => setNewCommentState(true)}
+        ></CommunityComments>
 
-      <CommunityPagination
-        currentPage={currentPage}
-        goToPrevPage={goToPrevPage}
-        goToNextPage={goToNextPage}
-        currentPageItems={currentPageItems}
-        totalPages={totalPages}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        goToPage={goToPage}
-      ></CommunityPagination>
-    </Container>
+        <CommunityList currentPageItems={currentPageItems}></CommunityList>
+
+        <CommunityPagination
+          currentPage={currentPage}
+          goToPrevPage={goToPrevPage}
+          goToNextPage={goToNextPage}
+          totalPages={totalPages}
+          goToPage={goToPage}
+        ></CommunityPagination>
+      </Container>
+    )
   );
 };
 

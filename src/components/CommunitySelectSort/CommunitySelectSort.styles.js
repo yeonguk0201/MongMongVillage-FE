@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SelectSortContainer = styled.div`
   display: flex;
-  margin: 30px 20px;
+  padding: 30px;
   font-size: 16px;
 
   label {
@@ -10,11 +10,6 @@ export const SelectSortContainer = styled.div`
     margin-right: 15px;
     text-align: center;
     align-items: center;
-
-    p {
-      margin-top: 4px;
-      margin-left: 1px;
-    }
   }
 
   input[type='radio'] {
@@ -29,5 +24,10 @@ export const SelectSortContainer = styled.div`
 
   input[type='radio']:checked {
     background-color: var(--main-yellow-color);
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    padding: 20px;
   }
 `;

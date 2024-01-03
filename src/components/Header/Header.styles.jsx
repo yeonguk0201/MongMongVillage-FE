@@ -6,15 +6,16 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 95px;
+  max-width: 100vw;
+  height: 100px;
   z-index: 10;
   display: flex;
   align-items: center;
   box-shadow: 3px 3px 10px 0px lightgray;
   font-size: 18px;
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    height: 80px;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    height: 90px;
     font-size: 16px;
   }
 
@@ -26,7 +27,7 @@ export const Container = styled.div`
 
 export const Navbar = styled.div`
   max-width: 1920px;
-  width: 90vw;
+  width: 95vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,6 +35,9 @@ export const Navbar = styled.div`
   .admin {
     font-size: 14px;
     color: var(--main-yellow-color);
+  }
+  @media screen and (max-width: 767px) {
+    width: 90vw;
   }
 `;
 
@@ -52,11 +56,12 @@ export const MenuButton = styled.button`
 `;
 
 export const Logo = styled.img`
-  @media screen and (min-width: 1024px) {
-    width: 125px;
-    height: 125px;
+  cursor: pointer;
+  @media screen and (min-width: 1025px) {
+    width: 100px;
+    height: 100px;
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     width: 100px;
     height: 100px;
   }
@@ -69,24 +74,23 @@ export const Logo = styled.img`
 
 export const NavitemContainer = styled.div`
   display: flex;
-  width: 80%;
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 70%;
-  }
+  width: 85%;
+  justify-content: space-between;
 
   @media screen and (max-width: 767px) {
-    display: none;
+    display: block;
+    width: 100vw;
+    position: absolute;
+    margin: 0 auto;
+    z-index: 12;
+    top: 0;
+    right: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    background-color: var(--main-yellow-color);
+    box-shadow: 3px 3px 10px 0px lightgray;
     &.side {
-      margin: 0 auto;
-      background-color: var(--main-yellow-color);
-      box-shadow: 3px 3px 10px 0px lightgray;
-      display: block;
-      width: 100vw;
-      position: absolute;
-      z-index: 12;
-      right: 0;
-      top: 0;
+      transform: translateY(0);
     }
   }
 `;
@@ -110,9 +114,9 @@ export const Navitem = styled.nav`
     background-color: var(--main-yellow-color);
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 50%;
-    padding: 10px 0;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    padding: 10px;
+    margin: 0 5px;
   }
 
   @media screen and (max-width: 767px) {
@@ -121,4 +125,9 @@ export const Navitem = styled.nav`
   }
 `;
 
-export const Space = styled.div``;
+export const Space = styled.div`
+  width: 40%;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    width: 15%;
+  }
+`;

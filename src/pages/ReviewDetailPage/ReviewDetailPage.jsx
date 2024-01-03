@@ -17,7 +17,7 @@ import {
   Button,
   ButtonContainer,
   AnotherReviewsContainer,
-} from './styels';
+} from './ReviewDetailPage.styels';
 import { useGetReview } from '../../hooks/getReview';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ReviewItem, Loading } from '../../components';

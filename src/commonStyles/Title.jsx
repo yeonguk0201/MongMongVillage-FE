@@ -11,9 +11,11 @@ export const Title = styled.h2`
   );
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     font-size: ${(props) => (props.fontSize ? props.fontSize : '26px')};
+    margin: 30px auto;
   }
 
   @media screen and (max-width: 767px) {
     font-size: ${(props) => (props.fontSize ? props.fontSize : '20px')};
+    margin: 20px auto;
   }
 `;
