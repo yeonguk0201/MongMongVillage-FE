@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding-top: 110px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto 250px auto;
-  width: 80%;
+  margin: 50px auto 200px auto;
+  width: 90%;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    padding: 80px 0;
+  }
 
   @media screen and (max-width: 767px) {
-    margin: 30px auto 100px auto;
     padding: 50px 0;
   }
 `;
