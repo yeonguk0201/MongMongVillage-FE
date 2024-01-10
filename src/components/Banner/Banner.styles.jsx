@@ -129,7 +129,6 @@ export const ButtonContainer = styled.div`
     /* 버튼에 hover시 캐릭터 이미지 나타내기 */
     &:hover {
       ${BtnImg} {
-        background-color: aliceblue;
         left: 370px;
         bottom: -10px;
         transition: 0.5s;
