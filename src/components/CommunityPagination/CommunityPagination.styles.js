@@ -8,7 +8,7 @@ export const Container = styled.div`
 
 export const PageButton = styled.button`
   font-size: 20px;
-  border-radius: 50%;
+  border-radius: 70%;
   width: 30px;
   height: 30px;
   margin: 0 5px;

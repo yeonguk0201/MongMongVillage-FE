@@ -26,7 +26,7 @@ export const MiddleContainer = styled.div`
 `;
 
 export const Title = styled.span`
-  font-size: 18px;
+  font-size: 16px;
   align-items: center;
   width: 80%;
   @media screen and (max-width: 767px) {
@@ -62,7 +62,7 @@ export const Content = styled.div`
   white-space: normal;
 
   max-height: 2.4em;
-  line-height: 1.2em;
+  line-height: 1.3em;
 
   @media screen and (min-width: 1024px) {
     font-size: 18px;

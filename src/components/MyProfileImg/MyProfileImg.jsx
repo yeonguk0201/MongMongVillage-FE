@@ -5,7 +5,7 @@ const MyProfileImg = ({ imgSrc }) => {
     <>
       <ProfileImgContainer>
         <ProfileImgItem
-          src={imgSrc ?? `${process.env.PUBLIC_URL}/imges/user.png`}
+          src={imgSrc ?? `${process.env.PUBLIC_URL}/imges/user.webp`}
         />
       </ProfileImgContainer>
     </>

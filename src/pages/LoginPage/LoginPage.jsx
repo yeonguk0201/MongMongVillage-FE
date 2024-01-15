@@ -40,7 +40,7 @@ const LoginPage = () => {
 
   return (
     <Container>
-      <Img src={`${process.env.PUBLIC_URL}/logo.png`} />
+      <Img src={`${process.env.PUBLIC_URL}/logo.webp`} />
       <Title>로그인</Title>
 
       <AuthInputContainer>

@@ -16,7 +16,7 @@ export const Button = styled.button`
   width: 30px;
   height: 30px;
   background-color: transparent;
-  border-radius: 50%;
+  border-radius: 70%;
   font-size: 20px;
   color: black;
   text-align: center;

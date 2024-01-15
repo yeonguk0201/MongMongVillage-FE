@@ -46,7 +46,7 @@ const CommentItem = ({ item, postId }) => {
             alt="user_img"
             src={
               item?.user_id?.profilePicture ??
-              `${process.env.PUBLIC_URL}/imges/user.png`
+              `${process.env.PUBLIC_URL}/imges/user.webp`
             }
           />
           <span className="user">{item?.user_id?.nickname}</span>

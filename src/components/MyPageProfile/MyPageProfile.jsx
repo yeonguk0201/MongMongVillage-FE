@@ -38,12 +38,15 @@ const MyPageProfile = ({ edit }) => {
   });
 
   const userId = localStorage.getItem('userId');
+
   const { isLoading, data: userData } = useGetUserInfo(userId);
+
   const [preview, setPreview] = useState(myInfo.profilePicture);
   const [nicknameInputStatus, setNickNameInputStatus] = useState(
     InputStatus.DEFAULT,
   );
 
+  /* 로그인 여부 확인 */
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {

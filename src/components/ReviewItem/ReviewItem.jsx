@@ -54,7 +54,7 @@ const ReviewItem = ({ id }) => {
                 <img
                   src={
                     review?.user_id?.profilePicture ??
-                    `${`${process.env.PUBLIC_URL}/imges/user.png`}`
+                    `${`${process.env.PUBLIC_URL}/imges/user.webp`}`
                   }
                   alt="user_img"
                 />

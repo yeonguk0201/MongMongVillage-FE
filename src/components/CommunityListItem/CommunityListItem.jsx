@@ -58,7 +58,7 @@ const CommunityListItem = ({ item }) => {
           <img
             src={
               item?.user_id?.profilePicture ??
-              `${process.env.PUBLIC_URL}/imges/user.png`
+              `${process.env.PUBLIC_URL}/imges/user.webp`
             }
             style={{ objectFit: 'cover' }}
             alt="UserImg"
