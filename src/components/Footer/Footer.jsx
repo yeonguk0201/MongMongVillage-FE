@@ -83,24 +83,24 @@ const Footer = () => {
         <SnsContainer>
           <FaInstagram
             onClick={() => {
-              navigate('https://www.instagram.com/mongmongvillage');
+              window.open('https://www.instagram.com/mongmongvillage');
             }}
           />
           <FaGithub
             onClick={() => {
-              navigate(
+              window.open(
                 'https://github.com/elice-final-team6/MongMongVillage-FE',
               );
             }}
           />
           <FaXTwitter
             onClick={() => {
-              navigate('https://twitter.com/meongmeong13573');
+              window.open('https://twitter.com/meongmeong13573');
             }}
           />
           <FaBlogger
             onClick={() => {
-              navigate('https://velog.io/@mongmongv6');
+              window.open('https://velog.io/@mongmongv6');
             }}
           />
         </SnsContainer>
