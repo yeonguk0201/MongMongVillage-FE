@@ -13,6 +13,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: 767px) {
     max-width: 80vw;
+    margin: 50px auto;
     padding: 15px 10px;
     border: 1px solid var(--main-yellow-color);
     border-radius: 20px;
