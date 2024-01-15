@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 80vw;
+  width: 100vw;
   @keyframes fadeInOut {
     0%,
     100% {
@@ -28,6 +28,16 @@ export const Container = styled.div`
     animation: fadeInOut 2s infinite;
     margin: 2%;
     fill: var(--main-yellow-color);
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      width: 45px;
+      height: 45px;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .paw:nth-child(2) {
