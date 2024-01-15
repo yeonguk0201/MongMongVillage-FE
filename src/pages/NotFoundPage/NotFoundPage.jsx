@@ -8,7 +8,7 @@ const NotFoundPage = () => {
   return (
     <Container>
       <img
-        src={`${process.env.PUBLIC_URL}/imges/notfound.png`}
+        src={`${process.env.PUBLIC_URL}/imges/notfound.webp`}
         alt="notfound"
       />
       <h1>페이지를 찾을 수 없습니다.</h1>
