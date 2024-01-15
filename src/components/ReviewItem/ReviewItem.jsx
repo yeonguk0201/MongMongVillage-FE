@@ -30,11 +30,9 @@ const ReviewItem = ({ id }) => {
     });
   };
 
-  const { data: review, isLoading } = useGetReview(id);
+  const { data: review } = useGetReview(id);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  return (
     review && (
       <Container>
         <CafeName
