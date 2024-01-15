@@ -74,7 +74,6 @@ export const BestWriter = styled.div`
     overflow: hidden;
     width: 25px;
     height: 25px;
-    padding-right: 7px;
   }
 
   @media screen and (max-width: 767px) {

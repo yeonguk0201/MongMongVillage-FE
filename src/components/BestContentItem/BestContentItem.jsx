@@ -25,7 +25,7 @@ const BestContentItem = ({ item }) => {
       }}
     >
       <BestImg
-        src={item?.images?.length > 0 ? item?.images[0] : '/imges/default.png'}
+        src={item?.images?.length > 0 ? item?.images[0] : '/imges/default.webp'}
         alt={`bestImg`}
       />
 
@@ -34,7 +34,7 @@ const BestContentItem = ({ item }) => {
         <BestWriter>
           <img
             alt="userImg"
-            src={userData?.profilePicture ?? '/imges/user.png'}
+            src={userData?.profilePicture ?? '/imges/user.webp'}
           />
           <span>{item?.user_id?.nickname}</span>
         </BestWriter>
