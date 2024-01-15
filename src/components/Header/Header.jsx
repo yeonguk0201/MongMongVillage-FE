@@ -93,7 +93,7 @@ const Header = () => {
     <Container>
       <Navbar>
         <Logo
-          src={`${process.env.PUBLIC_URL}/logo.png`}
+          src={`${process.env.PUBLIC_URL}/logo.webp`}
           onClick={() => {
             handleClick(ROUTE.MAIN_PAGE.link);
           }}
