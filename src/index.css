@@ -217,8 +217,11 @@ body {
     width: 100vw;
   }
   .swal2-modal {
-    width: 90vw;
-    height: 230px;
+    width: 95vw !important;
+    height: 250px;
+  }
+  .swal2-modal-height {
+    height: 500px !important;
   }
   .swal2-icon {
     padding: 0 !important;
@@ -226,7 +229,7 @@ body {
     scale: 0.6;
   }
   .swal2-title {
-    font-size: 22px;
+    font-size: 20px;
     margin: 5px auto !important;
   }
   .swal2-html-container {
