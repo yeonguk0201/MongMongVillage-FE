@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   width: 99vw;
-  padding-top: 30px;
+  padding-top: 20px;
   justify-content: center;
   align-items: center;
   background-color: white;
@@ -27,11 +27,11 @@ export const BannerImg = styled.img`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1024px) {
-    width: 80vw;
+    width: 85vw;
   }
 
   @media screen and (max-width: 767px) {
-    width: 85vw;
+    width: 90vw;
     border-radius: 25px;
   }
 `;

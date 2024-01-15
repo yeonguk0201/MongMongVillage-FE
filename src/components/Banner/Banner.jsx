@@ -35,7 +35,7 @@ const Banner = () => {
     <Container>
       <Slider {...settings}>
         <BannerBox>
-          <BannerImg src="/banner.png" />
+          <BannerImg src="/banner.webp" />
           <ButtonContainer>
             <PopolarCafeBtn
               onClick={() => window.scrollTo({ top: 850, behavior: 'smooth' })}
@@ -47,7 +47,7 @@ const Banner = () => {
           </ButtonContainer>
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner2.png" />
+          <BannerImg src="/banner2.webp" />
           <ButtonContainer>
             <SearchCafeButton
               onClick={() => navigate(ROUTE.CAFE_MAP_PAGE.link)}
@@ -58,16 +58,16 @@ const Banner = () => {
           </ButtonContainer>
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner3.png" />
+          <BannerImg src="/banner3.webp" />
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner4.png" />
+          <BannerImg src="/banner4.webp" />
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner5.png" />
+          <BannerImg src="/banner5.webp" />
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner6.png" />
+          <BannerImg src="/banner6.webp" />
         </BannerBox>
       </Slider>
     </Container>
