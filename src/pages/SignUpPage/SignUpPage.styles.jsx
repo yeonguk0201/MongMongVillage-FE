@@ -16,6 +16,11 @@ export const Container = styled.div`
     padding: 15px 10px;
     border: 1px solid var(--main-yellow-color);
     border-radius: 20px;
+
+    .swal2-modal {
+      width: 95vw;
+      height: 500px;
+    }
   }
 `;
 

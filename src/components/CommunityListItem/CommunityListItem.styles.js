@@ -29,6 +29,8 @@ export const Title = styled.span`
   font-size: 16px;
   align-items: center;
   width: 80%;
+  line-height: 16px;
+
   @media screen and (max-width: 767px) {
     font-size: 16px;
   }
@@ -71,6 +73,7 @@ export const Content = styled.div`
     font-size: 16px;
   }
   @media screen and (max-width: 767px) {
+    margin: 20px 20px 0 0;
     font-size: 14px;
   }
 `;
