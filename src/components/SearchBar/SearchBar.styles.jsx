@@ -14,6 +14,7 @@ export const StyledForm = styled.form`
   text-align: center;
   width: 60%;
   height: 50px;
+  margin-top: 20px;
   border: 3px solid var(--main-yellow-color);
   border-radius: 50px;
   overflow: hidden;
@@ -31,8 +32,9 @@ export const StyledForm = styled.form`
 
   @media screen and (max-width: 767px) {
     width: 90%;
-    height: 40px;
+    height: 30px;
     border-radius: 25px;
+    border: 2px solid var(--main-yellow-color);
   }
 `;
 
