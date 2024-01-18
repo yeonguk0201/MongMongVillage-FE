@@ -39,7 +39,7 @@ const SearchBar = () => {
           onChange={handleChange}
           required
         />
-        <SearchButton>
+        <SearchButton aria-label="Search">
           <div>
             <FaSearch size={'20px'} />
           </div>
