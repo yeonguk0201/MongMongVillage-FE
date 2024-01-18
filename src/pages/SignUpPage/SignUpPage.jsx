@@ -43,8 +43,8 @@ const SignUpPage = () => {
     checkboxInputStatus: InputStatus.DEFAULT,
   });
 
-  const [hidePassword, setHidePassword] = useState(true);
-  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
+  const [hidePassword, setHidePassword] = useState(true); // 비밀번호 보이기 유무
+  const [hideConfirmPassword, setHideConfirmPassword] = useState(true); // 비밀번호 확인 보이기 유무
 
   const { mutate } = usePostSignUp(
     signUpInfo.email,
@@ -52,6 +52,7 @@ const SignUpPage = () => {
     signUpInfo.nickName,
   );
 
+  // 회원가입 기준에 맞을 때 회원가입 진행
   const submitSignUp = () => {
     if (signUpStatus.emailInputStatus !== InputStatus.SUCCESS) {
       showAlert('', '이메일을 다시 확인해주세요.', 'error', () => {});
@@ -106,6 +107,7 @@ const SignUpPage = () => {
     }
   };
 
+  // 입력된 이메일 값이 변경될 떄마다 이메일 상태 확인
   useEffect(() => {
     setSignUpStatus({
       ...signUpStatus,
@@ -117,6 +119,7 @@ const SignUpPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signUpInfo.email]);
 
+  // 입력된 닉네임 값이 변경될 떄마다 닉네임 상태 확인
   useEffect(() => {
     setSignUpStatus({
       ...signUpStatus,
@@ -128,6 +131,7 @@ const SignUpPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signUpInfo.nickName]);
 
+  // 입력된 비밀번호 값이 변경될 떄마다 비밀번호 상태 확인
   useEffect(() => {
     setSignUpStatus({
       ...signUpStatus,
@@ -136,6 +140,7 @@ const SignUpPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signUpInfo.password]);
 
+  // 입력된 비밀번호 확인 값이 변경될 떄마다 비밀번호 확인 상태 확인
   useEffect(() => {
     setSignUpStatus({
       ...signUpStatus,
@@ -149,7 +154,7 @@ const SignUpPage = () => {
 
   return (
     <Container>
-      <Img src={`${process.env.PUBLIC_URL}/logo.webp`} />
+      <Img src={`${process.env.PUBLIC_URL}/logo.webp`} alt="logo" />
       <Title>회원가입</Title>
       <InputContainer>
         <AuthInputContainer border="none">

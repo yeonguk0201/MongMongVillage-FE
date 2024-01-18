@@ -93,6 +93,7 @@ const Header = () => {
     <Container>
       <Navbar>
         <Logo
+          alt="logo"
           src={`${process.env.PUBLIC_URL}/logo.webp`}
           onClick={() => {
             handleClick(ROUTE.MAIN_PAGE.link);
