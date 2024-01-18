@@ -54,7 +54,7 @@ const ReviewListPage = () => {
           <ReviewListContainer>
             <ReviewListSort handleSorting={handleSorting} />
             {list &&
-              list.map((item) => <ReviewItem key={item._id} id={item._id} />)}
+              list.map((item) => <ReviewItem key={item._id} review={item} />)}
           </ReviewListContainer>
           <ReviewPagintaion
             currentPage={parseInt(page)}

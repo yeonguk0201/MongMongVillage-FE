@@ -17,63 +17,70 @@ import { ROUTE } from '../../routes/Routes';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { useGetReview } from '../../hooks/getReview';
 import { getRelativeTime } from '../../libs/getRelativeTime';
-import { Loading } from '../Loading';
 
-const ReviewItem = ({ id }) => {
+const ReviewItem = ({ review }) => {
+  const { _id, cafe_id, content, createdAt, images, rating, title } = review;
+
   const navigate = useNavigate();
 
-  const linkToDetailPage = () => {
-    navigate(ROUTE.REVIEW_DETAIL_PAGE.link + `/${id}`);
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   };
 
-  const { data: review } = useGetReview(id);
+  const linkToDetailPage = () => {
+    navigate(ROUTE.REVIEW_DETAIL_PAGE.link + `/${_id}`);
+    scrollToTop();
+  };
+
+  const linkToCafeDetailPage = (cafeId) => {
+    navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${cafeId}`);
+    scrollToTop();
+  };
+
+  const { data: reviewData } = useGetReview(_id);
 
   return (
     <Container>
       <CafeName
         onClick={() =>
-          navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${review?.cafe_id?._id}`)
+          linkToCafeDetailPage(cafe_id?._id ?? reviewData.cafe_id._id)
         }
       >
         <FaMapMarkerAlt size={'18px'} />
-        {review?.cafe_id?.name}
+        {cafe_id?.name ?? reviewData?.cafe_id?.name}
       </CafeName>
       <MainContainer onClick={linkToDetailPage}>
         <RightContainer>
-          <ReviewTitle>{review?.title}</ReviewTitle>
-          <Content>{review?.content?.replace(/<br>/g, '\n')}</Content>
+          <ReviewTitle>{title}</ReviewTitle>
+          <Content>{content?.replace(/<br>/g, '\n')}</Content>
           <BottomContainer>
             <Writer>
               <img
                 src={
-                  review?.user_id?.profilePicture ??
+                  reviewData?.user_id?.profilePicture ??
                   `${`${process.env.PUBLIC_URL}/imges/user.webp`}`
                 }
                 alt="user_img"
               />
-
-              <span>{review?.user_id?.nickname ?? ''}</span>
+              <span>{reviewData?.user_id?.nickname ?? ''}</span>
             </Writer>
-            <ReviewDate>{getRelativeTime(review?.createdAt)}</ReviewDate>
+            <ReviewDate>
+              {reviewData &&
+                getRelativeTime(createdAt ?? reviewData?.createdAt)}
+            </ReviewDate>
             <StarRating>
               <span className="ratingStar">
-                {'★'.repeat(review?.rating) + '☆'.repeat(5 - review?.rating)}
+                {'★'.repeat(rating) + '☆'.repeat(5 - rating)}
               </span>
-              <span className="ratingValue">{`(${review.rating})`}</span>
+              <span className="ratingValue">{`(${rating})`}</span>
             </StarRating>
           </BottomContainer>
         </RightContainer>
         <PreviewImgContainer>
-          {review?.images?.length > 0 &&
-            review.images
-              .slice(0, 3)
-              .map((img, idx) => (
-                <PreviewImg src={img} key={review?._id + 'img' + idx} />
-              ))}
+          {images?.length > 0 && <PreviewImg src={images[0]} />}
         </PreviewImgContainer>
       </MainContainer>
     </Container>

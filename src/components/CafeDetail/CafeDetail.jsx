@@ -105,7 +105,7 @@ const CafeDetail = () => {
               {cafeDetailInfo?.reviews.length > 0 ? (
                 <div className="reviewContainer">
                   {cafeDetailInfo.reviews.map((review) => (
-                    <ReviewItem key={review._id} id={review._id} />
+                    <ReviewItem key={review._id} review={review} />
                   ))}
                 </div>
               ) : (

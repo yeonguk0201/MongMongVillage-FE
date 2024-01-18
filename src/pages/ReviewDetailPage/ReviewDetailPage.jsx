@@ -36,7 +36,9 @@ const ReviewDetailPage = () => {
   const { id } = useParams();
 
   const { isLoading: reviewLoading, data: review } = useGetReview(id); // 리뷰 상세 불러오기
+
   const { data: cafe } = useGetCafe(review?.cafe_id?._id); // 카페 상세 불러오기
+
   const { mutate } = useDeleteReview(id); // 리뷰 삭제
 
   const deleteReview = () => {
@@ -113,7 +115,7 @@ const ReviewDetailPage = () => {
           <Title>"{review?.cafe_id?.name}"의 리뷰 리스트</Title>
           {cafe &&
             cafe?.reviews.map((item) => (
-              <ReviewItem id={item._id} key={item._id} />
+              <ReviewItem review={item} key={item._id} />
             ))}
         </AnotherReviewsContainer>
       </ReviewDetailContainer>
