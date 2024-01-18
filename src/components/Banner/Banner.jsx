@@ -35,7 +35,7 @@ const Banner = () => {
     <Container>
       <Slider {...settings}>
         <BannerBox>
-          <BannerImg src="/banner.webp" />
+          <BannerImg src="/banner.webp" alt="banner1" />
           <ButtonContainer>
             <PopolarCafeBtn
               onClick={() => window.scrollTo({ top: 850, behavior: 'smooth' })}
@@ -43,11 +43,11 @@ const Banner = () => {
               인기 애견카페 확인!
               <HiCursorClick />
             </PopolarCafeBtn>
-            <BtnImg src="/imges/btnlogo.png" alt="사진"></BtnImg>
+            <BtnImg src="/imges/btnlogo.webp" alt="goToPopularCafe"></BtnImg>
           </ButtonContainer>
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner2.webp" />
+          <BannerImg src="/banner2.webp" alt="banner2" />
           <ButtonContainer>
             <SearchCafeButton
               onClick={() => navigate(ROUTE.CAFE_MAP_PAGE.link)}
@@ -58,16 +58,16 @@ const Banner = () => {
           </ButtonContainer>
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner3.webp" />
+          <BannerImg src="/banner3.webp" alt="banner3" />
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner4.webp" />
+          <BannerImg src="/banner4.webp" alt="banner4" />
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner5.webp" />
+          <BannerImg src="/banner5.webp" alt="banner5" />
         </BannerBox>
         <BannerBox>
-          <BannerImg src="/banner6.webp" />
+          <BannerImg src="/banner6.webp" alt="banner6" />
         </BannerBox>
       </Slider>
     </Container>
