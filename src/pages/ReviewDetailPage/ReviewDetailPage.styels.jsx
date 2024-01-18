@@ -30,7 +30,7 @@ export const ReviewMainSection = styled.div`
   white-space: pre-wrap;
 `;
 
-export const TitleStarRaiting = styled.div`
+export const TitleStarRating = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px 0;
@@ -39,7 +39,7 @@ export const TitleStarRaiting = styled.div`
   }
 `;
 
-export const StarRaiting = styled.div`
+export const StarRating = styled.div`
   align-items: center;
   display: flex;
 
@@ -98,7 +98,7 @@ export const Username = styled.p`
 export const ReviewDate = styled.p`
   font-weight: 400;
   font-size: 13px;
-  color: #868688;
+  color: #191919;
   padding-left: 30px;
   @media screen and (max-width: 767px) {
     font-size: 10px;

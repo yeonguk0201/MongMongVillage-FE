@@ -44,7 +44,7 @@ export const ReviewTitle = styled.p`
 
 export const CafeName = styled.p`
   font-weight: bold;
-  color: gray;
+  color: #191919;
   cursor: pointer;
   display: flex;
   padding: 5px 0;

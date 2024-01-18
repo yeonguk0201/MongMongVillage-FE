@@ -3,8 +3,8 @@ import {
   ReviewTitleContainer,
   ReviewMainSection,
   ReviewTitle,
-  TitleStarRaiting,
-  StarRaiting,
+  TitleStarRating,
+  StarRating,
   ProfileContainer,
   ProfileImg,
   Username,
@@ -62,9 +62,9 @@ const ReviewDetailPage = () => {
     review && (
       <ReviewDetailContainer>
         <ReviewTitleContainer>
-          <TitleStarRaiting>
+          <TitleStarRating>
             <ReviewTitle>{review.title}</ReviewTitle>
-            <StarRaiting>
+            <StarRating>
               <span>
                 {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
               </span>
@@ -72,14 +72,15 @@ const ReviewDetailPage = () => {
               <ReviewDate>
                 {new Date(review.createdAt).toLocaleString()} 작성
               </ReviewDate>
-            </StarRaiting>
-          </TitleStarRaiting>
+            </StarRating>
+          </TitleStarRating>
           <ProfileContainer>
             <ProfileImg
               src={
                 review?.user_id?.profilePicture ??
                 `${`${process.env.PUBLIC_URL}/imges/user.webp`}`
               }
+              alt="user-img"
             ></ProfileImg>
             <Username>{review?.user_id?.nickname ?? ''}</Username>
           </ProfileContainer>
