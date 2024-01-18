@@ -44,8 +44,8 @@ const ReviewItem = ({ id }) => {
       </CafeName>
       <MainContainer onClick={linkToDetailPage}>
         <RightContainer>
-          <ReviewTitle>{review.title}</ReviewTitle>
-          <Content>{review.content.replace(/<br>/g, '\n')}</Content>
+          <ReviewTitle>{review?.title}</ReviewTitle>
+          <Content>{review?.content?.replace(/<br>/g, '\n')}</Content>
           <BottomContainer>
             <Writer>
               <img
@@ -61,18 +61,18 @@ const ReviewItem = ({ id }) => {
             <ReviewDate>{getRelativeTime(review?.createdAt)}</ReviewDate>
             <StarRating>
               <span className="ratingStar">
-                {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
+                {'★'.repeat(review?.rating) + '☆'.repeat(5 - review?.rating)}
               </span>
               <span className="ratingValue">{`(${review.rating})`}</span>
             </StarRating>
           </BottomContainer>
         </RightContainer>
         <PreviewImgContainer>
-          {review.images.length > 0 &&
+          {review?.images?.length > 0 &&
             review.images
               .slice(0, 3)
               .map((img, idx) => (
-                <PreviewImg src={img} key={review._id + 'img' + idx} />
+                <PreviewImg src={img} key={review?._id + 'img' + idx} />
               ))}
         </PreviewImgContainer>
       </MainContainer>
