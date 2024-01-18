@@ -65,7 +65,7 @@ export const BestWriter = styled.div`
   display: flex;
   align-items: center;
   padding-top: 8px;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
   padding-right: 20px;
 
@@ -77,7 +77,7 @@ export const BestWriter = styled.div`
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 14px;
+    font-size: 12px;
     img {
       width: 15px;
       height: 15px;

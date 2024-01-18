@@ -33,52 +33,50 @@ const ReviewItem = ({ id }) => {
   const { data: review } = useGetReview(id);
 
   return (
-    review && (
-      <Container>
-        <CafeName
-          onClick={() =>
-            navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${review?.cafe_id?._id}`)
-          }
-        >
-          <FaMapMarkerAlt size={'18px'} />
-          {review?.cafe_id?.name}
-        </CafeName>
-        <MainContainer onClick={linkToDetailPage}>
-          <RightContainer>
-            <ReviewTitle>{review.title}</ReviewTitle>
-            <Content>{review.content.replace(/<br>/g, '\n')}</Content>
-            <BottomContainer>
-              <Writer>
-                <img
-                  src={
-                    review?.user_id?.profilePicture ??
-                    `${`${process.env.PUBLIC_URL}/imges/user.webp`}`
-                  }
-                  alt="user_img"
-                />
+    <Container>
+      <CafeName
+        onClick={() =>
+          navigate(`${ROUTE.CAFE_DETAIL_PAGE.link}/${review?.cafe_id?._id}`)
+        }
+      >
+        <FaMapMarkerAlt size={'18px'} />
+        {review?.cafe_id?.name}
+      </CafeName>
+      <MainContainer onClick={linkToDetailPage}>
+        <RightContainer>
+          <ReviewTitle>{review.title}</ReviewTitle>
+          <Content>{review.content.replace(/<br>/g, '\n')}</Content>
+          <BottomContainer>
+            <Writer>
+              <img
+                src={
+                  review?.user_id?.profilePicture ??
+                  `${`${process.env.PUBLIC_URL}/imges/user.webp`}`
+                }
+                alt="user_img"
+              />
 
-                <span>{review?.user_id?.nickname ?? ''}</span>
-              </Writer>
-              <ReviewDate>{getRelativeTime(review?.createdAt)}</ReviewDate>
-              <StarRating>
-                <span className="ratingStar">
-                  {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
-                </span>
-                <span className="ratingValue">{`(${review.rating})`}</span>
-              </StarRating>
-            </BottomContainer>
-          </RightContainer>
-          <PreviewImgContainer>
-            {review.images.length > 0 &&
-              review.images
-                .slice(0, 3)
-                .map((img, idx) => (
-                  <PreviewImg src={img} key={review._id + 'img' + idx} />
-                ))}
-          </PreviewImgContainer>
-        </MainContainer>
-      </Container>
-    )
+              <span>{review?.user_id?.nickname ?? ''}</span>
+            </Writer>
+            <ReviewDate>{getRelativeTime(review?.createdAt)}</ReviewDate>
+            <StarRating>
+              <span className="ratingStar">
+                {'★'.repeat(review.rating) + '☆'.repeat(5 - review.rating)}
+              </span>
+              <span className="ratingValue">{`(${review.rating})`}</span>
+            </StarRating>
+          </BottomContainer>
+        </RightContainer>
+        <PreviewImgContainer>
+          {review.images.length > 0 &&
+            review.images
+              .slice(0, 3)
+              .map((img, idx) => (
+                <PreviewImg src={img} key={review._id + 'img' + idx} />
+              ))}
+        </PreviewImgContainer>
+      </MainContainer>
+    </Container>
   );
 };
 
