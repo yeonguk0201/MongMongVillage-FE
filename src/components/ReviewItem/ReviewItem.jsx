@@ -59,6 +59,7 @@ const ReviewItem = ({ review }) => {
           <BottomContainer>
             <Writer>
               <img
+                loading="lazy"
                 src={
                   reviewData?.user_id?.profilePicture ??
                   `${`${process.env.PUBLIC_URL}/imges/user.webp`}`
@@ -80,7 +81,9 @@ const ReviewItem = ({ review }) => {
           </BottomContainer>
         </RightContainer>
         <PreviewImgContainer>
-          {images?.length > 0 && <PreviewImg src={images[0]} />}
+          {images?.length > 0 && (
+            <PreviewImg loading="lazy" src={images[0]} alt="review-img" />
+          )}
         </PreviewImgContainer>
       </MainContainer>
     </Container>

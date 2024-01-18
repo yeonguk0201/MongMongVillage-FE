@@ -78,7 +78,7 @@ const ReviewDetailPage = () => {
             <ProfileImg
               src={
                 review?.user_id?.profilePicture ??
-                `${`${process.env.PUBLIC_URL}/imges/user.png`}`
+                `${`${process.env.PUBLIC_URL}/imges/user.webp`}`
               }
             ></ProfileImg>
             <Username>{review?.user_id?.nickname ?? ''}</Username>
@@ -94,7 +94,7 @@ const ReviewDetailPage = () => {
           <ReviewImgContainer>
             {review.images.length > 0 &&
               review.images.map((item) => (
-                <ReviewImg src={item} alt="" key={item} />
+                <ReviewImg src={item} alt="review-img" key={item} />
               ))}
           </ReviewImgContainer>
           <MainText>{review.content.replace(/<br>/g, '\n')}</MainText>

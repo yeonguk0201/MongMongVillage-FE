@@ -125,7 +125,7 @@ export const Writer = styled.div`
 
 export const DateText = styled.span`
   font-size: 12px;
-  color: gray;
+  color: #191919;
 `;
 
 export const BottomContainer = styled.div`

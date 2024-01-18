@@ -165,7 +165,7 @@ export const Writer = styled.div`
 export const ReviewDate = styled.p`
   font-weight: 400;
   font-size: 13px;
-  color: #868688;
+  color: #191919;
 `;
 
 export const StarRating = styled.div`
