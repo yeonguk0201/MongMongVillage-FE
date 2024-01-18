@@ -25,6 +25,7 @@ const BestContentItem = ({ item }) => {
       }}
     >
       <BestImg
+        loading="lazy"
         src={item?.images?.length > 0 ? item?.images[0] : '/imges/default.webp'}
         alt={`bestImg`}
       />
@@ -33,6 +34,7 @@ const BestContentItem = ({ item }) => {
         <BestTitle>{item.title}</BestTitle>
         <BestWriter>
           <img
+            loading="lazy"
             alt="userImg"
             src={userData?.profilePicture ?? '/imges/user.webp'}
           />

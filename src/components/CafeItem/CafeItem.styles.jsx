@@ -90,7 +90,7 @@ export const Info = styled.div`
   display: flex;
   span {
     width: 90%;
-    color: gray;
+    color: #191919;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;

@@ -23,6 +23,7 @@ const PopularCafeItem = (cafe) => {
       }}
     >
       <DogCafeListItemImg
+        loading="lazy"
         src={image?.length > 0 ? image : '/imges/default.png'}
         alt={`cafe`}
       />
