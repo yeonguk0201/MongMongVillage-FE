@@ -15,20 +15,23 @@ export const ButtonContainer = styled.div`
   margin: 0 auto;
   justify-content: center;
   align-items: center;
+
   span {
     margin: 5px 0;
   }
+
   @media screen and (min-width: 1025px) {
-    font-size: 16px;
+    font-size: 20px;
     padding: 50px 0;
   }
+
   @media screen and (min-width: 768px) and (max-width: 1024px) {
-    font-size: 14px;
+    font-size: 18px;
     padding: 30px 0;
   }
 
   @media screen and (max-width: 767px) {
-    font-size: 12px;
+    font-size: 14px;
     padding: 20px 0;
   }
 `;
@@ -41,8 +44,9 @@ export const MoreCafeButton = styled.button`
   border-radius: 20px;
 
   @media screen and (min-width: 1025px) {
-    width: 20%;
+    width: 25%;
     font-size: 24px;
+    padding: 5px 0;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -52,6 +56,6 @@ export const MoreCafeButton = styled.button`
 
   @media screen and (max-width: 767px) {
     font-size: 16px;
-    width: 50%;
+    width: 60%;
   }
 `;
