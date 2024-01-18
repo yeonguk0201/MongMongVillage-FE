@@ -13,7 +13,6 @@ const getCafe = async (id) => {
 
 export function useGetCafe(id) {
   return useQuery(['getCafe' + id], () => getCafe(id), {
-    retry: false,
     onError: (error) => {
       showAlert('', '카페 데이터를 불러올 수 없습니다.', 'error', () => {
         window.history.back();
