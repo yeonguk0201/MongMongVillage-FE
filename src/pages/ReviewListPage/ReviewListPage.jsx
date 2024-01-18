@@ -44,21 +44,25 @@ const ReviewListPage = () => {
     window.scroll({ top: 0, behavior: 'smooth' });
   };
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  return (
     <Container>
       <Title>리뷰 모아보기</Title>
-      <ReviewListContainer>
-        <ReviewListSort handleSorting={handleSorting} />
-        {list &&
-          list.map((item) => <ReviewItem key={item._id} id={item._id} />)}
-      </ReviewListContainer>
-      <ReviewPagintaion
-        currentPage={parseInt(page)}
-        navigatePage={navigatePage}
-        totalNum={reviews?.totalReviews}
-      />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <ReviewListContainer>
+            <ReviewListSort handleSorting={handleSorting} />
+            {list &&
+              list.map((item) => <ReviewItem key={item._id} id={item._id} />)}
+          </ReviewListContainer>
+          <ReviewPagintaion
+            currentPage={parseInt(page)}
+            navigatePage={navigatePage}
+            totalNum={reviews?.totalReviews}
+          />
+        </>
+      )}
     </Container>
   );
 };

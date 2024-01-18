@@ -154,42 +154,46 @@ const CommunityPage = () => {
   // 현재 페이지에 표시될 아이템들
   const currentPageItems = list;
 
-  return boardLoading || searchLoading ? (
-    <Loading />
-  ) : (
+  return (
     <Container>
       <Title>커뮤니티</Title>
-      <CommunityNav
-        category={category}
-        handleNavClick={handleNavClick}
-      ></CommunityNav>
+      {boardLoading || searchLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <CommunityNav
+            category={category}
+            handleNavClick={handleNavClick}
+          ></CommunityNav>
 
-      <CommunitySelectSort
-        sortOption={sort}
-        handleSortChange={handleSortChange}
-      ></CommunitySelectSort>
+          <CommunitySelectSort
+            sortOption={sort}
+            handleSortChange={handleSortChange}
+          ></CommunitySelectSort>
 
-      {searchWord && searchTotal !== undefined && (
-        <p className="SearchResult">
-          '<span>{searchWord}</span>' 검색 결과 <span>{searchTotal}</span>개의
-          게시글이 있습니다.
-        </p>
+          {searchWord && searchTotal !== undefined && (
+            <p className="SearchResult">
+              '<span>{searchWord}</span>' 검색 결과 <span>{searchTotal}</span>
+              개의 게시글이 있습니다.
+            </p>
+          )}
+
+          <CommunityList currentPageItems={currentPageItems}></CommunityList>
+
+          <CommunitySearchAndPost
+            handleSearchInputChange={handleSearchInputChange}
+            handleNewPostClick={handleNewPostClick}
+          ></CommunitySearchAndPost>
+
+          <CommunityPagination
+            currentPage={page}
+            goToPrevPage={goToPrevPage}
+            goToNextPage={goToNextPage}
+            totalPages={totalPages}
+            goToPage={goToPage}
+          ></CommunityPagination>
+        </>
       )}
-
-      <CommunityList currentPageItems={currentPageItems}></CommunityList>
-
-      <CommunitySearchAndPost
-        handleSearchInputChange={handleSearchInputChange}
-        handleNewPostClick={handleNewPostClick}
-      ></CommunitySearchAndPost>
-
-      <CommunityPagination
-        currentPage={page}
-        goToPrevPage={goToPrevPage}
-        goToNextPage={goToNextPage}
-        totalPages={totalPages}
-        goToPage={goToPage}
-      ></CommunityPagination>
     </Container>
   );
 };
