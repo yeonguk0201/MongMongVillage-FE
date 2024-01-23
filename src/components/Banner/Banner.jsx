@@ -31,15 +31,32 @@ const Banner = () => {
     cssEase: 'linear',
   };
 
+  const scrollToPopular = () => {
+    let topValue = document.body.clientHeight;
+    console.log(topValue);
+
+    if (window.innerWidth >= 670 && window.innerWidth <= 767) {
+      topValue = 2300;
+    } else if (window.innerWidth >= 550 && window.innerWidth <= 669) {
+      topValue = 2100;
+    } else if (window.innerWidth >= 450 && window.innerWidth <= 549) {
+      topValue = 1900;
+    } else if (window.innerWidth <= 449) {
+      topValue = 1700;
+    }
+
+    const scrollPosition = (23.2 * topValue) / 100;
+
+    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+  };
+
   return (
     <Container>
       <Slider {...settings}>
         <BannerBox>
           <BannerImg src="/banner.webp" alt="banner1" />
           <ButtonContainer>
-            <PopolarCafeBtn
-              onClick={() => window.scrollTo({ top: 850, behavior: 'smooth' })}
-            >
+            <PopolarCafeBtn onClick={scrollToPopular}>
               인기 애견카페 확인!
               <HiCursorClick />
             </PopolarCafeBtn>
