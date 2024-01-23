@@ -1,9 +1,8 @@
 <div align="center">
-  <h1>Mong Mong Village : 멍멍빌리지
-  <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Felice-final-team6&count_bg=%23FFD100&title_bg=%23555555&icon=datadog.svg&icon_color=%23FFD100&title=hits&edge_flat=false"/></a></h1>
+  <h1>Mong Mong Village : 멍멍빌리지</h1>
 </div>
 
-![image](https://github.com/elice-final-team6/.github/assets/33516975/3f46180e-1bb5-4019-91c4-55f7c2e0922c)
+![mongmong](https://github.com/elice-final-team6/MongMongVillage-FE/assets/33516975/42de15ba-cd42-441d-9bd7-632f2b9570da)
 
 에견인들을 위한 커뮤니티와 서울의 애견카페 리뷰 및 정보공유 사이트<br/>
 
@@ -15,16 +14,13 @@ https://www.mongmongvillage.store/
 
 ## 테스트 계정
 ```
-일반유저
-
+- 일반유저
 ID : elice1@test.com
 PW : 11111111
 
-관리자 ( 모든 게시글,리뷰,댓글 삭제 가능)
-
+- 관리자 ( 모든 게시글,리뷰,댓글 삭제 가능)
 ID : admin@mongmong.com
 PW : adminpw1234
-
 ```
 
 ## 개발환경
@@ -77,4 +73,7 @@ PW : adminpw1234
 |             | 2. 비밀번호 일치 확인                      |               | 2. 내 활동 모아보기 (작성글, 작성댓글, 좋아요, 작성리뷰) |
 |             | 3. 약관 확인 창                           
 | **헤더 / 푸터**  | 1. 네비게이터                                 |
+
+## 시연 영상 
+[![Youtube Badge](https://img.shields.io/badge/Youtube-ff0000?style=flat-square&logo=youtube&link=https://www.youtube.com/c/kyleschool)](https://youtu.be/3BLg_u27zXw)
 
