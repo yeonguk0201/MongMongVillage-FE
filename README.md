@@ -6,23 +6,6 @@
 
 에견인들을 위한 커뮤니티와 서울의 애견카페 리뷰 및 정보공유 사이트<br/>
 
-## 개발기간 
-2023.11 ~ 2023.01
-
-//## 배포주소
-//현재 배포중지
-
-## 테스트 계정
-```
-- 일반유저
-ID : elice1@test.com
-PW : 11111111
-
-- 관리자 ( 모든 게시글,리뷰,댓글 삭제 가능)
-ID : admin@mongmong.com
-PW : adminpw1234
-```
-
 ## 개발환경
 - 프론트엔드 
 ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=React&logoColor=white) <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript"/> <img src="https://img.shields.io/badge/-styled_components-DB7093?style=flat-square&logo=styled-components&logoColor=white" alt="Styled-Components"/> <img src="https://img.shields.io/badge/-React_Query-FF4154?style=flat-square&logo=react-query&logoColor=white" alt="React Query"/>
